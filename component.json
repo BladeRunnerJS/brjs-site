@@ -1,0 +1,7 @@
+{
+  "name": "bladerunnerjs-landing",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "http://twitter.github.io/bootstrap/assets/bootstrap.zip"
+  }
+}

@@ -1,9 +1,88 @@
+html {
+  background-color: black;
+}
+
 body {
-  padding-top: 60px;
+  padding-top: 30px;
+}
+
+.navbar-fixed-top {
+  height: 20px;
+  background-color: black;
+}
+
+.navbar-inner {
+  min-height: 20px;
+}
+
+.brand {
+  position: fixed;
+  padding: 0;
+  top: 20px;
+  margin-left: 0;
+  z-index: 20000;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo h1 {
+  color: #c0c0c0;
+  font-size: 25px;
+  font-weight: 300;
+  margin: 0;
 }
 
 .register {
-	text-align: center;
+  text-align: center;
+}
+
+.register input {
+  webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+  border: 2px solid black;
+}
+
+.register input[type=email] {
+  width: 365px;
+  height: 32px;
+}
+
+.register input[type=button],
+.register input[type=submit] {
+  background-color: black;
+  color: white;
+  width: 144px;
+  height: 44px;
+}
+
+.lead .overview {
+  color: #656565;
+}
+
+.lead .details {
+  color: #888;
+}
+
+.usps {
+  margin-bottom: 20px;
+}
+
+.usps a.more {
+  webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+  background-color: #999;
+  color: white;
+
+  padding: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .featurette-divider {
@@ -31,6 +110,14 @@ body {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -1px;
+}
+
+footer {
+  background-color: black;
+  color: white;
+
+  line-height: 40px;
+  font-size: 12px;
 }
 
 @media (max-width: 979px) {

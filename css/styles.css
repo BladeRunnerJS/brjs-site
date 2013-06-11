@@ -12,7 +12,7 @@ body {
 }
 
 .navbar-inner {
-  min-height: 20px;
+  min-height: 0;
 }
 
 .brand {

@@ -85,6 +85,9 @@ body {
   padding-left: 15px;
 }
 
+.wrapper {
+}
+
 .featurette-divider {
   margin: 80px 0; /* Space out the Bootstrap <hr> more */
 }
@@ -157,13 +160,21 @@ footer {
     padding-right: 0;
   }
 
-  body > .container {
+  body > .container,
+  body > .wrapper > .container,
+  footer > .container {
     padding-left: 20px;
     padding-right: 20px;
   }
 
   .register input[type=email] {
     max-width: 100%;
+  }
+
+  .register input[type=submit] {
+    width: 381px;
+    max-width: 100%;
+    margin-top: 5px;
   }
 
   .featurette-heading {

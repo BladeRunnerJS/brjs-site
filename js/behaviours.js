@@ -19,7 +19,6 @@
 	} );
 
 	function animate( height ) {
-		navbar.animate( { height: height + 'px' } );
 		brand.animate( { top: height + 'px' } );
 	}
 

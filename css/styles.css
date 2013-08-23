@@ -157,6 +157,10 @@ body {
   margin-bottom: 20px;
 }
 
+.wrapper.single-page {
+  padding-bottom: 20px;
+}
+
 footer {
   background-color: black;
   color: white;

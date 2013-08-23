@@ -123,18 +123,27 @@ body {
   margin-bottom: 20px;
 }
 
-.blog-list .post-title {
+.blog-list .row {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.blog-list .row .post-title {
   text-align: right;
 }
 
-.blog-list .post-title .author {
+.blog-list .row .post-title .author {
   font-size: 12px;
 }
 
-.blog-list .post-title a {
+.blog-list .row .post-title a {
   display: block;
   font-size: 16px;
   font-weight: 500;
+}
+
+.blog-list .row .post-image {
+  margin-top: -10px;
 }
 
 .post .meta {

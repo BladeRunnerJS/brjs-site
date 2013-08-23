@@ -7,9 +7,9 @@ title: About
 
 ## Open Sourcing
 
-We're open sourcing BladeRunnerJS because although there are a number of great workflow, developer toolkits and frameworks available (like [Yeoman](http://yeoman.io) and [Mimosa](http://mimosajs.com/)) we've developed BRJS to meet the requirements that we've had when building a large JavaScript SDK and applications which we deliver to enterprise organistions.
+We're open sourcing BladeRunnerJS because although there are a number of great workflow, developer toolkits and frameworks available (like [Yeoman](http://yeoman.io) and [Mimosa](http://mimosajs.com/)) we've developed BRJS to meet the requirements specific to building a large JavaScript SDK and applications which are deliver to enterprise organistions.
 
-BRJS has significantly improved developer productivity and the time it takes for our both us and our customers to develop, test, build and deploy production applications. We hope that by open sourcing it that it will be useful to others who are building complex applications in - or for - complex organisations. We're also very interested to see if it is useful outside of these organisations, building different types of applications.
+BRJS has significantly improved the developer productivity for both us and our customers when developing, testing, building and deploying applications. We hope that by open sourcing BRJS that it will be useful to others who are building similar complex applications in, or for, complex organisations. We're also very interested to see if it is useful outside of these organisations, building different types of applications.
 
 BladeRunnerJS has been developed organically and is presently tightly coupled with the product we build with it. We're in the process of removing that coupling. As soon as that is complete the code will be available on github.
 

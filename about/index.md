@@ -5,7 +5,7 @@ title: About
 
 **BladeRunnerJS** (BRJS) is a developer toolkit and lightweight JavaScript framework developed by [Caplin Systems](http://www.caplin.com). It helps you structure, develop, build and deliver complex web applications consisting of very large JavaScript codebases and numerous components that are being developed by multiple teams within an organisation. It does this by following a number of workflows and software engineering principles.
 
-## Open Source
+## Open Sourcing
 
 We're open sourcing BladeRunnerJS because although there are a number of great workflow, developer toolkits and framworks available (like [Yeoman](http://yeoman.io) and [Mimosa](http://mimosajs.com/)) we've developed BRJS to meet the requirements that we've had when building a large JavaScript SDK and applications which we deliver to large enterprise organistions.
 

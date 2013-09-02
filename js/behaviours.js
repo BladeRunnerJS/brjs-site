@@ -5,22 +5,18 @@
 	var brand = $( '.brand' );
 	var visibleHeight = navbar.height();
 	var hideNavbarScroll = visibleHeight;
-	var shown = true;
+	var brandVisible = true;
 
 	win.scroll( function( ev ) {
-		if( shown === true && win.scrollTop() >= hideNavbarScroll ) {
-			shown = false;
-			animate( 0 );
+		if( brandVisible === true && win.scrollTop() >= hideNavbarScroll ) {
+			brandVisible = false;
+			brand.fadeIn();
 		}
-		else if( shown === false && win.scrollTop() < hideNavbarScroll ) {
-			shown = true;
-			animate( visibleHeight );
+		else if( brandVisible === false && win.scrollTop() < hideNavbarScroll ) {
+			brandVisible = true;
+			brand.fadeOut();
 		}
 	} );
 
-	function animate( height ) {
-		navbar.animate( { height: height + 'px' } );
-		brand.animate( { top: height + 'px' } );
-	}
 
 } )( jQuery );

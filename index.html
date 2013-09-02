@@ -1,113 +1,67 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="Description" content="BladeRunnerJS - Divide &amp; Conquer your Web Apps">
-  <title>BladeRunnerJS - Divide &amp; Conquer your Web Apps</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="./components/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./components/bootstrap/css/bootstrap-responsive.min.css">
-  <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
+---
+layout: default
+title: BladeRunnerJS - Divide &amp; conquer your web apps
+---
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
+<div class="container">
+  <a name="top"></a>
+
+  <div class="logo row">
+    <div class="span12">
+      <a href="/"><img src="/img/bladerunner-js.png" alt="BladeRunnerJS logo" /></a>
     </div>
   </div>
 
-  <div class="container">
-    <a class="brand" href="/" title="BladeRunnerJS - Divide &amp; Conquer your Web Apps"><img src="img/bladerunnerjs-logo-dark.png" alt="BladeRunnerJS Logo" /></a>
+  <div class="register row">
+    <div class="span12">
+
+      <!-- Begin MailChimp Signup Form -->
+      <form action="http://caplin.us7.list-manage.com/subscribe/post?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="form-inline" novalidate>
+        <input type="email" value="" name="EMAIL" class="required email" placeholder="Email">
+        <input type="submit" value="Stay tuned" name="subscribe">
+      </form>
+      <!--End mc_embed_signup-->
+
+    </div>
   </div>
 
+
+  <div class="lead row">
+    <div class="span12">
+      <h1>Divide &amp; Conquer your Web Apps</h1>
+      <p class="overview">
+        BladeRunnerJS is a development toolkit and lightweight framework for building web applications consisting of one or more components called <strong>Blades</strong>. It comes complete with some <em>seriously</em> useful tools which make it easy to develop, test and deploy your app.
+      </p>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+<div class="wrapper">
   <div class="container">
-    <a name="top"></a>
 
-  	<div class="logo row">
-  		<div class="span12">
-  			<img src="img/bladerunner-js.png" alt="BladeRunnerJS logo" />
-  		</div>
-  	</div>
-
-  	<div class="register row">
-  		<div class="span12">
-
-        <!-- Begin MailChimp Signup Form -->
-        <form action="http://caplin.us7.list-manage.com/subscribe/post?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91"
-              method="post"
-              id="mc-embedded-subscribe-form"
-              name="mc-embedded-subscribe-form"
-              class="form-inline" novalidate>
-          <input type="email" value="" name="EMAIL" class="required email" placeholder="Email">
-          <input type="submit" value="Stay tuned" name="subscribe">
-        </form>
-        <!--End mc_embed_signup-->
-
-  		</div>
-  	</div>
-
-
-    <div class="lead row">
-      <div class="span12">
-        <h1>Divide &amp; Conquer your Web Apps</h1>
-        <p class="overview">
-          BladeRunnerJS is a development toolkit and lightweight framework for building web applications consisting of one or more components called <strong>Blades</strong>. It comes complete with some <em>seriously</em> useful tools which make it easy to develop, test and deploy your app.
+    <!-- Three columns of text below the carousel -->
+    <div class="row usps">
+      <div class="span4">
+        <h2 title="Componentized Development">Components</h2>
+        <p>An application built with BladeRunnerJS consists of one or more <strong>Blades</strong>. Each Blade can be made up of HTML, JavaScript, CSS and other assets.</p>
+        <p>Blades can be run in isolation during development making them easy to build, debug and test. Inter-blade communication is achieved via an event-hub.
         </p>
-      </div>
-    </div>
-  </div><!-- /.container -->
+      </div><!-- /.span4 -->
+      <div class="span4">
+        <h2 title="Developer Tools for your Blades">Developer Tools</h2>
+        <p><strong>Workbenches</strong> allow Blades to be developed, debugged and run independently of the app.</p>
+        <p>Workbench Widgets allow you to interact with the Blade through stubbed services and via the event-hub. For example you can view your Blade in different states by sending it mock events via a mock events Workbench Widget.</p>
+      </div><!-- /.span4 -->
+      <div class="span4">
+        <h2>Clean Code</h2>
+        <p>Code is organized cleanly using <strong>classes</strong>, with one class per file, and JavaScript <strong>interface</strong> support is provided to help with creating large scalable code-bases.</p>
+        <p>Services are a first-class concept that allow your application to be written before the back-end is finished, and can be replaced by mocks in your tests.</p>
+      </div><!-- /.span4 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->   
 
-  <div class="wrapper">
-    <div class="container">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row usps">
-        <div class="span4">
-          <h2 title="Componentized Development">Components</h2>
-          <p>An application built with BladeRunnerJS consists of one or more <strong>Blades</strong>. Each Blade can be made up of HTML, JavaScript, CSS and other assets.</p>
-          <p>Blades can be run in isolation during development making them easy to build, debug and test. Inter-blade communication is achieved via an event-hub.
-          </p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <h2 title="Developer Tools for your Blades">Developer Tools</h2>
-          <p><strong>Workbenches</strong> allow Blades to be developed, debugged and run independently of the app.</p>
-          <p>Workbench Widgets allow you to interact with the Blade through stubbed services and via the event-hub. For example you can view your Blade in different states by sending it mock events via a mock events Workbench Widget.</p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <h2>Clean Code</h2>
-          <p>Code is organized cleanly using <strong>classes</strong>, with one class per file, and JavaScript <strong>interface</strong> support is provided to help with creating large scalable code-bases.</p>
-          <p>Services are a first-class concept that allow your application to be written before the back-end is finished, and can be replaced by mocks in your tests.</p>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->   
-
-  </div> <!-- /wrapper -->   
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p class="pull-right"><a href="https://twitter.com/BladeRunnerJS" title="Follow BladeRunnerJS on Twitter"><img src="img/twitter.png" alt="Twitter Icon" /></a></p>
-      <p>&copy; 2013 <a href="http://caplin.com">Caplin Systems Ltd.</a></p>
-    </div>
-  </footer>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script src="js/behaviours.js"></script>
-
-	<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-41638401-1', 'bladerunnerjs.org');
-    ga('send', 'pageview');
-  </script>
-</body>
-</html>  
+</div> <!-- /wrapper -->

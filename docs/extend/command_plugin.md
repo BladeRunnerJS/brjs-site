@@ -19,7 +19,11 @@ Create a new Java Project
 
 *File -> New -> Java Project*
 
+![](../img/new-java-project.png)
+
 Give your project a name and ensure the project is set to use a Java 7 JRE.
+
+![](../img/new-java-project-dialog.png)
 
 ## Reference brjs-core.jar
 
@@ -27,9 +31,11 @@ In order to implement the plugin you need to reference the JAR that `CommandPlug
 
 *Right-click on the Project -> Properties -> Libraries -> Add External JARs… -> browser to the BladeRunnerJS_install_directory/sdk/libs/java/system -> select brjs-core.jar -> Open -> OK to close Properties dialog*
 
+![](../img/add-library-jar-reference.png)
+
 This will result in *brjs-core.jar* being shown under *Referenced Libraries* within your project.
 
-**TODO: image**
+![](../img/referenced-libraries.png)
 
 ## Create an EchoCommandPlugin Class
 
@@ -44,6 +50,8 @@ In the *New Java Class* dialog enter your plugin namespace e.g. `org.bladerunner
 Ensure the class implements the `CommandPlugin` Interface. You can do this from the *New Java Class* dialog too.
 
 *Interfaces -> Add… -> type "CommandPlugin" into the input -> select in the Matching Items -> OK*
+
+![](../img/command-plugin-new-class.png)
 
 Close the *New Java Class* dialog by clicking *OK* and the new class will be generated for you, including stubs for the `CommandPlugin` interface.
 
@@ -171,7 +179,9 @@ Within that create a *META-INF* sub directory and within that a *services* direc
 
 We now need to create a file with a name that matches the full namespace of the Interface we are implementing a service for; the `CommandPlugin` interface.
 
-*Right-click on the service folder -> New -> File -> input "com.caplin.brjs.core.plugin.command.CommandPlugin" -> Finish
+*Right-click on the service folder -> New -> File -> input "com.caplin.brjs.core.plugin.command.CommandPlugin" -> Finish*
+
+![](../img/new-service-file-dialog.png)
 
 In the new file add a line with the full namespace to the plugin class we've just created:
 
@@ -181,7 +191,9 @@ In the new file add a line with the full namespace to the plugin class we've jus
 
 In Eclipse, building the JAR is as simple as:
 
-*Right-click on the project -> Export -> Java -> JAR File -> BladeRunnerJS_install_directory/conf (create the "conf" directory if it doesn't already exist)*
+*Right-click on the project -> Export -> Java -> JAR File -> BladeRunnerJS_install_directory/conf/java (create the "conf" and "java" directories if it doesn't already exist)*
+
+![](../img/export-jar-finish.png)
 
 ## Using the plugin
 
@@ -191,7 +203,7 @@ Now if you run `brjs help` you should see your new plugin listed along side the 
 	BladeRunner SDK version: BRJS-dev, built on: 02 September 2013
 	
 	Possible commands:
-	  echo:                      echos out the input arguments that you pass to it
+	  echo:           echos out the input arguments that you pass to it
 	  ...
 	  
 I can ask for usage information:

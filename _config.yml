@@ -1,2 +1,9 @@
 name: BladeRunnerJS - Divide &amp; Conquer your Web Apps
 pygments: true
+relative_permalinks: false
+permalink: /:year/:month/:day/:title/
+
+social:
+  twitter_link: https://twitter.com/BladeRunnerJS
+  github_issues_link: https://github.com/bladerunnerjs/brjs/issues
+  mailing_list_link: http://caplin.us7.list-manage.com/subscribe/?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91

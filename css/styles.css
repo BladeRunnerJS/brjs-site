@@ -161,6 +161,32 @@ body {
   padding-bottom: 20px;
 }
 
+body.docs {
+  padding-top: 50px;
+}
+
+body.docs .brand {
+  display: block;
+}
+
+body.docs .toc-col {
+  padding-top: 60px;
+}
+
+body.docs .content {
+  min-height: 500px;
+}
+
+body.docs .content img {
+  max-width: 600px;
+  max-height: 500px;
+}
+
+/* Action statements e.g. File -> New */
+body.docs .content p > em:first-child {
+  font-weight: bold;
+}
+
 footer {
   background-color: black;
   color: white;

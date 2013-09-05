@@ -1,9 +1,14 @@
 ---
-layout: default
-title: CommandPlugin
+layout: docs
+title: CommandPlugin Tutorial
+permalink: /docs/extend/command_plugin_tutorial/
 ---
 
-The `CommandPlugin` is the simplest extension point for BladeRunnerJS. As the name suggests, it gives you the ability to define commands that you can execute via the `brjs` command in the form `brjs <your_command_plugin_name>`. A BladeRunnerJS `CommandPlugin` also has access to the `BRJS` model so have all the information you need to manipulate applications, blades and much more, along with any other functionality you wish to implement. And, of course, since you are building a plugin you can then share this functionality with other team members or the wider BladeRunnerJS community.
+{% include docs_first.html %}
+
+The `CommandPlugin` is the simplest extension point for BladeRunnerJS. As the name suggests, it gives you the ability to define commands that you can execute via the `brjs` command in the form `brjs <your_command_plugin_name>`.
+
+A BladeRunnerJS `CommandPlugin` also has access to the `BRJS` model so have all the information you need to manipulate applications, blades and much more, along with any other functionality you wish to implement. And, of course, since you are building a plugin you can then share this functionality with other team members or the wider BladeRunnerJS community.
 
 This tutorial will show you how to create an *EchoCommandPlugin* which echos out the input arguments that you pass to it.
 
@@ -19,11 +24,11 @@ Create a new Java Project
 
 *File -> New -> Java Project*
 
-![](../img/new-java-project.png)
+![](/docs/img/new-java-project.png)
 
 Give your project a name and ensure the project is set to use a Java 7 JRE.
 
-![](../img/new-java-project-dialog.png)
+![](/docs/img/new-java-project-dialog.png)
 
 ## Reference brjs-core.jar
 
@@ -31,11 +36,11 @@ In order to implement the plugin you need to reference the JAR that `CommandPlug
 
 *Right-click on the Project -> Properties -> Libraries -> Add External JARs… -> browser to the BladeRunnerJS_install_directory/sdk/libs/java/system -> select brjs-core.jar -> Open -> OK to close Properties dialog*
 
-![](../img/add-library-jar-reference.png)
+![](/docs/img/add-library-jar-reference.png)
 
 This will result in *brjs-core.jar* being shown under *Referenced Libraries* within your project.
 
-![](../img/referenced-libraries.png)
+![](/docs/img/referenced-libraries.png)
 
 ## Create an EchoCommandPlugin Class
 
@@ -51,7 +56,7 @@ Ensure the class implements the `CommandPlugin` Interface. You can do this from 
 
 *Interfaces -> Add… -> type "CommandPlugin" into the input -> select in the Matching Items -> OK*
 
-![](../img/command-plugin-new-class.png)
+![](/docs/img/command-plugin-new-class.png)
 
 Close the *New Java Class* dialog by clicking *OK* and the new class will be generated for you, including stubs for the `CommandPlugin` interface.
 
@@ -181,11 +186,11 @@ We now need to create a file with a name that matches the full namespace of the 
 
 *Right-click on the service folder -> New -> File -> input "com.caplin.brjs.core.plugin.command.CommandPlugin" -> Finish*
 
-![](../img/new-service-file-dialog.png)
+![](/docs/img/new-service-file-dialog.png)
 
 In the new file add a line with the full namespace to the plugin class we've just created:
 
-> org.bladerunnerjs.examples.EchoCommandPlugin
+    org.bladerunnerjs.examples.EchoCommandPlugin
 
 ## Building and deploying the plugin JAR
 
@@ -193,7 +198,7 @@ In Eclipse, building the JAR is as simple as:
 
 *Right-click on the project -> Export -> Java -> JAR File -> BladeRunnerJS_install_directory/conf/java (create the "conf" and "java" directories if it doesn't already exist)*
 
-![](../img/export-jar-finish.png)
+![](/docs/img/export-jar-finish.png)
 
 ## Using the plugin
 
@@ -225,4 +230,4 @@ And finally I can execute the plugin command and see the information I provide a
 
 Although this plugin is absolutely useless, this provides you with all the information you need to create a truely useful `CommandPlugin`.
 
-Please let us know what you build via [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) or by posting a [BladeRunnerJS github issue](https://github.com/bladerunnerjs/brjs/issues)
+Please let us know what you build via [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) or by posting a [BladeRunnerJS github issue]({{ site.social.github_issues_link }}).

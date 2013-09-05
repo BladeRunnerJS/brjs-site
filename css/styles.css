@@ -25,7 +25,6 @@ body {
   top: 0;
   margin-left: 0;
   z-index: 20000;
-  display: none;
 }
 
 .logo {
@@ -163,10 +162,6 @@ body {
 
 body.docs {
   padding-top: 50px;
-}
-
-body.docs .brand {
-  display: block;
 }
 
 body.docs .toc-col {

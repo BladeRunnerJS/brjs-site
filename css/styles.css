@@ -6,6 +6,10 @@ body {
   padding-top: 40px;
 }
 
+footer {
+  margin-top: 50px;
+}
+
 .navbar-fixed-top {
   height: 30px;
   background-color: black;
@@ -70,10 +74,6 @@ body {
 
 .lead .details {
   color: #888;
-}
-
-.usps {
-  margin-bottom: 40px;
 }
 
 .usps a.more {

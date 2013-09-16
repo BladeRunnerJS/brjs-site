@@ -10,7 +10,7 @@ excerpt: Here at Caplin we've worked for many years with financial organisations
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" />
 
-Here at Caplin we've worked for many years with financial organisations to deliver complex, high performance, financial trading systems as single page web apps. Over the past 18 months we've created a developer toolkit and lightweight JavaScript framework called **BladeRunnerJS** to help us do this more efficiently.
+Here at Caplin we’re in the business of building extremely complex financial trading GUIs as single page web apps. Over the past 18 months we've created a developer toolkit and lightweight JavaScript framework called **BladeRunnerJS** to help us do this more efficiently.
 
 *BladeRunnerJS* (**BRJS**) was designed for building modular large-scale HTML5 single page web apps. It consists of a set of conventions plus associated tools and libraries that make it easy to develop, test, deploy and maintain large JavaScript apps. These concepts result in apps being split into discrete modules called **blades**, each of which implements a single high level feature.
 
@@ -27,9 +27,11 @@ Before BRJS we experienced a number of problems:
 * *Multiple teams* would work on different parts of the application. Much time and effort was spent resolving bugs caused by incompatible tightly-coupled functionality or code merge conflicts
 * Front-end development would frequently begin before *back-end services* were ready. This delayed development, integration and testing of the features.
 
-BRJS resolves these problems and has resulted in a well organised 250k LoC codebase where the first line of code we write is a feature, functionality is developed in isolation, code changes can quickly be verified, tests take minutes rather than hours, multiple teams can work on the same application without conflict and development can start whether or not a back-end services are ready.
+BRJS resolves these problems, and was recently used with great success to create a 250k LoC codebase. It makes it easy to organize the entire codebase, with functionality being developed in isolation before being integrated. Code changes can be quickly verified, and tests take minutes rather than hours to run. Multiple teams can work on the same application without conflict, and development can start whether or not a back-end services are ready.
 
-The conventions and architecture that BRJS enables and supports, means we can now focus on building features instead of dealing with development workflow problems. This has a very positive impact on developer productivity for both us and our customers.
+BRJS resolves these problems. It has resulted in a well organised 250k LoC codebase where the first line of code we write is a feature. The functionality is developed in isolation, code changes can quickly be verified and tests take minutes rather than hours to run. The codebase is updated and maintained by multiple teams who can work on the same application without conflict. And development can start whether or not a back-end services are ready.
+
+The conventions and architecture that BRJS enables and supports mean we can now focus on building features instead of dealing with development workflow problems. This has a very positive impact on developer productivity for both us and our customers.
 
 ## Why are we open-sourcing BRJS?
 

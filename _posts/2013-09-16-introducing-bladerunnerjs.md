@@ -3,6 +3,9 @@ layout: post
 title: Introducing BladeRunnerJS
 authors: [jamest, leggetter]
 thumb: br-logo-black-bg-150x150.png
+
+excerpt: Here at Caplin we've worked for many years with financial organisations to deliver complex, high performance, financial trading systems as single page web apps. Over the past 18 months we've created a developer toolkit and lightweight JavaScript framework called <strong>BladeRunnerJS</strong> to help us do this more efficiently.
+
 ---
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" />
@@ -17,7 +20,7 @@ BRJS was originally created to make it easier to build extremely complex high-en
 
 Before BRJS we experienced a number of problems:
 
-* *Unrelated dependencies* had to be running in order to develop aa single piece of functionality
+* *Unrelated dependencies* had to be running in order to develop a single piece of functionality
 * Checking the result of code changes also meant *running the entire app*. The time taken to log-in and navigate around wasted developer time.
 * *Acceptance tests* ran via the GUI, required the back-end to be available and lots of infrastructure. On larger apps, across multiple browsers, this sometimes took all night and was often unreliable. It was also difficult to simulate test cases where servers are slow or return errors. 
 * *Multiple teams* would work on different parts of the application. Much time and effort was spent resolving bugs caused by incompatible tightly-coupled functionality or code merge conflicts

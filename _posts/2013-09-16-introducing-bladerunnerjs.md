@@ -21,7 +21,7 @@ BRJS was originally created to make it easier to build extremely complex high-en
 Before BRJS we experienced a number of problems:
 
 * New projects required an application setup phase; application scaffolding, framework selection and infrastructure setup for the upcoming project. We wanted to *focus on features, not frameworks*, so the *first line of code we wrote could be feature code*.
-* All *application infrastructure* (database, authentication, realtime services etc.) had to be running in the development environment order to develop a single piece of functionality
+* All *application infrastructure* (database, authentication, realtime services etc.) had to be running in the development environment in order to develop a single piece of functionality
 * Checking the result of code changes also meant *running the entire app*. The time taken to log-in and navigate around wasted developer time.
 * *Acceptance tests* ran via the GUI, required the back-end to be available and lots of infrastructure. On larger apps, across multiple browsers, this sometimes took all night and was often unreliable. It was also difficult to simulate test cases where servers are slow or return errors. 
 * *Multiple teams* would work on different parts of the application. Much time and effort was spent resolving bugs caused by incompatible tightly-coupled functionality or code merge conflicts

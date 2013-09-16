@@ -16,7 +16,7 @@ Here at Caplin we’re in the business of building extremely complex financial t
 
 ## Why did we create BRJS?
 
-BRJS was originally created to make it easier to build extremely complex high-end financial trading apps in HTML5. Complex applications can unsurprisingly have a very large codebase which can be difficult to organise, develop upon, test, deploy and maintain.
+Complex applications can unsurprisingly have a very large codebase which can be difficult to organise, develop upon, test, deploy and maintain.
 
 Before BRJS we experienced a number of problems:
 
@@ -25,9 +25,7 @@ Before BRJS we experienced a number of problems:
 * Checking the result of code changes also meant *running the entire app*. The time taken to log-in and navigate around wasted developer time.
 * *Acceptance tests* ran via the GUI, required the back-end to be available and lots of infrastructure. On larger apps, across multiple browsers, this sometimes took all night and was often unreliable. It was also difficult to simulate test cases where servers are slow or return errors. 
 * *Multiple teams* would work on different parts of the application. Much time and effort was spent resolving bugs caused by incompatible tightly-coupled functionality or code merge conflicts
-* Front-end development would frequently begin before *back-end services* were ready. This delayed development, integration and testing of the features.
-
-BRJS resolves these problems, and was recently used with great success to create a 250k LoC codebase. It makes it easy to organize the entire codebase, with functionality being developed in isolation before being integrated. Code changes can be quickly verified, and tests take minutes rather than hours to run. Multiple teams can work on the same application without conflict, and development can start whether or not a back-end services are ready.
+* Front-end development would frequently begin before *back-end services* were ready. This delayed development, integration and testing of the features
 
 BRJS resolves these problems. It has resulted in a well organised 250k LoC codebase where the first line of code we write is a feature. The functionality is developed in isolation, code changes can quickly be verified and tests take minutes rather than hours to run. The codebase is updated and maintained by multiple teams who can work on the same application without conflict. And development can start whether or not a back-end services are ready.
 

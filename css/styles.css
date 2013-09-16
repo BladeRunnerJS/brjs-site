@@ -47,7 +47,7 @@ footer {
   text-align: center;
 }
 
-.register input {
+.subscribe-form input {
   webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -55,13 +55,13 @@ footer {
   border: 2px solid black;
 }
 
-.register input[type=email] {
+.subscribe-form input[type=email] {
   width: 365px;
   height: 32px;
 }
 
-.register input[type=button],
-.register input[type=submit] {
+.subscribe-form input[type=button],
+.subscribe-form input[type=submit] {
   background-color: black;
   color: white;
   width: 144px;
@@ -132,8 +132,21 @@ footer {
   text-align: right;
 }
 
-.blog-list .row .post-title .author {
-  font-size: 12px;
+.blog-list .row .post-title .meta {
+  font-size: 11px;
+}
+
+.blog-list .row .post-title .meta .by {
+  display: inline-block;
+  float: right;
+  clear: both;
+  color: #c0c0c0;
+}
+
+.blog-list .row .post-title .meta .author {
+  display: inline-block;
+  float: right;
+  clear: both;
 }
 
 .blog-list .row .post-title a {
@@ -151,10 +164,25 @@ footer {
   color: #999;
 }
 
+.post p img {
+  display: block;
+  margin: auto;
+}
+
 .post {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.post .fig-text {
+  display: block;
+  text-align: center;
+}
+
+.post .authors .author:before { content: ", "; }
+.post .authors .author:first-child:before { content: ""; }
+.post .authors .author:last-child:before { content: "& "; }
+.post .authors .author:last-child:after { content: ""; }
 
 .wrapper.single-page {
   padding-bottom: 20px;

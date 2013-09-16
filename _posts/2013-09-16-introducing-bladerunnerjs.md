@@ -86,7 +86,7 @@ The Plugin Architecture means that you can create functionality to augment and e
 
 The plugin interfaces include:
 
-* **CommandPlugin** - to create your own command to do almost anything
+* **CommandPlugin** - to create your own BRJS CLI command to do almost anything
 * **BundlerPlugin** - used when bundling assets in both the development workflow and during the build and deploy steps
 * **LogicalTagPlugin** - for tag replacement within assets
 * **FileTransformPlugin** - used when transforming assets in both the development workflow and during the build and deploy steps e.g. for adding TypeScript, ECMAScript6 or CoffeeScript support

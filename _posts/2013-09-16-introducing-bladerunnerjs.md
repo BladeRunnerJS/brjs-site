@@ -20,13 +20,14 @@ BRJS was originally created to make it easier to build extremely complex high-en
 
 Before BRJS we experienced a number of problems:
 
+* New projects required an application setup phase; application scaffolding, framework selection and infrastructure setup for the upcoming project. We wanted to *focus on features, not frameworks*, so the *first line of code we wrote could be feature code*.
 * All *application infrastructure* (database, authentication, realtime services etc.) had to be running in the development environment order to develop a single piece of functionality
 * Checking the result of code changes also meant *running the entire app*. The time taken to log-in and navigate around wasted developer time.
 * *Acceptance tests* ran via the GUI, required the back-end to be available and lots of infrastructure. On larger apps, across multiple browsers, this sometimes took all night and was often unreliable. It was also difficult to simulate test cases where servers are slow or return errors. 
 * *Multiple teams* would work on different parts of the application. Much time and effort was spent resolving bugs caused by incompatible tightly-coupled functionality or code merge conflicts
 * Front-end development would frequently begin before *back-end services* were ready. This delayed development, integration and testing of the features.
 
-BRJS resolves these problems and has resulted in a well organised 250k LoC codebase where functionality is developed in isolation, code changes can quickly be verified, tests take minutes rather than hours to run, multiple teams can work on the same application without conflict and development can start whether or not a back-end services are ready.
+BRJS resolves these problems and has resulted in a well organised 250k LoC codebase where the first line of code we write is a feature, functionality is developed in isolation, code changes can quickly be verified, tests take minutes rather than hours, multiple teams can work on the same application without conflict and development can start whether or not a back-end services are ready.
 
 The conventions and architecture that BRJS enables and supports, means we can now focus on building features instead of dealing with development workflow problems. This has a very positive impact on developer productivity for both us and our customers.
 
@@ -34,7 +35,7 @@ The conventions and architecture that BRJS enables and supports, means we can no
 
 We’re open-sourcing BRJS because, although there are a number of great developer toolkits and frameworks available (like [Yeoman](http://yeoman.io) and [Mimosa](http://mimosa.io/)), BRJS is unique in its approach and its support for [programming in the large](http://en.wikipedia.org/wiki/Programming_in_the_large_and_programming_in_the_small).
 
-As the number of developers creating large-scale front-end web apps increases, we hope that BRJS will turn out to be useful to others. We’re also keen to validate our hunch that it will be equally valuable for building complex applications in other domains.
+As the number of developers creating large-scale front-end web apps increases, we hope that BRJS will turn out to be useful to others. We’re also keen to validate our hunch that it will be equally valuable for building complex applications in domains other than financial web trading applications.
 
 ## What do you get with BRJS?
 
@@ -48,7 +49,7 @@ The CLI environment runs on JRE 7 and includes a Jetty development web server an
 
 * Scaffolding of apps, blades and tests, development helpers called **workbenches** and more
 * Running tests at a fine-grained level e.g. all app tests or just unit tests belonging to a blade
-* Building and deploying of apps either as static files or as part of a bundled [WAR](http://en.wikipedia.org/wiki/WAR_file_format_(Sun))
+* Building and deploying of apps either as bundled static files or as part of a bundled [WAR](http://en.wikipedia.org/wiki/WAR_file_format_(Sun))
 * Dependency analysis when bundling assets (JS, CSS, HTML, XML, Images etc.) - only assets that your app uses are included
 * Usage from any build process or CI environment
 * Integration with a plugin architecture
@@ -94,11 +95,11 @@ The plugin interfaces include:
 
 ## What next?
 
-BRJS was designed as a generic framework, but is presently within the codebase of the product ([Caplin Trader 3](http://www.caplin.com/developer/product/caplin-trader-3)) we have build with it. We’re in the process of decoupling and tidying up some of the rough edges. This will be completed by the end of the month (September) when we will be moving the BRJS codebase to [github](https://github.com/BladeRunnerJS/brjs). So, please watch the repo if you're keen to be an early adopter.
+BRJS was designed as a generic framework, but is presently within the codebase of the product ([Caplin Trader 3](http://www.caplin.com/developer/product/caplin-trader-3)) we have built with it. We’re in the process of decoupling and tidying up some of the rough edges. This will be completed by the end of the month (September) when we will be moving the BRJS codebase to [github](https://github.com/BladeRunnerJS/brjs). So, please watch the repo if you're keen to be an early adopter.
 
 From the end of the month we'll be using [github issues](https://github.com/bladerunnerjs/brjs/issues) to plan our roadmap, track ongoing work, to capture feedback and discuss ideas.
 
-Also, look out for upcoming blog posts providing more information on the What, Why and How's of BRJS, along with the answers to a number of questions you may well be asking; Why Java and not Node.js? How does BRJS differ from Yeoman et al? Interfaces... in JavaScript?
+Also, look out for upcoming blog posts providing more information on the What, Why and How's of BRJS, along with the answers to a number of questions you may well be asking; Why Java and not Node.js? How does BRJS differ from Yeoman et al? Interfaces... in JavaScript? What about RequireJS?
 
 ## Register for updates
 

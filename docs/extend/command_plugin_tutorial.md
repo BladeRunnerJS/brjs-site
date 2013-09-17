@@ -64,10 +64,10 @@ For example:
 
 	package org.bladerunnerjs.examples;
 	
-	import com.caplin.brjs.core.plugin.command.CommandPlugin;
-	import com.caplin.brjs.model.BRJS;
-	import com.caplin.brjs.model.exception.command.CommandArgumentsException;
-	import com.caplin.brjs.model.exception.command.CommandOperationException;
+	import org.bladerunnerjs.core.plugin.command.CommandPlugin;
+	import org.bladerunnerjs.model.BRJS;
+	import org.bladerunnerjs.model.exception.command.CommandArgumentsException;
+	import org.bladerunnerjs.model.exception.command.CommandOperationException;
 	
 	public class EchoCommandPlugin implements CommandPlugin {
 	
@@ -176,15 +176,15 @@ Our plugin functionality is now complete. But we've a little more work to do yet
 
 BladeRunnerJS uses the Java [ServiceRegistry](http://docs.oracle.com/javase/7/docs/api/javax/imageio/spi/ServiceRegistry.html) for it's plugin architecture. Because of this we need to add a file that states which Interface our plugin implements and the name of the class that implements it.
 
-The first thing to do is to create a *resource* source folder.
+The first thing to do is to create a *resources* source folder.
 
 *Right-click on the project -> New -> Source Folder*
 
-Within that create a *META-INF* sub directory and within that a *services* directory. You will now have a *services* folder with the path of *project_root/resource/META-INF/services*.
+Within that create a *META-INF* sub directory and within that a *services* directory. You will now have a *services* folder with the path of *project_root/resources/META-INF/services*.
 
 We now need to create a file with a name that matches the full namespace of the Interface we are implementing a service for; the `CommandPlugin` interface.
 
-*Right-click on the service folder -> New -> File -> input "com.caplin.brjs.core.plugin.command.CommandPlugin" -> Finish*
+*Right-click on the service folder -> New -> File -> input "org.bladerunnerjs.core.plugin.command.CommandPlugin" -> Finish*
 
 ![](/docs/img/new-service-file-dialog.png)
 

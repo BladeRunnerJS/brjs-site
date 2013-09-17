@@ -4,6 +4,8 @@ title: Introducing BladeRunnerJS
 authors: [jamest, leggetter]
 thumb: br-logo-black-bg-150x150.png
 
+permalink: /2013/09/16/introducing-bladerunnerjs/
+
 excerpt: Here at Caplin we've worked for many years with financial organisations to deliver complex, high performance, financial trading systems as single page web apps. Over the past 18 months we've created a developer toolkit and lightweight JavaScript framework called <strong>BladeRunnerJS</strong> to help us do this more efficiently.
 
 ---

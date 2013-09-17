@@ -1,7 +1,7 @@
 name: BladeRunnerJS - Divide &amp; conquer your web apps
 pygments: true
 relative_permalinks: false
-permalink: /:year/:month/:day/:title/
+permalink: /blog/:title
 
 social:
   twitter_link: https://twitter.com/BladeRunnerJS

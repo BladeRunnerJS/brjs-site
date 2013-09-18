@@ -124,12 +124,15 @@ footer {
 }
 
 .blog-list .row {
+  position: relative;
+
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
 
 .blog-list .row .post-title {
   text-align: right;
+  overflow: auto;
 }
 
 .blog-list .row .post-title .meta {
@@ -159,30 +162,30 @@ footer {
   margin-top: -10px;
 }
 
-.post .meta {
+body.post .meta {
   font-size: 12px;
   color: #999;
 }
 
-.post p img {
+body.post p img {
   display: block;
   margin: auto;
 }
 
-.post {
+body.post {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.post .fig-text {
+body.post .fig-text {
   display: block;
   text-align: center;
 }
 
-.post .authors .author:before { content: ", "; }
-.post .authors .author:first-child:before { content: ""; }
-.post .authors .author:last-child:before { content: "& "; }
-.post .authors .author:last-child:after { content: ""; }
+.post .authors .author:before, .post-title .authors .author:before { content: ", "; }
+.post .authors .author:first-child:before, .post-title .authors .author:first-child:before { content: ""; }
+.post .authors .author:last-child:before, .post-title .authors .author:last-child:before { content: "& "; }
+.post .authors .author:last-child:after, .post-title .authors .author:last-child:after { content: ""; }
 
 .wrapper.single-page {
   padding-bottom: 20px;
@@ -272,6 +275,7 @@ footer {
     max-width: 40%;
     margin: 0 auto 20px;
   }
+
 }
 
 
@@ -305,6 +309,28 @@ footer {
   .featurette .lead {
     font-size: 18px;
     line-height: 1.5;
+  }
+
+  .blog-list .row .post-title {
+    text-align: left;
+  }
+
+  .blog-list .row .post-title .meta .by,
+  .blog-list .row .post-title .meta .author {
+    float: none;
+  }
+
+    .blog-list .row .post-excerpt {
+    margin-top: 20px;
+  }
+
+  .blog-list .row .post-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 50px;
+    margin-right: 5%;
   }
 
 }

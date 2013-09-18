@@ -24,11 +24,11 @@ Create a new Java Project
 
 *File -> New -> Java Project*
 
-![](/docs/img/new-java-project.png)
+![](/docs/extend/img/command_plugin_tutorial/new-java-project.png)
 
 Give your project a name and ensure the project is set to use a Java 7 JRE.
 
-![](/docs/img/new-java-project-dialog.png)
+![](/docs/extend/img/command_plugin_tutorial/new-java-project-dialog.png)
 
 ## Reference brjs-core.jar
 
@@ -36,11 +36,11 @@ In order to implement the plugin you need to reference the JAR that `CommandPlug
 
 *Right-click on the Project -> Properties -> Libraries -> Add External JARs… -> browser to the BladeRunnerJS_install_directory/sdk/libs/java/system -> select brjs-core.jar -> Open -> OK to close Properties dialog*
 
-![](/docs/img/add-library-jar-reference.png)
+![](/docs/extend/img/command_plugin_tutorial/add-library-jar-reference.png)
 
 This will result in *brjs-core.jar* being shown under *Referenced Libraries* within your project.
 
-![](/docs/img/referenced-libraries.png)
+![](/docs/extend/img/command_plugin_tutorial/referenced-libraries.png)
 
 ## Create an EchoCommandPlugin Class
 
@@ -56,7 +56,7 @@ Ensure the class implements the `CommandPlugin` Interface. You can do this from 
 
 *Interfaces -> Add… -> type "CommandPlugin" into the input -> select in the Matching Items -> OK*
 
-![](/docs/img/command-plugin-new-class.png)
+![](/docs/extend/img/command_plugin_tutorial/command-plugin-new-class.png)
 
 Close the *New Java Class* dialog by clicking *OK* and the new class will be generated for you, including stubs for the `CommandPlugin` interface.
 
@@ -186,7 +186,7 @@ We now need to create a file with a name that matches the full namespace of the 
 
 *Right-click on the service folder -> New -> File -> input "org.bladerunnerjs.core.plugin.command.CommandPlugin" -> Finish*
 
-![](/docs/img/new-service-file-dialog.png)
+![](/docs/extend/img/command_plugin_tutorial/new-service-file-dialog.png)
 
 In the new file add a line with the full namespace to the plugin class we've just created:
 
@@ -198,7 +198,7 @@ In Eclipse, building the JAR is as simple as:
 
 *Right-click on the project -> Export -> Java -> JAR File -> BladeRunnerJS_install_directory/conf/java (create the "conf" and "java" directories if it doesn't already exist)*
 
-![](/docs/img/export-jar-finish.png)
+![](/docs/extend/img/command_plugin_tutorial/export-jar-finish.png)
 
 ## Using the plugin
 

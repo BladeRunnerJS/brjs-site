@@ -12,6 +12,8 @@ template: docs
 			<h1>{{ page.title }}</h1>
 	
 			<div class="content">
+				{% include docs/wip.html %}
+
 				{{ content }}
 			</div>
 
@@ -21,24 +23,43 @@ template: docs
 			<h3>Documentation</h3>
 
 			<h4>Concepts</h4>
+			
+			<h5>Application structure</h3>
 			<ul>
-				<li><a href="/docs/concepts/blades">Blades</a></li>
-				<li><a href="/docs/concepts/bladesets">BladeSets</a></li>
-				<li><a href="/docs/concepts/workbenches">Workbenches</a></li>
-				<li><a href="/docs/concepts/aspects">Aspects</a></li>
+				<li><a href="/docs/concepts/blades/">Blades</a></li>
+				<li><a href="/docs/concepts/bladesets/">BladeSets</a></li>
+				<li><a href="/docs/concepts/aspects/">Aspects</a></li>
+			</ul>
+
+			<h5>Development workflow</h5>
+			<ul>
+				<li><a href="/docs/concepts/workbenches/">Workbenches</a></li>
+			</ul>
+
+			<h5>JavaScript</h5>
+			<ul>				
+				<li><a href="/docs/concepts/services/">Services</a></li>
+				<li><a href="/docs/concepts/service_registry/">ServiceRegistry</a></li>
+				<li><a href="/docs/concepts/interfaces/">Interfaces</a></li>
+				<li><a href="/docs/concepts/event_hub/">EventHub</a></li>
 			</ul>
 
 			<h4>Use</h4>
 			<ul>
-				<li><a href="/docs/use/getting_started">Getting started</a></li>
+				<li><a href="/docs/use/getting_started/">Getting started</a></li>
 			</ul>
 
 			<h4>Extend</h4>
 			<ul>
-				<li><a href="/docs/extend/command_plugin_tutorial">CommandPlugin tutorial</a></li>
-				<li><a href="/docs/extend/model_observer_plugin_tutorial">ModelObserverPlugin tutorial</a></li>
+				<li><a href="/docs/extend/command_plugin_tutorial/">CommandPlugin tutorial</a></li>
+				<li><a href="/docs/extend/model_observer_plugin_tutorial/">ModelObserverPlugin tutorial</a></li>
 			</ul>
-		</div>
+
+			<p class="doc-feedback">
+				Got a suggestion to improve the docs? You can find the source <a href="{{site.social.github_link}}">on github</a>. Please submit a pull request or raise an issue.
+			</p>
+
+		</div><!-- /.span3 .toc-col -->
 
 	</div> <!--/.row -->
 

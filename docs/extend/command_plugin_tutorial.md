@@ -4,8 +4,6 @@ title: CommandPlugin Tutorial
 permalink: /docs/extend/command_plugin_tutorial/
 ---
 
-{% include docs/docs_first.html %}
-
 The `CommandPlugin` is the simplest extension point for BladeRunnerJS. As the name suggests, it gives you the ability to define commands that you can execute via the `brjs` command in the form `brjs <your_command_plugin_name>`.
 
 A BladeRunnerJS `CommandPlugin` also has access to the `BRJS` model so have all the information you need to manipulate applications, blades and much more, along with any other functionality you wish to implement. And, of course, since you are building a plugin you can then share this functionality with other team members or the wider BladeRunnerJS community.

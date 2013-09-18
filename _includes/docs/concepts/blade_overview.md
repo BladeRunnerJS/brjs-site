@@ -1,1 +1,3 @@
 A **blade** is a module that encapsulates all the required resources – JavaScript, HTML, CSS, XML, images, etc – to implement a particular high level feature. For example, a blade might implement a map UI, a chat window, a charting module or an alerting mechanism. A blade usually (but not always) corresponds to a particular area of the display.
+
+Blades can be run in isolation during development in a [Workbench](/docs/concepts/workbenches), making them easy to develop, debug and test. Inter-blade communication is achieved via an event-hub.

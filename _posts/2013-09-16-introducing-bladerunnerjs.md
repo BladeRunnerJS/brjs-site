@@ -81,7 +81,7 @@ Blades are a BRJS concept that represent high level features within your applica
 
 Because application components are broken down into small pieces of functionality, with assets grouped by feature (not type), and because a blade only interacts with other application features through the EventHub or through services, we can run them in isolation. This has resulted in a feature we're *really* excited about - workbenches.
 
-Workbenches allow a blade to be developed and run in isolation. They can also be interacted with through their runtime UI or through workbench widgets via the EventHub or Services they use.
+Workbenches allow a blade to be developed and run in isolation. They can also be interacted with through their runtime UI or through workbench tools via the EventHub or Services they use.
 
 ![A Blade Workbench](/blog/img/workbench_v2.png)
 

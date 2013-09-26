@@ -8,6 +8,8 @@ permalink: /docs/use/getting_started/
 
 This isn't your typical 2 minute getting started guide - it probably takes around 10 minutes. This is because BRJS is meant to help you build large-scale applications, so we need to go into a bit of detail in order to cover things like developing using Workbenches, cross-blade communication using the EventHub and services.
 
+We'll follow convention to do this sort of thing - since following conventions are good - and we'll build a **Todo List**.
+
 It'll be 10 minutes well-spent.
 
 ## Prerequisites
@@ -60,7 +62,11 @@ This creates a folder called `todo-bladeset` within the application. For now we 
 
 Now we can create our first Blade and start developing.
 
-## Develop a Blade
+## The Todo Input Blade
+
+First, let's create a Blade for capturing the Todo items.
+
+### Scaffold the Blade
 
 Create a new blade using the CLI:
 
@@ -84,6 +90,8 @@ This creates a `todoinput` directory containing the following sub-directories:
 	</ul>
 </div>
 
+### View the Code
+
 Within `todoinput/src` you'll find an `ExampleClass.js` file:
 
     var br = require( 'br' );
@@ -92,7 +100,7 @@ Within `todoinput/src` you'll find an `ExampleClass.js` file:
     var PresentationModel = require( 'br/presenter/PresentationModel' );
     
     function ExampleClass() {
-      this.message = new Property("Hello World!" );
+      this.message = new Property( "Hello World!" );
     };
     br.extend(ExampleClass, PresentationModel);
     
@@ -100,30 +108,91 @@ Within `todoinput/src` you'll find an `ExampleClass.js` file:
       console.log( 'button clicked' );
     };
 
-Above, `ExampleClass` is a View Model which is bound to a view. You'll notice that `ExampleClass` extends `PresentationModel`. This deals with binding to the view. The view definition can be found in an HTML template in `resources/html/view.html`:
+<div class="alert alert-info">
+	<p>
+		We plan to <a href="https://github.com/BladeRunnerJS/brjs/issues/6">give auto-generated files better names</a>.
+	</p>
+</div>
+
+Above, `ExampleClass` is a View Model which is bound to a view. You'll notice that `ExampleClass` extends something called `PresentationModel`. This deals with binding data to the view. The view definition can be found in an HTML template in `resources/html/view.html`:
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div class="hello-world-message" data-bind="text:message"></div>
       <button class="button" data-bind="click:buttonClicked">Log me</button>
     </div>
 
-Now that you've seen the View Model class and the view, let's launch a Workbench and see the Blade running.
+### Run the Blade in a Workbench
+
+Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running.
 
 Using the CLI run:
 
     unzip_location/sdk/brjs start
 
-This will start the development web server running on localhost port 7070. You can navigate to the workbench via http://localhost:7070 or go directly to it via http://localhost:7070/dashboard/#apps/brjs-todo/todo/todoinput/workbench.
+This will start the development web server running on localhost port 7070. You can navigate to the workbench via http://localhost:7070 or go directly to it via http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/.
 
 ![](/docs/use/img/hello-world-workbench.png)
 
-**TODO: this should show the debug console logging rather than the "messages" log**
+You'll notice that there's a **Visualise Presentation Model** Workbench Tool that shows a tree visualisation of the View Model. In there you'll see a simple `message:Hello World!` name and value. 
 
-* Edit the Blade code and see the change in the workbench
-* Test the Blade
+### Add Two-Way Data Binding
 
-## Create a second Blade
+Next, let's edit the Blade to display in `input` element with a two-way binding between the View and View Model.
 
+To do this we first need to update `ExampleClass.js` to handle the fact the view contains an input element. We do this by changing the `message` instance variable to be a `Field` object. When the button is clicked let's take the value of the message and log it.
+
+    var br = require( 'br' );
+    
+    var Field = require( 'br/presenter/node/Field');
+    var PresentationModel = require( 'br/presenter/PresentationModel' );
+    
+    function ExampleClass() {
+      this.message = new Field( "Hello World!" );
+    };
+    br.extend(ExampleClass, PresentationModel);
+    
+    ExampleClass.prototype.buttonClicked = function() {
+      console.log( this.message.value.getValue() );
+    };
+
+And we update `view.html` to contain an `input` element where the element's `value` property is bound to the message's value. And since we want instant two-way binding we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. Finally, update the `Log me` text to say `Add`:
+
+    <div id="brjstodo.todo.todoinput.view-template">
+      <div><input type="text" class="hello-world-message" data-bind="value:message.value, valueUpdate:'afterkeydown'" /></div>
+      <button class="button" data-bind="click:buttonClicked">Add</button>
+    </div>
+
+Now if you refresh your Workbench and change the value in the input element you'll instantly see the value updated in the Workbench Tool under *Presentation Model -> message -> value*. Clicking the button will now log the message that's been entered into the input.
+
+![](/docs/use/img/hello-bladerunnerjs-workbench.png)
+
+## Testing a Blade
+
+**TODO**
+
+## Create a Todo Items Blade
+
+Create a second blade to show the Todo list items using the CLI:
+
+    unzip_location/sdk/brjs create-blade brjs-todo todo todoitems
+
+This will create all the same assets that were created for the first blade, but in a `todoitems` directory.
+
+Open up the newly generated `ExampleClass.js` and edit it to have an instance variable called `items`. `items` should be a `NodeList` since it will contain a list of Todo list items, each of which should be a `DisplayItem`. Also, we don't need the `buttonClicked` handler so remove that:
+
+    var br = require( 'br' );
+    
+    var NodeList = require( 'br/presenter/node/NodeList');
+    var DisplayField = require( 'br/presenter/node/DisplayField' );
+    
+    function ExampleClass() {
+      this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );	
+    };
+    
+    br.extend( ExampleClass, PresentationModel );
+
+* Update View HTML template
+* View this in the Workbench
 * Demonstrate communction between the blades via the EventHub
 * Demonstrate interacting with a Blade via EventHub in a Workbench
 

@@ -10,6 +10,11 @@ footer {
   margin-top: 50px;
 }
 
+pre {
+  background: inherit !important;
+  border: 0;
+}
+
 .navbar-fixed-top {
   height: 30px;
   background-color: black;

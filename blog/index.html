@@ -6,8 +6,8 @@ title: Blog
 <div class="container">
 
   <div class="logo row">
-    <div class="span12">
-      <img src="/img/bladerunner-js.png" alt="BladeRunnerJS logo" />
+    <div class="col-lg-12">
+      <a href="/"><img src="/img/bladerunner-js-black-trans.png" alt="BladeRunnerJS logo" width="555" /></a>
     </div>
 
     <h1>{{ page.title }}</h1>
@@ -20,7 +20,7 @@ title: Blog
 
     {% for post in site.posts %}
     <div class="row">
-      <div class="span3 post-title">
+      <div class="col-lg-3 post-title">
         <a href="{{ post.url }}">{{ post.title }}</a>
         
         <div class="meta">
@@ -33,15 +33,15 @@ title: Blog
           </span>
         </div>
       </div>
-      <div class="span6 post-excerpt">
+      <div class="col-lg-6 post-excerpt">
       	<p>{{ post.excerpt }}</p>
         <p class="read-more">
           <a href="{{ post.url }}">Read more...</a>
         </p>
       </div>
-      <div class="span3 post-image">
+      <div class="col-lg-3 post-image">
         <a href="{{ post.url }}">
-          <img data-src="holder.js/110x110" class="img-polaroid" src="/blog/img/{{ post.thumb }}">
+          <img class="img-polaroid" src="/blog/img/{{ post.thumb }}">
         </a>
       </div>
     </div>
@@ -49,7 +49,7 @@ title: Blog
 
   {% else %}
     <div class="row">
-      <div class="span3 offset5">
+      <div class="col-lg-3 col-md-offset-5">
         <p>BladeRunnerJS Blog<br />Coming soon...</p>
       </div>
     </div>

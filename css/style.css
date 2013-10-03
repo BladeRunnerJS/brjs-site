@@ -153,6 +153,10 @@ body.docs .content img {
   max-height: 500px;
 }
 
+body.docs .toc-col li.active a {
+  font-weight: bold;
+}
+
 /* Blog list and Post */
 .blog-list {
   margin-bottom: 20px;

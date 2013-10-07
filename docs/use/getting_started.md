@@ -6,7 +6,7 @@ permalink: /docs/use/getting_started/
 
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
-This isn't your typical 2 minute getting started guide - it probably takes around 10 minutes. This is because BRJS is meant to help you build large-scale applications, so we need to go into a bit of detail in order to cover things like developing using Workbenches, cross-blade communication using the EventHub and services.
+This isn't your typical 2 minute getting started guide - it probably takes around 10 minutes. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail in order to cover things like developing using Workbenches, cross-blade communication using the EventHub and services.
 
 We'll follow convention to do this sort of thing - since following conventions are good - and we'll build a **Todo List**.
 
@@ -16,9 +16,9 @@ It'll be 10 minutes well-spent.
 
 In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed.
 
-## Download & Install BRJS
+## Download & Install the BRJS
 
-Download the [latest BRJS](#TODO) release and unzip it somewhere. The BRJS CLI excutable is `unzip_location/sdk/brjs`.
+Download the [BRJS Getting Started build](#TODO) and unzip it somewhere.
 
 <div class="alert alert-info">
   <p>
@@ -26,41 +26,35 @@ Download the [latest BRJS](#TODO) release and unzip it somewhere. The BRJS CLI e
   </p>
 </div>
 
-## Create an Application
+This build contains a "Getting Started" application that is the starting point for this guide. It also contains the BRJS CLI excutable: `unzip_location/sdk/brjs`.
 
-Create a new application using the CLI:
+## Getting Started App Overview
 
-    unzip_location/sdk/brjs create-app brjs-todo
+The Getting Started app is located within the `unzip_location/apps/brjs-todo` directory and has some basic structure in-place.
 
-This will create a new application called `brjs-todo` within the `unzip_location/apps` directory. Within that directory you'll also find a `default-aspect` directory. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app.
-
-<div class="alert alert-info">
+<div class="alert alert-info github">
   <p>
     BRJS apps presently have to reside within an `apps` folder in the unzip directory. Future releases will allow for <a href="https://github.com/BladeRunnerJS/brjs/issues/1">apps to be located anywhere on disk</a>.
   </p>
 </div>
 
-In there you'll find an `index.html` entry point along with a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
-
-## Create a BladeSet
-
-Create a new <a href="/docs/concepts/bladesets/">BladeSet</a> within the application using the CLI:
-
-    unzip_location/sdk/brjs create-bladeset brjs-todo todo
-
-This creates a folder called `todo-bladeset` within the application. For now we don't need to worry about BladeSets. All you need to know right now is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
+The It contains an Aspect called `default-aspect`. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app. In the aspect directory you'll find an `index.html` entry point along with a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
 
 <div class="alert alert-info">
   <p>
-    In future:
+    <a href="https://github.com/BladeRunnerJS/brjs/issues/17">Aspects will be optional</a> optional.
   </p>
-  <ul>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/2">BladeSets will be optional</a>. Right now a Blade must reside within a BladeSet</li>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/1">The CLI will be context-aware</a> so you can run <code>brjs create-bladeset</code> from within an application directory to create a BladeSet for an app.</li>
-  </ul>
 </div>
 
-Now we can create our first Blade and start developing.
+The getting started app also contains a BladeSet called `todo-bladeset`. [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know right now is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
+
+<div class="alert alert-info">
+  <p>
+    <a href="https://github.com/BladeRunnerJS/brjs/issues/2">BladeSets will be optional</a>.
+  </p>
+</div>
+
+Now we can create our first Blade and start developing our Todo List app.
 
 ## The Todo Input Blade
 
@@ -72,7 +66,7 @@ Create a new blade using the CLI:
 
     unzip_location/sdk/brjs create-blade brjs-todo todo todoinput
 
-This creates a `todoinput` directory containing the following sub-directories:
+This creates a `todoinput` directory within the `todo` BladeSet containing the following sub-directories:
 
 * `src` - for the JavaScript for the Blade
 * `tests` - for the blade tests
@@ -86,33 +80,42 @@ This creates a `todoinput` directory containing the following sub-directories:
   </p>
   <ul>
     <li><a href="https://github.com/BladeRunnerJS/brjs/issues/3">A default blade will be created when an application is created</a></li>
-    <li>The <a href="https://github.com/BladeRunnerJS/brjs/issues/1">CLI will be context aware</a> so you can run <code>brjs blade:create</code> from within an application directory to create a blade for an app.</li>
+    <li>The <a href="https://github.com/BladeRunnerJS/brjs/issues/1">CLI will be context aware</a> so you can run <code>brjs create-blade</code> from within an application directory to create a blade for an app; you won't need to supply an app name, app namespace and BladeSet name</li>
   </ul>
 </div>
 
 ### View the Code
 
-Within `todoinput/src` you'll find an `ExampleClass.js` file:
+Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinputtodoinput/src` you'll find an `ExampleClass.js` file.
 
-    var br = require( 'br' );
-    
-    var Property = require( 'br/presenter/Property');
-    var PresentationModel = require( 'br/presenter/PresentationModel' );
-    
-    function ExampleClass() {
-      this.message = new Property( "Hello World!" );
-    };
-    br.extend(ExampleClass, PresentationModel);
-    
-    ExampleClass.prototype.buttonClicked = function() {
-      console.log( 'button clicked' );
-    };
+<div class="alert alert-info">
+  <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
+</div>
 
-    module.exports = ExampleClass;
+Open up `ExampleClass.js` (ignoring the existing default Blade template code) and replace it with the following:
+
+    caplin.thirdparty( 'caplin-br' );
+
+    ( function() {
+
+      var br = require( 'br' );
+
+      function ExampleClass() {
+        this.message = new br.presenter.property.Property( "Hello World!" );
+      };
+      br.extend( ExampleClass, br.presenter.PresentationModel );
+
+      ExampleClass.prototype.buttonClicked = function() {
+        console.log( 'button clicked' );
+      }
+
+      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
+
+    })();
 
 <div class="alert alert-info">
   <ul>
-    <li>The above code represents how we want to be able to write our JavaScript classes. We are adding <a href="https://github.com/BladeRunnerJS/brjs/issues/11">full support for Node.js module style code</a> as a priority.</li>
+    <li>We know the JavaScript coding style (the closure, large namespaces etc.) needs to be improved so we are working towards adding <a href="https://github.com/BladeRunnerJS/brjs/issues/11">full support for Node.js module style code</a> as a priority.</li>
     <li>We plan to <a href="https://github.com/BladeRunnerJS/brjs/issues/6">give auto-generated files better names</a></li>
   </ul>
 </div>
@@ -144,21 +147,24 @@ Next, let's edit the Blade to display in `input` element with a two-way binding 
 
 To do this we first need to update `ExampleClass.js` to handle the fact the view contains an input element. We do this by changing the `message` instance variable to be a `Field` object. When the button is clicked let's take the value of the message and log it.
 
-    var br = require( 'br' );
-    
-    var Field = require( 'br/presenter/node/Field');
-    var PresentationModel = require( 'br/presenter/PresentationModel' );
-    
-    function ExampleClass() {
-      this.message = new Field( "Hello World!" );
-    };
-    br.extend(ExampleClass, PresentationModel);
-    
-    ExampleClass.prototype.buttonClicked = function() {
-      console.log( this.message.value.getValue() );
-    };
+    caplin.thirdparty( 'caplin-br' );
 
-    module.exports = ExampleClass;
+    ( function() {
+
+      var br = require( 'br' );
+
+      function ExampleClass() {
+        this.message = new br.presenter.node.Field( "Hello World!" );
+      };
+      br.extend( ExampleClass, br.presenter.PresentationModel );
+
+      ExampleClass.prototype.buttonClicked = function() {
+        console.log( 'button clicked' );
+      }
+
+      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
+
+    })();
 
 And we update `view.html` to contain an `input` element where the element's `value` property is bound to the message's value. And since we want instant two-way binding we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. Finally, update the `Log me` text to say `Add`:
 

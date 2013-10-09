@@ -64,7 +64,7 @@ First, let's create a Blade for capturing the Todo items.
 
 Create a new blade using the CLI:
 
-    unzip_location/sdk/brjs create-blade brjs-todo todo todoinput
+    $ unzip_location/sdk/brjs create-blade brjs-todo todo todoinput
 
 This creates a `todoinput` directory within the `todo` BladeSet containing the following sub-directories:
 
@@ -135,7 +135,7 @@ Now that you've seen the View Model class and the view template, let's launch a 
 
 Using the CLI run:
 
-    unzip_location/sdk/brjs start
+    $ unzip_location/sdk/brjs start
 
 This will start the development web server running on localhost port 7070. You can navigate to the workbench via `http://localhost:7070` or go directly to it via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`.
 
@@ -228,7 +228,7 @@ The test server will then continue running in the terminal/console that you star
 
 Then in the web browser (or browsers) you wish to execute the tests in navigate to `http://localhost:4224/capture?strict`. This browser is now waiting for the test server to instruct it to run tests. You do this by opening up another terminal/console tab/window and executing `unzip_location/sdk/brjs test path_to_directory_to_scan_for_tests`. In our case we just want to run the `todoinput` tests. So, assuming we're in the `unzip_location/sdk/` directory the command would be:
 
-    ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
+    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
 
 If all goes well you should see some output similar to the following:
 
@@ -248,7 +248,7 @@ If all goes well you should see some output similar to the following:
 
 If you wanted to run all the tests for the application you would execute:
 
-    ./brjs test ../apps/brjs-todo
+    $ ./brjs test ../apps/brjs-todo
 
 We've now created our first Blade, seen it running in a Workbench, updated the Blade and seen the change in the Workbench, and written a simple test to check the View Model initialized state. It's time to create our second Blade.
 
@@ -256,7 +256,7 @@ We've now created our first Blade, seen it running in a Workbench, updated the B
 
 Create a second blade to show the Todo list items. As with the first Blade, we do this using the CLI:
 
-    unzip_location/sdk/brjs create-blade brjs-todo todo todoitems
+    $ unzip_location/sdk/brjs create-blade brjs-todo todo todoitems
 
 This will create all the same assets that were created for the first blade, but in a `todoitems` directory.
 
@@ -426,7 +426,7 @@ The test initializes the `todoinput` Blade, sets a Todo text value we expect to 
 
 Now that the test is written ensure the test server is running (`unzip_location/sdk/brjs test-server`) and execute the `todoinput` tests:
 
-    ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
+    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
 
 You should see confirmation that the tests pass:
 
@@ -444,29 +444,190 @@ Now the `todoinput` Blade is triggering an event on the EventHub, the `todoitems
 
 First, get access to the ServiceRegistry and then register for the event on the channel:
 
-    var br = require( 'br' );
-    
-    var PresentationModel = require( 'br/presenter/PresentationModel' );
+    caplin.thirdparty("caplin-br");
 
-    var ServiceRegistry = require( 'br/ServiceRegistry' );
-  
-    function ExampleClass() {
-      this.items = new br.presenter.node.NodeList( [ new DisplayField( "foo" ), new DisplayField( "bar" ) ] );
-  
-      this.eventHub = ServiceRegistry.getService( 'event-hub' );
-      this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
+    ( function() {
+
+      var br = require( 'br' );
+      var ServiceRegistry = require( 'br/ServiceRegistry' );
+
+      function ExampleClass() {
+        var DisplayField = br.presenter.node.DisplayField;
+        var NodeList = br.presenter.node.NodeList;
+        this.items = new NodeList( [ new DisplayField( "foo" ), new DisplayField( "bar" ) ] );
+
+        // get the event hub
+        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+
+        // register to recieve events
+        this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
+      };
+      br.extend( ExampleClass, br.presenter.PresentationModel );
+
+      ExampleClass.prototype._todoAdded = function( added ) {
+        // TODO: update this.items
+      };
+
+      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
+
+    })();
+
+In the code above we listen for `todo-added` events that are triggered on the `todo-list` channel. Whenever those events are triggered the `_todoAdded` instance function is called. We ensure the `this` context is maintained by passing in `this` as the third parameter to the `eventHub.on` function.
+
+Now that the object is informed whenever a new Todo item is added, we can update the View Model data.
+
+    caplin.thirdparty("caplin-br");
+
+    ( function() {
+
+      var br = require( 'br' );
+      var ServiceRegistry = require( 'br/ServiceRegistry' );
+
+      function ExampleClass() {
+        var DisplayField = br.presenter.node.DisplayField;
+        var NodeList = br.presenter.node.NodeList;
+        this.items = new NodeList( [ new DisplayField( "foo" ), new DisplayField( "bar" ) ] );
+
+        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+        this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
+      };
+      br.extend( ExampleClass, br.presenter.PresentationModel );
+
+      ExampleClass.prototype._todoAdded = function( added ) {
+        var DisplayField = br.presenter.node.DisplayField;
+
+        // create a new field for the new item
+        var newItem = new DisplayField( added.text );
+
+        // get the existing items
+        var nodes = this.items.getPresentationNodesArray();
+
+        // append the new item to the array
+        nodes.push( newItem );
+
+        // update the View Model which triggers a UI update
+        this.items.updateList( nodes );
+      };
+
+      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
+
+    })();
+
+#### Testing in the Workbench
+
+Open up the `todoitems` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/`. Open up the JavaScript console and enter the following code:
+
+    var sr = require( 'br/ServiceRegistry' );
+    var hub = sr.getService( 'demo-event-hub' );
+    hub.channel( 'todo-list' ).trigger( 'todo-added', { text: 'console todo item' } );
+
+This gets the `demo-event-hub` from the `ServiceRegistry` and then triggers a `todo-added` event on the `todo-list` channel. When you do this you'll see a new `console todo item` added to the list in the UI.
+
+![](/docs/use/img/todo-items-console-workbench.png)
+
+<div class="alert alert-info">
+  <p>
+    Since using an EventHub for inter-blade communication is a core concept in BRJS apps we should add an <a href="https://github.com/BladeRunnerJS/brjs/issues/125">EventHub Workbench Tool</a> to help during development.
+  </p>
+</div>
+
+#### Testing via a Unit Test
+
+As with the `todoinput` Blade we can also test the `todoitems` Blade with the help of services. In this case we want to ensure that the blade registers for the appropriate event and that when that even occurs the View Model data is updated.
+
+First we want to set up a fake service that helps us interact with our Blade. Replace the contents of `todoitems/tests/test-unit/js-test-driver/tests/ExampleClassTest.js` with the following:
+
+    ExampleClassTest = TestCase("ExampleClassTest");
+
+    caplin.thirdparty( 'caplin-br' );
+
+    var fakeEventHub;
+    var fakeChannel;
+
+    ExampleClassTest.prototype.setUp = function() {
+
+      fakeChannel = {
+        on: function(eventName, callback, context) {
+          // store event name and data
+          this.eventName = eventName;
+          this.callback = callback;
+          this.context = context;
+        }
+      };
+
+      fakeEventHub = {
+        channel: function( channelName ) {
+          // store the name of the channel
+          this.channelName = channelName;
+          return fakeChannel;
+        }
+      };
+
+      var sr = require( 'br/ServiceRegistry' );
+
+      // ensure there isn't already an event-hub registered
+      sr.deregisterService( 'demo-event-hub' );
+
+      // Register the fake event hub
+      sr.registerService( 'demo-event-hub', fakeEventHub );
     };
-    br.extend( ExampleClass, PresentationModel );
 
-    ExampleClass.prototype._todoAdded = function( item ) {
-      // TODO: update this.items
+<div class="alert alert-info">
+  <p>
+    If this weren't a getting started guide we'd probably create a class that can be shared between the two Blades that implements the same interface as the `demo-event-hub` service, and use it for testing.
+  </p>
+</div>    
+
+This code ensures that any interaction with the `demo-event-hub` service is captured so that we can test it. Our test will then simply check that the correct channel name is being subscribed to, the appropriate event is being bound to and that it is the `todoItemsBlade` that is doing the binding:
+
+    ExampleClassTest.prototype.testTodoItemsBladeListensToItemAddedEvents = function() {
+      var todoItemsBlade = new brjstodo.todo.todoitems.ExampleClass();
+
+      assertEquals( fakeEventHub.channelName , 'todo-list' );
+      assertEquals( fakeChannel.eventName , 'todo-added' );
+      assertEquals( fakeChannel.context , todoItemsBlade );
     };
 
-In the code above we listen for `todo-added` events that are triggered on the `todo-list` channel. And whenever those events are triggered the `todoAdded` instance function is called. We ensure the `this` context is maintained by passing in `this` as the third parameter to the `eventHub.on` function.
+Now you can execute the tests (ensuring that the test server is running and at least one browser is connected):
 
-Now that the object is informed whenever a new Todo item is added, we can update the View Model.
+    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoitems/
+    BladeRunner version: BRJS-dev, built: 26 September 2013
 
-**TODO**
+    Server already running, not bothering to start a new instance...
+
+    Testing tests (UTs):
+    Chrome: Reset
+    Chrome 30.0.1599.66 Mac OS loaded /test/bundles/js/js.bundle
+    Chrome 30.0.1599.66 Mac OS loaded /test/tests/ExampleClassTest.js
+    Chrome 30.0.1599.66 Mac OS [PASSED] ExampleClassTest.testTodoItemsBladeListensToItemAddedEvents
+    Total 1 tests (Passed: 1; Fails: 0; Errors: 0) (3.00 ms)
+      Chrome 30.0.1599.66 Mac OS: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (3.00 ms)
+    Tests Passed.
+
+    - Time Taken: 2secs
+
+As explained above, we also want to make sure the View Model is updated with a new item when the `todo-added` event is received:
+
+    ExampleClassTest.prototype.testItemsViewModelAddsItemOnTodoAddedEvent = function() {
+      var todoItemsBlade = new brjstodo.todo.todoitems.ExampleClass();
+
+      var itemText = 'hello';
+
+      // trigger the callback
+      fakeChannel.callback.call( fakeChannel.context, { text: itemText } );
+
+      // check the item has been added to the end of the list
+      var items = todoItemsBlade.items.getPresentationNodesArray();
+      assertEquals( itemText, items[ items.length - 1 ].value.getValue() );
+    };
+
+Since we know that Blade uses the EventHub to receive new items, and we have a fake hub in place, we can execute the callback that the Blade is waiting for, passing Todo item data, and then check that the item has been added to the end of the list.
+
+Both the `todoinput` and `todoitems` Blades have the functionality that we're looking for, and they are set up to communicate using the `demo-event-hub` service. The next thing to do is to add them to an application Aspect. We'll then have a fully functional Todo List app.
+
+## Adding the Blades to an Aspect
+
+ 
 
 ## Build and Deploy
 

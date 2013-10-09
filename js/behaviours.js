@@ -11,5 +11,20 @@ $( function() {
     }
   } );
 
-	hljs.initHighlightingOnLoad();
+	$( 'pre code' ).each( function( i, el ) {
+    el = $( el );
+    
+    var code = $.trim( el.text() );
+    var lang = 'javascript';
+    if( code.indexOf( '$' ) === 0 ) {
+      lang = 'bash';
+    }
+    else if ( code.indexOf( '<' ) === 0 ) {
+      lang = 'xml';
+    }
+
+    var result = hljs.highlight( lang, el.text() );
+    el.html( result.value );
+  } );
+
 } );

@@ -38,7 +38,7 @@ The Getting Started app is located within the `unzip_location/apps/brjs-todo` di
   </p>
 </div>
 
-The It contains an Aspect called `default-aspect`. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app. In the aspect directory you'll find an `index.html` entry point along with a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
+The It contains an Aspect called `default-aspect`. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app. In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
 
 <div class="alert alert-info">
   <p>
@@ -101,7 +101,7 @@ Open up `ExampleClass.js` (ignoring the existing default Blade template code) an
       var br = require( 'br' );
 
       function ExampleClass() {
-        this.message = new br.presenter.property.Property( "Hello World!" );
+        this.message = new br.presenter.property.Property( 'Hello World!' );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );
 
@@ -158,7 +158,7 @@ To do this we first need to update `ExampleClass.js` to handle the fact the view
       var br = require( 'br' );
 
       function ExampleClass() {
-        this.message = new br.presenter.node.Field( "Hello World!" );
+        this.message = new br.presenter.node.Field( 'Hello World!' );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );
 
@@ -198,7 +198,7 @@ A core concept with BRJS is building a JavaScript application that scales. One o
 
 When you scaffold a new Blade a test class is also created. The scaffolded test can be found in `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`:
 
-    ExampleClassTest = TestCase("ExampleClassTest");
+    ExampleClassTest = TestCase('ExampleClassTest');
         
     ExampleClassTest.prototype.testSomething = function()
     {
@@ -207,7 +207,7 @@ When you scaffold a new Blade a test class is also created. The scaffolded test 
 
 The simplest test we can write at the moment is to check that the `message` field is initialized with a value of `Hello World!`.
 
-    ExampleClassTest = TestCase("ExampleClassTest");
+    ExampleClassTest = TestCase('ExampleClassTest');
 
     var ExampleClass = require( 'brjs-todo/todo/todoinput/ExampleClass' );
         
@@ -262,7 +262,7 @@ This will create all the same assets that were created for the first blade, but 
 
 Open up the newly generated `ExampleClass.js` and update the JavaScript as follows:
 
-    caplin.thirdparty("caplin-br");
+    caplin.thirdparty('caplin-br');
 
     ( function() {
 
@@ -271,7 +271,7 @@ Open up the newly generated `ExampleClass.js` and update the JavaScript as follo
       function ExampleClass() {
         var DisplayField = br.presenter.node.DisplayField;
         var NodeList = br.presenter.node.NodeList;
-        this.items = new NodeList( [ new DisplayField( "foo" ), new DisplayField( "bar" ) ] );
+        this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );
 
@@ -315,7 +315,7 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
       var ServiceRegistry = require( 'br/ServiceRegistry' );
 
       function ExampleClass() {
-        this.message = new br.presenter.node.Field( "Hello World!" );
+        this.message = new br.presenter.node.Field( 'Hello World!'' );
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );
@@ -340,7 +340,7 @@ Now, in the `buttonClicked` function we can trigger an event called `todo-added`
       var ServiceRegistry = require( 'br/ServiceRegistry' );
 
       function ExampleClass() {
-        this.message = new br.presenter.node.Field( "Hello World!" );
+        this.message = new br.presenter.node.Field( 'Hello World!'' );
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );
@@ -444,7 +444,7 @@ Now the `todoinput` Blade is triggering an event on the EventHub, the `todoitems
 
 First, get access to the ServiceRegistry and then register for the event on the channel:
 
-    caplin.thirdparty("caplin-br");
+    caplin.thirdparty('caplin-br');
 
     ( function() {
 
@@ -454,7 +454,7 @@ First, get access to the ServiceRegistry and then register for the event on the 
       function ExampleClass() {
         var DisplayField = br.presenter.node.DisplayField;
         var NodeList = br.presenter.node.NodeList;
-        this.items = new NodeList( [ new DisplayField( "foo" ), new DisplayField( "bar" ) ] );
+        this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
 
         // get the event hub
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
@@ -476,7 +476,7 @@ In the code above we listen for `todo-added` events that are triggered on the `t
 
 Now that the object is informed whenever a new Todo item is added, we can update the View Model data.
 
-    caplin.thirdparty("caplin-br");
+    caplin.thirdparty('caplin-br');
 
     ( function() {
 
@@ -486,7 +486,7 @@ Now that the object is informed whenever a new Todo item is added, we can update
       function ExampleClass() {
         var DisplayField = br.presenter.node.DisplayField;
         var NodeList = br.presenter.node.NodeList;
-        this.items = new NodeList( [ new DisplayField( "foo" ), new DisplayField( "bar" ) ] );
+        this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
 
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
         this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
@@ -537,7 +537,7 @@ As with the `todoinput` Blade we can also test the `todoitems` Blade with the he
 
 First we want to set up a fake service that helps us interact with our Blade. Replace the contents of `todoitems/tests/test-unit/js-test-driver/tests/ExampleClassTest.js` with the following:
 
-    ExampleClassTest = TestCase("ExampleClassTest");
+    ExampleClassTest = TestCase('ExampleClassTest');
 
     caplin.thirdparty( 'caplin-br' );
 
@@ -576,7 +576,7 @@ First we want to set up a fake service that helps us interact with our Blade. Re
   <p>
     If this weren't a getting started guide we'd probably create a class that can be shared between the two Blades that implements the same interface as the `demo-event-hub` service, and use it for testing.
   </p>
-</div>    
+</div>   
 
 This code ensures that any interaction with the `demo-event-hub` service is captured so that we can test it. Our test will then simply check that the correct channel name is being subscribed to, the appropriate event is being bound to and that it is the `todoItemsBlade` that is doing the binding:
 
@@ -627,7 +627,112 @@ Both the `todoinput` and `todoitems` Blades have the functionality that we're lo
 
 ## Adding the Blades to an Aspect
 
- 
+In order to add the Blades to the default aspect we need to open up `App.js` in `brjs-todo/default-aspect/src/brjstodo`. In the `App` class we want to create two instances of the objects we've just defined and tested; an Input `ExampleClass` and an Items `ExampleClass`.
+
+From earlier, you'll remember that these classes extended something called `PresentationModel` - part of the BRJS [Presenter library](/docs/concepts/presenter/) - which means these classes are View Models. We can therefore use these models with something called `PresenterComponent` to use them within our Aspect. As well as passing in the View Model to the `PresenterComponent` constructor we also pass a HTML template identifier (which you'll also have seen in the HTML examples earlier):
+
+    ( function() {
+
+      var App = function() {
+        var inputModel = new brjstodo.todo.todoinput.ExampleClass();
+        var itemsModel = new brjstodo.todo.todoitems.ExampleClass();
+
+        // pass in the HTML template identifier and View Model
+        var PresenterComponent = br.presenter.component.PresenterComponent;
+        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template',
+                                                      inputModel );
+        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', 
+                                                      itemsModel );
+
+        // TODO: append to UI
+      };
+
+      brjstodo.App = App;
+
+    } )();
+
+At this point it's worth running the default Aspect for our app. You can do this by ensuring that the development web server is running (`./brjs start`) and navigating to `http://localhost:7070/brjs-todo/` in your web browser. If all is well the result should be very boring.
+
+![](/docs/use/img/brjs-app-nothing-to-see-here.png)
+
+In order for the Blade components to appear in the aspect we have to append the DOM elements that the `PresenterComponent` instances create to the Aspect - the main view into the Todo List web app. We do this by accessing the element via a `getElement` function and then simply appending it to an element with an ID of `todoapp`. We've wrapped this up in a `_appendComponent( component )` function below which also deals with some legacy component API requirements:
+
+    ( function() {
+
+      var App = function() {
+        var inputModel = new brjstodo.todo.todoinput.ExampleClass();
+        var itemsModel = new brjstodo.todo.todoitems.ExampleClass();
+
+        var PresenterComponent = br.presenter.component.PresenterComponent;
+        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template',
+                                                      inputModel );
+        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', 
+                                                      itemsModel );
+        
+        this._appendComponent( this.inputComponent );
+        this._appendComponent( this.itemsComponent );
+      };
+
+      App.prototype._appendComponent = function( component ) {
+        component.setFrame(null);
+        var el = component.getElement();
+        document.getElementById( 'todoapp' ).appendChild( el );
+        component.onOpen();
+      };
+
+      brjstodo.App = App;
+
+    } )();
+
+<div class="alert alert-info">
+  <p>
+    The code above shows some additional calls that are required at the moment. We're in the process of re-evaluating this API and will also provide helper methods for any boilerplate-style code as required. <a href="https://github.com/BladeRunnerJS/brjs/issues/128">More on github</a>.
+  </p>
+</div>
+
+If we refresh the application we'll now see the Input and the Todo List appended to the view.
+
+![](/docs/use/img/unstyled-app.png)
+
+Finally, we *really* need to remove the "loaded" message and apply some styling to the application.
+
+You can remove the message by opening up `/brjs-todo/default-aspect/index.html` and removing the `@SUCCESS.MESSAGE.JNDI.TOKEN@` from the HTML.
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <base href="@APP.VERSION@"/>
+        
+        <title>My Application</title>
+        
+        <@css.bundle theme="standard"@/>
+        <@js.bundle@/>
+        
+      </head>
+      <body>
+
+        @SUCCESS.MESSAGE.JNDI.TOKEN@
+
+        <section id="todoapp"></section>
+
+        <script>
+          caplin.thirdparty('br-caplin');
+
+          var ServiceRegistry = require( 'br/ServiceRegistry' );
+          var DemoEventHub = require( 'br/DemoEventHub' );
+          ServiceRegistry.registerService( 'demo-event-hub', new DemoEventHub() );
+
+          var oApp = new brjstodo.App();
+        </script>
+
+      </body>
+    </html>
+
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. To apply styling simply uncomment the styles in `brjs-todo/default-aspect/themes/standard/style.css`, save and refresh the app.
+
+![](/docs/use/img/styled-app.png)
+
+You now have a reasonable looking Todo List app that you can add items to. Now for deployment.
 
 ## Build and Deploy
 

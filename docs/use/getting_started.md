@@ -6,15 +6,23 @@ permalink: /docs/use/getting_started/
 
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
-This isn't your typical 2 minute getting started guide - it probably takes around 10 minutes. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail in order to cover things like developing using Workbenches, cross-blade communication using the EventHub and services.
+This isn't your typical 2 minute getting started guide - it probably takes around 20 minutes. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**. In this guide we'll cover:
 
-We'll follow convention to do this sort of thing - since following conventions are good - and we'll build a **Todo List**.
+* Downloading and installing BRJS
+* Creating a Todo item Input Blade
+* Running and Testing Blades in Workbenches
+* Unit testing Blades
+* Creating a Todo List Blade
+* Inter-Blade communication using an EventHub Service
+* Testing Blades interactions by stubbing Services
+* Adding Blades to an application Aspect
+* Building and Deploying a BRJS application to Apache Tomcat (Flat File coming soon)
 
-It'll be 10 minutes well-spent.
+It'll be 20 minutes well-spent.
 
 ## Prerequisites
 
-In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed.
+In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed. To deploy the built .WAR file you'll need access to an installation of [Apache Tomcat](http://tomcat.apache.org/) (installing is as simple as download and unzip).
 
 ## Download & Install the BRJS
 
@@ -736,8 +744,50 @@ You now have a reasonable looking Todo List app that you can add items to. Now f
 
 ## Build and Deploy
 
-**TODO: Simple deploy to local Tomcat. Note that flat-file deploy is a priority.**
+For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wiki/WAR_file_format_(Sun)) file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
+
+<div class="alert alert-info">
+  <p>
+    We know this is very restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting a Flat File build and deployment</a> is a priority.
+  </p>
+</div>
+
+All that you need to do to build the .WAR file is use the `war` command:
+
+    $ ./brjs war brjs-todo
+    BladeRunner version: BRJS-dev, built: 26 September 2013
+
+    Successfully created war file
+
+
+Deploying to Tomcat is a simple as copying the `brjs-todo.war` file to the Tomcat `webapps` directory:
+
+    $ cp brjs-todo.war path_to_tomcat_install/webapps/
+
+By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjs-todo` to see your application running in a deployed environment.
+
+## Summary
+
+This comprehensive getting started guide has introduced you to [Blades](/docs/concepts/blades/), running Blades in isolation in [Workbenches](/docs/concepts/workbenches/), seeing how Workbenches help the development process, unit testing Blades, inter-Blade communication using an [EventHub](/docs/concepts/event_hub/), how [Services](/docs/concepts/services/) facilitate testing, incorporating Blades into application [Aspects](/docs/concepts/aspects) and deploying your BRJS application.
+
+Believe it or not, this just scrapes the surface of BladeRunnerJS. So...
 
 ## Where next?
 
-**TODO**
+### Finish the Todo App
+
+The getting started app doesn't offer 100% Todo App functionality. How about adding:
+
+* Marking a Todo Item as complete
+* Deleting a Todo Item
+* Edit a Todo Item
+* Persisting data to a backend **Service**
+* Making the Todo List collaborative by using a [realtime service](http://www.leggetter.co.uk/real-time-web-technologies-guide)
+
+### Explore the Docs
+
+Read up more about the [concepts](/docs/concepts) behind BRJS, discover additional ways to [use](/docs/use/) BRJS or how you can [extend](/docs/extend/) BRJS to improve your developer workflow.
+
+### Get Involved
+
+BRJS is an open source project that we really want others to get involved in through using, sharing and contributing. You can do this by watching [BRJS on github]({{ site.social.github_link }}) and getting involved in the discussions. By building applications using BRJS and sharing your thoughts, findings and code. By [extending BRJS](/docs/extend/) through creating plugins that improve your developer workflow and sharing what you've done. Or by contributing to the core codebase.

@@ -155,6 +155,54 @@ pre {
   margin-right: 10px;
 }
 
+.home-get-started {
+  padding: 0 30px;
+}
+
+.home-get-started .explore,
+.home-get-started .get-started {
+  position: relative;
+  min-height: 630px;
+}
+
+.cta-round {
+  display: inline-block;
+
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  font-size: 20px;
+
+  margin-top: 20px;
+
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  border-radius: 100px;
+
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cta-round:visited,
+.cta-round:hover {
+  color: #ffffff;
+}
+
+.home-get-started .explore .cta-round,
+.home-get-started .get-started .cta-round {
+  position: absolute;
+  bottom: 0;
+}
+
+.home-get-started .explore .cta-round {
+  background-color: #80BA27;
+}
+
+.home-get-started .get-started .cta-round {
+  background-color: #F59E00;
+}
+
 .call-to-action {
   width: 100%;
   padding-top: 10px;
@@ -192,6 +240,7 @@ pre {
 
 .call-to-action.github .github-mark {
   float: left;
+  padding-left: 30px;
 }
 
 .call-to-action.github p {
@@ -207,14 +256,6 @@ pre {
   margin: 0 6px;
   margin-bottom: 13px;
   height: 45px;
-}
-
-.footer {
-  color: #b7b6b6;
-  text-align: center;
-  padding: 30px 0;
-  border-top: 1px solid #7d7d7d;
-  background-color: #444444;
 }
 
 /* Docs */
@@ -242,6 +283,12 @@ body.docs .main img {
 
 body.docs .toc-col li.active a {
   font-weight: bold;
+}
+
+/* Single page */
+body.single_page .copy {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 /* Blog list and Post */
@@ -288,8 +335,14 @@ body.docs .toc-col li.active a {
   margin-top: -10px;
 }
 
+body.post .container.main {
+  background-color: #444444;
+}
+
 body.post .post {
   background-color: #ffffff;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 body.post .meta {
@@ -300,11 +353,16 @@ body.post .meta {
 body.post p img {
   display: block;
   margin: auto;
+  max-width: 600px;
 }
 
 body.post .fig-text {
   display: block;
   text-align: center;
+}
+
+body.post .copy {
+  padding-bottom: 30px;
 }
 
 .post .authors .author:before, .post-title .authors .author:before { content: ", "; }
@@ -325,4 +383,17 @@ body.post .fig-text {
   border-radius: 0;
 
   border: 2px solid black;
+}
+
+.footer {
+  color: #b7b6b6;
+  padding: 30px 20px;
+  border-top: 1px solid #7d7d7d;
+  background-color: #444444;
+
+  margin-bottom: 30px;
+}
+
+.footer a {
+  color: #CED002;
 }

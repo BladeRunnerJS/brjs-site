@@ -1,7 +1,7 @@
 ---
 layout: single_page
 title: Roadmap to BRJS 1.0
-permalink: /docs/roadmap_to_1-0/
+permalink: /docs/roadmap/
 ---
 
 We hope to have the following in place before Christmas 2013.

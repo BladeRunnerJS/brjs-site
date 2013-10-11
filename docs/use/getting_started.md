@@ -6,17 +6,20 @@ permalink: /docs/use/getting_started/
 
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
-This isn't your typical 2 minute getting started guide - it probably takes around 20 minutes. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**. In this guide we'll cover:
+This isn't your typical 2 minute getting started guide - it probably takes around 20 minutes. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**.
+
+We'll cover:
 
 * Downloading and installing BRJS
+* Creating an Application and BladeSet
 * Creating a Todo item Input Blade
 * Running and Testing Blades in Workbenches
 * Unit testing Blades
 * Creating a Todo List Blade
 * Inter-Blade communication using an EventHub Service
-* Testing Blades interactions by stubbing Services
+* Testing Blade interactions by stubbing Services
 * Adding Blades to an application Aspect
-* Building and Deploying a BRJS application to Apache Tomcat (Flat File coming soon)
+* Building and Deploying a BRJS application to Apache Tomcat (Flat File deploy coming soon)
 
 It'll be 20 minutes well-spent.
 
@@ -26,7 +29,7 @@ In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/
 
 ## Download & Install the BRJS
 
-Download the [BRJS Getting Started build](#TODO) and unzip it somewhere.
+Download the [latest BRJS](#TODO) release and unzip it somewhere. The BRJS CLI excutable is `unzip_location/sdk/brjs`.
 
 <div class="alert alert-info">
   <p>
@@ -34,39 +37,45 @@ Download the [BRJS Getting Started build](#TODO) and unzip it somewhere.
   </p>
 </div>
 
-This build contains a "Getting Started" application that is the starting point for this guide. It also contains the BRJS CLI excutable: `unzip_location/sdk/brjs`.
+## Create an Application
 
-## Getting Started App Overview
+Create a new application using the CLI:
 
-The Getting Started app is located within the `unzip_location/apps/brjs-todo` directory and has some basic structure in-place.
+    unzip_location/sdk/brjs create-app brjs-todo
 
-<div class="alert alert-info github">
+This will create a new application called `brjs-todo` within the `unzip_location/apps` directory. Within that directory you'll also find a `default-aspect` directory. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app.
+
+<div class="alert alert-info">
   <p>
     BRJS apps presently have to reside within an `apps` folder in the unzip directory. Future releases will allow for <a href="https://github.com/BladeRunnerJS/brjs/issues/1">apps to be located anywhere on disk</a>.
   </p>
 </div>
 
-The It contains an Aspect called `default-aspect`. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app. In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
+In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
+
+## Create a BladeSet
+
+Create a new BladeSet within the application using the CLI:
+
+    unzip_location/sdk/brjs create-bladeset brjs-todo todo
+
+This creates a folder called `todo-bladeset` within the application. [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
 
 <div class="alert alert-info">
   <p>
-    <a href="https://github.com/BladeRunnerJS/brjs/issues/17">Aspects will be optional</a> optional.
+    In future:
   </p>
+  <ul>
+    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/2">BladeSets will be optional</a>. Right now a Blade must reside within a BladeSet</li>
+    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/1">The CLI will be context-aware</a> so you can run <code>brjs create-bladeset</code> from within an application directory to create a BladeSet for an app.</li>
+  </ul>
 </div>
 
-The getting started app also contains a BladeSet called `todo-bladeset`. [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know right now is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
-
-<div class="alert alert-info">
-  <p>
-    <a href="https://github.com/BladeRunnerJS/brjs/issues/2">BladeSets will be optional</a>.
-  </p>
-</div>
-
-Now we can create our first Blade and start developing our Todo List app.
+With this basic application structure in place we can create our first Blade and start developing our Todo List app.
 
 ## The Todo Input Blade
 
-First, let's create a Blade for capturing the Todo items.
+First, let's create a Blade for capturing the Todo input items.
 
 ### Scaffold the Blade
 
@@ -323,7 +332,7 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
       var ServiceRegistry = require( 'br/ServiceRegistry' );
 
       function ExampleClass() {
-        this.message = new br.presenter.node.Field( 'Hello World!'' );
+        this.message = new br.presenter.node.Field( 'Hello World!' );
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );
@@ -337,6 +346,7 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
 
     } )();
 
+
 Now, in the `buttonClicked` function we can trigger an event called `todo-added` on a `todo-list` channel to tell any interested parties (the `todoitems` Blade) that a new Todo list item has been input, and the user has indicated they want to add it. We can also clear down the `input` element value.
 
     caplin.thirdparty( 'caplin-br' );
@@ -348,7 +358,7 @@ Now, in the `buttonClicked` function we can trigger an event called `todo-added`
       var ServiceRegistry = require( 'br/ServiceRegistry' );
 
       function ExampleClass() {
-        this.message = new br.presenter.node.Field( 'Hello World!'' );
+        this.message = new br.presenter.node.Field( 'Hello World!' );
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
       };
       br.extend( ExampleClass, br.presenter.PresentationModel );

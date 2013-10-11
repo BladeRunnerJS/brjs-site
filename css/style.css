@@ -148,7 +148,13 @@ body.docs .toc-col .doc-feedback {
   margin-top: 20px;
 }
 
+body.docs .content > ul:first-of-type {
+  font-weight: 500;
+}
+
 body.docs .content img {
+  display: block;
+  margin: auto;
   max-width: 600px;
   max-height: 500px;
 }

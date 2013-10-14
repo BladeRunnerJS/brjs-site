@@ -6,7 +6,9 @@ $( function() {
 	links.each( function( i, el ) {
     el = $( el );
     parent = el.parent();
-    if( parent.get( 0 ).tagName.toLowerCase() === 'li' ) {
+    var parentTagName = parent.get( 0 ).tagName.toLowerCase();
+    if( parentTagName === 'li' ||
+        /h[12345]/.test( parentTagName ) ) {
       parent.addClass( 'active' );
     }
   } );

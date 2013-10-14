@@ -28,66 +28,8 @@ We’re open-sourcing BRJS because, although there are a number of great develop
 
 As the number of developers creating large-scale front-end web apps increases, we hope that BRJS will turn out to be useful to others. We’re also keen to validate our hunch that it will be equally valuable for building complex applications in domains other than financial web trading applications.
 
-## What do you get with BRJS?
-
-BRJS is fundamentally about following a set of conventions that we've found work when building very large scale applications; it is the tooling that backs these conventions.
-
-BRJS consists of:
-
-### A CLI environment
-
-The CLI environment runs on [JRE 7][jre7] and includes a [Jetty][jetty] development web server and also provides support for:
-
-* Scaffolding of apps, blades and tests, development helpers called **workbenches** and more
-* Running tests at a fine-grained level e.g. all app tests or just unit tests belonging to a blade
-* Building and deploying of apps either as bundled static files or as part of a bundled [WAR][war_file]
-* Dependency analysis when bundling assets (JS, CSS, HTML, XML, Images etc.) - only assets that your app uses are included
-* Usage from any build process or CI environment
-* Integration with a plugin architecture
-
-[war_file]:http://en.wikipedia.org/wiki/WAR_file_format_(Sun)
-[jre7]:http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html
-[jetty]:http://www.eclipse.org/jetty/
-
-In addition to the CLI, a number of commands can also be executed from a web dashboard.
-
-### A lightweight JavaScript framework
-
-In order to support the BRJS conventions we developed the following JavaScript frameworks:
-
-* A *lightweight Object Oriented JavaScript framework* called [Topiary](https://github.com/BladeRunnerJS/topiary)
-* An *EventHub library* for decoupled communication between application functionality
-* A *ServiceRegistry* where objects that offer a particular service can be registered and accessed throughout the application
-* A *GUI library built* on [KnockoutJS](http://knockoutjs.com/) which implements the MVVM pattern, provides rich data-binding and domain modelling capabilities, and enables highly efficient UI testing
-* An *internationalisation* and localisation framework
-
-### Blades & Workbenches
-
-Blades are a BRJS concept that represent high level features within your application and consist of everything required for the feature; such as JavaScript, CSS, HTML templates, tests, documentation, internationalistion tokens and configuration.
-
-![The contents of a Blade](/blog/img/blades.png)
-<small class="fig-text">What goes into a <strong>Blade</strong>?</small>
-
-Because application components are broken down into small pieces of functionality, with assets grouped by feature (not type), and because a blade only interacts with other application features through the EventHub or through services, we can run them in isolation. This has resulted in a feature we're *really* excited about - workbenches.
-
-Workbenches allow a blade to be developed and run in isolation. They can also be interacted with through their runtime UI or through workbench tools via the EventHub or Services they use.
-
-![A Blade Workbench](/blog/img/workbench_v2.png)
-
-<small class="fig-text">A Caplin Trader FX Tile <strong>Blade</strong> running within a <strong>Workbench</strong></small>
-
-### A Plugin Architecture
-
-The Plugin Architecture means that you can create functionality to augment and extend the development workflow.
-
-The plugin interfaces include:
-
-* **CommandPlugin** - to create your own BRJS CLI command to do almost anything
-* **BundlerPlugin** - used when bundling assets in both the development workflow and during the build and deploy steps
-* **LogicalTagPlugin** - for tag replacement within assets
-* **FileTransformPlugin** - used when transforming assets in both the development workflow and during the build and deploy steps e.g. for adding TypeScript, ECMAScript6 or CoffeeScript support
-* **TestPlugin** - for adding support for additional testing tools
-
 ## How to find out more?
+
+The best place to get started with BRJS is the [documentation](/docs).
 
 The code is on [github]({{ site.social.github_link }}) and you can keep up to date by following [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) on Twitter or by registering for [our mailing list](http://caplin.us7.list-manage.com/subscribe/?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91).

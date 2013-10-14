@@ -281,6 +281,22 @@ body.docs .main img {
   max-height: 500px;
 }
 
+body.docs .main .fig-text {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+body.docs .toc-col ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+body.docs .toc-col h4 a,
+body.docs .toc-col h5 a {
+  color: inherit;
+}
+
 body.docs .toc-col li.active a {
   font-weight: bold;
 }

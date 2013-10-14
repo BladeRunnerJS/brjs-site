@@ -1,5 +1,5 @@
 ---
-layout: single_page
+layout: docs
 title: Roadmap to BRJS 1.0
 permalink: /docs/roadmap/
 ---

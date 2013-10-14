@@ -57,28 +57,6 @@ pre {
   margin-right: 10px;
 }
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
-@media (min-width: 768px) {
-
-  /* Remove the edge padding needed for mobile */
-  .marketing {
-    /*padding-left: 0;
-    padding-right: 0;*/
-  }
-
-  /* Navbar positioning foo */
-  .navbar-wrapper {
-    padding-top: 20px;
-  }
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar {
-    /*border-radius: 4px;*/
-  }
-
-}
-
 /* Bootstrap overrides */
 .navbar-brand {
   padding-top: 9px;
@@ -206,7 +184,7 @@ pre {
 .call-to-action {
   width: 100%;
   padding-top: 10px;
-  height: 84px;
+  min-height: 84px;
   background-color: #8f8f8f;
   text-align: center;
   color: #ffffff;
@@ -217,8 +195,17 @@ pre {
   vertical-align: middle;
 }
 
+.call-to-action .right {
+  text-align: right;
+}
+
+.call-to-action .left {
+  text-align: left;
+}
+
 .call-to-action form {
   display: inline-block;
+  margin-left: 30px;
 }
 
 .call-to-action input {
@@ -419,4 +406,45 @@ body.post .copy {
 
 .footer a {
   color: #CED002;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .call-to-action .right,
+  .call-to-action .left {
+    text-align: center;
+  }
+  
+  .call-to-action .col-lg-6 .btn,
+  .call-to-action .col-lg-6 input {
+    margin-bottom: 10px;
+  }
+
+  .call-to-action form {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-get-started .cta-round {
+    bottom: -10px !important;
+    right: 0;
+  }
+}
+
+@media (min-width: 768px) {
+
+  /* Remove the edge padding needed for mobile */
+  .marketing {
+    /*padding-left: 0;
+    padding-right: 0;*/
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    padding-top: 20px;
+  }
+
 }

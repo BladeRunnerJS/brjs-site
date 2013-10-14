@@ -154,7 +154,7 @@ Using the CLI run:
 
     $ unzip_location/sdk/brjs start
 
-This will start the development web server running on localhost port 7070. You can navigate to the workbench via `http://localhost:7070` or go directly to it via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`.
+This will start the development web server running on localhost port 7070. You can navigate to the workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`.
 
 ![](/docs/use/img/hello-world-workbench.png)
 

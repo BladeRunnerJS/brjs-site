@@ -291,6 +291,13 @@ body.single_page .copy {
   padding-right: 30px;
 }
 
+body.single_page .copy img,
+body.single_page .copy .fig-text {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
 /* Blog list and Post */
 .blog-list {
   margin-bottom: 20px;

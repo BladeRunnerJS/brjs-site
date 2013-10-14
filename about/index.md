@@ -3,20 +3,91 @@ layout: single_page
 title: About
 ---
 
-**BladeRunnerJS** (BRJS) is a lightweight JavaScript framework and toolkit created by Caplin Systems to help you develop, test and deploy complex web applications. In particular, it supports simultaneous development by multiple teams of very large JavaScript codebases with numerous components. It does this by providing powerful workflows based on software engineering principles.
+**BladeRunnerJS** (BRJS) is a lightweight JavaScript framework and toolkit created by [Caplin Systems](http://www.caplin.com) to help you develop, test and deploy complex web applications. In particular, it supports simultaneous development by multiple teams of very large JavaScript codebases with numerous components. It does this by providing powerful workflows based on software engineering principles and concepts. These concepts result in apps being split into discrete modules called **blades**, each of which implements a single high level feature.
 
-## Open Sourcing
+## Why did we create BRJS?
 
-We’re open-sourcing BladeRunnerJS because, although there are a number of great developer toolkits and frameworks available (like [Yeoman](http://yeoman.io) and [Mimosa](http://mimosajs.com/)), BRJS is unique in its approach and its support for [programming in the large](http://en.wikipedia.org/wiki/Programming_in_the_large_and_programming_in_the_small).
+Complex applications can unsurprisingly have a very large codebase which can be difficult to organise, develop upon, test, deploy and maintain.
 
-BRJS was originally created to make it easier to build extremely complex high-end financial trading apps in HTML5, and it has had a major impact on developer productivity for us and our customers. As the number of developers creating large-scale front-end web apps increases, we hope that BRJS will turn out to be useful to others. We’re also keen to validate our hunch that it will be equally valuable for building complex applications in other domains.
+Before BRJS we experienced a number of problems:
 
-BladeRunnerJS is presently tightly coupled with the product we build with it. We're in the process of decoupling. As soon as that is complete the code will be available on github.
+* New projects required an application setup phase; application scaffolding, framework selection and infrastructure setup for the upcoming project. We wanted to **focus on features, not frameworks**, so the **first line of code we wrote could be feature code**.
+* All **application infrastructure** (database, authentication, realtime services etc.) had to be running in the development environment in order to develop a single piece of functionality
+* Checking the result of code changes also meant **running the entire app**. The time taken to log-in and navigate around wasted developer time.
+* **Acceptance tests** ran via the GUI, required the back-end to be available and lots of infrastructure. On larger apps, across multiple browsers, this sometimes took all night and was often unreliable. It was also difficult to simulate test cases where servers are slow or return errors. 
+* **Multiple teams** would work on different parts of the application. Much time and effort was spent resolving bugs caused by incompatible tightly-coupled functionality or code merge conflicts
+* Front-end development would frequently begin before **back-end services** were ready. This delayed development, integration and testing of the features
 
-* [github.com/bladerunnerjs/brjs](https://github.com/bladerunnerjs/brjs)
+BRJS resolves these problems. It has resulted in a well organised 250k LoC codebase where the first line of code we write is a feature. The functionality is developed in isolation, code changes can quickly be verified and tests take minutes rather than hours to run. The codebase is updated and maintained by multiple teams who can work on the same application without conflict. And development can start whether or not a back-end services are ready.
 
-## More coming soon...
+The conventions and architecture that BRJS enables and supports mean we can now focus on building features instead of dealing with development workflow problems. This has a very positive impact on developer productivity for both us and our customers.
 
-We're busy doing the work we need to do to open source it. But we'll share more information about why we created BRJS and the concepts it uses over time.
+## Why are we open-sourcing BRJS?
 
-You can keep up to day by following [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) on Twitter or by registering for [our mailing list](http://caplin.us7.list-manage.com/subscribe/?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91).
+We’re open-sourcing BRJS because, although there are a number of great developer toolkits and frameworks available (like [Yeoman](http://yeoman.io) and [Mimosa](http://mimosa.io/)), BRJS is unique in its approach and its support for [programming in the large](http://en.wikipedia.org/wiki/Programming_in_the_large_and_programming_in_the_small).
+
+As the number of developers creating large-scale front-end web apps increases, we hope that BRJS will turn out to be useful to others. We’re also keen to validate our hunch that it will be equally valuable for building complex applications in domains other than financial web trading applications.
+
+## What do you get with BRJS?
+
+BRJS is fundamentally about following a set of conventions that we've found work when building very large scale applications; it is the tooling that backs these conventions.
+
+BRJS consists of:
+
+### A CLI environment
+
+The CLI environment runs on [JRE 7][jre7] and includes a [Jetty][jetty] development web server and also provides support for:
+
+* Scaffolding of apps, blades and tests, development helpers called **workbenches** and more
+* Running tests at a fine-grained level e.g. all app tests or just unit tests belonging to a blade
+* Building and deploying of apps either as bundled static files or as part of a bundled [WAR][war_file]
+* Dependency analysis when bundling assets (JS, CSS, HTML, XML, Images etc.) - only assets that your app uses are included
+* Usage from any build process or CI environment
+* Integration with a plugin architecture
+
+[war_file]:http://en.wikipedia.org/wiki/WAR_file_format_(Sun)
+[jre7]:http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html
+[jetty]:http://www.eclipse.org/jetty/
+
+In addition to the CLI, a number of commands can also be executed from a web dashboard.
+
+### A lightweight JavaScript framework
+
+In order to support the BRJS conventions we developed the following JavaScript frameworks:
+
+* A *lightweight Object Oriented JavaScript framework* called [Topiary](https://github.com/BladeRunnerJS/topiary)
+* An *EventHub library* for decoupled communication between application functionality
+* A *ServiceRegistry* where objects that offer a particular service can be registered and accessed throughout the application
+* A *GUI library built* on [KnockoutJS](http://knockoutjs.com/) which implements the MVVM pattern, provides rich data-binding and domain modelling capabilities, and enables highly efficient UI testing
+* An *internationalisation* and localisation framework
+
+### Blades & Workbenches
+
+Blades are a BRJS concept that represent high level features within your application and consist of everything required for the feature; such as JavaScript, CSS, HTML templates, tests, documentation, internationalistion tokens and configuration.
+
+![The contents of a Blade](/blog/img/blades.png)
+<small class="fig-text">What goes into a <strong>Blade</strong>?</small>
+
+Because application components are broken down into small pieces of functionality, with assets grouped by feature (not type), and because a blade only interacts with other application features through the EventHub or through services, we can run them in isolation. This has resulted in a feature we're *really* excited about - workbenches.
+
+Workbenches allow a blade to be developed and run in isolation. They can also be interacted with through their runtime UI or through workbench tools via the EventHub or Services they use.
+
+![A Blade Workbench](/blog/img/workbench_v2.png)
+
+<small class="fig-text">A Caplin Trader FX Tile <strong>Blade</strong> running within a <strong>Workbench</strong></small>
+
+### A Plugin Architecture
+
+The Plugin Architecture means that you can create functionality to augment and extend the development workflow.
+
+The plugin interfaces include:
+
+* **CommandPlugin** - to create your own BRJS CLI command to do almost anything
+* **BundlerPlugin** - used when bundling assets in both the development workflow and during the build and deploy steps
+* **LogicalTagPlugin** - for tag replacement within assets
+* **FileTransformPlugin** - used when transforming assets in both the development workflow and during the build and deploy steps e.g. for adding TypeScript, ECMAScript6 or CoffeeScript support
+* **TestPlugin** - for adding support for additional testing tools
+
+## How to find out more?
+
+The code is on [github]({{ site.social.github_link }}) and you can keep up to date by following [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) on Twitter or by registering for [our mailing list](http://caplin.us7.list-manage.com/subscribe/?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91).

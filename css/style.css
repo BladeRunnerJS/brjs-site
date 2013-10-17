@@ -27,6 +27,11 @@ pre {
   padding-bottom: 40px;
 }
 
+.alert > p + ul,
+.alert > ul + p {
+  margin-top: 5px;
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -270,8 +275,10 @@ body.docs .main img {
 
 body.docs .main .fig-text {
   display: block;
-  margin: auto;
   text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: smaller;
 }
 
 body.docs .toc-col ul {

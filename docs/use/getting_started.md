@@ -109,25 +109,25 @@ Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinputtodoinput
   <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
 </div>
 
-Open up `ExampleClass.js` (ignoring the existing default Blade template code) and replace it with the following:
+Open up `ExamplePresentationModel.js` (ignoring the existing default Blade template code) and replace it with the following:
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
-
+    
       var br = require( 'br' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         this.message = new br.presenter.property.Property( 'Hello World!' );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype.buttonClicked = function() {
         console.log( 'button clicked' );
       }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+    
+      brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
+    
     } )();
 
 <div class="alert alert-info">

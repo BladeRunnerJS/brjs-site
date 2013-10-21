@@ -3,15 +3,15 @@ layout: default
 template: docs
 ---
 
-<div class="container">
+<div class="container content">
 
 	<div class="row">
 
-		<div class="span9">
+		<div class="col-lg-9">
 
 			<h1>{{ page.title }}</h1>
 	
-			<div class="content">
+			<div class="main">
 				{% include docs/wip.html %}
 
 				{{ content }}
@@ -19,15 +19,15 @@ template: docs
 
 		</div>
 
-		<div class="span3 toc-col">
+		<div class="col-lg-3 toc-col">
 			<h3>Documentation</h3>
 
-			<h4>Use</h4>
+			<h4><a href="/docs/use/">Use</a></h4>
 			<ul>
 				<li><a href="/docs/use/getting_started/">Getting started</a></li>
 			</ul>
 
-			<h4>Concepts</h4>
+			<h4><a href="/docs/concepts/">Concepts</a></h4>
 			
 			<h5>Application structure</h5>
 			<ul>
@@ -39,7 +39,7 @@ template: docs
 			<h5>Developer workflow</h5>
 			<ul>
 				<li><a href="/docs/concepts/workbenches/">Workbenches</a></li>
-				<li><a href="/docs/concepts/workbench_tools/">Workbench Widgets</a></li>
+				<li><a href="/docs/concepts/workbench_tools/">Workbench Tools</a></li>
 			</ul>
 
 			<h5>JavaScript</h5>
@@ -51,17 +51,23 @@ template: docs
 				<li><a href="/docs/concepts/event_hub/">EventHub</a></li>
 			</ul>
 
-			<h4>Extend</h4>
+			<h4><a href="/docs/extend/">Extend</a></h4>
 			<ul>
 				<li><a href="/docs/extend/command_plugin_tutorial/">CommandPlugin tutorial</a></li>
+				<li><a href="/docs/extend/command_plugin_argument_parsing_guide/">Parsing CommandPlugin Arguments</a></li>
 				<li><a href="/docs/extend/model_observer_plugin_tutorial/">ModelObserverPlugin tutorial</a></li>
 			</ul>
 
+			<h4>Reference</h4>
+			<ul>
+				<li><a href="/docs/roadmap/">Roadmap to 1.0</a></li>
+			</ul>
+
 			<p class="doc-feedback alert alert-info">
-				Got a suggestion to improve the docs? You can find the source <a href="{{site.social.github_link}}">on github</a>. Please submit a pull request or raise an issue.
+				Got a suggestion to improve the docs? You can find the source <a href="{{ site.social.docs_issues_link }}">on github</a>. Please submit a pull request or raise an issue.
 			</p>
 
-		</div><!-- /.span3 .toc-col -->
+		</div><!-- /.col-lg-3 .toc-col -->
 
 	</div> <!--/.row -->
 

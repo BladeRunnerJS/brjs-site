@@ -1,0 +1,457 @@
+/* GLOBAL STYLES - from Carousel
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  color: #5a5a5a;
+  background-color: #000000;
+}
+
+pre {
+  background: inherit !important;
+  border: 0;
+}
+
+.btn {
+  webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.btn-success {
+  background-color: #80ba27;
+}
+
+.content {
+  background-color: #ffffff;
+  padding-bottom: 40px;
+}
+
+.alert > p + ul,
+.alert > ul + p {
+  margin-top: 5px;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: relative;
+  z-index: 15;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+.marketing {
+  background-color: #ffffff;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Bootstrap overrides */
+.navbar-brand {
+  padding-top: 9px;
+  padding-bottom: 5px;
+}
+
+/* Carousel overrides */
+.marketing .col-lg-4 p {
+  text-align: left;
+}
+
+.brjs-jumbo {
+  background-image: url( '../img/green.jpg' );
+  background-size: 100% auto;
+}
+
+/* Customisations */
+
+.logo {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.navbar-wrapper {
+  background-image: url( '../img/green.jpg' );
+  background-size: 100% auto;
+}
+
+.brjs-jumbo {
+  position: relative;
+  color: #ffffff;
+  margin-top: -90px;
+  padding-top: 90px;
+}
+
+.brjs-jumbo .intro {
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.brjs-jumbo .intro p {
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.primary-features {
+  background: white;
+  padding: 20px;
+  color: #5a5a5a;
+  border: 2px solid #7d7d7d;
+  border-bottom: 0;
+}
+
+.primary-features .col-lg-4 {
+  margin-bottom: 0;
+}
+
+.secondary-features {
+  padding: 0 20px;
+}
+
+.secondary-features h2 {
+  margin-left: 20px;
+}
+
+.secondary-features h2,
+.secondary-features h3 {
+  text-align: left;
+}
+
+.secondary-features h3 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.home-get-started {
+  padding: 0 30px;
+}
+
+.home-get-started .explore,
+.home-get-started .get-started {
+  position: relative;
+  min-height: 630px;
+}
+
+.cta-round {
+  display: inline-block;
+
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  font-size: 20px;
+
+  margin-top: 20px;
+
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  border-radius: 100px;
+
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cta-round:visited,
+.cta-round:hover {
+  color: #ffffff;
+}
+
+.home-get-started .explore .cta-round,
+.home-get-started .get-started .cta-round {
+  position: absolute;
+  bottom: 0;
+}
+
+.home-get-started .explore .cta-round {
+  background-color: #80BA27;
+}
+
+.home-get-started .get-started .cta-round {
+  background-color: #F59E00;
+}
+
+.call-to-action {
+  width: 100%;
+  padding-top: 10px;
+  min-height: 84px;
+  background-color: #8f8f8f;
+  text-align: center;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.call-to-action * {
+  vertical-align: middle;
+}
+
+.call-to-action .right {
+  text-align: right;
+}
+
+.call-to-action .left {
+  text-align: left;
+}
+
+.call-to-action form {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.call-to-action input {
+  height: 63px !important;
+  border: 0 !important;
+}
+
+.call-to-action input[type='email'] {
+  text-align: center;
+}
+
+.call-to-action .btn {
+  height: 63px;
+  min-width: 75px;
+  font-size: 24px;
+  line-height: 46px;
+  border: 0 !important;
+}
+
+.call-to-action.github .github-mark {
+  float: left;
+  padding-left: 30px;
+}
+
+.call-to-action.github p {
+  display: inline-block;
+}
+
+.call-to-action.github .github-logo {
+  margin-bottom: 4pxpx;
+  height: 45px;
+}
+
+.call-to-action.github .brjs-logo {
+  margin: 0 6px;
+  margin-bottom: 4px;
+  height: 45px;
+}
+
+/* Docs */
+body.docs .toc-col .doc-feedback {
+  font-size: 0.9em;
+  color: #656565;
+  width: 200px;
+  margin-top: 20px;
+}
+
+body.docs {
+  background-color: #ffffff;
+}
+
+body.docs .main > ul:first-of-type {
+  font-weight: 500;
+}
+
+body.docs .main img {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+  max-height: 500px;
+}
+
+body.docs .main .fig-text {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+body.docs .toc-col ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+body.docs .toc-col h4 a,
+body.docs .toc-col h5 a {
+  color: inherit;
+}
+
+body.docs .toc-col li.active a {
+  font-weight: bold;
+}
+
+/* Single page */
+body.single_page .copy {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+body.single_page .copy img,
+body.single_page .copy .fig-text {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+/* Blog list and Post */
+.blog-list {
+  margin-bottom: 20px;
+}
+
+.blog-list.row {
+  position: relative;
+
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.blog-list.row .post-title {
+  text-align: right;
+  overflow: auto;
+}
+
+.blog-list.row .post-title .meta {
+  font-size: 11px;
+}
+
+.blog-list.row .post-title .meta .by {
+  display: inline-block;
+  float: right;
+  clear: both;
+  color: #c0c0c0;
+}
+
+.blog-list .row .post-title .meta .author {
+  display: inline-block;
+  float: right;
+  clear: both;
+}
+
+.blog-list .row .post-title a {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.blog-list .row .post-image {
+  margin-top: -10px;
+}
+
+body.post .container.main {
+  background-color: #444444;
+}
+
+body.post .post {
+  background-color: #ffffff;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+body.post .meta {
+  font-size: 12px;
+  color: #999;
+}
+
+body.post p img {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+}
+
+body.post .fig-text {
+  display: block;
+  text-align: center;
+}
+
+body.post .copy {
+  padding-bottom: 30px;
+}
+
+.post .authors .author:before, .post-title .authors .author:before { content: ", "; }
+.post .authors .author:first-child:before, .post-title .authors .author:first-child:before { content: ""; }
+.post .authors .author:last-child:before, .post-title .authors .author:last-child:before { content: "& "; }
+.post .authors .author:last-child:after, .post-title .authors .author:last-child:after { content: ""; }
+
+/* Register */
+.register {
+  text-align: center;
+}
+
+.subscribe-form input[type=email] {
+  width: 365px;
+  height: 32px;
+  webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+  border: 2px solid black;
+}
+
+.footer {
+  color: #b7b6b6;
+  padding: 30px 20px;
+  border-top: 1px solid #7d7d7d;
+  background-color: #444444;
+
+  margin-bottom: 30px;
+}
+
+.footer a {
+  color: #CED002;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .call-to-action .right,
+  .call-to-action .left {
+    text-align: center;
+  }
+  
+  .call-to-action .col-lg-6 .btn,
+  .call-to-action .col-lg-6 input {
+    margin-bottom: 10px;
+  }
+
+  .call-to-action form {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-get-started .cta-round {
+    bottom: -10px !important;
+    right: 0;
+  }
+}
+
+@media (min-width: 768px) {
+
+  /* Remove the edge padding needed for mobile */
+  .marketing {
+    /*padding-left: 0;
+    padding-right: 0;*/
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    padding-top: 20px;
+  }
+
+}

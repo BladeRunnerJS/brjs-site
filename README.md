@@ -4,6 +4,15 @@
 
 The website is a simple [Jekyll](http://jekyllrb.com/) site.
 
+To run the website locally:
+
+    git clone git@github.com:BladeRunnerJS/brjs-site.git
+    cd brjs-site
+    gem install jekyll
+    jekyll serve -w
+    
+Navigate to `localhost:4000` to see the site running.
+
 ## Docs
 
 ### Structure

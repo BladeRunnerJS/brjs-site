@@ -655,24 +655,21 @@ In order to add the Blades to the default aspect we need to open up `App.js` in 
 
 From earlier, you'll remember that these classes extended something called `PresentationModel` - part of the BRJS [Presenter library](/docs/concepts/presenter/) - which means these classes are View Models. We can therefore use these models with something called `PresenterComponent` to use them within our Aspect. As well as passing in the View Model to the `PresenterComponent` constructor we also pass a HTML template identifier (which you'll also have seen in the HTML examples earlier):
 
-    ( function() {
-
+    ;( function() {
       var App = function() {
-        var inputModel = new brjstodo.todo.todoinput.ExampleClass();
-        var itemsModel = new brjstodo.todo.todoitems.ExampleClass();
-
+        var inputModel = new brjstodo.todo.todoinput.ExamplePresentationModel();
+        var itemsModel = new brjstodo.todo.todoitems.ExamplePresentationModel();
+    
         // pass in the HTML template identifier and View Model
         var PresenterComponent = br.presenter.component.PresenterComponent;
-        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template',
-                                                      inputModel );
-        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', 
-                                                      itemsModel );
-
-        // TODO: append to UI
+        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
+        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+    
+        // TODO: attach UI
       };
-
+    
       brjstodo.App = App;
-
+    
     } )();
 
 At this point it's worth running the default Aspect for our app. You can do this by ensuring that the development web server is running (`./brjs start`) and navigating to `http://localhost:7070/brjs-todo/` in your web browser. If all is well the result should be very boring.
@@ -681,31 +678,27 @@ At this point it's worth running the default Aspect for our app. You can do this
 
 In order for the Blade components to appear in the aspect we have to append the DOM elements that the `PresenterComponent` instances create to the Aspect - the main view into the Todo List web app. We do this by accessing the element via a `getElement` function and then simply appending it to an element with an ID of `todoapp`. We've wrapped this up in a `_appendComponent( component )` function below which also deals with some legacy component API requirements:
 
-    ( function() {
-
+    ;( function() {
       var App = function() {
-        var inputModel = new brjstodo.todo.todoinput.ExampleClass();
-        var itemsModel = new brjstodo.todo.todoitems.ExampleClass();
-
+        var inputModel = new brjstodo.todo.todoinput.ExamplePresentationModel();
+        var itemsModel = new brjstodo.todo.todoitems.ExamplePresentationModel();
+    
+        // pass in the HTML template identifier and View Model
         var PresenterComponent = br.presenter.component.PresenterComponent;
-        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template',
-                                                      inputModel );
-        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', 
-                                                      itemsModel );
-        
+        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
+        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+    
         this._appendComponent( this.inputComponent );
         this._appendComponent( this.itemsComponent );
       };
-
+      
       App.prototype._appendComponent = function( component ) {
-        component.setFrame(null);
-        var el = component.getElement();
-        document.getElementById( 'todoapp' ).appendChild( el );
-        component.onOpen();
+        frame = new br.component.SimpleFrame(component, 600, 200);
+        document.getElementById( 'todoapp' ).appendChild( frame.getElement() );
       };
-
+    
       brjstodo.App = App;
-
+    
     } )();
 
 <div class="alert alert-info">
@@ -734,18 +727,9 @@ You can remove the message by opening up `/brjs-todo/default-aspect/index.html` 
         
       </head>
       <body>
-
-        @SUCCESS.MESSAGE.JNDI.TOKEN@
-
         <section id="todoapp"></section>
 
         <script>
-          caplin.thirdparty('br-caplin');
-
-          var ServiceRegistry = require( 'br/ServiceRegistry' );
-          var DemoEventHub = require( 'br/DemoEventHub' );
-          ServiceRegistry.registerService( 'demo-event-hub', new DemoEventHub() );
-
           var oApp = new brjstodo.App();
         </script>
 

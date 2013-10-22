@@ -322,53 +322,49 @@ We now have a way for a user to input a todo list item and a place to show the i
 Back in our `todoinput` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry) as shown in the `ExampleClass` constructor below:
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
 
       var br = require( 'br' );
       var ServiceRegistry = require( 'br/ServiceRegistry' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype.buttonClicked = function() {
         var todoText = this.message.value.getValue();
         console.log( todoText );
-      }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+      };
+    
+      brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
     } )();
 
 
 Now, in the `buttonClicked` function we can trigger an event called `todo-added` on a `todo-list` channel to tell any interested parties (the `todoitems` Blade) that a new Todo list item has been input, and the user has indicated they want to add it. We can also clear down the `input` element value.
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
-
+    
       var br = require( 'br' );
-
       var ServiceRegistry = require( 'br/ServiceRegistry' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
         this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype.buttonClicked = function() {
         var todoText = this.message.value.getValue();
         this.eventHub.channel( 'todo-list' ).trigger( 'todo-added', { text: todoText } );
-
         this.message.value.setValue( '' );
-      }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+      };
+    
+      brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
     } )();
 
 Before we update the `todoitems` Blade to listen for this event, let's first see how services make it really easy to test our blades.

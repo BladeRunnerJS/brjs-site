@@ -166,26 +166,26 @@ If you click the `Log me` button the `buttonClicked` function is called and `but
 
 Next, let's edit the Blade to display in `input` element with a two-way binding between the View and View Model.
 
-To do this we first need to update `ExampleClass.js` to handle the fact the view contains an input element. We do this by changing the `message` instance variable to be a `Field` object. When the button is clicked let's take the value of the message and log it.
+To do this we first need to update `ExamplePresentationModel.js` to handle the fact the view contains an input element. We do this by changing the `message` instance variable to be a `Field` object. When the button is clicked let's take the value of the message and log it.
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
-
-      var br = require( 'br' );
-
-      function ExampleClass() {
+    
+    var br = require( 'br' );
+    
+    function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
-      };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+    };
+    br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+    ExamplePresentationModel.prototype.buttonClicked = function() {
         var todoText = this.message.value.getValue();
         console.log( todoText );
-      }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+    };
+    
+    brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
+    
     } )();
 
 We also update `view.html` to contain an `input` element where the element's `value` property is still bound to the message's value. And since we want instant two-way binding we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. Finally, update the `Log me` text to say `Add`:

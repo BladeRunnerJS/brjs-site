@@ -385,48 +385,52 @@ Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up 
 
 Because we've introduced using the `ServiceRegistry` to our tests we should add a JsTestDriver `setUp` function to `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `demo-event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be udpated):
 
-    var fakeEventHub;
-    var fakeChannel;
+    ;(function() {
+        var ServiceRegistry = require( 'br/ServiceRegistry' );
+    
+        var fakeEventHub;
+        var fakeChannel;
+        
+        ExampleClassTest = TestCase('ExampleClassTest');
+    
+        ExampleClassTest.prototype.setUp = function() {
+    
+          fakeChannel = {
+            trigger: function( eventName, data ) {
+              // store event name and data
+              this.eventName = eventName;
+              this.data = data;
+            }
+          };
+    
+          fakeEventHub = {
+            channel: function( channelName ) {
+              // store the name of the channel
+              this.channelName = channelName;
+              return fakeChannel;
+            }
+          };
+    
+          // ensure there isn't already an event-hub registered
+          ServiceRegistry.deregisterService( 'br.demo-event-hub' );
+    
+          // Register the fake event hub
+          ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
+        };
+    })();
 
-    ExampleClassTest.prototype.setUp = function() {
-
-      fakeChannel = {
-        trigger: function( eventName, data ) {
-          // store event name and data
-          this.eventName = eventName;
-          this.data = data;
-        }
-      };
-
-      fakeEventHub = {
-        channel: function( channelName ) {
-          // store the name of the channel
-          this.channelName = channelName;
-          return fakeChannel;
-        }
-      };
-
-      var sr = require( 'br/ServiceRegistry' );
-
-      // ensure there isn't already an event-hub registered
-      sr.deregisterService( 'demo-event-hub' );
-
-      // Register the fake event hub
-      sr.registerService( 'demo-event-hub', fakeEventHub );
-    };
 
 Now add the new test to ensure that when the `buttonClicked` function is executed (which will normally be called via the user clicking the `Add` button) that an event is triggered on the Event Hub.
 
     ExampleClassTest.prototype.testButtonClickedTriggersEventOnEventHub = function() {
-
       // Initialize
       var testTodoText = 'write some code and test it';
-      var todoInputBlade = new brjstodo.todo.todoinput.ExampleClass();
+      var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
       todoInputBlade.message.value.setValue( testTodoText );
-
+    
       // Execute test
       todoInputBlade.buttonClicked();
-
+    
       // Verify
       assertEquals( 'todo-list', fakeEventHub.channelName );
       assertEquals( 'todo-added', fakeChannel.eventName );

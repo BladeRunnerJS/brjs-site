@@ -225,14 +225,11 @@ When you scaffold a new Blade a test class is also created. The scaffolded test 
 The simplest test we can write at the moment is to check that the `message` field is initialized with a value of `Hello World!`.
 
     ExampleClassTest = TestCase('ExampleClassTest');
-
-    var ExampleClass = require( 'brjs-todo/todo/todoinput/ExampleClass' );
-        
-    ExampleClassTest.prototype.testMessageFieldIsInitialized = function()
-    {
-      var todoInputBlade = new ExampleClass();
-
-      assertEquals( 'Hello World!', todoInputBlade.message.value.getValue() );
+    
+    ExampleClassTest.prototype.testMessageFieldIsInitialized = function() {
+        var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
+    
+        assertEquals( 'Hello World!', todoInputBlade.message.value.getValue() );
     };
 
 ### Run the Test

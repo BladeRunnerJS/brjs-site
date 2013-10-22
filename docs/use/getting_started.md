@@ -330,7 +330,7 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
     
       function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
-        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
     
@@ -354,7 +354,7 @@ Now, in the `buttonClicked` function we can trigger an event called `todo-added`
     
       function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
-        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
     

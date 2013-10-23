@@ -160,7 +160,7 @@ This will start the development web server running on localhost port 7070. You c
 
 You'll notice that there's a **Visualise Presentation Model** Workbench Tool that shows a tree visualisation of the View Model. In there you'll see a simple `message:Hello World!` name and value.
 
-If you click the `Log me` button the `buttonClicked` function is called and `button clicked` will be logged to the JavaScript console.
+If you click the `Alert me` button the `buttonClicked` function is called and `button clicked` will be logged to the JavaScript console.
 
 ### Add Two-Way Data Binding
 

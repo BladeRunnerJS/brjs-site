@@ -6,7 +6,7 @@ The website is a simple [Jekyll](http://jekyllrb.com/) site.
 
 ### Prerequisites
 
-Ruby must be installed. See the [ruby-lang.org downloads section](https://www.ruby-lang.org/en/downloads/).
+The instructions assume that Ruby is installed and on your [PATH](http://en.wikipedia.org/wiki/PATH_\(variable\)). See the [ruby-lang.org downloads section](https://www.ruby-lang.org/en/downloads/) for more information.
 
 ### Running the website
 

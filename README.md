@@ -4,6 +4,12 @@
 
 The website is a simple [Jekyll](http://jekyllrb.com/) site.
 
+### Prerequisites
+
+Ruby must be installed. See the [ruby-lang.org downloads section](https://www.ruby-lang.org/en/downloads/).
+
+### Running the website
+
 To run the website locally:
 
     git clone git@github.com:BladeRunnerJS/brjs-site.git

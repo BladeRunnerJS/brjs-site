@@ -279,19 +279,19 @@ This will create all the same assets that were created for the first blade, but 
 Open up the newly generated `ExamplePresentationModel.js` and update the JavaScript as follows:
 
     caplin.thirdparty('caplin-br');
-
+    
     ( function() {
+    
+    var br = require( 'br' );
+    
+    function ExamplePresentationModel() {
+      var DisplayField = br.presenter.node.DisplayField;
+      var NodeList = br.presenter.node.NodeList;
+      this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
+    };
+    br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
 
-      var br = require( 'br' );
-
-      function ExampleClass() {
-        var DisplayField = br.presenter.node.DisplayField;
-        var NodeList = br.presenter.node.NodeList;
-        this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
-      };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
+    brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
 
     } )();
 

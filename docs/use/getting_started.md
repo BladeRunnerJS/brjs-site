@@ -141,7 +141,7 @@ Above, `ExampleClass` is a View Model which is bound to a view. You'll notice th
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div class="hello-world-message" data-bind="text:message"></div>
-      <button class="button" data-bind="click:buttonClicked">Log me</button>
+      <button class="button" data-bind="click:buttonClicked">Alert me</button>
     </div>
 
 The template markup indicates that the text of the `div` element will get the value of the View Model's `message` property (`data-bind="text:message"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).

@@ -234,9 +234,13 @@ The simplest test we can write at the moment is to check that the `message` fiel
 
 ### Run the Test
 
+//TODO:: need to mention about adding browser to the test-runner.conf as wont work otherwise
+
 There are a few ways to run the tests using JsTestDriver, but the simplest is probably to start the test server using the CLI:
 
     unzip_location/sdk/brjs test-server
+
+//TODO:: the command above will luanch the test-server using the default broswer, if you want to open your own browser then you need to use the -b none option
 
 The test server will then continue running in the terminal/console that you started it in.
 

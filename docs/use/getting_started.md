@@ -276,7 +276,7 @@ Create a second blade to show the Todo list items. As with the first Blade, we d
 
 This will create all the same assets that were created for the first blade, but in a `todoitems` directory.
 
-Open up the newly generated `ExampleClass.js` and update the JavaScript as follows:
+Open up the newly generated `ExamplePresentationModel.js` and update the JavaScript as follows:
 
     caplin.thirdparty('caplin-br');
 
@@ -486,7 +486,7 @@ First, get access to the ServiceRegistry and then register for the event on the 
         // TODO: update this.items
       };
 
-      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
+      brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
 
     })();
 

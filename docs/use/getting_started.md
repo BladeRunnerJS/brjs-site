@@ -257,11 +257,9 @@ If all goes well you should see some output similar to the following:
     Testing tests (UTs):
     Chrome: Reset
     Chrome: Reset
-    Chrome 29.0.1547.76 Mac OS loaded /test/bundles/js/js.bundle
-    Chrome 29.0.1547.76 Mac OS loaded /test/tests/ExampleClassTest.js
-    Chrome 29.0.1547.76 Mac OS [PASSED] ExampleClassTest.testMessageFieldIsInitialized
+    .
     Total 1 tests (Passed: 1; Fails: 0; Errors: 0) (2.00 ms)
-      Chrome 29.0.1547.76 Mac OS: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (2.00 ms)
+      Chrome 30.0.1599.101 Windows: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (2.00 ms)
     Tests Passed.
 
 If you wanted to run all the tests for the application you would execute:

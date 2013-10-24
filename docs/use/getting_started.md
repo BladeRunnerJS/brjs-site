@@ -447,10 +447,9 @@ Now that the test is written ensure the test server is running (`unzip_location/
 
 You should see confirmation that the tests pass:
 
-    Chrome 29.0.1547.76 Mac OS [PASSED] ExampleClassTest.testMessageFieldIsInitialized
-    Chrome 29.0.1547.76 Mac OS [PASSED] ExampleClassTest.testButtonClickedTriggersEventOnEventHub
-    Total 2 tests (Passed: 2; Fails: 0; Errors: 0) (5.00 ms)
-      Chrome 29.0.1547.76 Mac OS: Run 2 tests (Passed: 2; Fails: 0; Errors 0) (5.00 ms)
+    ..
+    Total 2 tests (Passed: 2; Fails: 0; Errors: 0) (3.00 ms)
+      Chrome 30.0.1599.101 Windows: Run 2 tests (Passed: 2; Fails: 0; Errors 0) (3.00 ms)
     Tests Passed.
 
     - Time Taken: 2secs
@@ -482,7 +481,7 @@ First, get access to the ServiceRegistry and then register for the event on the 
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
 
 
-      ExampleClass.prototype._todoAdded = function( added ) {
+      ExamplePresentationModel.prototype._todoAdded = function( added ) {
         // TODO: update this.items
       };
 
@@ -623,9 +622,7 @@ Now you can execute the tests (ensuring that the test server is running and at l
 
     Testing tests (UTs):
     Chrome: Reset
-    Chrome 30.0.1599.66 Mac OS loaded /test/bundles/js/js.bundle
-    Chrome 30.0.1599.66 Mac OS loaded /test/tests/ExampleClassTest.js
-    Chrome 30.0.1599.66 Mac OS [PASSED] ExampleClassTest.testTodoItemsBladeListensToItemAddedEvents
+    .
     Total 1 tests (Passed: 1; Fails: 0; Errors: 0) (3.00 ms)
       Chrome 30.0.1599.66 Mac OS: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (3.00 ms)
     Tests Passed.
@@ -711,10 +708,13 @@ In order for the Blade components to appear in the aspect we have to append the 
 
 If we refresh the application we'll now see the Input and the Todo List appended to the view.
 
+TODO:: This stage actually fails and you get a console error about appendChild, it doesn't work until you change the index.html
+
 ![](/docs/use/img/unstyled-app.png)
 
 Finally, we *really* need to remove the "loaded" message and apply some styling to the application.
 
+TODO:: the index.html no longer has the @SUCCESS.MESSAGE.JNDI.TOKEN@ string in the template
 You can remove the message by opening up `/brjs-todo/default-aspect/index.html` and removing the `@SUCCESS.MESSAGE.JNDI.TOKEN@` from the HTML.
 
     <!DOCTYPE html>

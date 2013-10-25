@@ -109,25 +109,25 @@ Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinputtodoinput
   <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
 </div>
 
-Open up `ExampleClass.js` (ignoring the existing default Blade template code) and replace it with the following:
+Open up `ExamplePresentationModel.js` (ignoring the existing default Blade template code) and replace it with the following:
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
-
+    
       var br = require( 'br' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         this.message = new br.presenter.property.Property( 'Hello World!' );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype.buttonClicked = function() {
         console.log( 'button clicked' );
       }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+    
+      brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
+    
     } )();
 
 <div class="alert alert-info">
@@ -141,7 +141,7 @@ Above, `ExampleClass` is a View Model which is bound to a view. You'll notice th
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div class="hello-world-message" data-bind="text:message"></div>
-      <button class="button" data-bind="click:buttonClicked">Log me</button>
+      <button class="button" data-bind="click:buttonClicked">Alert me</button>
     </div>
 
 The template markup indicates that the text of the `div` element will get the value of the View Model's `message` property (`data-bind="text:message"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
@@ -160,32 +160,32 @@ This will start the development web server running on localhost port 7070. You c
 
 You'll notice that there's a **Visualise Presentation Model** Workbench Tool that shows a tree visualisation of the View Model. In there you'll see a simple `message:Hello World!` name and value.
 
-If you click the `Log me` button the `buttonClicked` function is called and `button clicked` will be logged to the JavaScript console.
+If you click the `Alert me` button the `buttonClicked` function is called and `button clicked` will be logged to the JavaScript console.
 
 ### Add Two-Way Data Binding
 
 Next, let's edit the Blade to display in `input` element with a two-way binding between the View and View Model.
 
-To do this we first need to update `ExampleClass.js` to handle the fact the view contains an input element. We do this by changing the `message` instance variable to be a `Field` object. When the button is clicked let's take the value of the message and log it.
+To do this we first need to update `ExamplePresentationModel.js` to handle the fact the view contains an input element. We do this by changing the `message` instance variable to be a `Field` object. When the button is clicked let's take the value of the message and log it.
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
-
-      var br = require( 'br' );
-
-      function ExampleClass() {
+    
+    var br = require( 'br' );
+    
+    function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
-      };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+    };
+    br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+    ExamplePresentationModel.prototype.buttonClicked = function() {
         var todoText = this.message.value.getValue();
         console.log( todoText );
-      }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+    };
+    
+    brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
+    
     } )();
 
 We also update `view.html` to contain an `input` element where the element's `value` property is still bound to the message's value. And since we want instant two-way binding we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. Finally, update the `Log me` text to say `Add`:
@@ -225,21 +225,22 @@ When you scaffold a new Blade a test class is also created. The scaffolded test 
 The simplest test we can write at the moment is to check that the `message` field is initialized with a value of `Hello World!`.
 
     ExampleClassTest = TestCase('ExampleClassTest');
-
-    var ExampleClass = require( 'brjs-todo/todo/todoinput/ExampleClass' );
-        
-    ExampleClassTest.prototype.testMessageFieldIsInitialized = function()
-    {
-      var todoInputBlade = new ExampleClass();
-
-      assertEquals( 'Hello World!', todoInputBlade.message.value.getValue() );
+    
+    ExampleClassTest.prototype.testMessageFieldIsInitialized = function() {
+        var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
+    
+        assertEquals( 'Hello World!', todoInputBlade.message.value.getValue() );
     };
 
 ### Run the Test
 
+//TODO:: need to mention about adding browser to the test-runner.conf as wont work otherwise
+
 There are a few ways to run the tests using JsTestDriver, but the simplest is probably to start the test server using the CLI:
 
     unzip_location/sdk/brjs test-server
+
+//TODO:: the command above will luanch the test-server using the default broswer, if you want to open your own browser then you need to use the -b none option
 
 The test server will then continue running in the terminal/console that you started it in.
 
@@ -256,11 +257,9 @@ If all goes well you should see some output similar to the following:
     Testing tests (UTs):
     Chrome: Reset
     Chrome: Reset
-    Chrome 29.0.1547.76 Mac OS loaded /test/bundles/js/js.bundle
-    Chrome 29.0.1547.76 Mac OS loaded /test/tests/ExampleClassTest.js
-    Chrome 29.0.1547.76 Mac OS [PASSED] ExampleClassTest.testMessageFieldIsInitialized
+    .
     Total 1 tests (Passed: 1; Fails: 0; Errors: 0) (2.00 ms)
-      Chrome 29.0.1547.76 Mac OS: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (2.00 ms)
+      Chrome 30.0.1599.101 Windows: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (2.00 ms)
     Tests Passed.
 
 If you wanted to run all the tests for the application you would execute:
@@ -277,22 +276,22 @@ Create a second blade to show the Todo list items. As with the first Blade, we d
 
 This will create all the same assets that were created for the first blade, but in a `todoitems` directory.
 
-Open up the newly generated `ExampleClass.js` and update the JavaScript as follows:
+Open up the newly generated `ExamplePresentationModel.js` and update the JavaScript as follows:
 
     caplin.thirdparty('caplin-br');
-
+    
     ( function() {
+    
+    var br = require( 'br' );
+    
+    function ExamplePresentationModel() {
+      var DisplayField = br.presenter.node.DisplayField;
+      var NodeList = br.presenter.node.NodeList;
+      this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
+    };
+    br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
 
-      var br = require( 'br' );
-
-      function ExampleClass() {
-        var DisplayField = br.presenter.node.DisplayField;
-        var NodeList = br.presenter.node.NodeList;
-        this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
-      };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
+    brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
 
     } )();
 
@@ -325,53 +324,49 @@ We now have a way for a user to input a todo list item and a place to show the i
 Back in our `todoinput` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry) as shown in the `ExampleClass` constructor below:
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
 
       var br = require( 'br' );
       var ServiceRegistry = require( 'br/ServiceRegistry' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
-        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype.buttonClicked = function() {
         var todoText = this.message.value.getValue();
         console.log( todoText );
-      }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+      };
+    
+      brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
     } )();
 
 
 Now, in the `buttonClicked` function we can trigger an event called `todo-added` on a `todo-list` channel to tell any interested parties (the `todoitems` Blade) that a new Todo list item has been input, and the user has indicated they want to add it. We can also clear down the `input` element value.
 
     caplin.thirdparty( 'caplin-br' );
-
+    
     ( function() {
-
+    
       var br = require( 'br' );
-
       var ServiceRegistry = require( 'br/ServiceRegistry' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         this.message = new br.presenter.node.Field( 'Hello World!' );
-        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype.buttonClicked = function() {
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype.buttonClicked = function() {
         var todoText = this.message.value.getValue();
         this.eventHub.channel( 'todo-list' ).trigger( 'todo-added', { text: todoText } );
-
         this.message.value.setValue( '' );
-      }
-
-      brjstodo.todo.todoinput.ExampleClass = ExampleClass;
-
+      };
+    
+      brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
     } )();
 
 Before we update the `todoitems` Blade to listen for this event, let's first see how services make it really easy to test our blades.
@@ -392,48 +387,52 @@ Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up 
 
 Because we've introduced using the `ServiceRegistry` to our tests we should add a JsTestDriver `setUp` function to `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `demo-event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be udpated):
 
-    var fakeEventHub;
-    var fakeChannel;
+    ;(function() {
+        var ServiceRegistry = require( 'br/ServiceRegistry' );
+    
+        var fakeEventHub;
+        var fakeChannel;
+        
+        ExampleClassTest = TestCase('ExampleClassTest');
+    
+        ExampleClassTest.prototype.setUp = function() {
+    
+          fakeChannel = {
+            trigger: function( eventName, data ) {
+              // store event name and data
+              this.eventName = eventName;
+              this.data = data;
+            }
+          };
+    
+          fakeEventHub = {
+            channel: function( channelName ) {
+              // store the name of the channel
+              this.channelName = channelName;
+              return fakeChannel;
+            }
+          };
+    
+          // ensure there isn't already an event-hub registered
+          ServiceRegistry.deregisterService( 'br.demo-event-hub' );
+    
+          // Register the fake event hub
+          ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
+        };
+    })();
 
-    ExampleClassTest.prototype.setUp = function() {
-
-      fakeChannel = {
-        trigger: function( eventName, data ) {
-          // store event name and data
-          this.eventName = eventName;
-          this.data = data;
-        }
-      };
-
-      fakeEventHub = {
-        channel: function( channelName ) {
-          // store the name of the channel
-          this.channelName = channelName;
-          return fakeChannel;
-        }
-      };
-
-      var sr = require( 'br/ServiceRegistry' );
-
-      // ensure there isn't already an event-hub registered
-      sr.deregisterService( 'demo-event-hub' );
-
-      // Register the fake event hub
-      sr.registerService( 'demo-event-hub', fakeEventHub );
-    };
 
 Now add the new test to ensure that when the `buttonClicked` function is executed (which will normally be called via the user clicking the `Add` button) that an event is triggered on the Event Hub.
 
     ExampleClassTest.prototype.testButtonClickedTriggersEventOnEventHub = function() {
-
       // Initialize
       var testTodoText = 'write some code and test it';
-      var todoInputBlade = new brjstodo.todo.todoinput.ExampleClass();
+      var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
       todoInputBlade.message.value.setValue( testTodoText );
-
+    
       // Execute test
       todoInputBlade.buttonClicked();
-
+    
       // Verify
       assertEquals( 'todo-list', fakeEventHub.channelName );
       assertEquals( 'todo-added', fakeChannel.eventName );
@@ -448,10 +447,9 @@ Now that the test is written ensure the test server is running (`unzip_location/
 
 You should see confirmation that the tests pass:
 
-    Chrome 29.0.1547.76 Mac OS [PASSED] ExampleClassTest.testMessageFieldIsInitialized
-    Chrome 29.0.1547.76 Mac OS [PASSED] ExampleClassTest.testButtonClickedTriggersEventOnEventHub
-    Total 2 tests (Passed: 2; Fails: 0; Errors: 0) (5.00 ms)
-      Chrome 29.0.1547.76 Mac OS: Run 2 tests (Passed: 2; Fails: 0; Errors 0) (5.00 ms)
+    ..
+    Total 2 tests (Passed: 2; Fails: 0; Errors: 0) (3.00 ms)
+      Chrome 30.0.1599.101 Windows: Run 2 tests (Passed: 2; Fails: 0; Errors 0) (3.00 ms)
     Tests Passed.
 
     - Time Taken: 2secs
@@ -463,30 +461,31 @@ Now the `todoinput` Blade is triggering an event on the EventHub, the `todoitems
 First, get access to the ServiceRegistry and then register for the event on the channel:
 
     caplin.thirdparty('caplin-br');
-
+    
     ( function() {
-
       var br = require( 'br' );
       var ServiceRegistry = require( 'br/ServiceRegistry' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         var DisplayField = br.presenter.node.DisplayField;
         var NodeList = br.presenter.node.NodeList;
         this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
-
+    
         // get the event hub
-        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
-
+        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+     
         // register to recieve events
         this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
+     
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
 
-      ExampleClass.prototype._todoAdded = function( added ) {
+
+      ExamplePresentationModel.prototype._todoAdded = function( added ) {
         // TODO: update this.items
       };
 
-      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
+      brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
 
     })();
 
@@ -495,48 +494,50 @@ In the code above we listen for `todo-added` events that are triggered on the `t
 Now that the object is informed whenever a new Todo item is added, we can update the View Model data.
 
     caplin.thirdparty('caplin-br');
-
+    
     ( function() {
-
       var br = require( 'br' );
       var ServiceRegistry = require( 'br/ServiceRegistry' );
-
-      function ExampleClass() {
+    
+      function ExamplePresentationModel() {
         var DisplayField = br.presenter.node.DisplayField;
         var NodeList = br.presenter.node.NodeList;
         this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
-
-        this.eventHub = ServiceRegistry.getService( 'demo-event-hub' );
+    
+        // get the event hub
+        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+    
+        // register to recieve events
         this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
       };
-      br.extend( ExampleClass, br.presenter.PresentationModel );
-
-      ExampleClass.prototype._todoAdded = function( added ) {
+    
+      br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
+    
+      ExamplePresentationModel.prototype._todoAdded = function( added ) {
         var DisplayField = br.presenter.node.DisplayField;
-
+    
         // create a new field for the new item
         var newItem = new DisplayField( added.text );
-
+    
         // get the existing items
         var nodes = this.items.getPresentationNodesArray();
-
+    
         // append the new item to the array
         nodes.push( newItem );
-
+    
         // update the View Model which triggers a UI update
         this.items.updateList( nodes );
       };
-
-      brjstodo.todo.todoitems.ExampleClass = ExampleClass;
-
-    })();
+    
+      brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
+    } )();
 
 #### Testing in the Workbench
 
 Open up the `todoitems` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/`. Open up the JavaScript console and enter the following code:
 
     var sr = require( 'br/ServiceRegistry' );
-    var hub = sr.getService( 'demo-event-hub' );
+    var hub = sr.getService( 'br.demo-event-hub' );
     hub.channel( 'todo-list' ).trigger( 'todo-added', { text: 'console todo item' } );
 
 This gets the `demo-event-hub` from the `ServiceRegistry` and then triggers a `todo-added` event on the `todo-list` channel. When you do this you'll see a new `console todo item` added to the list in the UI.
@@ -555,40 +556,45 @@ As with the `todoinput` Blade we can also test the `todoitems` Blade with the he
 
 First we want to set up a fake service that helps us interact with our Blade. Replace the contents of `todoitems/tests/test-unit/js-test-driver/tests/ExampleClassTest.js` with the following:
 
-    ExampleClassTest = TestCase('ExampleClassTest');
-
     caplin.thirdparty( 'caplin-br' );
+    
+    (function() {
+    
+        var ServiceRegistry = require( 'br/ServiceRegistry' );
+    
+        var fakeEventHub;
+        var fakeChannel;
+            
+        ExampleClassTest = TestCase('ExampleClassTest');
+    
+        ExampleClassTest.prototype.setUp = function() {
+    
+          fakeChannel = {
+            on: function(eventName, callback, context) {
+              // store event name and data
+              this.eventName = eventName;
+              this.callback = callback;
+              this.context = context;
+            }
+          };
+    
+          fakeEventHub = {
+            channel: function( channelName ) {
+              // store the name of the channel
+              this.channelName = channelName;
+              return fakeChannel;
+            }
+          };
+    
+          // ensure there isn't already an event-hub registered
+          ServiceRegistry.deregisterService( 'br.demo-event-hub' );
+    
+          // Register the fake event hub
+          ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
+        };
+    
+    })();
 
-    var fakeEventHub;
-    var fakeChannel;
-
-    ExampleClassTest.prototype.setUp = function() {
-
-      fakeChannel = {
-        on: function(eventName, callback, context) {
-          // store event name and data
-          this.eventName = eventName;
-          this.callback = callback;
-          this.context = context;
-        }
-      };
-
-      fakeEventHub = {
-        channel: function( channelName ) {
-          // store the name of the channel
-          this.channelName = channelName;
-          return fakeChannel;
-        }
-      };
-
-      var sr = require( 'br/ServiceRegistry' );
-
-      // ensure there isn't already an event-hub registered
-      sr.deregisterService( 'demo-event-hub' );
-
-      // Register the fake event hub
-      sr.registerService( 'demo-event-hub', fakeEventHub );
-    };
 
 <div class="alert alert-info">
   <p>
@@ -598,13 +604,14 @@ First we want to set up a fake service that helps us interact with our Blade. Re
 
 This code ensures that any interaction with the `demo-event-hub` service is captured so that we can test it. Our test will then simply check that the correct channel name is being subscribed to, the appropriate event is being bound to and that it is the `todoItemsBlade` that is doing the binding:
 
-    ExampleClassTest.prototype.testTodoItemsBladeListensToItemAddedEvents = function() {
-      var todoItemsBlade = new brjstodo.todo.todoitems.ExampleClass();
-
-      assertEquals( fakeEventHub.channelName , 'todo-list' );
-      assertEquals( fakeChannel.eventName , 'todo-added' );
-      assertEquals( fakeChannel.context , todoItemsBlade );
-    };
+        ExampleClassTest.prototype.testTodoItemsBladeListensToItemAddedEvents = function() {
+          var todoItemsBlade = new brjstodo.todo.todoitems.ExamplePresentationModel();
+    
+          assertEquals( fakeEventHub.channelName , 'todo-list' );
+          assertEquals( fakeChannel.eventName , 'todo-added' );
+          assertEquals( fakeChannel.context , todoItemsBlade );
+        };
+    
 
 Now you can execute the tests (ensuring that the test server is running and at least one browser is connected):
 
@@ -615,9 +622,7 @@ Now you can execute the tests (ensuring that the test server is running and at l
 
     Testing tests (UTs):
     Chrome: Reset
-    Chrome 30.0.1599.66 Mac OS loaded /test/bundles/js/js.bundle
-    Chrome 30.0.1599.66 Mac OS loaded /test/tests/ExampleClassTest.js
-    Chrome 30.0.1599.66 Mac OS [PASSED] ExampleClassTest.testTodoItemsBladeListensToItemAddedEvents
+    .
     Total 1 tests (Passed: 1; Fails: 0; Errors: 0) (3.00 ms)
       Chrome 30.0.1599.66 Mac OS: Run 1 tests (Passed: 1; Fails: 0; Errors 0) (3.00 ms)
     Tests Passed.
@@ -626,18 +631,18 @@ Now you can execute the tests (ensuring that the test server is running and at l
 
 As explained above, we also want to make sure the View Model is updated with a new item when the `todo-added` event is received:
 
-    ExampleClassTest.prototype.testItemsViewModelAddsItemOnTodoAddedEvent = function() {
-      var todoItemsBlade = new brjstodo.todo.todoitems.ExampleClass();
-
-      var itemText = 'hello';
-
-      // trigger the callback
-      fakeChannel.callback.call( fakeChannel.context, { text: itemText } );
-
-      // check the item has been added to the end of the list
-      var items = todoItemsBlade.items.getPresentationNodesArray();
-      assertEquals( itemText, items[ items.length - 1 ].value.getValue() );
-    };
+        ExampleClassTest.prototype.testItemsViewModelAddsItemOnTodoAddedEvent = function() {
+          var todoItemsBlade = new brjstodo.todo.todoitems.ExamplePresentationModel();
+    
+          var itemText = 'hello';
+    
+          // trigger the callback
+          fakeChannel.callback.call( fakeChannel.context, { text: itemText } );
+    
+          // check the item has been added to the end of the list
+          var items = todoItemsBlade.items.getPresentationNodesArray();
+          assertEquals( itemText, items[ items.length - 1 ].value.getValue() );
+        };
 
 Since we know that Blade uses the EventHub to receive new items, and we have a fake hub in place, we can execute the callback that the Blade is waiting for, passing Todo item data, and then check that the item has been added to the end of the list.
 
@@ -649,24 +654,21 @@ In order to add the Blades to the default aspect we need to open up `App.js` in 
 
 From earlier, you'll remember that these classes extended something called `PresentationModel` - part of the BRJS [Presenter library](/docs/concepts/presenter/) - which means these classes are View Models. We can therefore use these models with something called `PresenterComponent` to use them within our Aspect. As well as passing in the View Model to the `PresenterComponent` constructor we also pass a HTML template identifier (which you'll also have seen in the HTML examples earlier):
 
-    ( function() {
-
+    ;( function() {
       var App = function() {
-        var inputModel = new brjstodo.todo.todoinput.ExampleClass();
-        var itemsModel = new brjstodo.todo.todoitems.ExampleClass();
-
+        var inputModel = new brjstodo.todo.todoinput.ExamplePresentationModel();
+        var itemsModel = new brjstodo.todo.todoitems.ExamplePresentationModel();
+    
         // pass in the HTML template identifier and View Model
         var PresenterComponent = br.presenter.component.PresenterComponent;
-        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template',
-                                                      inputModel );
-        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', 
-                                                      itemsModel );
-
-        // TODO: append to UI
+        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
+        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+    
+        // TODO: attach UI
       };
-
+    
       brjstodo.App = App;
-
+    
     } )();
 
 At this point it's worth running the default Aspect for our app. You can do this by ensuring that the development web server is running (`./brjs start`) and navigating to `http://localhost:7070/brjs-todo/` in your web browser. If all is well the result should be very boring.
@@ -675,31 +677,27 @@ At this point it's worth running the default Aspect for our app. You can do this
 
 In order for the Blade components to appear in the aspect we have to append the DOM elements that the `PresenterComponent` instances create to the Aspect - the main view into the Todo List web app. We do this by accessing the element via a `getElement` function and then simply appending it to an element with an ID of `todoapp`. We've wrapped this up in a `_appendComponent( component )` function below which also deals with some legacy component API requirements:
 
-    ( function() {
-
+    ;( function() {
       var App = function() {
-        var inputModel = new brjstodo.todo.todoinput.ExampleClass();
-        var itemsModel = new brjstodo.todo.todoitems.ExampleClass();
-
+        var inputModel = new brjstodo.todo.todoinput.ExamplePresentationModel();
+        var itemsModel = new brjstodo.todo.todoitems.ExamplePresentationModel();
+    
+        // pass in the HTML template identifier and View Model
         var PresenterComponent = br.presenter.component.PresenterComponent;
-        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template',
-                                                      inputModel );
-        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', 
-                                                      itemsModel );
-        
+        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
+        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+    
         this._appendComponent( this.inputComponent );
         this._appendComponent( this.itemsComponent );
       };
-
+      
       App.prototype._appendComponent = function( component ) {
-        component.setFrame(null);
-        var el = component.getElement();
-        document.getElementById( 'todoapp' ).appendChild( el );
-        component.onOpen();
+        frame = new br.component.SimpleFrame(component, 600, 200);
+        document.getElementById( 'todoapp' ).appendChild( frame.getElement() );
       };
-
+    
       brjstodo.App = App;
-
+    
     } )();
 
 <div class="alert alert-info">
@@ -710,10 +708,13 @@ In order for the Blade components to appear in the aspect we have to append the 
 
 If we refresh the application we'll now see the Input and the Todo List appended to the view.
 
+TODO:: This stage actually fails and you get a console error about appendChild, it doesn't work until you change the index.html
+
 ![](/docs/use/img/unstyled-app.png)
 
 Finally, we *really* need to remove the "loaded" message and apply some styling to the application.
 
+TODO:: the index.html no longer has the @SUCCESS.MESSAGE.JNDI.TOKEN@ string in the template
 You can remove the message by opening up `/brjs-todo/default-aspect/index.html` and removing the `@SUCCESS.MESSAGE.JNDI.TOKEN@` from the HTML.
 
     <!DOCTYPE html>
@@ -728,18 +729,9 @@ You can remove the message by opening up `/brjs-todo/default-aspect/index.html` 
         
       </head>
       <body>
-
-        @SUCCESS.MESSAGE.JNDI.TOKEN@
-
         <section id="todoapp"></section>
 
         <script>
-          caplin.thirdparty('br-caplin');
-
-          var ServiceRegistry = require( 'br/ServiceRegistry' );
-          var DemoEventHub = require( 'br/DemoEventHub' );
-          ServiceRegistry.registerService( 'demo-event-hub', new DemoEventHub() );
-
           var oApp = new brjstodo.App();
         </script>
 

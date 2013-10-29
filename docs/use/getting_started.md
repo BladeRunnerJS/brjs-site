@@ -89,7 +89,7 @@ Create a new blade using the CLI:
 
     $ unzip_location/sdk/brjs create-blade brjs-todo todo todoinput
 
-This creates a `todoinput` directory within the `todo` BladeSet containing the following sub-directories:
+This creates a `todoinput` directory within `unzip_location/apps/brjs-todo/todo-bladeset/blades/` containing the following sub-directories:
 
 * `src` - for the JavaScript for the Blade
 * `tests` - for the blade tests
@@ -109,7 +109,7 @@ This creates a `todoinput` directory within the `todo` BladeSet containing the f
 
 ### View the Code
 
-Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinputtodoinput/src` you'll find an `ExamplePresentationModel.js` file.
+Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput/src` you'll find an `ExamplePresentationModel.js` file.
 
 <div class="alert alert-info github">
   <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
@@ -196,7 +196,7 @@ Finally, instead of having to click a button we should handle the *Enter/Return*
 
     } )();
 
-We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `enterPressed` function when a key is pressed in the input to check to see if it's the *Enter/Return*. We do this by adding `event: { keypress: createOnEnter }` to the `data-bind` attribute. Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute and remove the unused `<button>` element:
+We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `enterPressed` function when a key is pressed in the input to check to see if it's the *Enter/Return*. We do this by adding `event: { keypress: keyPressed }` to the `data-bind` attribute. Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute and remove the unused `<button>` element:
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div>
@@ -256,7 +256,7 @@ Within `unzip_location/conf/test-runner.conf` you will fine configuration for lo
 
 <div class="alert alert-warning github">
   <p>
-    We presently have a bug that at least a single browser needs to be defined in <code>unzip_location/conf/test-runner.com</code> even if you run the test server with the "no browser" option (<code>brjs test-server -b none</code>). In that case <a href="https://github.com/BladeRunnerJS/brjs/issues/183">it should not be necessary to set update this configuration file</a>.
+    We presently have a bug that at least a single browser needs to be defined in <code>unzip_location/conf/test-runner.conf</code> even if you run the test server with the "no browser" option (<code>brjs test-server -b none</code>). In that case <a href="https://github.com/BladeRunnerJS/brjs/issues/183">it should not be necessary to set update this configuration file</a>.
   </p>
 </div>
 
@@ -270,7 +270,7 @@ Then in the web browser (or browsers) you wish to execute the tests in navigate 
 
     $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
 
-If all goes well you should see some output similar to the following:
+If all goes well you should see output similar to the following:
 
     BladeRunner version: BRJS-dev, built: 26 September 2013
 
@@ -321,7 +321,9 @@ Open up the newly generated `ExamplePresentationModel.js` and update the JavaScr
 
 The class has a member variable called `items` that is an instance of a `NodeList`. This list object will contain a list of Todo list items, each of which should be a `DisplayItem`.
 
-Next we need to update the View HTML template to loop over the `items` list and display each one in an unordered list. Since Presenter is built on Knockout we can do this using the [`foreach`](http://knockoutjs.com/documentation/foreach-binding.html) binding. Update the `todoitems` view, `unzip_location/apps/brjs-todo/todo-bladeset/blades/todoitems/resources/html/view.html`, to have the following HTML:
+Next we need to update the View HTML template to loop over the `items` list and display each one in an unordered list. Since Presenter is built on Knockout we can do this using the [`foreach`](http://knockoutjs.com/documentation/foreach-binding.html) binding.
+
+Update the `todoitems` view, `unzip_location/apps/brjs-todo/todo-bladeset/blades/todoitems/resources/html/view.html`, to have the following HTML:
 
     <div id="brjstodo.todo.todoitems.view-template">
       <ul class="todo-list" data-bind="foreach:items">
@@ -412,11 +414,11 @@ Before we update the `todoitems` Blade to listen for this event, let's first see
 
 <div class="alert alert-info github">
   <p>
-    In a future version of this getting started guide we'll show how you can easily add test code to the Workbehcn, or Workbench Tools, to faciliate this testing. However, the auto-generated code for the Workbench would add unnecessary complexity to this guide. See: <a href="https://github.com/BladeRunnerJS/brjs/issues/76">zero-conf workbenches</a>.
+    In a future version of this getting started guide we'll show how you can easily add test code to the Workbench, or Workbench Tools, to faciliate this testing. However, the auto-generated code for the Workbench would add unnecessary complexity to this guide. See: <a href="https://github.com/BladeRunnerJS/brjs/issues/76">zero-conf workbenches</a>.
   </p>
 </div>
 
-Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up the `todoinput` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`. If you enter some text and press *Enter* you'll see a message appear in the JavaScript console via the `br.demo-event-hub`. You can manually inspect this to ensure the information logged is as expected.
+Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up the `todoinput` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`. If you enter some text and press *Enter* you'll see a message appear in the JavaScript console via a logger in the Demo Event Hub service. You can manually inspect this to ensure the information logged is as expected.
 
 ![](/docs/use/img/testing-in-the-workbench.png)
 
@@ -530,7 +532,7 @@ First, get access to the ServiceRegistry and then register for the event on the 
 
 In the code above we listen for `todo-added` events that are triggered on the `todo-list` channel. Whenever those events are triggered the `_todoAdded` instance function is called. We ensure the `this` context is maintained by passing in `this` as the third parameter to the `eventHub.on` function.
 
-Now that the object is informed whenever a new Todo item is added, we can update the View Model data.
+Now that the object is informed whenever a new Todo item is added, we can update the View Model data within the `_todoAdded` handler function.
 
     caplin.thirdparty('caplin-br');
     
@@ -692,7 +694,7 @@ Both the `todoinput` and `todoitems` Blades have the functionality that we're lo
 
 ## Adding the Blades to an Aspect
 
-In order to add the Blades to the default aspect we need to first update the Aspect HTML to provide some basic structure. Open up `brjs-todo/default-aspect/index.html` and updated it to look as follows:
+In order to add the Blades to the default aspect we need to first update the aspect HTML to provide some basic structure. Open up `brjs-todo/default-aspect/index.html` and updated it to look as follows:
 
     <!DOCTYPE html>
     <html>
@@ -723,9 +725,9 @@ In order to add the Blades to the default aspect we need to first update the Asp
       </body>
     </html>
 
-The `<@css.bundle theme="standard"@/>` tag is replaced at build time with a reference to a CSS bundle and the `<@js.bundle@/>` with a reference to the bundled JavaScript source. The element with the ID of `header` will have the `<input>` element appended to it and the section with the ID of `main` will have the Todo List appended to it. You'll also see that we initialize our application object here.
+The `<@css.bundle theme="standard"@/>` tag is replaced at build time with a reference to a CSS bundle and the `<@js.bundle@/>` with a reference to the bundled JavaScript source. The element with the ID of `header` will have the Todo Input element appended to it and the section with the ID of `main` will have the Todo List appended to it. You'll also see that we initialize our application object here.
 
-We append the elements via the Aspect JavaScript in `App.js` so open up in `brjs-todo/default-aspect/src/brjstodo/App.js` and in the `App` class create two instances of the objects we've just defined and tested; an Input `ExamplePresentationModel` and an Items `ExamplePresentationModel`:
+Open `brjs-todo/default-aspect/src/brjstodo/App.js` and in the `App` class create two instances of the objects we've just defined and tested; an Input `ExamplePresentationModel` and an Items `ExamplePresentationModel`:
 
     ;( function() {
 
@@ -797,9 +799,9 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wiki/WAR_file_format_(Sun)) file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
 
-<div class="alert alert-info">
+<div class="alert alert-info github">
   <p>
-    We know this is very restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting a Flat File build and deployment</a> is a priority.
+    We know only support WAR deployment is very restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting a Flat File build and deployment</a> is a priority.
   </p>
 </div>
 

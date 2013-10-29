@@ -256,6 +256,6 @@ And finally I can execute the plugin command and see the information I provide a
 
     [this, should, echo, everything, I, type]
 
-Although this plugin is absolutely useless, this provides you with all the information you need to create a truely useful `CommandPlugin`. You can find the source code for this example plugin in the [brjs-echo-command-plugin](https://github.com/BladeRunnerJS/brjs-echo-command-plugin) project in github.
+Although this plugin is absolutely useless, this provides you with all the information you need to create a truely useful `CommandPlugin`. You can find the source code for this example plugin in the [brjs-example-plugins](https://github.com/BladeRunnerJS/brjs-example-plugins) project in github.
 
 Please let us know what you build via [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) or by posting a [BladeRunnerJS github issue]({{ site.social.github_issues_link }}).

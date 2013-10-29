@@ -124,7 +124,9 @@ Open up `ExamplePresentationModel.js` to see the following:
       var br = require( 'br' );
     
       function ExamplePresentationModel() {
-        this.message = new br.presenter.property.Property( 'Hello World!' );
+        var Property = br.presenter.property.Property;
+
+        this.message = new Property( 'Hello World!' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
     
@@ -147,7 +149,7 @@ Above, `ExamplePresentationModel` is a View Model which is bound to a view. You'
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div class="hello-world-message" data-bind="text:message"></div>
-      <button class="button" data-bind="click:buttonClicked">Alert me</button>
+      <button class="button" data-bind="click:buttonClicked">Log me</button>
     </div>
 
 The template markup indicates that the text of the `div` element will get the value of the View Model's `message` property (`data-bind="text:message"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
@@ -166,7 +168,7 @@ If you click the `Log me` button the `buttonClicked` function is called and `but
 
 Next, let's edit the Blade to display in `<input>` element with a two-way binding between the View and View Model.
 
-To do this we first need to update `ExamplePresentationModel.js` to handle the fact the view contains an input element. We do this using a `Field` object initialized with an empty string instead of 'Hello World!'. We can also update the `message` instance variable to be called something more relevant: `todoText`.
+To do this we first need to update `ExamplePresentationModel.js` to handle the fact the view contains an input element. We do this using a `Field` object initialized with an empty string, instead of 'Hello World!'. We can also update the `message` instance variable to be called something more relevant: `todoText`.
 
 Finally, instead of having to click a button we should handle the *Enter/Return* key being pressed as an indication of a new todo item being finalized. Let's rename `buttonClicked` to `keyPressed` and only handle the key press if it was the correct key (`ENTER_KEY_CODE`):
 
@@ -179,7 +181,9 @@ Finally, instead of having to click a button we should handle the *Enter/Return*
       var br = require( 'br' );
       
       function ExamplePresentationModel() {
-        this.todoText = new br.presenter.node.Field( '' );
+        var Field = br.presenter.node.Field;
+
+        this.todoText = new Field( '' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
       
@@ -245,7 +249,7 @@ The simplest test we can write at the moment is to check that the `todoText` fie
       ExampleClassTest.prototype.testTodoTextFieldIsInitialized = function() {
         var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
     
-        assertEquals( '', todoInputBlade.message.todoText.getValue() );
+        assertEquals( '', todoInputBlade.todoText.value.getValue() );
       };
 
     } )();
@@ -361,7 +365,9 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
       var ServiceRegistry = require( 'br/ServiceRegistry' );
     
       function ExamplePresentationModel() {
-        this.todoText = new br.presenter.node.Field( '' );
+        var Field = br.presenter.node.Field;
+
+        this.todoText = new Field( '' );
         this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
@@ -389,7 +395,9 @@ Now, in the `keyPressed` function we can trigger an event called `todo-added` on
       var ServiceRegistry = require( 'br/ServiceRegistry' );
       
       function ExamplePresentationModel() {
-        this.todoText = new br.presenter.node.Field( '' );
+        var Field = br.presenter.node.Field;
+
+        this.todoText = new Field( '' );
         this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
@@ -418,7 +426,7 @@ Before we update the `todoitems` Blade to listen for this event, let's first see
   </p>
 </div>
 
-Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up the `todoinput` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`. If you enter some text and press *Enter* you'll see a message appear in the JavaScript console via a logger in the Demo Event Hub service. You can manually inspect this to ensure the information logged is as expected.
+Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up the `todoinput` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`. If you input some text and press *Enter* you'll see a message appear in the JavaScript console via a logger in the Demo Event Hub service. You can manually inspect this to ensure the information logged is as expected.
 
 ![](/docs/use/img/testing-in-the-workbench.png)
 
@@ -458,6 +466,13 @@ Because we've introduced the concept and usage of the `ServiceRegistry` to our t
         // Register the fake event hub
         ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
       };
+
+      ExampleClassTest.prototype.testTodoTextFieldIsInitialized = function() {
+        var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
+
+        assertEquals( '', todoInputBlade.todoText.value.getValue() );
+      };
+
     })();
 
 
@@ -594,7 +609,7 @@ This gets the `demo-event-hub` from the `ServiceRegistry` and then triggers a `t
 
 #### Testing via a Unit Test
 
-As with the `todoinput` Blade we can also test the `todoitems` Blade with the help of services. In this case we want to ensure that the blade registers for the appropriate event and that when that even occurs the View Model data is updated.
+As with the `todoinput` Blade we can also test the `todoitems` Blade with the help of services. In this case we want to ensure that the blade registers for the appropriate event and that when that event occurs the View Model data is updated.
 
 First we want to set up a fake service that helps us interact with our Blade. Replace the contents of `todoitems/tests/test-unit/js-test-driver/tests/ExampleClassTest.js` with the following:
 
@@ -789,7 +804,7 @@ If we refresh the application we'll now see the Input and the Todo List appended
 
 Finally, we *really* need to apply some styling to the application.
 
-Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [BRJS Todo App github repo](https://github.com/BladeRunnerJS/brjs-todo/tree/master/default-aspect/themes/standard) and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [BRJS Todo App github repo](https://github.com/BladeRunnerJS/brjs-example-apps/tree/master/brjs-todo/default-aspect/themes/standard) and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
 
 ![](/docs/use/img/styled-app.png)
 
@@ -797,11 +812,11 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 ## Build and Deploy
 
-For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wiki/WAR_file_format_(Sun)) file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
+For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wiki/WAR_file_format_\(Sun\)) file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
 
 <div class="alert alert-info github">
   <p>
-    We know only support WAR deployment is very restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting a Flat File build and deployment</a> is a priority.
+    We presently only support WAR deployment. This is very restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting Flat File build and deployment</a> is a priority.
   </p>
 </div>
 
@@ -818,6 +833,16 @@ Deploying to Tomcat is a simple as copying the `brjs-todo.war` file to the Tomca
 
 By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjs-todo` to see your application running in a deployed environment.
 
+![](/docs/use/img/deployed-to-tomcat.png)
+
+<div class="alert alert-info github">
+  <p>
+    You may find that in deploying this application it will result in the root Tomcat application (<code>localhost:8080</code>) failing. We are aware of this and are <a href="https://github.com/BladeRunnerJS/brjs/issues/192">investigating</a>.
+  </p>
+</div>  
+
+You can find the code for this application in the [brjs-example-apps github repo](https://github.com/BladeRunnerJS/brjs-example-apps).
+
 ## Summary
 
 This comprehensive getting started guide has introduced you to [Blades](/docs/concepts/blades/), running Blades in isolation in [Workbenches](/docs/concepts/workbenches/), seeing how Workbenches help the development process, unit testing Blades, inter-Blade communication using an [EventHub](/docs/concepts/event_hub/), how [Services](/docs/concepts/services/) facilitate testing, incorporating Blades into application [Aspects](/docs/concepts/aspects) and deploying your BRJS application.
@@ -828,7 +853,7 @@ Believe it or not, this just scrapes the surface of BladeRunnerJS. So...
 
 ### Finish the Todo App
 
-The getting started app doesn't offer 100% Todo App functionality. How about adding:
+The getting started app doesn't offer 100% Todo App functionality. How about taking a look at the standard [Todo MVC](http://todomvc.com) applications and adding some of that functionality using the [brjs-todo code](https://github.com/BladeRunnerJS/brjs-example-apps/tree/master/brjs-todo) as a starting point. Functionality like:
 
 * Marking a Todo Item as complete
 * Deleting a Todo Item
@@ -842,4 +867,4 @@ Read up more about the [concepts](/docs/concepts) behind BRJS, discover addition
 
 ### Get Involved
 
-BRJS is an open source project that we really want others to get involved in through using, sharing and contributing. You can do this by watching [BRJS on github]({{ site.social.github_link }}) and getting involved in the discussions. By building applications using BRJS and sharing your thoughts, findings and code. By [extending BRJS](/docs/extend/) through creating plugins that improve your developer workflow and sharing what you've done. Or by contributing to the core codebase.
+BRJS is an open source project that we really want others to get involved in through using, sharing and contribution. You can do this by watching [BRJS on github]({{ site.social.github_link }}) and getting involved in the discussions. By building applications using BRJS and sharing your thoughts, findings and code. By [extending BRJS](/docs/extend/) through creating plugins that improve your developer workflow and sharing what you've done. Or by contributing to the core codebase.

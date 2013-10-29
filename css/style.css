@@ -32,6 +32,12 @@ pre {
   margin-top: 5px;
 }
 
+@media (min-width: 992px) {
+  .col-md-offset-1 {
+    margin-right: 8.333333333333332%;
+  }
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 

@@ -76,6 +76,7 @@ pre {
 .brjs-jumbo {
   background-image: url( '../img/green.jpg' );
   background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 
 /* Customisations */
@@ -88,6 +89,11 @@ pre {
 .navbar-wrapper {
   background-image: url( '../img/green.jpg' );
   background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+body.home .navbar-wrapper {
+  background: none;
 }
 
 .brjs-jumbo {

@@ -20,7 +20,7 @@ This tutorial we'll introduce you to the basic concepts by creating a very simpl
 
 Create a new Java Project
 
-*File &rarr; New &rarr; Java Project*
+**File &rarr; New &rarr; Java Project**
 
 ![](/docs/extend/img/command_plugin_tutorial/new-java-project.png)
 
@@ -32,7 +32,7 @@ Give your project a name and ensure the project is set to use a Java 7 JRE.
 
 In order to implement the plugin you need to reference the JAR that `CommandPlugin` is defined in.
 
-*Right-click on the Project &rarr; Properties &rarr; Java Build Path &rarr; Libraries &rarr; Add External JARs… &rarr; browser to the BRJS_install_directory/sdk/libs/java/system &rarr; select `brjs-core.jar` and `jsap-2.1.jar` &rarr; Open &rarr; OK to close Properties dialog*
+**Right-click on the Project &rarr; Properties &rarr; Java Build Path &rarr; Libraries &rarr; Add External JARs… &rarr; browser to the BRJS_install_directory/sdk/libs/java/system &rarr; select `brjs-core.jar` and `jsap-2.1.jar` &rarr; Open &rarr; OK to close Properties dialog**
 
 ![](/docs/extend/img/command_plugin_tutorial/add-library-jar-reference.png)
 
@@ -48,13 +48,13 @@ Create a new `EchoCommandPlugin` class which extends the `ArgsParsingCommandPlug
 
 You can do this by:
 
-*Right-click on the `src` folder &rarr; New &rarr; Class*
+**Right-click on the `src` folder &rarr; New &rarr; Class**
 
 In the *New Java Class* dialog enter your plugin namespace e.g. `org.bladerunnerjs.examples` and a class name e.g. `EchoCommandPlugin`.
 
 Make the class have a Superclass of type `ArgsParsingCommandPlugin`, which you can do this from the *New Java Class* dialog.
 
-*Superclass &rarr; Browser... &rarr; type "ArgsParsingCommandPlugin" into the input &rarr; select in the Matching Items &rarr; OK*
+**Superclass &rarr; Browser... &rarr; type "ArgsParsingCommandPlugin" into the input &rarr; select in the Matching Items &rarr; OK**
 
 ![](/docs/extend/img/command_plugin_tutorial/command-plugin-new-class.png)
 
@@ -188,13 +188,13 @@ BladeRunnerJS uses the Java [ServiceRegistry](http://docs.oracle.com/javase/7/do
 
 The first thing to do is to create a *resources* source folder.
 
-*Right-click on the project &rarr; New &rarr; Source Folder*
+**Right-click on the project &rarr; New &rarr; Source Folder**
 
 Within that create a *META-INF* sub directory and within that a *services* directory. You will now have a *services* folder with the path of *project_root/resources/META-INF/services*.
 
 We now need to create a file with a name that matches the full namespace of the Interface we are implementing a service for; the `CommandPlugin` interface.
 
-*Right-click on the service folder &rarr; New &rarr; File &rarr; input "org.bladerunnerjs.core.plugin.command.CommandPlugin" &rarr; Finish*
+**Right-click on the service folder &rarr; New &rarr; File &rarr; input "org.bladerunnerjs.core.plugin.command.CommandPlugin" &rarr; Finish**
 
 ![](/docs/extend/img/command_plugin_tutorial/new-service-file-dialog.png)
 
@@ -206,7 +206,7 @@ In the new file add a line with the full namespace to the plugin class we've jus
 
 In Eclipse, building the JAR is as simple as:
 
-*Right-click on the project &rarr; Export &rarr; Java &rarr; JAR File &rarr; BRJS_install_directory/conf/java (create the "conf" and "java" directories if it doesn't already exist)*
+**Right-click on the project &rarr; Export &rarr; Java &rarr; JAR File &rarr; BRJS_install_directory/conf/java (create the "conf" and "java" directories if it doesn't already exist)**
 
 ![](/docs/extend/img/command_plugin_tutorial/export-jar-finish.png)
 

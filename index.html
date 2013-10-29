@@ -1,92 +1,177 @@
 ---
 layout: default
-title: BladeRunnerJS - Divide &amp; conquer your web apps
+title: BladeRunnerJS - Divide &amp; conquer complex web apps
 ---
 
-<div class="container">
-  <a name="top"></a>
+<div class="brjs-jumbo">
 
-  <div class="logo row">
-    <div class="span12">
-      <a href="/"><img src="/img/bladerunner-js.png" alt="BladeRunnerJS logo" /></a>
-    </div>
+  <div class="container intro">
+    <div class="row">
+      <div class="col-lg-10 col-md-offset-1">
+    
+        <a href="/" class="active"><img src="/img/bladerunner-js-white-trans-lrg.png" width="555" alt="BladeRunnerJS logo"></a>
+
+        <h1>Divide &amp; conquer complex web apps</h1>
+        <p class="overview">
+          <strong>BladeRunnerJS</strong> (<em>BRJS</em>) is a development toolkit and lightweight framework for building modular large-scale HTML5 single page web apps. It consists of a set of conventions plus associated tools and libraries that make it easy to develop, test, deploy and maintain large JavaScript apps.
+        </p>
+        <p><a class="btn btn-large btn-lg btn-success" href="/docs/use/getting_started/">Get started</a></p>
+      
+      </div>
+    </div>   
   </div>
 
-  <div class="register row">
-    <div class="span12">
+  <div class="container marketing">
 
-      {% include register_form.html %}
+    <!-- Three columns of text below the carousel -->
+    <div class="row primary-features">
+      <div class="col-lg-4">
+        <img src="/img/blades-featurette.png" height="160" alt="Blades">
+        <h2 title="modular development using Blades">Blades</h2>
+        <p>A <strong>Blade</strong> is a module that encapsulates all the required resources – JavaScript, HTML, CSS, XML, images, etc – to implement a particular high level feature.</p>
+        <p>For example, a blade might implement a map UI, a chat window, a charting module or an alerting mechanism. A blade usually (but not always) corresponds to a particular area of the display.</p>
+        <!-- <div><a class="btn btn-primary" href="#">View details &raquo;</a></div> -->
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="/img/workbenches-featurette.png" height="160" alt="Workbenches">
+        <h2>Workbenches</h2>
+        <p><strong>Workbenches</strong> allow Blades to be developed, debugged and run independently of the application.</p>
+        <p><strong>Workbench Tools</strong> allow you to interact with the Blade through stubbed services and the EventHub. For example, you can view your Blade in different states by sending it mock events via a mock events Workbench Tool.</p>
+        <!-- <div><a class="btn btn-primary" href="#">View details &raquo;</a></div> -->
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="/img/code-featurette.png" height="160" alt="Clean Code">
+        <h2>Clean Code</h2>
+        <p>Code is organized cleanly using <strong>classes</strong>, with one class per file, and JavaScript <strong>interface</strong> support is provided to help with creating large scalable codebases.</p>
+        <p>Services are a first-class concept allowing your application to be written before the back-end is finished. The can also be replaced by mocks in tests.</p>
+        <!-- <div><a class="btn btn-primary" href="#">View details &raquo;</a></div> -->
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
 
+  </div><!-- /.container -->  
+
+</div>
+
+<!-- CALL TO ACTION -->
+<div class="container call-to-action">
+  <div class="row">
+    <div class="col-lg-6 right">
+      Take a look at the <a href="/docs/use/getting_started" class="btn btn-success">Getting Started Guide</a>
     </div>
-  </div>
-
-  <div class="lead row">
-    <div class="span12">
-      <h1>Divide &amp; conquer your web apps</h1>
-      <p class="overview">
-        <strong>BladeRunnerJS</strong> (<em>BRJS</em>) is a development toolkit and lightweight framework for building modular large-scale HTML5 single page web apps. It consists of a set of conventions plus associated tools and libraries that make it easy to develop, test, deploy and maintain large JavaScript apps.
-      </p>
+    <div class="col-lg-6 left">
+    or {% include register_form.html %}
     </div>
   </div>
 </div><!-- /.container -->
 
-<div class="wrapper">
-  <div class="container">
+<div class="container marketing">
 
-    <div class="row usps">
+  <div class="row secondary-features">
+    
+    <h2>More Features &amp; Concepts</h2>
 
-      <div class="span4">
-        <h3 title="Modular Development using Blades">Blades</h3>
-        {% include docs/concepts/blade_overview.html %}
-      </div><!-- /.span4 -->
-      <div class="span4">
-        <h3 title="Develop Blades in isolation using Workbenches">Workbenches</h3>
-        <p><strong>Workbenches</strong> allow Blades to be developed, debugged and run independently of the app.</p>
-        <p><strong>Workbench Tools</strong> allow you to interact with the Blade through stubbed services and via the EventHub. For example you can view your Blade in different states by sending it mock events via a mock events Workbench Tool.</p>
-      </div><!-- /.span4 -->
-      <div class="span4">
-        <h3>Clean Code</h3>
-        <p>Code is organized cleanly using <strong>classes</strong>, with one class per file, and JavaScript <strong>interface</strong> support is provided to help with creating large scalable codebases.</p>
-        <p>Services are a first-class concept that allow your application to be written before the back-end is finished, and can be replaced by mocks in your tests.</p>
-      </div><!-- /.span4 -->
+    <div class="col-lg-4">
+      <h3>Scaffolding</h3>
+      <p>Build out the structure of your app quickly using the BRJS scaffolding feature. Create Apps, Blades, BladeSets, Aspects, Classes, Interfaces, Tests and more via the CLI or web dashboard.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h3>Dependency Analysis</h3>
+      <p>The BRJS bundling system analyzes your code and ensures that only the JavaScript files that are used within your application are bundled during the build and deployment steps.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h3>Scale to Multiple Teams</h3>
+      <p>One of the main benefits of using BRJS is that is ensures your application will scale to multiple teams. By seperating functionality into Blades and libraries, and by using the EventHub and Services, it massively reduces the likelihood of feature incompatibility and code conflicts.</p>
+    </div><!-- /.col-lg-4 -->
 
-    </div><!-- /.row -->
+  </div><!-- /.row -->
 
+  <div class="row secondary-features">
 
-    <div class="row usps">
+    <div class="col-lg-4">
+      <h3>Efficient UI Testing</h3>
+      <p>When developing complex UIs you can end up with several hundred detailed behavioural tests. By using the BRJS Presenter MVVM presentation library you can test the UI via the "view model", without having to touch the DOM. Hundreds of UI tests can therefore be executed in just a few minutes.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h3>Web Dashboard</h3>
+      <p>Not everybody wants to spend all their time on the command line. So, BRJS ships with a web dashboard which offers most of the functionality that the CLI offers via a simple web user interface.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h3>Plugins</h3>
+      <p>BRJS gives you everything you need out of the box. However, it's great to be able to extend and customise functionality to meet different needs. Plugins provide a framework to extend the BRJS toolkit with your own commands, file transforms, bundling and minimization strategies and much more.</p>
+    </div><!-- /.col-lg-4 -->
 
-      <div class="span4">
-        <h3 title="">Scaffolding</h3>
-        <p>Build out the structure of your app quickly using the BRJS scaffolding feature. Create Apps, Blades, BladeSets, Aspects, Classes, Interfaces, Tests and more via the CLI or web dashboard.
-      </div><!-- /.span4 -->
-      <div class="span4">
-        <h3 title="">Dependency Analysis</h3>
-        <p>The BRJS bundling system analyzes your code and ensures that only the JavaScript files that are used within your application are bundled during the build and deployment steps.</p>
-      </div><!-- /.span4 -->
-      <div class="span4">
-        <h3>Scale to Multiple Teams</h3>
-        <p>One of the main benefits of using BRJS is that is ensures your application will scale to multiple teams. By seperating functionality into Blades and libraries, and by using the EventHub and Services, it massively reduces the likelihood of feature incompatibility and code conflicts.
-      </div><!-- /.span4 -->
+  </div><!-- /.row -->
 
-    </div><!-- /.row.usps -->
+</div><!-- /.container -->  
 
-    <div class="row usps">
+<!-- CALL TO ACTION -->
+<div class="container call-to-action github">
+  <div class="row">
+    <div class="col-lg-2 right">
+      <img src="/img/github-mark-white.png" height="65" class="github-mark" />
+    </div>
+    <div class="col-lg-10 left">
+      <a href="{{ site.social.github_link }}" class="btn btn-success">Get involved</a> with <img src="/img/bladerunner-js-white-trans.png" height="45" class="brjs-logo" /> on <img src="/img/github-logo-white.png" height="45" class="github-logo" />
+    </div>
+  </div> <!-- /.row -->
+</div><!-- /.container -->
 
-      <div class="span4">
-        <h3 title="">Efficient UI Testing</h3>
-        <p>When developing complex UIs you can end up with several hundred detailed behavioural tests. By using our MVVM presentation library you can test the UI via the "view model", without having to touch the DOM. Hundreds of UI tests can therefore be executed in just a few minutes.</p>
-      </div><!-- /.span4 -->
-      <div class="span4">
-        <h3 title="">Web Dashboard</h3>
-        <p>Not everybody wants to spend all their time on the command line. So, BRJS ships with a web dashboard which offers most of the functionality that the CLI offers via a simple web user interface.</p>
-      </div><!-- /.span4 -->
-      <div class="span4">
-        <h3>Plugins</h3>
-        <p>BRJS gives you everything you need out of the box. However, it's great to be able to extend and customise functionality to meet different needs. Plugins provide a framework to extend the BRJS toolkit with your own commands, file transforms, bundling and minimization strategies and much more.
-      </div><!-- /.span4 -->
+<div class="container content">
+  <div class="row home-get-started">
 
-    </div><!-- /.row.usps -->
+    <div class="col-lg-6 explore">
+      <h3>Documentation</h3>
+      <p>
+        Find out more about BRJS in our <em>work in progress</em> documentation.
+      </p>
+      <p>
+        Explore the concepts:
+      </p>
+      <ul>
+        <li><a href="/docs/concepts/blades">Blades</a></li>
+        <li><a href="/docs/concepts/workbenches">Workbenches</a></li>
+        <li><a href="/docs/concepts/workbench_tools">Workbench Tools</a></li>
+        <li><a href="/docs/concepts/aspsects">Aspects</a></li>
+      </ul>
+      <p>
+        Discover how the BRJS coding conventions help teams work in a scalable way:
+      </p>
+      <ul>
+        <li><a href="/docs/concepts/classes">Classes</a></li>
+        <li><a href="/docs/concepts/interfaces">Interfaces</a></li>
+        <li><a href="/docs/concepts/services">Services</a></li>
+        <li><a href="/docs/concepts/service_registry">ServiceRegistry</a></li>
+        <li><a href="/docs/concepts/event_hub">EventHub</a></li>
+      </ul>
+      <p>
+        Or, find out how to extend BRJS by writing your own plugins:
+      </p>
+      <ul>
+        <li><a href="/docs/extend/command_plugin">CommandPlugin</a></li>
+        <li><a href="/docs/concepts/model_observer_plugin">ModelObserverPlugin</a></li>
+      </ul>
+      <p>And checkout the <a href="/docs/roadmap/">Roadmap</a> to see what's coming up.</p>
+      <a href="/docs/concepts/" class="cta-round">Explore</a>
+    </div>
 
-  </div><!-- /.container -->   
+    <div class="col-lg-6 get-started">
+      <h3>Get Started</h3>
+      <p>Create your BRJS app:</p>
+      <pre><code>$ ./brjs create-app brjs-todo brjstodo
 
-</div> <!-- /wrapper -->
+Placeholder jsdoc generated for app 'brjs-todo'.
+Successfully created new app 'brjs-todo' /apps/brjs-todo
+Successfully deployed 'brjs-todo' app</code></pre>
+      <p>Start the development server:</p>
+      <pre><code>$ ./brjs start
+BladeRunnerJS server starting
+Application server started on port 7070
+
+BladerunnerJS server is now running and can be accessed at http://localhost:7070/
+Press Ctrl + C to stop the server</code></pre>
+      <p>Start developing features.</p>
+      <a href="/docs/use/getting_started/" class="cta-round">Go</a>
+    </div>
+
+  </div>
+</div><!-- /.container -->

@@ -4,6 +4,21 @@
 
 The website is a simple [Jekyll](http://jekyllrb.com/) site.
 
+### Prerequisites
+
+The instructions assume that Ruby is installed and on your [PATH](http://en.wikipedia.org/wiki/PATH_\(variable\)). See the [ruby-lang.org downloads section](https://www.ruby-lang.org/en/downloads/) for more information.
+
+### Running the website
+
+To run the website locally:
+
+    git clone git@github.com:BladeRunnerJS/brjs-site.git
+    cd brjs-site
+    gem install jekyll
+    jekyll serve -w
+    
+Navigate to `localhost:4000` to see the site running.
+
 ## Docs
 
 ### Structure

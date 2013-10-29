@@ -58,7 +58,7 @@ Make the class have a Superclass of type `ArgsParsingCommandPlugin`, which you c
 
 ![](/docs/extend/img/command_plugin_tutorial/command-plugin-new-class.png)
 
-Close the *New Java Class* dialog by clicking *OK* and the new class will be generated for you.
+Close the *New Java Class* dialog and the new class will be generated for you.
 
 For example:
 
@@ -186,11 +186,15 @@ Our plugin functionality is now complete. But we've a little more work to do yet
 
 BladeRunnerJS uses the Java [ServiceRegistry](http://docs.oracle.com/javase/7/docs/api/javax/imageio/spi/ServiceRegistry.html) for it's plugin architecture. Because of this we need to add a file that states which Interface our plugin implements and the name of the class that implements it.
 
-The first thing to do is to create a *resources* source folder.
+The first thing to do is to create a `resources` source folder.
 
 **Right-click on the project &rarr; New &rarr; Source Folder**
 
-Within that create a *META-INF* sub directory and within that a *services* directory. You will now have a *services* folder with the path of *project_root/resources/META-INF/services*.
+**After that has been created**, within it create a `META-INF` sub directory and within that a `services` directory. You will now have a `services` folder with the path of `project_root/resources/META-INF/services`.
+
+<div class="alert alert-warning">
+  <p>Ensure you create each of these as an individual step and <strong>not</strong> all in one go.</p>
+</div>
 
 We now need to create a file with a name that matches the full namespace of the Interface we are implementing a service for; the `CommandPlugin` interface.
 
@@ -209,6 +213,8 @@ In Eclipse, building the JAR is as simple as:
 **Right-click on the project &rarr; Export &rarr; Java &rarr; JAR File &rarr; BRJS_install_directory/conf/java (create the "conf" and "java" directories if it doesn't already exist)**
 
 ![](/docs/extend/img/command_plugin_tutorial/export-jar-finish.png)
+
+Name the jar `EchoCommandPlugin.jar` and export it to the `BRJS_install_directory/conf/java` (*note: the location for plugins will change in the future*). Click *Finish* to complete the export.
 
 ## Using the plugin
 

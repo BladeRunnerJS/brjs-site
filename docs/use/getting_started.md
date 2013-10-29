@@ -816,7 +816,7 @@ For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wik
 
 <div class="alert alert-info github">
   <p>
-    We presently only support WAR deployment. This is very restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting Flat File build and deployment</a> is a priority.
+    We presently only support WAR deployment. This is restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting Flat File build and deployment</a> is a priority.
   </p>
 </div>
 

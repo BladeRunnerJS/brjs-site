@@ -2,6 +2,7 @@
 layout: docs
 title: Roadmap to BRJS 1.0
 permalink: /docs/roadmap/
+notice: none
 ---
 
 We hope to have the following in place before Christmas 2013.

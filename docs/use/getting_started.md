@@ -2,6 +2,7 @@
 layout: docs
 title: Getting Started
 permalink: /docs/use/getting_started/
+notice: none
 ---
 
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>

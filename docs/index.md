@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: BladeRunnerJS Documentation
+notice: none
 ---
 
 **BladeRunnerJS** (BRJS) is fundamentally about following a set of conventions that work when building very large and complex front-end applications. BRJS is an extensible toolkit and lightweight JavaScript framework to support these conventions and workflows.

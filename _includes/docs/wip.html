@@ -1,5 +1,9 @@
-<div class="alert alert-warning">
-	<p>
-		This section of the documentation is a <strong>work in progress</strong>.
-	</p>
-</div>
+{% case page.notice %}
+  {% when 'none' %}
+  {% else %}
+    <div class="alert alert-warning">
+    	<p>
+    		This section of the documentation is a <strong>work in progress</strong>.
+    	</p>
+    </div>
+{% endcase %}

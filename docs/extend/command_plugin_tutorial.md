@@ -30,15 +30,15 @@ Give your project a name and ensure the project is set to use a Java 7 JRE.
 
 ## Reference brjs-core.jar
 
-In order to implement the plugin you need to reference the JAR that `CommandPlugin` is defined in.
+In order to implement the plugin you need to reference the JAR that `CommandPlugin` is defined in. The exact name of this JAR differs per build but it will be in the form `brjs-core-VERSION.jar`.
 
-**Right-click on the Project &rarr; Properties &rarr; Java Build Path &rarr; Libraries &rarr; Add External JARs… &rarr; browser to the BRJS_install_directory/sdk/libs/java/system &rarr; select `brjs-core.jar` and `jsap-2.1.jar` &rarr; Open &rarr; OK to close Properties dialog**
+**Right-click on the Project &rarr; Properties &rarr; Java Build Path &rarr; Libraries &rarr; Add External JARs… &rarr; browser to the BRJS_install_directory/sdk/libs/java/system &rarr; select `brjs-core-VERSION.jar` and `jsap-2.1.jar` &rarr; Open &rarr; OK to close Properties dialog**
 
 ![](/docs/extend/img/command_plugin_tutorial/add-library-jar-reference.png)
 
 <p class="fig-text">Please note: The above image shows a development version of the JAR with a <em>BRJS-dev</em> suffix being referenced</p>
 
-This will result in `brjs-core.jar` and `jsap-2.1.jar` being shown under *Referenced Libraries* within your project.
+This will result in `brjs-core-VERSION.jar` and `jsap-2.1.jar` being shown under *Referenced Libraries* within your project.
 
 ![](/docs/extend/img/command_plugin_tutorial/referenced-libraries.png)
 

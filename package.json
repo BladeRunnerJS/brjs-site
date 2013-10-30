@@ -1,0 +1,8 @@
+{
+  "name": "brjs-site",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-imagemin": "~0.2.1"
+  }
+}

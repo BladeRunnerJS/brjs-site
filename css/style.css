@@ -281,7 +281,7 @@ body.docs .main > ul:first-of-type {
 body.docs .main img {
   display: block;
   margin: auto;
-  max-width: 600px;
+  max-width: 1000px;
   max-height: 500px;
 }
 

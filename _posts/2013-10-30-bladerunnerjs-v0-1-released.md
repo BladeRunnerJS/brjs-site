@@ -22,7 +22,7 @@ The getting started guide covers creating a Todo List made up of two decoupled p
 
 ### Roadmap to v0.1
 
-You can view the [roadmap][roadmap] to get more detail about the key things we're working on as we focus on delivering a v1.0 [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product). Each entry in the roadmap also links to the releated github issue - we're now doing almost everything in github.
+You can view the [roadmap][roadmap] to get more detail about the key things we're working on as we focus on delivering a v1.0 [MVP](http://en.wikipedia.org/wiki/Minimum_viable_product). Each entry in the roadmap also links to the related github issue - we're now doing almost everything in github.
 
 ### What Next?
 

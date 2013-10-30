@@ -348,7 +348,7 @@ body.single_page .copy .fig-text {
   color: #c0c0c0;
 }
 
-.blog-list .row .post-title .meta .author {
+.blog-list.row .post-title .meta .authors {
   display: inline-block;
   float: right;
   clear: both;

@@ -14,11 +14,13 @@ template: blog_list
     <h1>{{ page.title }}</h1>
   </div>
 
-  <div class="row blog-list">
+  <div class="blog-list">
 
   {% if site.posts.size > 0 %}
 
     {% for post in site.posts %}
+    <div class="row">
+
       <div class="col-lg-3 post-title">
         <a href="{{ post.url }}">{{ post.title }}</a>
         
@@ -43,6 +45,7 @@ template: blog_list
           <img class="img-polaroid" src="/blog/img/{{ post.thumb }}">
         </a>
       </div>
+    </div>
     {% endfor %}
 
   {% else %}

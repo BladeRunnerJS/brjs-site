@@ -325,43 +325,51 @@ body.single_page .copy .fig-text {
   margin-bottom: 20px;
 }
 
-.blog-list.row {
+.blog-list {
   position: relative;
 
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
 
-.blog-list.row .post-title {
+.blog-list .row {
+  margin-bottom: 20px;
+}
+
+.blog-list .post-title {
   text-align: right;
   overflow: auto;
 }
 
-.blog-list.row .post-title .meta {
+.blog-list .post-title .meta {
   font-size: 11px;
 }
 
-.blog-list.row .post-title .meta .by {
+.blog-list .post-title .meta .by {
   display: inline-block;
   float: right;
   clear: both;
   color: #c0c0c0;
 }
 
-.blog-list.row .post-title .meta .authors {
+.blog-list .post-title .meta .authors {
   display: inline-block;
   float: right;
   clear: both;
 }
 
-.blog-list .row .post-title a {
+.blog-list .post-title a {
   display: block;
   font-size: 16px;
   font-weight: 500;
 }
 
-.blog-list .row .post-image {
+.blog-list .post-image {
   margin-top: -10px;
+}
+
+.blog-list .img-polaroid {
+  width: 150px;
 }
 
 body.post .container.main {
@@ -396,9 +404,14 @@ body.post .copy {
 }
 
 .post .authors .author:before, .post-title .authors .author:before { content: ", "; }
-.post .authors .author:first-child:before, .post-title .authors .author:first-child:before { content: ""; }
 .post .authors .author:last-child:before, .post-title .authors .author:last-child:before { content: "& "; }
+.post .authors .author:first-child:before, .post-title .authors .author:first-child:before { content: ""; }
 .post .authors .author:last-child:after, .post-title .authors .author:last-child:after { content: ""; }
+
+.post .blog-img-right {
+  float: right;
+  margin: 30px;
+}
 
 /* Register */
 .register {

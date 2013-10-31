@@ -372,10 +372,6 @@ body.single_page .copy .fig-text {
   width: 150px;
 }
 
-body.post .container.main {
-  background-color: #444444;
-}
-
 body.post .post {
   background-color: #ffffff;
   padding-left: 60px;

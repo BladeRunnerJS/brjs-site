@@ -807,7 +807,7 @@ If we refresh the application we'll now see the Input and the Todo List appended
 
 Finally, we *really* need to apply some styling to the application.
 
-Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [BRJS Todo App github repo](https://github.com/BladeRunnerJS/brjs-example-apps/tree/master/brjs-todo/default-aspect/themes/standard) and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [BRJS Todo App github repo](https://github.com/BladeRunnerJS/brjs-todo/tree/master/default-aspect/themes/standard) and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
 
 ![](/docs/use/img/styled-app.png)
 
@@ -844,7 +844,7 @@ By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/
   </p>
 </div>  
 
-You can find the code for this application in the [brjs-example-apps github repo](https://github.com/BladeRunnerJS/brjs-example-apps).
+You can find the code for this application in the [brjs-todo github repo](https://github.com/BladeRunnerJS/brjs-todo).
 
 ## Summary
 
@@ -856,7 +856,7 @@ Believe it or not, this just scrapes the surface of BladeRunnerJS. So...
 
 ### Finish the Todo App
 
-The getting started app doesn't offer 100% Todo App functionality. How about taking a look at the standard [Todo MVC](http://todomvc.com) applications and adding some of that functionality using the [brjs-todo code](https://github.com/BladeRunnerJS/brjs-example-apps/tree/master/brjs-todo) as a starting point. Functionality like:
+The getting started app doesn't offer 100% Todo App functionality. How about taking a look at the standard [Todo MVC](http://todomvc.com) applications and adding some of that functionality using the [brjs-todo code](https://github.com/BladeRunnerJS/brjs-todo) as a starting point. Functionality like:
 
 * Marking a Todo Item as complete
 * Deleting a Todo Item

@@ -259,19 +259,11 @@ The simplest test we can write at the moment is to check that the `todoText` fie
 
 ### Run the Test
 
-Within `unzip_location/conf/test-runner.conf` you will fine configuration for locations of browsers. Uncomment and update the configuration file according to your operating system and the location of the browsers you would like to use for your testing.
-
-<div class="alert alert-warning github">
-  <p>
-    We presently have a bug that at least a single browser needs to be defined in <code>unzip_location/conf/test-runner.conf</code> even if you run the test server with the "no browser" option (<code>brjs test-server -b none</code>). In that case <a href="https://github.com/BladeRunnerJS/brjs/issues/183">it should not be necessary to set update this configuration file</a>.
-  </p>
-</div>
-
 There are a few ways to run the tests using JSTestDriver, but the simplest is probably to start the test server using the CLI:
 
-    $ unzip_location/sdk/brjs test-server -b none
+    $ unzip_location/sdk/brjs test-server --no-browser
 
-The test server will then continue running in the terminal/console that you started it in.
+The test server will then start up on the default port (4224) and continue running in the terminal/console that you started it in.
 
 Then in the web browser (or browsers) you wish to execute the tests in navigate to `http://localhost:4224/capture?strict`. This browser is now waiting for the test server to instruct it to run tests. You do this by opening up another terminal/console tab/window and executing `unzip_location/sdk/brjs test path_to_directory_to_scan_for_tests`. In our case we just want to run the `todoinput` tests. So, assuming we're in the `unzip_location/sdk/` directory the command would be:
 

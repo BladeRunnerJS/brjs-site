@@ -112,7 +112,7 @@ This creates a `todoinput` directory within `unzip_location/apps/brjs-todo/todo-
 
 ### View the Code
 
-Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput/src` you'll find an `ExamplePresentationModel.js` file.
+Within `apps/brjs-todo/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput/src` you'll find an `ExamplePresentationModel.js` file.
 
 <div class="alert alert-info github">
   <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
@@ -169,7 +169,7 @@ If you click the `Log me` button the `buttonClicked` function is called and `but
 
 ### Add Two-Way Data Binding
 
-Next, let's edit the Blade to display in `<input>` element with a two-way binding between the View and View Model.
+Next, let's edit the Blade to display an `<input>` element with a two-way binding between the View and View Model.
 
 To do this we first need to update `ExamplePresentationModel.js` to handle the fact the view contains an input element. We do this using a `Field` object initialized with an empty string, instead of 'Hello World!'. We can also update the `message` instance variable to be called something more relevant: `todoText`.
 
@@ -203,7 +203,7 @@ Finally, instead of having to click a button we should handle the *Enter/Return*
 
     } )();
 
-We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `enterPressed` function when a key is pressed in the input to check to see if it's the *Enter/Return*. We do this by adding `event: { keypress: keyPressed }` to the `data-bind` attribute. Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute and remove the unused `<button>` element:
+We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `keyPressed` function when a key is pressed in the input to check to see if it was the *Enter/Return* key. We do this by adding `event: { keypress: keyPressed }` to the `data-bind` attribute. Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute and remove the unused `<button>` element:
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div>
@@ -704,7 +704,7 @@ Both the `todoinput` and `todoitems` Blades have the functionality that we're lo
 
 ## Adding the Blades to an Aspect
 
-In order to add the Blades to the default aspect we need to first update the aspect HTML to provide some basic structure. Open up `brjs-todo/default-aspect/index.html` and updated it to look as follows:
+In order to add the Blades to the default aspect we need to first update the aspect HTML to provide some basic structure. Open up `brjs-todo/default-aspect/index.html` and update it to look as follows:
 
     <!DOCTYPE html>
     <html>

@@ -56,7 +56,7 @@ This will create a new application called `brjs-todo` within the `unzip_location
 
 In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this default aspect by starting the BRJS development server:
 
-    $ unzip_location/sdk/brjs start
+    $ unzip_location/sdk/brjs serve
 
 This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjs-todo`.
 
@@ -159,7 +159,7 @@ The template markup indicates that the text of the `div` element will get the va
 
 ### Run the Blade in a Workbench
 
-Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`unzip_location/sdk/brjs start`) and navigate to the workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`.
+Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`unzip_location/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`.
 
 ![](/docs/use/img/hello-world-workbench.png)
 
@@ -271,7 +271,7 @@ Then in the web browser (or browsers) you wish to execute the tests in navigate 
 
 If all goes well you should see output similar to the following:
 
-    BladeRunner version: BRJS-dev, built: 26 September 2013
+    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Server already running, not bothering to start a new instance...
 
@@ -332,7 +332,7 @@ Update the `todoitems` view, `unzip_location/apps/brjs-todo/todo-bladeset/blades
       </ul>
     </div>
 
-If you ensure the BRJS development server is running (`unzip_location/sdk/brjs start`) and launch the Workbench for this Blade via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/` you'll see the two hard-coded list items.
+If you ensure the BRJS development server is running (`unzip_location/sdk/brjs serve`) and launch the Workbench for this Blade via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/` you'll see the two hard-coded list items.
 
 ![](/docs/use/img/todo-items-workbench.png)
 
@@ -421,7 +421,7 @@ Before we update the `todoitems` Blade to listen for this event, let's first see
   </p>
 </div>
 
-Ensure the BRJS server is running (`unzip_location/sdk/brjs start`) and open up the `todoinput` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`. If you input some text and press *Enter* you'll see a message appear in the JavaScript console via a logger in the Demo Event Hub service. You can manually inspect this to ensure the information logged is as expected.
+Ensure the BRJS server is running (`unzip_location/sdk/brjs serve`) and open up the `todoinput` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoinput/workbench/`. If you input some text and press *Enter* you'll see a message appear in the JavaScript console via a logger in the Demo Event Hub service. You can manually inspect this to ensure the information logged is as expected.
 
 ![](/docs/use/img/testing-in-the-workbench.png)
 
@@ -586,7 +586,7 @@ Now that the object is informed whenever a new Todo item is added, we can update
 
 #### Testing in the Workbench
 
-Open up the `todoitems` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/` ensuring the BRJS development web server is running (`unzip_location/sdk/brjs start`). Open up the JavaScript console and enter the following code:
+Open up the `todoitems` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/` ensuring the BRJS development web server is running (`unzip_location/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
 
     var sr = require( 'br/ServiceRegistry' );
     var hub = sr.getService( 'br.demo-event-hub' );
@@ -668,7 +668,7 @@ This code ensures that any interaction with the `br.demo-event-hub` service is c
 Now you can execute the tests ensuring that the test server is running (`./brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
 
     $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoitems/
-    BladeRunner version: BRJS-dev, built: 26 September 2013
+    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Server already running, not bothering to start a new instance...
 
@@ -818,7 +818,7 @@ For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wik
 All that you need to do to build the .WAR file is use the `war` command:
 
     $ ./brjs war brjs-todo
-    BladeRunner version: BRJS-dev, built: 26 September 2013
+    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Successfully created war file
 

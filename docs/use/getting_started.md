@@ -279,7 +279,7 @@ Then in the web browser (or browsers) you wish to execute the tests in navigate 
 
 If all goes well you should see output similar to the following:
 
-    BladeRunner version: BRJS-dev, built: 26 September 2013
+    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Server already running, not bothering to start a new instance...
 
@@ -676,7 +676,7 @@ This code ensures that any interaction with the `br.demo-event-hub` service is c
 Now you can execute the tests ensuring that the test server is running (`./brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
 
     $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoitems/
-    BladeRunner version: BRJS-dev, built: 26 September 2013
+    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Server already running, not bothering to start a new instance...
 
@@ -826,7 +826,7 @@ For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wik
 All that you need to do to build the .WAR file is use the `war` command:
 
     $ ./brjs war brjs-todo
-    BladeRunner version: BRJS-dev, built: 26 September 2013
+    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Successfully created war file
 

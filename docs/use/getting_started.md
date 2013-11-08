@@ -64,11 +64,17 @@ This will start the development web server running on localhost port 7070. You c
 
 ## Create a BladeSet
 
-Create a new BladeSet within the application using the CLI:
+Before creating our Blades we first need to create a new BladeSet within the application using the CLI. The format of this command is:
+
+    unzip_location/sdk/brjs create-bladeset <app-name> <bladeset-name>
+
+[BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
+
+Run the following command to create a `todo` BladeSet for the `brjs-todo` app:
 
     unzip_location/sdk/brjs create-bladeset brjs-todo todo
 
-This creates a folder called `todo-bladeset` within the application. [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
+This create a folder called `todo-bladeset` within the application.    
 
 <div class="alert alert-info github">
   <p>
@@ -84,11 +90,15 @@ With this basic application structure in place we can create our first Blade and
 
 ## The Todo Input Blade
 
-First, let's create a Blade for capturing the Todo input items.
+[Blades](/docs/concepts/blades) are a core concept within BRJS. Blades are moduls that encapsulates all the required functionality and resources – JavaScript, HTML, CSS, XML, images, etc – to implement a particular high level feature. So, let's create a Blade for capturing the Todo input items.
 
 ### Scaffold the Blade
 
-Create a new blade using the CLI:
+To create a blade we use the `create-blade` command. This has the following format:
+
+    $ unzip_location/sdk/brjs create-blade <app-name> <bladeset-name> <blade-name>    
+
+Let's create a new blade called `todoinput` within the `todo` BladeSet in our `brjs-todo` application:
 
     $ unzip_location/sdk/brjs create-blade brjs-todo todo todoinput
 
@@ -112,7 +122,7 @@ This creates a `todoinput` directory within `unzip_location/apps/brjs-todo/todo-
 
 ### View the Code
 
-Within `apps/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput/src` you'll find an `ExamplePresentationModel.js` file.
+Within `apps/brjs-todo/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput/src` you'll find an `ExamplePresentationModel.js` file.
 
 <div class="alert alert-info github">
   <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
@@ -169,7 +179,7 @@ If you click the `Log me` button the `buttonClicked` function is called and `but
 
 ### Add Two-Way Data Binding
 
-Next, let's edit the Blade to display in `<input>` element with a two-way binding between the View and View Model.
+Next, let's edit the Blade to display an `<input>` element with a two-way binding between the View and View Model.
 
 To do this we first need to update `ExamplePresentationModel.js` to handle the fact the view contains an input element. We do this using a `Field` object initialized with an empty string, instead of 'Hello World!'. We can also update the `message` instance variable to be called something more relevant: `todoText`.
 
@@ -179,17 +189,22 @@ Finally, instead of having to click a button we should handle the *Enter/Return*
 
     ( function() {
 
+      /*** New code ***/
       var ENTER_KEY_CODE = 13;
+      /*** End of new code ***/
 
       var br = require( 'br' );
       
       function ExamplePresentationModel() {
+        /*** New code ***/
         var Field = br.presenter.node.Field;
 
         this.todoText = new Field( '' );
+        /*** End of new code ***/
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
       
+      /*** New code ***/
       ExamplePresentationModel.prototype.keyPressed = function( data, event ) {
         if( event.keyCode === ENTER_KEY_CODE ) {
           var todoTextValue = this.todoText.value.getValue();
@@ -198,20 +213,23 @@ Finally, instead of having to click a button we should handle the *Enter/Return*
 
         return true;
       };
+      /*** End of new code ***/
       
       brjstodo.todo.todoinput.ExamplePresentationModel = ExamplePresentationModel;
 
     } )();
 
-We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `enterPressed` function when a key is pressed in the input to check to see if it's the *Enter/Return*. We do this by adding `event: { keypress: keyPressed }` to the `data-bind` attribute. Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute and remove the unused `<button>` element:
+We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `keyPressed` function when a key is pressed in the input to check to see if it was the *Enter/Return* key. We do this by adding `event: { keypress: keyPressed }` to the `data-bind` attribute. Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute and remove the unused `<button>` element:
 
     <div id="brjstodo.todo.todoinput.view-template">
       <div>
+        <!-- New code -->
         <input type="text" class="todo-input"
                data-bind="value:todoText.value,
                           valueUpdate:'afterkeydown', 
                           event: { keypress: keyPressed }"
                placeholder="What needs to be done?" />
+        <!-- End of new code -->
       </div>
     </div>
 
@@ -265,9 +283,9 @@ There are a few ways to run the tests using JSTestDriver, but the simplest is pr
 
 The test server will then start up on the default port (4224) and continue running in the terminal/console that you started it in.
 
-Then in the web browser (or browsers) you wish to execute the tests in navigate to `http://localhost:4224/capture?strict`. This browser is now waiting for the test server to instruct it to run tests. You do this by opening up another terminal/console tab/window and executing `unzip_location/sdk/brjs test path_to_directory_to_scan_for_tests`. In our case we just want to run the `todoinput` tests. So, assuming we're in the `unzip_location/sdk/` directory the command would be:
+Then in the web browser (or browsers) you wish to execute the tests in navigate to `http://localhost:4224/capture?strict`. This browser is now waiting for the test server to instruct it to run tests. You do this by opening up another terminal/console tab/window and executing `unzip_location/sdk/brjs test path_to_directory_to_scan_for_tests`. In our case we just want to run the `todoinput` tests by running:
 
-    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
+    $ unzip_location/sdk/brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
 
 If all goes well you should see output similar to the following:
 
@@ -285,7 +303,7 @@ If all goes well you should see output similar to the following:
 
 If you wanted to run all the tests for the application you would execute:
 
-    $ ./brjs test ../apps/brjs-todo
+    $ unzip_location/sdk/brjs test ../apps/brjs-todo
 
 We've now created our first Blade, seen it running in a Workbench, updated the Blade and seen the change in the Workbench, and written a simple test to check the View Model initialized state. It's time to create our second Blade.
 
@@ -306,11 +324,13 @@ Open up the newly generated `ExamplePresentationModel.js` and update the JavaScr
       var br = require( 'br' );
       
       function ExamplePresentationModel() {
+        /*** new code ***/
         var DisplayField = br.presenter.node.DisplayField;
         var NodeList = br.presenter.node.NodeList;
 
         var items = [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ];
         this.items = new NodeList( items );
+        /*** end of new code ***/
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
 
@@ -325,11 +345,13 @@ Next we need to update the View HTML template to loop over the `items` list and 
 Update the `todoitems` view, `unzip_location/apps/brjs-todo/todo-bladeset/blades/todoitems/resources/html/view.html`, to have the following HTML:
 
     <div id="brjstodo.todo.todoitems.view-template">
+      <!-- new code -->
       <ul class="todo-list" data-bind="foreach:items">
         <li class="view">
           <label data-bind="text:value"></label>
         </li>
       </ul>
+      <!-- end of new code -->
     </div>
 
 If you ensure the BRJS development server is running (`unzip_location/sdk/brjs serve`) and launch the Workbench for this Blade via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/` you'll see the two hard-coded list items.
@@ -357,13 +379,17 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
       var ENTER_KEY_CODE = 13;
 
       var br = require( 'br' );
+      /*** new code ***/
       var ServiceRegistry = require( 'br/ServiceRegistry' );
+      /*** end of new code ***/
     
       function ExamplePresentationModel() {
         var Field = br.presenter.node.Field;
 
         this.todoText = new Field( '' );
+        /*** new code ***/
         this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+        /*** end of new code ***/
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
     
@@ -400,8 +426,10 @@ Now, in the `keyPressed` function we can trigger an event called `todo-added` on
       ExamplePresentationModel.prototype.keyPressed = function( data, event ) {
         if( event.keyCode === ENTER_KEY_CODE ) {
           var todoTextValue = this.todoText.value.getValue();
+          /*** new code ***/
           this.eventHub.channel( 'todo-list' ).trigger( 'todo-added', { text: todoTextValue } );
           this.todoText.value.setValue( '' );
+          /*** end of new code ***/
         }
 
         return true;
@@ -430,13 +458,15 @@ Ensure the BRJS server is running (`unzip_location/sdk/brjs serve`) and open up 
 Because we've introduced the concept and usage of the `ServiceRegistry` to our tests we should add a JSTestDriver `setUp` function to `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.demo-event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
 
     ;(function() {
+      
+      ExampleClassTest = TestCase('ExampleClassTest');
+
+      /*** new code ***/
       var ServiceRegistry = require( 'br/ServiceRegistry' );
   
       var fakeEventHub;
       var fakeChannel;
       
-      ExampleClassTest = TestCase('ExampleClassTest');
-  
       ExampleClassTest.prototype.setUp = function() {
   
         fakeChannel = {
@@ -461,6 +491,7 @@ Because we've introduced the concept and usage of the `ServiceRegistry` to our t
         // Register the fake event hub
         ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
       };
+      /*** end of new code ***/
 
       ExampleClassTest.prototype.testTodoTextFieldIsInitialized = function() {
         var todoInputBlade = new brjstodo.todo.todoinput.ExamplePresentationModel();
@@ -492,7 +523,7 @@ The test initializes the `todoinput` Blade, sets a Todo text value we expect to 
 
 Now that the test is written ensure the test server is running (`unzip_location/sdk/brjs test-server`) and execute the `todoinput` tests:
 
-    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
+    $ unzip_location/sdk/brjs test ../apps/brjs-todo/todo-bladeset/blades/todoinput/
 
 You should see confirmation that the tests pass:
 
@@ -514,7 +545,10 @@ First, get access to the ServiceRegistry and then register for the event on the 
     ( function() {
 
       var br = require( 'br' );
+
+      /*** New code ***/
       var ServiceRegistry = require( 'br/ServiceRegistry' );
+      /*** End of new code ***/
     
       function ExamplePresentationModel() {
         var DisplayField = br.presenter.node.DisplayField;
@@ -523,24 +557,27 @@ First, get access to the ServiceRegistry and then register for the event on the 
         var items = [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ];
         this.items = new NodeList( items );
     
+        /*** new code ***/
         // get the event hub
         this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
      
         // register to recieve events
         this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
+        /*** end of new code ***/
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
 
-
+      /*** new code ***/
       ExamplePresentationModel.prototype._todoAdded = function( added ) {
         // TODO: update this.items
       };
+      /*** end of new code ***/
 
       brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
 
     })();
 
-In the code above we listen for `todo-added` events that are triggered on the `todo-list` channel. Whenever those events are triggered the `_todoAdded` instance function is called. We ensure the `this` context is maintained by passing in `this` as the third parameter to the `eventHub.on` function.
+In the code above we listen for `todo-added` events that are triggered on the `todo-list` channel. Whenever those events are triggered the `_todoAdded` instance function is called passing in the newly `added` item. We ensure the `this` context is maintained by passing in `this` as the third parameter to the `eventHub.on` function.
 
 Now that the object is informed whenever a new Todo item is added, we can update the View Model data within the `_todoAdded` handler function.
 
@@ -566,6 +603,7 @@ Now that the object is informed whenever a new Todo item is added, we can update
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
     
       ExamplePresentationModel.prototype._todoAdded = function( added ) {
+        /*** new code ***/
         var DisplayField = br.presenter.node.DisplayField;
     
         // create a new field for the new item
@@ -579,6 +617,7 @@ Now that the object is informed whenever a new Todo item is added, we can update
     
         // update the View Model which triggers a UI update
         this.items.updateList( nodes );
+        /*** end of new code ***/
       };
     
       brjstodo.todo.todoitems.ExamplePresentationModel = ExamplePresentationModel;
@@ -665,9 +704,9 @@ This code ensures that any interaction with the `br.demo-event-hub` service is c
     };
     
 
-Now you can execute the tests ensuring that the test server is running (`./brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
+Now you can execute the tests ensuring that the test server is running (`unzip_location/sdk/brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
 
-    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todoitems/
+    $ unzip_location/sdk/brjs test ../apps/brjs-todo/todo-bladeset/blades/todoitems/
     BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Server already running, not bothering to start a new instance...
@@ -704,7 +743,7 @@ Both the `todoinput` and `todoitems` Blades have the functionality that we're lo
 
 ## Adding the Blades to an Aspect
 
-In order to add the Blades to the default aspect we need to first update the aspect HTML to provide some basic structure. Open up `brjs-todo/default-aspect/index.html` and updated it to look as follows:
+In order to add the Blades to the default aspect we need to first update the aspect HTML to provide some basic structure. Open up `brjs-todo/default-aspect/index.html` and update it to look as follows:
 
     <!DOCTYPE html>
     <html>
@@ -718,6 +757,7 @@ In order to add the Blades to the default aspect we need to first update the asp
       </head>
       <body>
 
+        <!-- New code -->
         <section id="todoapp">
           <header id="header">
             <h1>todos</h1>
@@ -725,6 +765,7 @@ In order to add the Blades to the default aspect we need to first update the asp
           <section id="main"></section>
           <footer id="footer"></footer>
         </section>
+        <!-- end of new code -->
 
         <@js.bundle@/>
         <script>
@@ -735,7 +776,7 @@ In order to add the Blades to the default aspect we need to first update the asp
       </body>
     </html>
 
-The `<@css.bundle theme="standard"@/>` tag is replaced at build time with a reference to a CSS bundle and the `<@js.bundle@/>` with a reference to the bundled JavaScript source. The element with the ID of `header` will have the Todo Input element appended to it and the section with the ID of `main` will have the Todo List appended to it. You'll also see that we initialize our application object here.
+The `<@css.bundle theme="standard"@/>` tag is replaced at build time with a reference to a CSS bundle and the `<@js.bundle@/>` with a reference to the bundled JavaScript source. The element with the ID of `header` will have the Todo Input element appended to it for users to enter their todo items. The `<section>` with the ID of `main` will have the Todo List appended to it and will show the current todo items. You'll also see that we initialize our application object here.
 
 Open `brjs-todo/default-aspect/src/brjstodo/App.js` and in the `App` class create two instances of the objects we've just defined and tested; an Input `ExamplePresentationModel` and an Items `ExamplePresentationModel`:
 
@@ -743,16 +784,20 @@ Open `brjs-todo/default-aspect/src/brjstodo/App.js` and in the `App` class creat
 
       var App = function() {
 
+        /*** new code ***/
         // pass in the HTML template identifier and View Model
         var PresenterComponent = br.presenter.component.PresenterComponent;
 
         // todo input Blade
         var inputModel = new brjstodo.todo.todoinput.ExamplePresentationModel();
-        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
+        this.inputComponent =
+          new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
 
         // todo items Blade
         var itemsModel = new brjstodo.todo.todoitems.ExamplePresentationModel();        
-        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+        this.itemsComponent =
+          new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+        /*** end of new code ***/
 
         // TODO: attach UI
       };
@@ -765,7 +810,7 @@ From earlier, you'll remember that these classes extended something called `Pres
 
 At this point we haven't added anything to our default aspect and it will look exactly as it did at the start of this guide.
 
-In order for the Blade components to appear in the aspect we have to append the DOM elements that the `PresenterComponent` instances create to the Aspect - the main view into the Todo List web app. We do this by creating a `SimpleFrame` object and passing in the component to the constructor, then we can access the generated element via a `getElement` function on the frame object and simply appending it to the appropriate element in the DOM; for the Input we append to an element with an ID of `header` and for the List we append to an element with the ID of `main`:
+In order for the Blade components to appear in the aspect we have to append the DOM elements that the `PresenterComponent` instances create to the Aspect (the main view into the Todo List web app). We do this by creating a `SimpleFrame` object and passing in the component to the constructor, then we can access the generated element via a `getElement` function on the frame object and simply append it to the appropriate element in the DOM. As above, the Todo Input is appended to an element with an ID of `header` and the Todo List element is appended to the element with the ID of `main`:
 
     ;( function() {
 
@@ -776,17 +821,21 @@ In order for the Blade components to appear in the aspect we have to append the 
 
         // todo input Blade
         var inputModel = new brjstodo.todo.todoinput.ExamplePresentationModel();
-        this.inputComponent = new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
+        this.inputComponent =
+          new PresenterComponent( 'brjstodo.todo.todoinput.view-template', inputModel );
 
         // todo items Blade
         var itemsModel = new brjstodo.todo.todoitems.ExamplePresentationModel();        
-        this.itemsComponent = new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
+        this.itemsComponent =
+          new PresenterComponent( 'brjstodo.todo.todoitems.view-template', itemsModel );
 
+        /*** new code ***/
         var inputFrame = new br.component.SimpleFrame( this.inputComponent );
         document.getElementById( 'header' ).appendChild( inputFrame.getElement() );
 
         var itemsFrame = new br.component.SimpleFrame( this.itemsComponent );
         document.getElementById( 'main' ).appendChild( itemsFrame.getElement() );
+        /*** end of new code ***/
       };
 
       brjstodo.App = App;
@@ -799,7 +848,7 @@ If we refresh the application we'll now see the Input and the Todo List appended
 
 Finally, we *really* need to apply some styling to the application.
 
-Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [BRJS Todo App github repo](https://github.com/BladeRunnerJS/brjs-todo/tree/master/default-aspect/themes/standard) and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [directory](https://github.com/BladeRunnerJS/brjs-todo/tree/master/default-aspect/themes/standard) in the BRJS Todo App github repo and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
 
 ![](/docs/use/img/styled-app.png)
 
@@ -807,7 +856,9 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 ## Build and Deploy
 
-For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wiki/WAR_file_format_\(Sun\)) file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
+For the moment we only support deploying as a [.WAR][war-file] file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
+
+[war-file]: http://en.wikipedia.org/wiki/WAR_file_format_(Sun)
 
 <div class="alert alert-info github">
   <p>
@@ -817,7 +868,7 @@ For the moment we only support deploying as a [.WAR](http://en.wikipedia.org/wik
 
 All that you need to do to build the .WAR file is use the `war` command:
 
-    $ ./brjs war brjs-todo
+    $ unzip_location/sdk/brjs war brjs-todo
     BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
     Successfully created war file

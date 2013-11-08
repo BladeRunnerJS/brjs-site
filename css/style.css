@@ -437,6 +437,10 @@ body.post .copy {
   color: #CED002;
 }
 
+.width-medium {
+  max-width:50%;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

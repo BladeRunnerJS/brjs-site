@@ -262,6 +262,12 @@ body.home .navbar-wrapper {
   height: 45px;
 }
 
+/* Code */
+.new-code {
+  display: block;
+  background-color: #125f21;
+}
+
 /* Docs */
 body.docs .toc-col .doc-feedback {
   font-size: 0.9em;

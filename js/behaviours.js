@@ -50,7 +50,6 @@ $( function() {
   //  the new HTML
   // <!-- End of new code -->
   function boldNewCode( html ) {
-    console.log( html );
     html = html.replace(/^.*<span class="comment">\/\*{3} New code \*{3}\/<\/span>.*\n(\s+)/gmi, '<div class="new-code js">$1' );
     html = html.replace(/\s+<span class="comment">\/\*{3} End of new code \*{3}\/<\/span>\n/gmi, '</div>' );
     html = html.replace(/^.*<span class="comment">&lt;!-- New code --&gt;<\/span>.*\n(\s+)/gmi, '<div class="new-code html">$1' );

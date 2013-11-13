@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Topiarist"
+authors: [kybernetikos]
+thumb: br-logo-black-bg-150x150.png
+
+excerpt: Topiarist is a new javascript OO library featuring sandboxed mixins, excellent interface support, simple multiple inheritance. It adapts to fit your style of writing code.
+
+---
+
 Topiarist
 =========
 

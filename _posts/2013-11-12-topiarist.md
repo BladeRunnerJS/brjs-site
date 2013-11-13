@@ -8,25 +8,25 @@ excerpt: Topiarist is a new javascript OO library featuring sandboxed mixins, ex
 
 ---
 
-Topiarist
-=========
+Topiarist - Comprehensive OO JavaScript In The Style You Want
+=============================================================
 
 Introduction
 ------------
 
-There are a lot of libraries out there to help with inheritance in JavaScript, and in truth, for simple single or prototype inheritance, `Object.create` goes a long way.
+There are a lot of libraries out there to help with inheritance in JavaScript, and in truth, for simple single or prototype inheritance, [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FObject%2Fcreate) goes a long way.
 
-If you need more, many libraries for other things include their own helper methods for Object Orientation.  This is not really surprising as any large endevour is likely to start to want to talk in terms of the commonality shared by a class of objects which is exactly what a traditional OO class is, and relying on just the javascript built ins for doing class inheritance well involves some fairly opaque boilerplate.
+If you need more, many libraries include their own helper methods for Object Orientation.  This is not really surprising as any large endevour is likely to start to want to talk in terms of the commonality shared by a class of objects which is exactly what a traditional OO class is, and relying only on the javascript built-ins for doing class inheritance involves writing some fairly opaque boilerplate.
 
-So Jquery has a simple extend method, Backbone provides an [extends method](http://backbonejs.org/#Model-extend) that properly sets up the prototype chain, [prototype](http://prototypejs.org/learn/class-inheritance.html) gives you a Class object that manages extension for you, [underscore](http://underscorejs.org/) provides some basic extension methods too.
+So Jquery has a simple [extend](http://api.jquery.com/jQuery.extend/) method, Backbone provides an [extend method](http://backbonejs.org/#Model-extend) that properly sets up the prototype chain, [prototype](http://prototypejs.org/learn/class-inheritance.html) gives you a Class object that manages extension for you, [underscore](http://underscorejs.org/) provides some basic extension methods too.
 
 If you're uncomfortable including a full framework or general library for just the OO behaviour, there are also many more focussed microlibraries.  [ringjs](http://ringjs.neoname.eu/) is interesting because it implements Python style inheritance (including Python style multiple inheritance). There are a  number of interesting libraries which add aspect oriented programming to the OO paradigm too, such as [dcljs](http://www.dcljs.org/).
 
-Even with a broad consensus on how Classes are implemented, the way the code the end user writes looks varies a great deal between libraries.  We like our OO libraries to have a light touch - to remove some of the boilerplate, but not to lock you out of the normal javascript way of doing things.
+Even with a broad consensus on how Classes are implemented, the way the code the end user writes looks varies a great deal between libraries.  We like our OO libraries to have a light touch - to remove some of the boilerplate, but not to lock you out of the normal JavaScript way of doing things.
 
-One of the things that we've found useful in building large systems that include code that needs to operate on code provided by others, is the concept of [interfaces](http://blog.caplin.com/2012/10/25/javascript-interfaces-putting-the-java-back-into-javascript/), and while many of these libraries do inheritance well, few of them provide some of the features we like around interfaces ([qooxdoo](http://qooxdoo.org/) is an exception, although it does lock you in to its way of defining classes).
+One of the things we've found useful in building large systems that include code which needs to operate on objects provided by others is the concept of [interfaces](http://blog.caplin.com/2012/10/25/javascript-interfaces-putting-the-java-back-into-javascript/).  While many libraries do inheritance well few of them provide some of the features we like around interfaces ([qooxdoo](http://qooxdoo.org/) is an exception, however it does lock you in to its way of defining classes).
 
-In order to do interfaces well, we built our own library, [topiarist](http://bladerunnerjs.github.io/topiarist/).  It also does inheritance, both single and multiple, and a sandboxed form of mixins which protect the state of the 'flavor' class.  It also supports more than one common way of writing code that uses it, from the 'traditional' to a more domain specific language style, similar to that favoured by libraries such as Backbone.  I'll give examples of the different styles possible at the end of this article.
+In order to do interfaces well, we built our own library, [topiarist](http://bladerunnerjs.github.io/topiarist/).  It also does inheritance, both single and multiple, and a sandboxed form of mixins which protect the state of the target class.  It also supports more than one common way of writing code that uses it, from the 'traditional' to a more domain specific language style, similar to that favoured by libraries such as Backbone.  I'll give examples of the different styles possible at the end of this article.
 
 
 Single Inheritance 
@@ -36,15 +36,15 @@ Javascript has support for single inheritance built into the language.  The prot
 
 ### topiarist.extends
 
-Topiarist's extend method is an evolution of what I favoured back in early [2007](http://kybernetikos.com/2007/02/07/inheritance-and-javascript/) when I first started thinking about how to do class inheritance in javascript.  It's also very similar to what most libraries (and languages that compile to JS such as typescript and coffeescript) have converged on.
+Topiarist's extend method is an evolution of what I [favoured back in early 2007](http://kybernetikos.com/2007/02/07/inheritance-and-javascript/) when I first started thinking about how to do class inheritance in javascript.  It's also very similar to what most libraries (and languages that compile to JS such as TypeScript and CoffeeScript) have converged on.
 
-Even so, it does have some nice features over doing it yourself with Object.create:
+Even so, Topiarist does have some nice features over doing it yourself with `Object.create`:
 
  * setting up the inheritance chain overwrites any modifications that have been made to the prototype.  Changing the inheritance chain after having added methods is almost always a programmer mistake.  Topiarist will detect if you try to do this and throw an error.
- * it copies function properties over from the superclass too.  This is the same behaviour that Backbone has, and it lets you add useful things to your functions that will carry forward to their children too.
- * a 'superclass' property is created on the subclass constructor which can be helpful.
- * the constructor property is set up on the prototype, which means that (object instance).constructor returns the correct thing.
- * if you prefer an object literal style of definition, you can also pass in an object containing definitions of properties you want on the prototype.
+ * it copies function properties over from the superclass.  This is the same behaviour that Backbone has, and it lets you add useful things to your functions that will carry forward to their children too.
+ * a 'superclass' property is created on the subclass constructor which gives you a nice shorthand for calling super methods.
+ * the constructor property is set up on the prototype, which means that (object instance).constructor returns the actual constructor function used rather than some parent of it.
+ * if you prefer an object literal style of definition, you can also pass an object containing definitions of properties you want added to the prototype.
 
 Most helpers for inheritance out there do something similar, which means that there's a good chance topiarist.extend will interoperate with whatever your other favourite library is.
 
@@ -52,17 +52,17 @@ Most helpers for inheritance out there do something similar, which means that th
 Interfaces - Duck Typing
 ------------------------
 
-An interface (or a protocol, or with a bit of extra detail of the sort you might put in jsdoc, a contract) is a description of a shape that an object can have.  Interfaces are a concept, so the fact that javascript doesn't have any native operators or keywords that support them doesn't mean that you don't have interfaces.  All of your objects have a shape and sometimes it's useful for objects of different sorts to share the same shape so they can be treated in the same way.
+An interface is a description of a shape that an object can have.  Interfaces are a concept, so the fact that javascript doesn't have any native operators or keywords that support them doesn't mean that you don't have interfaces.  All of your objects have a shape and sometimes it's useful for objects of different sorts to share the same shape so they can be treated in the same way.
 
-Testing the shape of an object is often considered to be a 'non-javascripty' thing to do, but it can allow you to fail faster than you otherwise would have, and that can help you catch errors that you might otherwise have missed.
+Testing the shape of an object is often considered to be a 'non-javascripty' thing to do, but it can allow you to fail fast, and that can help you catch errors that you might otherwise have missed.
 
-It's particularly useful to test for conformance to an interface when you're writing framework type code that receives an object created by someone else and you want to be sure that the object you've been passed really does have all the relevant behaviour on it before continuing.
+It's particularly useful to test for conformance to an interface when you're writing framework code that receives an object created by someone else and you want to be sure that the object you've been passed really does support all the relevant behaviour before continuing.
 
 ### topiarist.fulfills
 
-Topiarist's fulfills method does a fairly standard 'duck type' check.  Given an object and another object describing the shape, it checks that the first object is of the same shape as the second.
+Topiarist's fulfills method does a fairly standard [duck type](https://en.wikipedia.org/wiki/Duck_type) check.  Given an object and another object describing the shape, it checks that the first object is the shape represented by the second.
 
-As well as taking an object to test, it can either take a function where the desired shape is the shape of its prototype, or a description of the shape in the form of a map of names to one of the type constructors (Number/Function/Object/String/Boolean). 
+As well as taking an object to test, it can either take a function where the desired shape is that of its prototype, or a description of the shape in the form of a map of names to one of the type constructors (Number/Function/Object/String/Boolean). 
 
 In the following (much simplified) example, a variable is initialised in one method, and at some point later, two methods, `foo` and `numberOfFoos` are called on it.  This is problematic, because the thisWillBeCalledLater might not be called very often, and it could easily be missed in tests.
 
@@ -242,11 +242,15 @@ A Question Of Style
 	
 	function Animal() {}
 	
-	function Mammal() {};
+	function Mammal() {
+		Animal.call(this);  // remember to call superconstructors in your constructor.
+	};
 	topiarist.extend(Mammal, Animal);
 	topiarist.mixin(Mammal, Furry);
 	
-	function Cat() {};
+	function Cat() {
+		Mammal.call(this);
+	};
 	topiarist.extend(Cat, Mammal);
 	
 	var tabby  = new Cat();
@@ -266,13 +270,17 @@ In the DSL style, you can choose to either use the provided Base class, or for m
 	
 	topiarist.install();
 	
-	function Mammal() {}
+	function Mammal() {
+		Animal.call(this);
+	}
 	Mammal.extends(Animal);
 	Mammal.mixin(Furry);
 	
 	function SomeInterface() {}
 
-	function Cat() {}
+	function Cat() {
+		Mammal.call(this);
+	}
 	Cat.extends(Mammal);
 	Cat.implements(SomeInterface);;
 	
@@ -281,7 +289,8 @@ In the DSL style, you can choose to either use the provided Base class, or for m
 	tabby.isA(Mammal); // true
 	
 	// You can also use the provided base class without installing:
-	
+
+	// if you don't provide a constructor, the superconstructor will be automaticaly called.
 	var Animal = topiarist.Base.extend();
 	var Furry = topiarist.Base.extend({
 		stroke: function() {}

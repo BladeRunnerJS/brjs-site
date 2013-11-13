@@ -1,13 +1,3 @@
----
-layout: post
-title: "Topiarist"
-authors: [kybernetikos]
-thumb: br-logo-black-bg-150x150.png
-
-excerpt: Topiarist is a new javascript OO library featuring sandboxed mixins, excellent interface support, simple multiple inheritance. It adapts to fit your style of writing code.
-
----
-
 Topiarist
 =========
 
@@ -40,13 +30,13 @@ Topiarist's extend method is an evolution of what I favoured back in early [2007
 
 Even so, it does have some nice features over doing it yourself with Object.create:
 
- * it will give you an error if you try to extend something after modifying it.  This fail fast behaviour should help you avoid errors.
+ * setting up the inheritance chain overwrites any modifications that have been made to the prototype.  Changing the inheritance chain after having added methods is almost always a programmer mistake.  Topiarist will detect if you try to do this and throw an error.
  * it copies function properties over from the superclass too.  This is the same behaviour that Backbone has, and it lets you add useful things to your functions that will carry forward to their children too.
  * a 'superclass' property is created on the subclass constructor which can be helpful.
  * the constructor property is set up on the prototype, which means that (object instance).constructor returns the correct thing.
  * if you prefer an object literal style of definition, you can also pass in an object containing definitions of properties you want on the prototype.
 
-Most helpers for inheritance out there do something similar, which means that there's a good chance topiarist.extend will interoperate with whatever your other favourite other library is.
+Most helpers for inheritance out there do something similar, which means that there's a good chance topiarist.extend will interoperate with whatever your other favourite library is.
 
 
 Interfaces - Duck Typing
@@ -163,9 +153,9 @@ Fortunately, we have a way of avoiding this kind of misunderstanding.  If a deve
 
 ### topiarist.isA
 
-Inheritance is often said to be an 'is-a' relationship.  If a `polly` is an instance of `Parrot` and `Parrot` inherits from `Bird`, then we can say both that `polly` is-a `Parrot` *and* `polly` is-a `Bird`.  If `Parrot` is also declared to implement the interface `SeedEater` it's also true to say that `polly` is-a `SeedEater`.
+Just as `fulfills` allows you to check the shape of an object, `isA` allows you to query what has been declared about the object.  It's therefore a way of finding out information that the developer has decided to publish about their semantic intentions for a piece of code.
 
-This concept of 'is-a' is implemented in topiarist with the `isA` query method.
+`isA` returns true for instances and any of their ancestors, whether from single inheritance, interfaces, or multiple or mixin inheritance.  It will return false if no parent-child relationship has been declared, even if the shapes are the same.
 
 The class equivalent is called `isAssignableFrom`, taken from the name it has in Java.
 
@@ -224,53 +214,57 @@ According to some people, it's not true to say in this case that RadioShow is-a 
 A Question Of Style
 -------------------
 
+### Setup
+
 ```javascript
 
 	// works in node or the browser
-	var oo = typeof require !== 'undefined' ? require('topiarist') : window['topiarist'];
+	var topiarist = (typeof require !== 'undefined' ? require('topiarist') : window['topiarist']);
 
 ```
 
-'Boring Style': 
+### 'Traditional Style': 
 
 ```javascript
-
-	// Traditional style
+	
 	function Furry() {}
 	Furry.prototype.stroke = function() {};
 	
 	function Animal() {}
 	
 	function Mammal() {};
-	oo.extend(Mammal, Animal);
-	oo.mixin(Mammal, Furry);
+	topiarist.extend(Mammal, Animal);
+	topiarist.mixin(Mammal, Furry);
 	
 	function Cat() {};
-	oo.extend(Cat, Mammal);
+	topiarist.extend(Cat, Mammal);
 	
 	var tabby  = new Cat();
-	oo.isA(tabby, Cat); // true
-	oo.isA(tabby, Mammal); // true
-	oo.isA(tabby, Furry); // true
+	topiarist.isA(tabby, Cat); // true
+	topiarist.isA(tabby, Mammal); // true
+	topiarist.isA(tabby, Furry); // true
 	
 	// there is also a topiarist.export, which will copy these methods to the global 
 	// object if you want, so you can use isA/extend/mixin directly.
 ```
 
-DSL Style
+### DSL Style
 
 In the DSL style, you can choose to either use the provided Base class, or for maximum lovliness you can call `install` which will add some nonenumerable extra methods to the Function and Object prototype.  While this would be a questionable thing for a library to do automatically, it's a perfectly valid thing for an application to do.
 
 ```javascript
 	
-	oo.install();
+	topiarist.install();
 	
-	function Mammal() {};
+	function Mammal() {}
 	Mammal.extends(Animal);
 	Mammal.mixin(Furry);
 	
-	function Cat() {};
+	function SomeInterface() {}
+
+	function Cat() {}
 	Cat.extends(Mammal);
+	Cat.implements(SomeInterface);;
 	
 	var tabby = new Cat();	
 	tabby.isA(Cat); // true
@@ -278,8 +272,8 @@ In the DSL style, you can choose to either use the provided Base class, or for m
 	
 	// You can also use the provided base class without installing:
 	
-	var Animal = oo.Base.extend();
-	var Furry = oo.Base.extend({
+	var Animal = topiarist.Base.extend();
+	var Furry = topiarist.Base.extend({
 		stroke: function() {}
 	});
 	var Mammal = Animal.extend();

@@ -100,7 +100,7 @@ function thisWillBeCalledLater() {
 }
 ```
 
-This fails fast now, but it's getting ugly and that checking code might have to be repeated in numerous places, plus if what a fooable is ever needed to change, the places you'd have to update in the code are scattered throughout.
+This fails fast now, but it's getting ugly and the checking code might have to be repeated in numerous places. If what a fooable is ever needed to change, the places you'd have to update in the code are scattered throughout.
 
 toparist.fulfills just refactors those checks into a single method, and provides a single definition of what a Fooable should look like.
 
@@ -141,7 +141,7 @@ Fooable.prottoype.numberOfFoos = function() {};
 
 ### topiarist.classFulfills
 
-ClassFulfills does the analogous operation to 'fulfills', but testing a class instead of an instance object.  The intention is that you can use this to see if the objects created by a particular constructor would match a particular shape.  Obviously javascript is dynamic, so it's always possible that someone has deleted the property or changed its type, but this is pretty rare, so classFulfills is still useful, particularly in situations where you've received some configuration telling you to construct a class, and you'd like to check that the class is of the right shape before construction.
+ClassFulfills does the analogous operation to 'fulfills', but testing a class instead of an instance object.  The intention is that you can use this to see if the objects created by a particular constructor would match a particular shape.  Obviously javascript is dynamic, so it's always possible that someone has deleted the property or changed its type.  This is pretty rare so classFulfills is still useful, particularly in situations where you've received some configuration telling you to construct a class and you'd like to check that the class is of the right shape before construction.
 
 
 Interfaces - Semantic Intent
@@ -157,9 +157,9 @@ Once you've defined a class, you can say `topiarist.implements` to assert that t
 
 The shape of an object does not entirely define its contract.  For some objects the `makeHistory` method might build a history of recent events, for others it might attempt to take some action of historical significance, and yet other objects might expect an argument for something to destroy.
 
-Calling 'makeHistory' for something that had an entirely different understanding of what makeHistory means just because it happens to have the shape you're expecting could be disasterous.  That's why duck typing, which says that things of the same shape are the same, though usually right can go badly wrong.
+Calling `makeHistory` for something that had an entirely different understanding of what makeHistory means just because it happens to have the shape you're expecting could be disastrous.  That's why duck typing, which says that things of the same shape are the same, though usually right can go badly wrong.
 
-Fortunately, we have a way of avoiding this kind of misunderstanding.  If a developer has called topiarist.implements to indicate that their object follows a particular interface, we can say that anything that implements that exact interface will have a consistent understanding of what the methods mean.  So everything that implements BaseBallGame will have one understanding of what the 'steal' method does, and that could well be different to things implementing CrownJewels.
+Fortunately, we have a way of avoiding this kind of misunderstanding.  If a developer has called `topiarist.implements` to indicate that their object follows a particular interface, we can say that anything that implements that exact interface will have a consistent understanding of what the methods mean.  So everything that implements `BaseBallGame` will have one understanding of what the `steal` method does, and that could well be different to things implementing `CrownJewels`.
 
 ### topiarist.isA
 
@@ -172,7 +172,7 @@ The class equivalent is called `isAssignableFrom`, taken from the name it has in
 Multiple Inheritance
 --------------------
 
-On the one hand, OO languages are intended to model real objects, and real objects are typically part of more than one conceptual hierarchy, on the other hand allowing inheritance from more than one parent opens up the question of what you should do if there are name clashes.  Maybe something is both a product and a missile, what does `launch` do?
+On the one hand, OO languages are intended to model real objects, and real objects are typically part of more than one conceptual hierarchy, on the other hand allowing inheritance from more than one parent opens up the question of what you should do if there are name clashes.  If something is both a product and a missile, what does `launch` do?
 
 Different systems have different answers to that question.  Some just say "well you're not allowed to do that", others just ignore the problem, while yet others accept the problem and just allow the developer to resolve it through specifying orders of parents.  Java takes an approach which is a mix of the two - it disallows multiple inheritance of behaviour, regardless of whether there is a conflict or not and pretends (incorrectly) that the problem doesn't exist for interfaces.
 
@@ -189,21 +189,21 @@ Topiarist is more consistent; whenever it can detect a possible conflict of sema
 
 ### topiarist.inherit
 
-In javascript, multiple inheritance is usually achieved by copying functionality over from the parent and topiarist does this too.  It will however check to see if there is a semantic clash, and throw an error if there is, and it also records the fact that your class has inherited from a parent in order to allow `isA` queries to work against multiply inherited parents as well as interfaces and the single inheritance chain.
+In javascript, multiple inheritance is usually achieved by copying functionality over from the parent and topiarist does this too.  It will however check to see if there is a semantic clash, and throw an error if there is.  It also records the fact that your class has inherited from a parent in order to allow `isA` queries to work against multiple inherited parents as well as interfaces and the single inheritance chain.
 
 In order to make clear what I mean by 'a semantic clash', let me give you an example:
 
-Class Foo has a method foo.  This means that the 'foo' action has a meaning in the context of things of type 'Foo'.  If 'Bar' and 'Baz' both inherit from 'Foo' and neither overrides the 'foo' action, and then finally MyClass multiply inherits from 'Bar' and 'Baz', then there is no problem, because the 'foo' action on MyClass has a single semantic meaning - it works by virtue of the fact that MyClass is a 'Foo', and the meaning of the 'foo' method is the 'Foo' meaning.
+Class `Foo` has a method `foo`.  This means that the foo action has a meaning in the context of things of type `Foo`.  If `Bar` and `Baz` both inherit from `Foo` and neither overrides the `foo` action, and then finally MyClass multiple inherits from `Bar` and `Baz`, then there is no problem, because the `foo` action on `MyClass` has a single semantic meaning - it works by virtue of the fact that `MyClass` is a `Foo`, and the meaning of the `foo` method is the `Foo` meaning.
 
-If 'Bar' were to override 'foo', then there would still be no problem, because the 'foo' method MyClass would inherit from 'Bar' would be appropriate for it being a 'Bar' and a 'Foo', and since 'Baz' doesn't specify any behaviour different to that required by 'Foo', it's appropriate for 'Baz' too.
+If `Bar` were to override `foo`, then there would still be no problem, because the `foo` method `MyClass` would inherit from `Bar` would be appropriate for it being a `Bar` and a `Foo`, and since `Baz` doesn't specify any behaviour different to that required by `Foo`, it's appropriate for `Baz` too.
 
-If 'Bar' *and* 'Baz' were to provide implementations of 'foo', then there would be a problem, because topiarist has no way of knowing if the 'Bar' concept of 'foo' is applicable to 'Baz'es or if the 'Baz' concept of 'foo' is applicable to 'Bar's.  Topiary will detect this and throw an error if you try to inherit in this case.
+If `Bar` *and* `Baz` were to provide implementations of `foo`, then there would be a problem, because topiarist has no way of knowing if the `Bar` concept of 'foo' is applicable to Baz'es or if the `Baz` concept of 'foo' is applicable to Bars.  Topiary will detect this and throw an error if you try to inherit in this case.
 
 ### topiarist.mixin
 
-Inheritance is almost always a little risky, since it usually involves some level of encapsulation-breaking, where the childs dependency on the parent is at a deeper level than the parents public api.  This provides opportunities for the childs state to clash with the parents state.
+Inheritance is almost always a little risky, since it usually involves some level of encapsulation-breaking, where the childs dependency on the parent is at a deeper level than the parents public API.  This provides opportunities for the childs state to clash with the parents state.
 
-One way of avoiding this is to receive behaviour (I might use the term 'inherit', but not everyone agrees that is correct usage) from a mixin.  Mixins are intended as slices of functionality that can be added to a class, without any possibility of the state of the mixin clashing with the state of the receiving class.
+One way of avoiding this is to receive behaviour (I use the term 'inherit', but not everyone agrees that is correct usage) from a mixin.  Mixins are intended as slices of functionality that can be added to a class, without any possibility of the state of the mixin clashing with the state of the receiving class.
 
 Conceptually, inheriting from a mixin means adding the mixins behaviour to your class, whereas inheriting from a superclass means *specialising* the superclass.  
 
@@ -216,9 +216,9 @@ topiarist.mixin(RadioShow, Emitter);
 
 ```
 
-This will add definitions for `.on`, `.trigger`, etc to RadioShow.  The key difference between this and the `topiarist.inherit` method described above is that these functions are sandboxed.  If your emitter uses a `this.listeners` array to store listeners added with `.on`, and your RadioShow class happens to use a property `this.listeners` to store the number of listeners the programme receives, the Emitter methods will continue to work.  In fact, while the mixin has access to its own state per object, it has no access to the state of the instance.  It can only call functions and affect state that it defines on the instance.
+This will add definitions for `.on`, `.trigger`, etc to `RadioShow`.  The key difference between this and the `topiarist.inherit` method described above is that these functions are sandboxed.  If your emitter uses a `this.listeners` array to store listeners added with `.on`, and your `RadioShow` class happens to use a property `this.listeners` to store the number of listeners the programme receives, the `Emitter` methods will continue to work.  In fact, while the mixin has access to its own state per object, it has no access to the state of the instance.  It can only call functions and affect state that it defines on the instance.
 
-According to some people, it's not true to say in this case that RadioShow is-a Emitter because it mixes in the Emitter functionality, rather than specialising the Emitter concept, but since I can't imagine a situation where it would be useful for `isA` to return false in this case, toparist takes the pragmatic view that adding a mixin causes you to become an example of the thing you mixed in for the purpose of `isA` checks.
+According to some people, it's not true to say in this case that `RadioShow` is-a `Emitter` because it mixes in the `Emitter` functionality, rather than specialising the `Emitter` concept, but since I can't imagine a situation where it would be useful for `isA` to return false in this case, toparist takes the pragmatic view that adding a mixin causes you to become an example of the thing you mixed in for the purpose of `isA` checks.
 
 
 A Question Of Style
@@ -264,7 +264,7 @@ A Question Of Style
 
 ### DSL Style
 
-In the DSL style, you can choose to either use the provided Base class, or for maximum lovliness you can call `install` which will add some nonenumerable extra methods to the Function and Object prototype.  While this would be a questionable thing for a library to do automatically, it's a perfectly valid thing for an application to do.
+In the DSL style, you can choose to either use the provided Base class, or for maximum loveliness you can call `install` which will add some nonenumerable extra methods to the `Function` and `Object` prototype.  While this would be a questionable thing for a library to do automatically, it's a perfectly valid thing for an application to do.
 
 ```javascript
 	

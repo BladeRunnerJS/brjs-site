@@ -174,7 +174,7 @@ Multiple Inheritance
 
 On the one hand, OO languages are intended to model real objects, and real objects are typically part of more than one conceptual hierarchy, on the other hand allowing inheritance from more than one parent opens up the question of what you should do if there are name clashes.  Maybe something is both a product and a missile, what does `launch` do?
 
-Different systems have different answers to that question.  Some just say "well you're not allowed to do that", others just ignore the problem.  Java takes an approach which is a mix of the two - it disallows multiple inheritance of behaviour, regardless of whether there is a conflict or not and pretends (incorrectly) that the problem doesn't exist for interfaces.
+Different systems have different answers to that question.  Some just say "well you're not allowed to do that", others just ignore the problem, while yet others accept the problem and just allow the developer to resolve it through specifying orders of parents.  Java takes an approach which is a mix of the two - it disallows multiple inheritance of behaviour, regardless of whether there is a conflict or not and pretends (incorrectly) that the problem doesn't exist for interfaces.
 
 ```java
 public class Sidewinder implements Product, Missile {

@@ -498,12 +498,39 @@ body.post .copy {
   .call-to-action form {
     margin-left: 0;
   }
+
+  body.blog_list .post-title {
+    text-align: center;
+  }
+  
+  body.blog_list .post-title .meta {
+    text-align: center;
+    margin-bottom: 5px; 
+  }
+  
+  body.blog_list .post-title .meta * {
+    float: none !important;
+    clear: none !important;
+  }
+  
+  body.blog_list .post-title .meta .by {
+    /*padding-right: 2px;*/
+  } 
+  
+  body.blog_list .post-image {
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
   .home-get-started .cta-round {
     bottom: -10px !important;
     right: 0;
+  }
+
+  .main-logo-img {
+    max-width: 80%;
+    min-width: 300px;
   }
 }
 

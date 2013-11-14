@@ -11,7 +11,7 @@ excerpt: Topiarist is a new javascript OO library featuring sandboxed mixins, ex
 ## Introducing Topiarist
 
 <div style="float: right; margin: 30px; text-align: center; color: #c7c7c7;" align="right">
-  <img src="/blog/img/{{ page.thumb }}" alt="Our mate Darth undertaking some topiary" /><br />
+  <img src="/blog/img/{{ page.thumb }}" alt="Our mate Darth undertaking some topiary" style="margin-bottom: 0;" /><br />
   <small>Original image source unknown</small>
 </div>
 
@@ -52,7 +52,9 @@ Most helpers for inheritance out there do something similar, which means that th
 
 ## Interfaces - Duck Typing
 
-An interface is a description of a shape that an object can have.  **Interfaces are a concept, so the fact that javascript doesn't have any native operators or keywords that support them doesn't mean that you don't have interfaces.  All of your objects have a shape and sometimes it's useful for objects of different sorts to share the same shape so they can be treated in the same way.**
+An interface is a description of a shape that an object can have.
+
+**Interfaces are a concept, so the fact that javascript doesn't have any native operators or keywords that support them doesn't mean that you don't have interfaces.  All of your objects have a shape and sometimes it's useful for objects of different sorts to share the same shape so they can be treated in the same way.**
 
 Testing the shape of an object is often considered to be a 'non-javascripty' thing to do, but it can allow you to fail fast, and that can help you catch errors that you might otherwise have missed.
 

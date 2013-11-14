@@ -395,6 +395,40 @@ body.post p img {
   max-width: 600px;
 }
 
+body.post .post img {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body.post .post .ticked,
+body.post .post .crossed {
+  font-size: 50px;
+  text-align: center;
+}
+
+body.post .post .ticked img,
+body.post .post .crossed img {
+  margin-bottom: 0;
+}
+
+body.post .post .ticked {
+  color: green;
+}
+
+body.post .post .crossed {
+  color: red;
+}
+
+body.post .post .ticked:after {
+  content: '✔';
+}
+
+body.post .post .crossed:after {
+  content: '✖';
+}
+
 body.post .fig-text {
   display: block;
   text-align: center;

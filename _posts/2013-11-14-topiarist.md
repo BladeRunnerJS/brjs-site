@@ -167,7 +167,7 @@ Just as `fulfills` allows you to check the shape of an object, `isA` allows you 
 
 The class equivalent is called `classIsA`.
 
-    topiarist.classIsA(instance, parent);
+    topiarist.classIsA(myClass, parent);
 
 ## Multiple Inheritance
 

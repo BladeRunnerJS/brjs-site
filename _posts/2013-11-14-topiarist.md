@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Topiarist - Comprehensive OO JavaScript In The Style You Want"
+title: "Topiarist: A JavaScript OO library featuring mixins, interfaces & multiple inheritance"
 authors: [kybernetikos]
 thumb: topiarist.gif
 

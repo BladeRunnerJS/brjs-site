@@ -3,6 +3,8 @@ pygments: true
 relative_permalinks: false
 permalink: /blog/:title
 
+exclude: node_modules
+
 social:
   twitter_link: https://twitter.com/BladeRunnerJS
   github_link: https://github.com/bladerunnerjs/brjs

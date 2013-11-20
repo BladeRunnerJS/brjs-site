@@ -259,7 +259,7 @@ According to some people, it's not true to say in this case that `RadioShow` is-
 
 ### DSL Style
 
-In the DSL style, you can choose to either use the provided Base class, or for maximum loveliness you can call `install` which will add some nonenumerable extra methods to the `Function` and `Object` prototype.  While this would be a questionable thing for a library to do automatically, it's a perfectly valid thing for an application to do.
+To use the DSL style, you can call `install` which will add some nonenumerable extra methods to the `Function` and `Object` prototype.  While this would be a questionable thing for a library to do automatically, it's a perfectly valid thing for an application to do.
   
     topiarist.install();
     

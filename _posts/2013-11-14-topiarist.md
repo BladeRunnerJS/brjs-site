@@ -10,8 +10,8 @@ excerpt: Topiarist is a new javascript OO library featuring sandboxed mixins, ex
 
 ## Introducing Topiarist
 
-<div style="float: right; margin: 30px; text-align: center; color: #c7c7c7;" align="right">
-  <img src="/blog/img/{{ page.thumb }}" alt="Our mate Darth undertaking some topiary" style="margin-bottom: 0;" /><br />
+<div style="float: right; margin: 30px; margin-top: 0; text-align: center; color: #c7c7c7;" align="right">
+  <img src="/blog/img/{{ page.thumb }}" alt="Our mate Darth undertaking some topiary" style="margin-bottom: 0; margin-top: 0;" /><br />
   <small>Original image source unknown</small>
 </div>
 

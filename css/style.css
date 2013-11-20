@@ -361,15 +361,11 @@ body.single_page .copy .fig-text {
 
 .blog-list .post-title .meta .by {
   display: inline-block;
-  float: right;
-  clear: both;
   color: #c0c0c0;
 }
 
 .blog-list .post-title .meta .authors {
   display: inline-block;
-  float: right;
-  clear: both;
 }
 
 .blog-list .post-title a {
@@ -419,7 +415,7 @@ body.post .post .crossed {
 
 body.post .post .ticked img,
 body.post .post .crossed img {
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 body.post .post .ticked {

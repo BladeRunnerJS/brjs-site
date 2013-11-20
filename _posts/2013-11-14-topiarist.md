@@ -19,7 +19,7 @@ There are a lot of libraries out there to help with inheritance in JavaScript, a
 
 If you need more, many libraries include their own helper methods for Object Orientation.  This is not really surprising as any large endevour is likely to start to want to talk in terms of the commonality shared by a class of objects which is exactly what a traditional OO class is, and relying only on the javascript built-ins for doing class inheritance involves writing some fairly opaque boilerplate.
 
-So jQuery has a simple [extend](http://api.jquery.com/jQuery.extend/) method, Backbone provides an [extend method](http://backbonejs.org/#Model-extend) that properly sets up the prototype chain, [prototype](http://prototypejs.org/learn/class-inheritance.html) gives you a Class object that manages extension for you, [underscore](http://underscorejs.org/) provides some basic extension methods too.
+So jQuery has a simple [extend method](http://api.jquery.com/jQuery.extend/), Backbone provides an [extend method](http://backbonejs.org/#Model-extend) that properly sets up the prototype chain, [prototype](http://prototypejs.org/learn/class-inheritance.html) gives you a Class object that manages extension for you, [underscore](http://underscorejs.org/) provides some basic extension methods too.
 
 If you're uncomfortable including a full framework or general library for just the OO behaviour, there are also many more focussed microlibraries.  [ringjs](http://ringjs.neoname.eu/) is interesting because it implements Python style inheritance (including Python style multiple inheritance). There are a  number of interesting libraries which add aspect oriented programming to the OO paradigm too, such as [dcljs](http://www.dcljs.org/).
 
@@ -32,7 +32,7 @@ In order to do interfaces well, we built our own library, [topiarist](http://bla
 
 ## Single Inheritance 
 
-Javascript has support for single inheritance built into the language.  The prototype chain is a chain of inheritance and you can query the chain with the instanceof operator.
+Javascript has support for single inheritance built into the language.  The prototype chain is a chain of inheritance and you can query the chain with the `instanceof` operator.
 
 ### topiarist.extends
 
@@ -270,7 +270,7 @@ In the DSL style, you can choose to either use the provided Base class, or for m
     Mammal.mixin(Furry);
     
     function SomeInterface() {}
-
+    
     function Cat() {
       Mammal.call(this);
     }
@@ -280,8 +280,10 @@ In the DSL style, you can choose to either use the provided Base class, or for m
     var tabby = new Cat();  
     tabby.isA(Cat); // true
     tabby.isA(Mammal); // true
-    
-    // You can also use the provided base class without installing:
+
+### Base Class Style
+
+If you want most of the benefits of calling `topiarist.install` without altering builtins, you can instead extend the `topiarist.Base` class to create your classes.  This has the benefit that if you do not provide a constructor, it will automatically call the superconstructor.  If you do provide a constructor, you should still call your superconstructor.  This style is very similar to how you extend backbone classes.
 
     // if you don't provide a constructor, the superconstructor will be automaticaly called.
     var Animal = topiarist.Base.extend();

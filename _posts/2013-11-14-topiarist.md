@@ -275,7 +275,7 @@ To use the DSL style, you can call `install` which will add some nonenumerable e
       Mammal.call(this);
     }
     Cat.extends(Mammal);
-    Cat.implements(SomeInterface);;
+    Cat.implements(SomeInterface);
     
     var tabby = new Cat();  
     tabby.isA(Cat); // true

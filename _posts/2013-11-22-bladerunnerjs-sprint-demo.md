@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "BladeRunnerJS Sprint Demo"
+title: "BladeRunnerJS Sprint Demo #3 - Bug fixes and Bundler Plugin architecture"
 authors: [sospirited]
 thumb: progress.jpg
 
-excerpt: Bug fixes, bundler infrastructure and conferences. Here's a quick update on what the BRJS team have been working on the past couple weeks.
+excerpt: Bug fixes, bundler infrastructure. blogging and conferences. Here's a quick update on what the BRJS team have been working on the past couple weeks.
 
 ---
 
@@ -18,7 +18,7 @@ One of our goals is to make BladeRunnerJS as plugin-friendly as possible, we wan
 
 In addition to the above, we've also put out a blog post about one of our micro-libraries, [Topiarist](http://bladerunnerjs.org/blog/topiarist) - A JavaScript OO library featuring mixins, interfaces & multiple inheritence (complete with picture of darth vader trimming a shrub).
 
-We also had Phil Leggeter attend [DunDDD] conference to give a talk on [Scaling JS Applications](http://leggetter.github.io/talks/scaling-js-apps/#/) which was quite well received.
+We also had Phil Leggeter attend [DunDDD](http://dun.dddscotland.co.uk/) conference to give a talk on [Scaling JS Applications](http://leggetter.github.io/talks/scaling-js-apps/#/) which was well received.
 
 ## So what are we working on next?
 

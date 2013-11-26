@@ -22,7 +22,7 @@ We also had Phil Leggeter attend [DunDDD](http://dun.dddscotland.com/) conferenc
 
 ## So what are we working on next?
 
-Following our [BRJS v0.2 release](https://github.com/BladeRunnerJS/brjs/releases/tag/v0.2) last sprint, we are moving closer to support for Node.js style client-side code and improving the user debugging experience.
+Following our recent [BRJS v0.3 release](https://github.com/BladeRunnerJS/brjs/releases/tag/v0.3), we are moving closer to support for Node.js style client-side code and improving the user debugging experience.
 
 For further details please see our [roadmap](http://bladerunnerjs.org/docs/roadmap/).
 

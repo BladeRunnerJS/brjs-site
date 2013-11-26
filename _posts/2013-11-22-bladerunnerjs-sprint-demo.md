@@ -18,7 +18,7 @@ One of our goals is to make BladeRunnerJS as plugin-friendly as possible, we wan
 
 In addition to the above, we've also put out a blog post about one of our micro-libraries, [Topiarist](http://bladerunnerjs.org/blog/topiarist) - A JavaScript OO library featuring mixins, interfaces & multiple inheritence (complete with picture of darth vader trimming a shrub).
 
-We also had Phil Leggeter attend [DunDDD](http://dun.dddscotland.co.uk/) conference to give a talk on [Scaling JS Applications](http://leggetter.github.io/talks/scaling-js-apps/#/) which was well received.
+We also had Phil Leggeter attend [DunDDD](http://dun.dddscotland.com/) conference to give a talk on [Scaling JS Applications](http://leggetter.github.io/talks/scaling-js-apps/#/) which was well received.
 
 ## So what are we working on next?
 

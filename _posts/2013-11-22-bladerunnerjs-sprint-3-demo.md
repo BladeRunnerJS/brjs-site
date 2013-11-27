@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "BladeRunnerJS Sprint Demo #3 - Bug fixes and Bundler Plugin architecture"
+title: "BladeRunnerJS Sprint 3 Demo - Bug fixes and Bundler Plugin architecture"
 authors: [sospirited]
 thumb: progress.jpg
 

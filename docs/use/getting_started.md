@@ -90,7 +90,7 @@ With this basic application structure in place we can create our first Blade and
 
 ## The Todo Input Blade
 
-[Blades](/docs/concepts/blades) are a core concept within BRJS. Blades are moduls that encapsulates all the required functionality and resources – JavaScript, HTML, CSS, XML, images, etc – to implement a particular high level feature. So, let's create a Blade for capturing the Todo input items.
+[Blades](/docs/concepts/blades) are a core concept within BRJS. Blades are modules that encapsulate all the required functionality and resources – JavaScript, HTML, CSS, XML, images, etc – to implement a particular high level feature. So, let's create a Blade for capturing the Todo input items.
 
 ### Scaffold the Blade
 
@@ -122,7 +122,7 @@ This creates a `todoinput` directory within `unzip_location/apps/brjs-todo/todo-
 
 ### View the Code
 
-Within `apps/brjs-todo/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput/src` you'll find an `ExamplePresentationModel.js` file.
+Within `apps/brjs-todo/todo-bladeset/blades/todoinput/src/bjrstodo/todo/todoinput` you'll find an `ExamplePresentationModel.js` file.
 
 <div class="alert alert-info github">
   <p>Yeah, this folder structure is crazy! We're working on a <a href="https://github.com/BladeRunnerJS/brjs/issues/19">simplified directory structure</a></p>
@@ -251,7 +251,7 @@ A core concept with BRJS is building a JavaScript application that scales. One o
 
 When you scaffold a new Blade a test class is also created. The scaffolded test can be found in `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`:
 
-    (function() {
+    ;(function() {
 
       ExampleClassTest = TestCase("ExampleClassTest");
 
@@ -263,7 +263,7 @@ When you scaffold a new Blade a test class is also created. The scaffolded test 
 
 The simplest test we can write at the moment is to check that the `todoText` field is initialized with an empty string value.
 
-    (function() {
+    ;(function() {
   
       ExampleClassTest = TestCase('ExampleClassTest');
     
@@ -737,7 +737,7 @@ As explained above, we also want to make sure the View Model is updated with a n
 
 Re-running the test command will now show two tests successfully passing.
 
-Since we know that Blade uses the EventHub to receive new items, and we have a fake hub in place, we can execute the callback that the Blade is waiting for, passing Todo item data, and then check that the item has been added to the end of the list.
+Since we know that the Blade uses the EventHub to receive new items, and we have a fake hub in place, we can execute the callback that the Blade is waiting for, passing Todo item data, and then check that the item has been added to the end of the list.
 
 Both the `todoinput` and `todoitems` Blades have the functionality that we're looking for, and they are set up to communicate using the `br.demo-event-hub` service. The next thing to do is to add them to an application [Aspect](/docs/concepts/aspects). We'll then have a fully functional Todo List app.
 
@@ -848,7 +848,7 @@ If we refresh the application we'll now see the Input and the Todo List appended
 
 Finally, we *really* need to apply some styling to the application.
 
-Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at a the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [directory](https://github.com/BladeRunnerJS/brjs-todo/tree/master/default-aspect/themes/standard) in the BRJS Todo App github repo and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two files from the [directory](https://github.com/BladeRunnerJS/brjs-todo/tree/master/default-aspect/themes/standard) in the BRJS Todo App github repo and place them in `brjs-todo/default-aspect/themes/standard/`. Then refresh the app.
 
 ![](/docs/use/img/styled-app.png)
 

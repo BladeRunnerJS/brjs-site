@@ -14,6 +14,14 @@ The [EventHub](/docs/concepts/event_hub/) is an example of a service that is pre
 
 ### Registering a Service
 
+Services can be registered in the for the following:
+
+* Aspects - used when the application is running
+* Workbenches - used when a Workbench is running
+* Tests - used when executing tests
+
+The benefit of this is that you can register different services for these scenarios. For example, you may register a test mock service that enables assertions in tests in the Tests scenario and you may register a dummy service in a Workbench scenario to facilitate the development of a Blade.
+
 Services can be registered through code or configuration.
 
 #### Code
@@ -54,7 +62,9 @@ These allow you to set up the services that are registered for the given alias (
 </aliases>
 ```
 
-*Note: the `useScenario="dev"` attribute is only present in test and development scenarios*
+<div class="alert alert-info">
+  <p>The <code>useScenario="dev"</code> attribute is only present in test and development scenarios</p>
+</div>
 
 In the example above a new instance of the `mylib.MyService` is created and registered with the `ServiceRegistry` with the `my.something-service` identifier.
 
@@ -68,3 +78,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var myService = ServiceRegistry.getService( 'my.something-service' );
 myService.doSomething();
 ```
+
+<div class="alert alert-info">
+  <p>If a service is defined in an <code>aliases.xml</code> but is not retrieved from the <code>ServiceRegistry</code> in any application or test code, the BRJS dependency analysis system will notice this and therefore not register it with the ServiceRegistry. Please see <a href="/docs/concepts/dependency_analysis/">Dependency Analysis</a> for more information.</p>
+</div>

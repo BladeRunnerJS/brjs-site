@@ -5,6 +5,8 @@ permalink: /blog/:title
 
 exclude: [ node_modules ]
 
+markdown: redcarpet
+
 social:
   twitter_link: https://twitter.com/BladeRunnerJS
   github_link: https://github.com/bladerunnerjs/brjs

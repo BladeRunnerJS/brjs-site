@@ -15,9 +15,18 @@ To run the website locally:
     git clone git@github.com:BladeRunnerJS/brjs-site.git
     cd brjs-site
     gem install jekyll
+    gem install redcarpet # may not be required
     jekyll serve -w
     
 Navigate to `localhost:4000` to see the site running.
+
+#### Gotcha: Error installing redcarpet
+
+If you're on iOS Mavericks you may need to:
+
+1. Have XCode installed
+2. Ensure you've accepted the XCode agreement (start app, agree, close)
+3. Have Command Line Tools installed: use `xcode-select --install`
 
 ## Docs
 

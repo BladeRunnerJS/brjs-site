@@ -16,5 +16,4 @@ The BRJS Toolkit comes with a plugin architecture means that you can create func
 
 ### Tutorials
 
-* [CommandPlugin tutorial](/docs/extend/command_plugin_tutorial/)
-* [ModelObserverPlugin tutorial](/docs/extend/model_observer_plugin_tutorial/)
+{% include docs/extend/toc.html %}

@@ -14,7 +14,9 @@ For example, the contents of a Blade directory is:
 |-resources/
 |-src/
 |- tests/
+/*** New code ***/
 |  |- test-unit/
+/*** end of new code ***/
 |- themes/
 |- workbench/
 ```

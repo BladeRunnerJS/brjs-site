@@ -12,7 +12,7 @@ It is also possible for Blades to register themselves as offering services. Beca
 
 The [EventHub](/docs/concepts/event_hub/) is an example of a service that is pre-defined and available by default in any BRJS application.
 
-### Registering a Service
+## Registering a Service
 
 Services can be registered in the for the following:
 
@@ -24,7 +24,7 @@ The benefit of this is that you can register different services for these scenar
 
 Services can be registered through code or configuration.
 
-#### Code
+### Code
 
 Services are instances of service classes which are identfied by a name. They are registered with the `ServiceRegistery` passing the name and an instance of the class.
 
@@ -46,7 +46,7 @@ var MyService = mylib.MyService;
 ServiceRegistry.registerService( 'my.something-service', new MyService() );
 ```
 
-#### XML configuration
+### XML configuration
 
 `aliases.xml` files can be found in a few locations within a BRJS application.
 
@@ -68,7 +68,7 @@ These allow you to set up the services that are registered for the given alias (
 
 In the example above a new instance of the `mylib.MyService` is created and registered with the `ServiceRegistry` with the `my.something-service` identifier.
 
-### Accessing a Service
+## Accessing a Service
 
 The `MyService` that was registered earlier can be accessed via the logical name we gave it, `my.something-service`, anywhere in the application or test code:
 

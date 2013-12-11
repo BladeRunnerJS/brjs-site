@@ -7,7 +7,7 @@ notice: none
 
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
-This isn't your typical 2 minute getting started guide - it probably takes around 20 minutes. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**.
+This isn't your typical 2 minute getting started guide. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**.
 
 We'll cover:
 
@@ -22,23 +22,9 @@ We'll cover:
 * Adding Blades to an application Aspect
 * Building and Deploying a BRJS application to Apache Tomcat (Flat File deploy coming soon)
 
-It'll be 20 minutes well-spent.
+It'll be time well-spent.
 
-## Prerequisites
-
-In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed. To deploy the built .WAR file you'll need access to an installation of [Apache Tomcat](http://tomcat.apache.org/) (installing is as simple as download and unzip).
-
-## Download & Install BRJS
-
-Download the [latest BRJS release](https://github.com/BladeRunnerJS/brjs/releases/) and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI excutable is `BRJS_HOME/sdk/brjs`.
-
-<p><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="btn btn-success">Download BladeRunnerJS</a></p>
-
-<div class="alert alert-info">
-  <p>
-    We're working towards a <a href="https://github.com/BladeRunnerJS/brjs/issues/1">global install</a>. For the moment you'll need to execute the <code>brjs</code> command via <code>BRJS_HOME/sdk/brjs</code>.
-  </p>
-</div>
+{% include docs/use/install.md %}
 
 ## Create an Application
 

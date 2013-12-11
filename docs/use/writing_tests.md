@@ -1,10 +1,10 @@
 ---
 layout: docs
-title: Writing and Running Tests
-permalink: /docs/use/writing_and_running_tests/
+title: Writing Tests
+permalink: /docs/use/writing_tests/
 ---
 
-## Writing Unit Tests
+## Code Facing Unit Tests
 
 Within a BRJS application the tests reside with the functionality they are written to test. In the case of a unit tests they should be in a `tests/test-unit` directory where `test` is at the same level as the `src` directory where the functional code is located.
 
@@ -68,57 +68,10 @@ The test above defines a new `TestCase` giving it a name. Then it uses `require`
 
 The test, `test_text_can_be_set`, defines the text to be used in the test in a local `text` variable, calls `setText` passing in the variable, and then asserts that the `todoItem.text` has been set as expected.
 
-See below for how to run the test.
+See [running tests](/docs/use/running_tests/) for how to execute tests.
 
-## Writing Business Tests
+## Business Facing Acceptance Tests
 
 <p class="doc-feedback alert alert-warning">
   Coming soon...
 </p>
-
-## Running Tests
-
-Tests of any kind are executing using the `brjs test` command which uses [JS Test Driver](https://code.google.com/p/js-test-driver/). This means that both code and business tests can be executed at the same time if required, using the same test runner.
-
-### Running tests with configuration
-
-By default executing test requires browser locations to be configured. The configuration file can be found in `BRJS_HOME/conf/test-runner.conf`.
-
-This file contains the most common paths to browser installations. Simply comment out the lines appropriate to your browsers or update the paths if required. For example:
-
-```bash
-browserPaths:
-  mac:
-    # chrome enabled
-    chrome: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" 
-#    firefox: /Applications/Firefox.app/Contents/MacOS/firefox
-#   !!safari is currently not supported in this version of BladeRunner!!
-#    safari: /Applications/Safari.app/Contents/MacOS/Safari
-```
-
-Now you can execute tests by running the `brjs test` command and supplying a path to the tests you wish to execute. You can run tests for an application at different levels of granularity - from all application tests through to tests for a single Blade or library - by passing the `test` command the approprate path.
-
-Run all tests for the `brjs-todo` application:
-
-    $ ./brjs test ../apps/brjs-todo
-
-Run the tests for just the `todo-input` Blade:
-
-    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
-
-### Running tests without setting config
-
-If you would rather not set configuration you can instead start the test server:
-
-    $ ./brjs test-server
-
-This will start the test server listening on the port identified by the `portNumber` option in `BRJS_HOME/conf/test-runner.conf`. By default this is 4224. You can then navigate to `http://localhost:4224` which will set the browser listening for tests to run, and then execute tests and pass the `--no-browser` flag and passing the path to the tests you want to run.
-
-Run all tests for the `brjs-todo` application:
-
-    $ ./brjs test --no-browser ../apps/brjs-todo
-
-Run the tests for just the `todo-input` Blade:
-
-    $ ./brjs test --no-browser ../apps/brjs-todo/todo-bladeset/blades/todo-input
-

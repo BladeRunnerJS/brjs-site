@@ -33,10 +33,7 @@ template: docs
 			{% include docs/extend/toc.html %}
 
 			<h4>Reference</h4>
-			<ul>
-				<li><a href="/docs/roadmap/">Roadmap to 1.0</a></li>
-				<li><a href="/docs/reference/browser_support/">Browser Support</a></li>
-			</ul>
+			{% include docs/reference/toc.html %}
 
 			<p class="doc-feedback alert alert-info">
 				Got a suggestion to improve the docs? You can find the source <a href="{{ site.social.docs_issues_link }}">on github</a>. Please submit a pull request or raise an issue.

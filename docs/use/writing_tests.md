@@ -4,9 +4,16 @@ title: Writing Tests
 permalink: /docs/use/writing_tests/
 ---
 
-## Code Facing Unit Tests
+Within a BRJS application the tests reside with the functionality they are written to test.
 
-Within a BRJS application the tests reside with the functionality they are written to test. In the case of a unit tests they should be in a `tests/test-unit` directory where `test` is at the same level as the `src` directory where the functional code is located.
+* Blade tests are located in `<blade-name>/tests`
+* BladeSet tests are located in `<bladeset-name>/tests`
+* Aspect tests are located in `<aspect-name>/tests`
+* Library tests are located in `<library-name>/tests`
+
+## Unit Tests
+
+In the case of a unit tests they should be in a `tests/test-unit`.
 
 For example, the contents of a Blade directory is:
 

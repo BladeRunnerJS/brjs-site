@@ -76,9 +76,15 @@ As above, BRJS comes with a JavaScript compiler and minifier. We use the [Closur
 
 Before we feed our JavaScript into Closure, we first do our own bundling. We do this aided by our own dependency analysis functionality that is provided by the default BRJS bundler plugins.
 
-### JavaScript Bundler: BRJS Dependency Analyzer
+### JavaScript Bundler
+
+### BRJS Dependency Analyzer
 
 As above, we have a JavaScript Dependency Analyzer as part of the toolkit. This allows us to understand the code that is being used. We can use this in our tooling and when bundling JavaScript to ensure that only classes that are actually used are included in the payload to the development server and in bundled production assets.
+
+### Node.js/CommonJS Bundler Plugin
+
+The first **JavaScript bundler plugin** that we are just about to release will support Node.js/CommandJS style modules that can be used within the web browser. This is backed by the dependency analyzer that understands the `require` syntax and a JavaScript Module Loader that facilitates the declaration and retrieval of modules (see the "Modular JavaScript" section below for more details).
 
 ### Test Runner: JS Test Driver
 

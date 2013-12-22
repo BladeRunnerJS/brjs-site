@@ -4,8 +4,6 @@ title: IoC (Inversion of Control)
 permalink: /docs/concepts/ioc/
 ---
 
-{% include docs/coming_soon.html %}
-
 ## AliasRegistry
 
 The `AliasRegistry` is used to provide access to the aliases used within the application. Aliasing allows you to refer to JavaScript classnames using name-spaced logical identifiers.  The class that's actually used at run-time is independently defined in a separate configuration file. You can use alias names in JavaScript, HTML or XML files.

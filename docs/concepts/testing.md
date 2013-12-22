@@ -6,7 +6,7 @@ permalink: /docs/concepts/testing/
 
 The BRJS toolkit and application architecture encourages you to implement tests at a number of different levels. The focus is to push testing down the testing triangle as much as possible as this results in faster and more reliable tests.
 
-![](https://docs.google.com/drawings/d/1lIrdZ0RRk1J1uYdvrrG1nEwx7R0MlOUugE1MghtV0wk/pub?w=960&amp;h=720)
+<img src="https://docs.google.com/drawings/d/1lIrdZ0RRk1J1uYdvrrG1nEwx7R0MlOUugE1MghtV0wk/pub?w=960&amp;h=720" height="500" alt="BRJS App Testing Triangle" />
 
 ## Code Facing Tests
 

@@ -78,7 +78,7 @@ Before we feed our JavaScript into Closure, we first do our own bundling. We do 
 
 ### JavaScript Bundler: BRJS Dependency Analyzer
 
-As above, we have a [JavaScript Dependency Analyzer](http://bladerunnerjs.org/docs/concepts/dependency_analysis/) as part of the toolkit. This allows us to understand the code that is being used. We can use this in our tooling and when bundling JavaScript to ensure that only classes that are actually used are included in the payload to the development server and in bundled production assets.
+As above, we have a JavaScript Dependency Analyzer as part of the toolkit. This allows us to understand the code that is being used. We can use this in our tooling and when bundling JavaScript to ensure that only classes that are actually used are included in the payload to the development server and in bundled production assets.
 
 ### Test Runner: JS Test Driver
 

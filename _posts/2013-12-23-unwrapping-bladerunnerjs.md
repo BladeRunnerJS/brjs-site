@@ -36,7 +36,7 @@ The first question many may ask is why Java and why not Node.js? James Turner re
 
 My summary would be: 
 
-* When we embarked on creating our development toolkit - nearly two years ago now - Node.js was in it's infancy.
+* When we embarked on creating our development toolkit - nearly two years ago now - Node.js was in its infancy.
 * Our clients are large financial institutions that tend to have locked down environments. Initially Node.js wasn't an option.
 * We write a lot of our tooling in Java so it made sense to use a language and platform that we were familiar with.
 * Using Java means that we can easily interact with any other JVM language. This opens up the potential of integrating with tooling writting [a lot of other languages](http://en.wikipedia.org/wiki/List_of_JVM_languages) including Python, Ruby, Erlang and Lua.
@@ -175,7 +175,7 @@ The great thing about MVVM is that it works particularly well with data-binding.
 
 The game-changer here was that it allowed us to migrate a large number of selenium tests, which relied on checking DOM state, to tests that tested the View Model instead. This massively increased both the reliablity and speed of the tests. Combining this with the use of Services meant we could test the functionality offered by a Blade in isolation; from View Model to service interaction and service interaction through to the affect that would have on the View Model.
 
-This resulted in **changing the runtime for our full test suite from 8 hours, and being unreliable, to 30 minutes and highly reliable**. This is worth of a blog post all on it's own.
+This resulted in **changing the runtime for our full test suite from 8 hours, and being unreliable, to 30 minutes and highly reliable**. This is worth of a blog post all on its own.
 
 ## Enabling Change
 

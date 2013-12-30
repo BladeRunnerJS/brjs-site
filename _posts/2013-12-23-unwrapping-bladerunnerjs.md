@@ -84,7 +84,7 @@ As above, we have a JavaScript Dependency Analyzer as part of the toolkit. This 
 
 #### Node.js/CommonJS Bundler Plugin
 
-The first **JavaScript bundler plugin** that we are just about to release will support Node.js/CommandJS style modules that can be used within the web browser. This is backed by the dependency analyzer that understands the `require` syntax and a JavaScript Module Loader that facilitates the declaration and retrieval of modules (see the "Modular JavaScript" section below for more details).
+The first **JavaScript bundler plugin** that we are just about to release will support Node.js/CommonJS style modules that can be used within the web browser. This is backed by the dependency analyzer that understands the `require` syntax and a JavaScript Module Loader that facilitates the declaration and retrieval of modules (see the "Modular JavaScript" section below for more details).
 
 ### Test Runner: JS Test Driver
 
@@ -175,7 +175,7 @@ The great thing about MVVM is that it works particularly well with data-binding.
 
 The game-changer here was that it allowed us to migrate a large number of selenium tests, which relied on checking DOM state, to tests that tested the View Model instead. This massively increased both the reliablity and speed of the tests. Combining this with the use of Services meant we could test the functionality offered by a Blade in isolation; from View Model to service interaction and service interaction through to the affect that would have on the View Model.
 
-This resulted in **changing the runtime for our full test suite from 8 hours, and being unreliable, to 30 minutes and highly reliable**. This is worth of a blog post all on its own.
+This resulted in **changing the runtime for our full test suite from 8 hours on a VM farm, and being unreliable, to 10 minutes on a single machine, and highly reliable**. This is worth of a blog post all on it's own.
 
 ## Enabling Change
 

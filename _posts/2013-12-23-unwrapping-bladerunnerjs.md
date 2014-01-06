@@ -24,7 +24,7 @@ Below is a high-level diagram showing the parts within the BRJS toolkit and runt
 
 <img src="https://docs.google.com/drawings/d/17SJMH6Qnap6_V37otuMItSXwQXlWHhS2PORb4CfDC2c/pub?w=962&amp;h=751" width="600" />
 
-Now, let's going into more detail about each part.
+Now, let's go into more detail about each part:
 
 ## BRJS Toolkit
 

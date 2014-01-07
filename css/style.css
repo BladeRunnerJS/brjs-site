@@ -553,3 +553,22 @@ body.post .copy {
   }
 
 }
+
+.cla {
+  padding: 0;
+}
+
+.cla, .print-sign {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.print-sign {
+  margin-top: 10px;
+  padding: 6px 10px;
+  background-color: #FAFAFA !important;
+  border: 1px solid #bbb;
+  overflow: auto;
+
+  color: #007000;
+}

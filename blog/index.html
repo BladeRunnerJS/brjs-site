@@ -34,16 +34,16 @@ template: blog_list
           </span>
         </div>
       </div>
-      <div class="col-lg-6 post-excerpt">
-      	<p>{{ post.excerpt }}</p>
-        <p class="read-more">
-          <a href="{{ post.url }}">Read more...</a>
-        </p>
-      </div>
       <div class="col-lg-3 post-image">
         <a href="{{ post.url }}">
           <img class="img-polaroid" src="/blog/img/{{ post.thumb }}">
         </a>
+      </div>
+      <div class="col-lg-6 post-excerpt">
+        <p>{{ post.excerpt }}</p>
+        <p class="read-more">
+          <a href="{{ post.url }}">Read more...</a>
+        </p>
       </div>
     </div>
     {% endfor %}

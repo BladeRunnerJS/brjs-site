@@ -690,6 +690,12 @@ body.post #disqus_thread {
   text-decoration: underline;
 }
 
+/* Code */
+.new-code {
+  display: block;
+  background-color: #125f21;
+}
+
 /* BOOTSTRAP.CSS OVERRIDES
 -------------------------------------------------- */
 .col-lg-10 {

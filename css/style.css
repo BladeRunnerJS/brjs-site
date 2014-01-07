@@ -189,28 +189,14 @@ p.read-more a {
     font-weight: 400;
     letter-spacing: -1px;
     border: 1px solid #80ba27 !important;
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    background: #a2ed31;
-    background: -moz-linear-gradient(top, #a2ed31 0%, #80ba27 50%, #5b7719 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2ed31), color-stop(50%,#80ba27), color-stop(100%,#5b7719));
-    background: -webkit-linear-gradient(top, #a2ed31 0%,#80ba27 50%,#5b7719 100%);
-    background: -o-linear-gradient(top, #a2ed31 0%,#80ba27 50%,#5b7719 100%);
-    background: -ms-linear-gradient(top, #a2ed31 0%,#80ba27 50%,#5b7719 100%);
-    background: linear-gradient(to bottom, #a2ed31 0%,#80ba27 50%,#5b7719 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2ed31', endColorstr='#5b7719',GradientType=0 );
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    background: #80BA27;
   }
 
   .container.intro .btn:hover {
-    background: #a2ed31;
-    background: -moz-linear-gradient(top, #a2ed31 0%, #80ba27 50%, #435812 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2ed31), color-stop(50%,#80ba27), color-stop(100%,#435812));
-    background: -webkit-linear-gradient(top, #a2ed31 0%,#80ba27 50%,#435812 100%);
-    background: -o-linear-gradient(top, #a2ed31 0%,#80ba27 50%,#435812 100%);
-    background: -ms-linear-gradient(top, #a2ed31 0%,#80ba27 50%,#435812 100%);
-    background: linear-gradient(to bottom, #a2ed31 0%,#80ba27 50%,#435812 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2ed31', endColorstr='#435812',GradientType=0 );
+    background: #73A922;
   }
 
 /* PRIMARY HOMEPAGE FEATURES
@@ -534,6 +520,7 @@ body.single_page .row {
   }
 
   body.blog_list h1, body.single_page h1 {
+    text-align: center;
     margin-top: 0px;
     color: #000;
     font-size: 45px;
@@ -626,6 +613,7 @@ body.post .container.main {
 }
 
 body.post h1 {
+  text-align: center;
   font-size: 45px;
   color: #000;
   border-top-left-radius: 10px;
@@ -636,6 +624,7 @@ body.post h1 {
 }
 
 body.post .meta {
+  text-align: center;
   padding: 1% 1% 2.5% 0.2%;
   margin: -120px 7% 4%;
   font-size: 17px;
@@ -656,8 +645,8 @@ body.post .post {
 
 body.post .post img {
   margin: 0px 0px 2% 2% !important;
+  max-width: 100%;
   height: auto;
-  max-width: 21%;
   display: block;
 }
 
@@ -667,9 +656,9 @@ body.post .fig-text {
 }
 
 body.post .copy {
-  padding-top: 2.5%;
-  border-top: 4px solid #F6F6F6;
-  margin: -48px 7% 4% 7%;
+  padding: 5%;
+  background: #F6F6F6;
+  margin: -45px 7% 4% 7%;
   line-height: 25px;
 }
 
@@ -716,7 +705,7 @@ body.post #disqus_thread {
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-@media screen and (max-width: 1226px) {
+@media screen and (max-width: 1237px) {
   .call-to-action .row {
     font-size: 20px;
   }
@@ -809,7 +798,7 @@ body.post #disqus_thread {
   }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 960px) {
 
   .primary-features .col-lg-4, .marketing .col-lg-4 {
     text-align: center;
@@ -889,6 +878,7 @@ body.blog_list .blog-list .row {
   }
 
   body.post .copy {
+    background: #fff;
     border-top: 0px;
     padding: 0 6% 6%;
     margin: 0;
@@ -900,12 +890,6 @@ body.blog_list .blog-list .row {
     color: #000;
     padding-bottom: 0px;
     margin: 4% 4% 4% 5.5%;
-  }
-
-  body.post .post img {
-    max-width: 100%;
-    width: 100%;
-    margin-bottom: 5% !important;
   }
 
   .blog-list .post-title a {
@@ -957,7 +941,7 @@ body.blog_list .blog-list .row {
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 600px) {
   body {
     padding: 0px;
   }
@@ -1076,6 +1060,18 @@ body.blog_list .blog-list .row {
     text-align: center;
   }
 
+
+  body.post .post img {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 5% !important;
+  }
+
+  body.post .post img {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 5% !important;
+  }
   .secondary-features h3 {
     text-align: center;
   }

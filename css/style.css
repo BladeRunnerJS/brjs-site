@@ -737,6 +737,27 @@ body.post #disqus_thread {
   background-color: #125f21;
 }
 
+/* Contribution */
+
+.cla {
+  padding: 0;
+}
+
+.cla, .print-sign {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.print-sign {
+  margin-top: 10px;
+  padding: 6px 10px;
+  background-color: #FAFAFA !important;
+  border: 1px solid #bbb;
+  overflow: auto;
+
+  color: #007000;
+}
+
 /* BOOTSTRAP.CSS OVERRIDES
 -------------------------------------------------- */
 .col-lg-10 {
@@ -882,7 +903,7 @@ body.post #disqus_thread {
     padding: 18px 10px 21px 10px !important;
   }
 
-body.blog_list .blog-list .row {
+  body.blog_list .blog-list .row {
     border-top: 0px;
     border-bottom: 4px solid #F6F6F6;
     margin-bottom: 3%;
@@ -1106,7 +1127,6 @@ body.blog_list .blog-list .row {
   .marketing .col-lg-4 img {
     text-align: center;
   }
-
 
   body.post .post img {
     max-width: 100%;

@@ -683,11 +683,19 @@ body.post #disqus_thread {
   border-radius: 0px 0px 10px 10px;
   -webkit-border-radius: 0px 0px 10px 10px;
   -moz-border-radius: 0px 0px 10px 10px;
+
+  color: #fff;
 }
 
 .footer a {
   color: #fff;
   text-decoration: underline;
+}
+
+.footer .social {
+  float: right;
+  display: inline-block;
+  margin-right: 20px;
 }
 
 /* Code */

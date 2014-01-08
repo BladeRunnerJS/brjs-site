@@ -132,10 +132,6 @@ p.read-more a {
   color: #fff;
 }
 
-.navbar-inverse .navbar-nav > li:last-child > a {
-  padding-right: 0px;
-}
-
 .navbar-nav {
   float: left;
   margin: 0;
@@ -143,6 +139,10 @@ p.read-more a {
 
 .navbar-nav > li {
   float: left;
+}
+
+.navbar-collapse {
+  padding-right: 0;
 }
 
 /* SPLASH INTRODUCTION
@@ -469,7 +469,7 @@ body.docs .toc-col h5 a {
   color: inherit;
 }
 
-body.docs .toc-col li.active a {
+li.active a {
   font-weight: bold;
 }
 

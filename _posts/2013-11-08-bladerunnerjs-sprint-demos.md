@@ -11,7 +11,6 @@ excerpt: Since BRJS is now an open source project we have gained a lot more pote
 ## What have these guys been doing for the past 2 weeks?
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" class="width-medium" />
-
 As you may, or may not know, BladeRunnerJS (BRJS) is a project born from an internal project at Caplin and has their continued sponsorship. Infact all of the core BRJS developers are Caplin developers. At Caplin we practice SCRUM and in doing so we divide tasks up in to 2 week sprints and at the end of every sprint we demo what was achieved to our stakeholders.
 
 Since BRJS is now an open source project we have gained a lot more potential stakeholders; everyone in the JavaScript community. We wanted to address this and provide continual updates and value to all of our stakeholders.

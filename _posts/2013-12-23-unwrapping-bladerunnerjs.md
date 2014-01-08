@@ -2,14 +2,13 @@
 layout: post
 title: Unwrapping BladeRunnerJS
 authors: [leggetter]
-thumb: unwrapping-brjs.jpg
+thumb: unwrapping-brjs.png
 
 excerpt: One of the great things about open sourcing a product is that you are opening up what may previously have been seen as a black box. With all the source code freely available anybody can open things up and take a peek inside. However, that can still be a big task, especially with a large codebase. So I thought I'd do some open things up and provide a few details about what you'll find inside the BladeRunnerJS (BRJS) gift wrapping.
 
 ---
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" />
-
 One of the great things about open sourcing a product is that you are opening up what may previously have been seen as a black box. With all the source code freely available, anybody can take a peek inside. However, that can still be a big task, especially with a large codebase. So I thought I'd write up a mini guided tour and provide a few details about what you'll find inside the **BladeRunnerJS** (BRJS) gift wrapping.
 
 With so many developer toolkits and libraries to choose from when starting to build a front-end JavaScript application, it can be difficult to know where to start. Combine with that the need to define a workflow to follow during the development process, how to ensure team members and different teams across an organisation can work on the same codebase without stepping on each others toes, how to integrate with a CI (Continuous Integration) solution and how to deploy; the choices can get even more complicated.

@@ -22,6 +22,11 @@ template: docs
 		<div class="col-lg-3 toc-col">
 			<h3>Documentation</h3>
 
+			<form action="/docs/search/" method="get">
+				<input type="text" name="s" placeholder="Search" />
+				<input type="submit" value="Search" class="btn-black" />
+			</form>
+
 			<h4><a href="/docs/use/">Use</a></h4>
 			{% include docs/use/toc.html %}
 

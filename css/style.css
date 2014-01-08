@@ -145,6 +145,24 @@ p.read-more a {
   padding-right: 0;
 }
 
+/* Google Custom Search overrides */
+
+.gsc-selected-option-container.gsc-inline-block {
+  width: auto !important;
+  padding-right: 13px;
+  text-align: center;
+}
+
+.btn-black {
+  font-family: inherit;
+  color: #fff;
+  background-color: #333333;
+  border: 0;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+
 /* SPLASH INTRODUCTION
 -------------------------------------------------- */
 
@@ -471,6 +489,20 @@ body.docs .toc-col h5 a {
 
 li.active a {
   font-weight: bold;
+}
+
+body.docs .subscribe-form {
+  padding: 10px;
+  background-color: black;
+}
+
+body.docs .subscribe-form input[type='email'] {
+  font-size: 24px;
+}
+
+body.docs .subscribe-form input[type='submit'] {
+  vertical-align: top;
+  margin-top: 2px;
 }
 
 /* SINGLE PAGE

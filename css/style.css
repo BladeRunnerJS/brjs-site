@@ -677,7 +677,7 @@ body.post .post {
 }
 
 body.post .post img {
-  margin: 0px 0px 2% 2% !important;
+  margin: auto;
   max-width: 100%;
   height: auto;
   display: block;
@@ -702,6 +702,39 @@ body.post .copy p {
 body.post .copy p:last-child {
   margin-bottom: 0px;
 }
+
+body.post .post .ticked,
+body.post .post .crossed {
+  font-size: 50px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+body.post .post .ticked img,
+body.post .post .crossed img {
+  margin-bottom: 15px;
+}
+
+body.post .post .ticked {
+  color: green;
+}
+
+body.post .post .crossed {
+  color: red;
+}
+
+body.post .post .ticked:after {
+  content: '✔';
+}
+
+body.post .post .crossed:after {
+  content: '✖';
+}
+
+.post .authors .author:before, .post-title .authors .author:before { content: ", "; }
+.post .authors .author:last-child:before, .post-title .authors .author:last-child:before { content: "& "; }
+.post .authors .author:first-child:before, .post-title .authors .author:first-child:before { content: ""; }
+.post .authors .author:last-child:after, .post-title .authors .author:last-child:after { content: ""; }
 
 body.post #disqus_thread {
   margin: 0% 7% 1% 7%;

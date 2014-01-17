@@ -11,7 +11,6 @@ excerpt: Here at Caplin we've worked for many years with financial organisations
 ---
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" />
-
 Here at Caplin we’re in the business of building extremely complex financial trading GUIs as single page web apps. Over the past 18 months we've created a developer toolkit and lightweight JavaScript framework called **BladeRunnerJS** to help us do this more efficiently.
 
 *BladeRunnerJS* (**BRJS**) was designed for building modular large-scale HTML5 single page web apps. It consists of a set of conventions plus associated tools and libraries that make it easy to develop, test, deploy and maintain large JavaScript apps. These concepts result in apps being split into discrete modules called **blades**, each of which implements a single high level feature.

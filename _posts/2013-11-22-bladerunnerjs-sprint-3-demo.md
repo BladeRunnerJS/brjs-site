@@ -11,7 +11,6 @@ excerpt: Bug fixes, bundler infrastructure. blogging and conferences. Here's a q
 ## What have these guys been doing for the past 2 weeks?
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" class="width-medium" />
-
 We've fixed a few bugs including an issue with filepaths containing spaces on Windows. However, the large part of the development focus has been on the [Bundler Plugin architecture](https://github.com/BladeRunnerJS/brjs/wiki/Bundling-Strawman).
 
 One of our goals is to make BladeRunnerJS as plugin-friendly as possible, we want to make it easy for developers to write custom value-add plugins on top of BladeRunnerJS.

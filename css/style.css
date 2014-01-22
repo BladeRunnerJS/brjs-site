@@ -48,6 +48,16 @@ body.home .content {
   overflow: hidden;
 }
 
+/* Font Awesome
+-------------------------------------------------- */
+.fa-1 {
+  font-size: 1em;
+}
+
+.fa-2 {
+  font-size: 2em;
+}
+
 /* GENERIC BUTTON STYLES
 -------------------------------------------------- */
 
@@ -762,6 +772,14 @@ body.post #disqus_thread {
   float: right;
   display: inline-block;
   margin-right: 20px;
+}
+
+.footer .social i.fa {
+  background: white;
+  color: #1f1414;
+  border-radius: 100%;
+  padding: 4px;
+  margin: 2px;
 }
 
 /* Code */

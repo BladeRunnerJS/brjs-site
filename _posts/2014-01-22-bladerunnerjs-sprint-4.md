@@ -23,7 +23,20 @@ function Bar() {
 module.exports = Bar;
 ```
 
-This style of code - enabled by the JS bundler - represents our current vision of how we see BladeRunnerJS applications being written. As such, it's now the current default behaviour. In order to achieve this we developed a new mechanism for bundling that will also allow us to add support for [ECMA6Script](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts) and [TypeScript](http://www.typescriptlang.org/) in the future. This code works when it runs in the web browser because the bundling process wraps it within a 
+This style of code - enabled by the JS bundler - represents our current vision of how we see BladeRunnerJS applications being written. As such, it's now the current default behaviour. In order to achieve this we developed a new mechanism for bundling that will also allow us to add support for [ECMA6Script](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts) and [TypeScript](http://www.typescriptlang.org/) in the future. This code works when it runs in the web browser because the bundling process wraps each JavaScript file within a call to a `define` function:
+
+```javascript
+define('myapp/Bar', function(require, exports, module) {
+var Foo = require( 'Foo' );
+
+function Bar() {
+  this.foo = new Foo();
+}
+
+module.exports = Bar;});
+```
+
+Above, the first parameter is generated based on the path to the file and the `require`, `exports` and `module` are passed in order to enable the Node.js style code to execute. We believe this lets the developer focus on writing application functionality rather than writing code to work around the browser runtime.
 
 As part of this major change, we've been able to do some further clean-up to our sdk JavaScript libraries as well as the thirdparty libraries that our core libraries depend on; some of which are now using this new NodeJS style. This is all very exciting and allows us to move away from a very verbose style of coding that BladeRunner previously demanded. Our aim is to remain backwardly compatible. This has resulted to some interesting problems for the team to deal with as we slowly convert the remaining bundlers (HTML, CSS, Images etc.) over to using our new codebase.
 

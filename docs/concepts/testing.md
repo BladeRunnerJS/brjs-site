@@ -40,9 +40,13 @@ For more information and an example of an acceptance test see the docs on [writi
 
 Application End-to-End Acceptance Tests run against the application as a whole, with all back-end services running.
 
-<p class="doc-feedback alert alert-warning">
-  More coming soon...
-</p>
+These are tests which interact with your application via the GUI, using automation tools such as Selenium/WebDriver.
+
+They exercise user workflows by performing actions against the application/webpage and making assertions against the browser DOM.
+
+More often than not, these tests are purposed to verify that the client and server work together as expected (e.g. Does the correct server response come through to the client when X is clicked?).
+
+Whilst from an automated-testing perspective they provide the strongest level of assurance, they are also the most expensive to maintain. As such, we would encourage that they be used sparingly and focus on coverage for the integration between the client and server (and less so for user-interaction permutations).
 
 ### Manual Tests
 

@@ -346,7 +346,7 @@ If you ensure the BRJS development server is running (`BRJS_HOME/sdk/brjs serve`
 
 ## Inter-Blade communication using an EventHub
 
-We now have a way for a user to input a todo list item and a place to show the items. But, how do we get the Blades to communicate with each other, so that when an item is added in one blade it is shown on the other? One way of doing this is to use an [EventHub](/docs/concepts/event_hub). BRJS provides a default *Event Hub* [service](/docs/concepts/services) (`BRJS_HOME`) to help with this.
+We now have a way for a user to input a todo list item and a place to show the items. But, how do we get the Blades to communicate with each other, so that when an item is added in one blade it is shown on the other? One way of doing this is to use an [EventHub](/docs/concepts/event_hub). BRJS provides a default *Event Hub* [service](/docs/concepts/services) (`br.event-hub`) to help with this.
 
 ### Update the Todo Input Blade
 
@@ -368,7 +368,7 @@ Back in our `todoinput` Blade we can access the EventHub service using the [Serv
 
         this.todoText = new Field( '' );
         /*** new code ***/
-        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
         /*** end of new code ***/
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
@@ -399,7 +399,7 @@ Now, in the `keyPressed` function we can trigger an event called `todo-added` on
         var Field = br.presenter.node.Field;
 
         this.todoText = new Field( '' );
-        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
       };
       br.extend( ExamplePresentationModel, br.presenter.PresentationModel );
       
@@ -435,7 +435,7 @@ Ensure the BRJS server is running (`BRJS_HOME/sdk/brjs serve`) and open up the `
 
 #### Testing via a Unit Test
 
-Because we've introduced the concept and usage of the `ServiceRegistry` to our tests we should add a JSTestDriver `setUp` function to `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.demo-event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
+Because we've introduced the concept and usage of the `ServiceRegistry` to our tests we should add a JSTestDriver `setUp` function to `todoinput/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
 
     ;(function() {
       
@@ -466,10 +466,10 @@ Because we've introduced the concept and usage of the `ServiceRegistry` to our t
         };
   
         // ensure there isn't already an event-hub registered
-        ServiceRegistry.deregisterService( 'br.demo-event-hub' );
+        ServiceRegistry.deregisterService( 'br.event-hub' );
   
         // Register the fake event hub
-        ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
+        ServiceRegistry.registerService( 'br.event-hub', fakeEventHub );
       };
       /*** end of new code ***/
 
@@ -539,7 +539,7 @@ First, get access to the ServiceRegistry and then register for the event on the 
     
         /*** new code ***/
         // get the event hub
-        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
      
         // register to recieve events
         this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
@@ -574,7 +574,7 @@ Now that the object is informed whenever a new Todo item is added, we can update
         this.items = new NodeList( [ new DisplayField( 'foo' ), new DisplayField( 'bar' ) ] );
     
         // get the event hub
-        this.eventHub = ServiceRegistry.getService( 'br.demo-event-hub' );
+        this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
     
         // register to recieve events
         this.eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
@@ -608,7 +608,7 @@ Now that the object is informed whenever a new Todo item is added, we can update
 Open up the `todoitems` Workbench via `http://localhost:7070/brjs-todo/todo-bladeset/blades/todoitems/workbench/` ensuring the BRJS development web server is running (`BRJS_HOME/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
 
     var sr = require( 'br/ServiceRegistry' );
-    var hub = sr.getService( 'br.demo-event-hub' );
+    var hub = sr.getService( 'br.event-hub' );
     hub.channel( 'todo-list' ).trigger( 'todo-added', { text: 'console todo item' } );
 
 This gets the `event-hub` from the `ServiceRegistry` and then triggers a `todo-added` event on the `todo-list` channel. When you do this you'll see a new `console todo item` added to the list in the UI.
@@ -658,10 +658,10 @@ First we want to set up a fake service that helps us interact with our Blade. Re
         };
   
         // ensure there isn't already an event-hub registered
-        ServiceRegistry.deregisterService( 'br.demo-event-hub' );
+        ServiceRegistry.deregisterService( 'br.event-hub' );
   
         // Register the fake event hub
-        ServiceRegistry.registerService( 'br.demo-event-hub', fakeEventHub );
+        ServiceRegistry.registerService( 'br.event-hub', fakeEventHub );
       };
     
     })();
@@ -669,11 +669,11 @@ First we want to set up a fake service that helps us interact with our Blade. Re
 
 <div class="alert alert-info">
   <p>
-    If this weren't a getting started guide we'd probably create a class that can be shared between the two Blades that implements the same interface as the <code>br.demo-event-hub</code> service, and use it for testing.
+    If this weren't a getting started guide we'd probably create a class that can be shared between the two Blades that implements the same interface as the <code>br.event-hub</code> service, and use it for testing.
   </p>
 </div>   
 
-This code ensures that any interaction with the `br.demo-event-hub` service is captured so that we can test it. Our test will then simply check that the correct channel name is being subscribed to, the appropriate event is being bound to and that it is the `todoItemsBlade` that is doing the binding:
+This code ensures that any interaction with the `br.event-hub` service is captured so that we can test it. Our test will then simply check that the correct channel name is being subscribed to, the appropriate event is being bound to and that it is the `todoItemsBlade` that is doing the binding:
 
     ExampleClassTest.prototype.testTodoItemsBladeListensToItemAddedEvents = function() {
       var todoItemsBlade = new brjstodo.todo.todoitems.ExamplePresentationModel();
@@ -719,7 +719,7 @@ Re-running the test command will now show two tests successfully passing.
 
 Since we know that the Blade uses the EventHub to receive new items, and we have a fake hub in place, we can execute the callback that the Blade is waiting for, passing Todo item data, and then check that the item has been added to the end of the list.
 
-Both the `todoinput` and `todoitems` Blades have the functionality that we're looking for, and they are set up to communicate using the `br.demo-event-hub` service. The next thing to do is to add them to an application [Aspect](/docs/concepts/aspects). We'll then have a fully functional Todo List app.
+Both the `todoinput` and `todoitems` Blades have the functionality that we're looking for, and they are set up to communicate using the `br.event-hub` service. The next thing to do is to add them to an application [Aspect](/docs/concepts/aspects). We'll then have a fully functional Todo List app.
 
 ## Adding the Blades to an Aspect
 

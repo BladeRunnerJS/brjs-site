@@ -5,6 +5,9 @@ permalink: /blog/:title
 
 exclude: [ node_modules ]
 
+paginate: 7
+paginate_path: "blog/page/:num"
+
 markdown: redcarpet
 
 social:

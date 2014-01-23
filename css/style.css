@@ -647,6 +647,25 @@ body.single_page .row {
     margin-top: 10px;
   }
 
+  body.blog_list .pager {
+  	margin-top:0;
+  	padding: 0 40px;
+  }
+  body.blog_list .page-number {
+  	line-height: 2.5;
+  }
+  body.blog_list .pager > li > a {
+  	color: white;
+	background-color: #80BA27;
+  }
+  body.blog_list .pager > li > a:hover,
+  body.blog_list .pager > li > a.hover {
+	background-color: #80BA27;
+  }
+  body.blog_list .pager > li.disabled > a {
+	color: #999999;
+  }
+
 /* BLOG POST
 -------------------------------------------------- */
 body.post .container.main {
@@ -1190,6 +1209,13 @@ body.post #disqus_thread {
     width: 100%;
     margin-bottom: 5% !important;
   }
+
+	body.blog_list .pager {
+		padding-left: 10px;
+		padding-right: 10px;
+		font-size: 90%;
+	}
+
   .secondary-features h3 {
     text-align: center;
   }

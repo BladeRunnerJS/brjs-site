@@ -651,12 +651,19 @@ body.single_page .row {
   	margin-top:0;
   	padding: 0 40px;
   }
+  body.blog_list .page-number {
+  	line-height: 2.5;
+  }
   body.blog_list .pager > li > a {
   	color: white;
 	background-color: #80BA27;
   }
-  body.blog_list .page-number {
-  	line-height: 2.5;
+  body.blog_list .pager > li > a:hover,
+  body.blog_list .pager > li > a.hover {
+	background-color: #80BA27;
+  }
+  body.blog_list .pager > li.disabled > a {
+	color: #999999;
   }
 
 /* BLOG POST

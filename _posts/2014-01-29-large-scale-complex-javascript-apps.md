@@ -4,12 +4,12 @@ title: "What is a Large Scale Complex JavaScript App?"
 authors: [leggetter]
 thumb: br-logo-black-bg-150x150.png
 
-excerpt: The terms "large scale" and "complex app" are being used with increasing frequecy. But when it comes to front-end JavaScript applications what does it actually mean? Are we simply talking about codebase, about application complexity or is there more to it? In this post we'll clarify what being a truly "Large Scale Complex JavaScript App" means.
+excerpt: The terms "large scale" and "complex app" are being used with increasing frequency. But when it comes to front-end JavaScript applications what does it actually mean? Are we simply talking about codebase, about application complexity or is there more to it? In this post we'll clarify what being a truly "Large Scale Complex JavaScript App" means.
 
 ---
 
 <img src="/blog/img/{{ page.thumb }}" alt="B|R logo" width="150" style="margin: 20px;" align="right" />
-The terms "large scale" and "complex app" are being used with increasing frequecy. But when it comes to front-end JavaScript applications what does it actually mean? Are we simply talking about codebase, about application complexity or is there more to it? In this post we'll clarify what being a truly "Large Scale Complex JavaScript App" means.
+The terms "large scale" and "complex app" are being used with increasing frequency. But when it comes to front-end JavaScript applications what does it actually mean? Are we simply talking about codebase, about application complexity or is there more to it? In this post we'll clarify what being a truly "Large Scale Complex JavaScript App" means.
 
 At [Caplin Systems](http://www.caplin.com) we help financial institutions build web trading platforms. We license a number of backend technologies to these companies, along with front-end SDKs to enable the development of web trading applications.
 

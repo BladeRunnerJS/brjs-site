@@ -97,7 +97,7 @@ How do you ensure that the code stays clean and the way that application compone
 
 A factor that is often overlooked when it comes to large applications is the human factor. A large scale complex web app simply can't be developed and maintained by a single developer. It's unlikely that it can be developed by a single team. So we know an application has achieved the status of "large scale" when it requires the contribution of many individuals and numerous teams.
 
-I don't know about GMail, but at Caplin we have more than 80 developers. We consistently have one core Caplin Trader team and from time-to-time we may have more teams working on other Caplin Trader components. We then have one or more teams developing and maintaining the reference implementation. In addition, we have numerous teams - both internal professional service teams and customer developer teams - who are either staring out using the reference implementation or writing their own functionality using the Caplin trader SDK.
+I don't know about GMail, but at Caplin we have more than 80 developers. We consistently have one core Caplin Trader team and from time-to-time we may have more teams working on other Caplin Trader components. We then have one or more teams developing and maintaining the reference implementation. In addition, we have numerous teams - both internal professional service teams and customer developer teams - who are either starting out using the reference implementation or writing their own functionality using the Caplin trader SDK.
 
 Lots of teams and lots of developers. But it's not just developers. Applications can have contributions from:
 

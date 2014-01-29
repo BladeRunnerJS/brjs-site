@@ -724,7 +724,7 @@ body.post .copy {
   line-height: 25px;
 }
 
-body.post .copy p {
+body.post .copy p, body.post .copy ul {
   margin-bottom: 30px;
 }
 

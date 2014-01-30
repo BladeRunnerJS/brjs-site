@@ -74,13 +74,13 @@ That's a hell of a lot of functionality.
 
 Next let's have a look at a Caplin Trader application:
 
-* View realtime prices for various financial assets in a grid
+* View, sort, filter and page through realtime prices in a grid with unlimited rows
 * View realtime prices for a single financial asset in a trade tile
 * Execute a trade in a trade tile
-* Perform multi-leg trades from a trade tile
+* Set up and execute numerous types of trade in a trading ticket
 * View realtime news
 * View changing prices of a financial asset in a chart
-* View historical trade information in a blotter
+* View, sort and filter trade and order information in a blotter
 * Add new UI items (trade tiles, grids, charts etc.) to a layout
 * Reorganise areas of the UI e.g. resize UI components
 * Drag & Drop instruments between various UI components

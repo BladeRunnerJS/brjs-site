@@ -32,7 +32,7 @@ Caplin Trader is an SDK on top of which you build your web trading applications.
 * ~650 test files
 * ~95,000 lines of test code
 
-In addition to this, every customer that gets Caplin Trader has the opportunity to be provided with a reference implementation. This is a working Caplin Trader application that they can use to get started. It consists of:
+In addition to this, Caplin offers a set of reference implementations, each designed to serve as the starting point for a trading GUI. The Foreign Exchange version consists of:
 
 * ~450 JavaScript files
 * ~50,000 lines of code

@@ -769,6 +769,10 @@ body.post .post .crossed:after {
   margin: -3% 7% 2% 7%;
 }
 
+.twitter-share-button {
+  width: 90px !important;
+}
+
 body.post #disqus_thread {
   margin: 0% 7% 1% 7%;
 }

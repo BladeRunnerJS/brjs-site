@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sprint Demo - Improved performance and un-bundled JS"
+title: "Sprint Demo - Dependency Analysis & Debugging Improvements"
 authors: [sospirited]
 thumb: yoda.jpg
 
@@ -9,74 +9,138 @@ excerpt: In this latest sprint we've improved bundling performance, implemented 
 ---
 
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px; width:200px;" align="right" class="width-medium" />
-## What's new since the last update 2 weeks ago?
+## What's new this sprint?
 
-### Performance
-Work on improving performance was carried forward from the previous sprint and currently provides what we consider to be, a far more acceptable developer experience.
-When we were in a transition phase with the old JS bundler, we were doing some of the work multiple times and this was causing a large part of the slowness. Another area was caching and file-watching, these areas have been further implemented and refined and are evident when launching the BladeRunnerJS dashboard on the first initial load.
-As we are now a bit more 'smarter' with caching, users should see a large improvement especially with subsequent reloads.
+### Dependency Analysis Performance
 
-### Bunding Single/Individual JS files
-We've seen that with large JavaScript applications, browsers tend to struggle when it comes to debugging large (concatenated) JavaScript files.
-Up until now, BladeRunnerJS *always* bundled your application JS content in a single file to reduce the requests made to the server.
+One of the main benefits of BladeRunnerJS is that it analyses your application assets for dependencies. For example, if the `index.html` of your application looks like this:
 
-As part of a developer's workflow, it ultimately it comes down to what you are optimising for.
-
-For day-to-day development, if you are styling something you maybe want to optimise for performance and would prefer that your workbench page allows you to instantly see your changes in action.
-
-If you are looking at a bug that someone has reported then sometimes 'debuggability' makes an equal case too. Concatenated files add a small cost when breaking on JS errors in the browser in that you need to figure out which file on disk represents the code you are looking at in your browser debug window.
-
-We've now got support for specifying a value for the 'dev-minifier' attribute inside your application index page or workbench to allow you do switch between the two, easily.
-
-#### Bundle a concatenated JS file bundle
 ```html
-<head>
-	<@js.bundle dev-minifier='combined'@/>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="@APP.VERSION@"/>
+    
+    <title>My Awesome BRJS App</title>
+
+    <@css.bundle theme="standard"@/>
+  </head>
+  <body>
+    <@js.bundle@/>
+    <script>
+      ( function() {
+
+        /*** new code ***/
+        var App = require( 'awesome/App' );
+        /*** end of new code ***/
+        var app = new App();
+
+      } )();
+    </script>
+  </body>
+</html>
 ```
 
-#### Serve all JS files individually
-```html
-<head>
-	<@js.bundle dev-minifier='none'@/>
-</head>
+BRJS detects that the application has a dependency on the JavaScript class defined in `awesome/App`. If the definition of `awesome/App` looks as follows:
+
+```javascript
+/*** new code ***/
+var WowBladeViewModel = require( 'awesome/amazing/WowBladeViewModel' );
+var MegaBladeViewModel =  require( 'awesome/fantastic/MegaBladeViewModel' );
+/*** end of new code ***/
+
+function App() {
+  /* App functionality here */
+}
+
+module.exports = App;
 ```
 
-BladeRunnerJS processes the `<@js.bundle@/>` tag and replaces it with your JavaScript dependencies based on what minification (if any) you want to load your web page with.
-In the case of serving files individually, BladeRunnerJS knows what your dependencies are and simply writes script tag includes in the correct order for your app to work.
+BRJS can determine that you are using both `awesome/amazing/WowBladeViewModel` and `awesome/fantastic/MegaBladeViewModel` through analysing the code and looking for `require` statements. From here BRJS analyses those Blades for dependencies in the same way. BRJS also looks for any other resources associated with those Blades - CSS, images, HTML templates, i18n, config and so on - and bundles and serves those too.
+
+This allows the dev server to only serve the assets that your application actually uses to the client. The same process is also followed when creating a deployment package for your application.
+
+As you can imagine, analaysing dependencies via file parsing, detecting file changes using file-watching, managing a file cache and any other work that BRJS has to perform comes with its challenges. And up until this sprint the performance of the analysis process wasn't good enough.
+
+**TODO: performance images from Sprint Demo PPT**
+
+We're very pleased to have now got things to a much more acceptable level. Work on this hasn't completely finished and we do plan to go back and improve things further in later sprints.
+
+### Improved Debugging thanks to BundlerPlugins
+
+In our [What is a Large Scale Complex JavaScript App post](http://bladerunnerjs.org/blog/large-scale-complex-javascript-apps/) we confirmed that a large app will of course have a large codebase. So, when it comes to concatenating the JavaScript in that codebase the resulting file can be *very* large.
+
+Up until now, BladeRunnerJS *always* bundled your application JS content in a single file to reduce the requests made to the server. This provided the benefit of a much faster application load-time than serving individual script files via `<script>` tags, but it also came at a cost - a difficult JavaScript debugging experience...
+
+We've noticed that **some web browsers struggle when it comes to debugging large very JavaScript files**; they incorrectly report the location of errors, `debugger` statements and breakpoints. Since this made debugging very difficult we clearly had to provide a remedy.
+
+**TODO: can we get a screenshot of this? Also, confirm exactly which scenarios they struggle with.**
+
+So now it's possible to get JavaScript files in a number of different ways.
+
+* Served as individual files fetched via multiple generated `<script>` tags
+* Concatenated (the previous default)
+* Concetented and minified using Closure
+
+We're still working out what the defaults should be, but you can configure them for different scenarios by adding attributes to the `<@js.bundle@>`  tags. For example, you may want individual script files when building a single feature (Blade) in isolation the [Workbench](http://bladerunnerjs.org/docs/concepts/workbenches/). The bundle tag for this looks as follows:
+
+```html
+<@js.bundle dev-minifier='none'@/>
+```
+
+And the concatentated version when viewing the full application by setting the `dev-minifier` attribute to `combined` as follows:
+
+```html
+<@js.bundle dev-minifier='combined'@/>
+```
+
+If you've found a bug that only seems to occur when the full app is running you can of course turn the individual file serving functionality on.
+
+BladeRunnerJS processes the `<@js.bundle@/>` tag and replaces it with your JavaScript dependencies based on the minifier you have configured (if any). In the case of serving files individually, since BRJS knows what your dependencies are and simply writes `<script>` tag includes. For concatenation the files are - well - concatenated in the correct order for your app to work.
 
 ### JsTestDriver Plugin Support for BladeRunnerJS bundling
-One of the great things about our JsTestDriver plugin is that it extended the dependency analysis convenience to jsTestDriver tests.
+
+One of the great things about our JsTestDriver plugin is that it uses the same dependency analysis functionality for your tests.
+
+---
+**TODO: Can we clarify exactly why this is beneficial?
+
+If this is stuff that is "under the covers" and it's unlikely a developer needs to care about this then I'd just remove it.
+**
 
 As it's a JSTD plugin, you include it at the top of your jsTestDriver.conf as a path to the plugin jar and it allowed you to write/run tests using BRJS and generated HTML and JS bundle files available for the tests at run-time.
 
 ```
-    server: http://localhost:4224
-    basepath: .
+server: http://localhost:4224
+basepath: .
 
-    plugin:
-      - name: "BundleInjector"
-        jar: ../../../../../../sdk/libs/java/testRunner/js-test-driver-bundler-plugin.jar
-        module: com.caplin.jstestdriver.plugin.CutlassBundleInjectorPlugin
+plugin:
+  - name: "BundleInjector"
+    jar: ../../../../../../sdk/libs/java/testRunner/js-test-driver-bundler-plugin.jar
+    module: com.caplin.jstestdriver.plugin.CutlassBundleInjectorPlugin
 
-    load:
-      - bundles/js/js.bundle
+load:
+  - bundles/js/js.bundle
 
-    test:
-      - tests/**.js
+test:
+  - tests/**.js
 ```
 
-It's worth noting that example test files are generated for you whenever you create a new [blade](http://bladerunnerjs.org/docs/concepts/blades/)!.
+It's worth noting that example test files are generated for you whenever you create a new [Blade](http://bladerunnerjs.org/docs/concepts/blades/)!.
+
+---
 
 ### Conferences and Talks
-* [Phil Leggetter](https://twitter.com/leggetter) was at [FOSDEM](https://fosdem.org/2014/) giving a talk on BladeRunnerJS (video coming soon!)
-* [Andy Berry](https://twitter.com/andyberry88) did a demo of the workflow of using BladeRunnerJS for development at [Glasgow.JS](http://glasgowjs.com/)
 
-## Hands on with the latest features of BRJS
+As well as building new functionality into BRJS we've been out and about giving a couple of talks. [Phil Leggetter](https://twitter.com/leggetter) was at [FOSDEM](https://fosdem.org/2014/) in Brussels (video coming soon!) and [Andy Berry](https://twitter.com/andyberry88) demoed the BRJS workflow to the friendly folk at [Glasgow.JS](http://glasgowjs.com/).
+
+We're also going to be at [QCon London](http://qconlondon.com/london-2014/) and [Fluent](http://fluentconf.com/fluent2014/) in San Francisco in March.
+
+## Get hands-on with the latest features of BRJS
 
 If you want to **live on the bleeding edge** then you can of course download the source from [github](https://github.com/BladeRunnerJS/brjs/).
 
-We're working out of a branch called [bundler-exploration](https://github.com/BladeRunnerJS/brjs/tree/bundler-exploration):
+We're working out of a branch called [bundler-exploration](https://github.com/BladeRunnerJS/brjs/tree/bundler-exploration). The only pre-requisite is the [Java 7 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) and you can get started as follows:
 
 ```
 # assuming your running bash on linux or mac
@@ -105,15 +169,22 @@ If you have any questions, please [raise an issue](https://github.com/BladeRunne
 ## What are we working on next?
 
 ### Bundlers, bundlers, bundlers
+
+---
+**TODO: What does this all mean from a users point of view? It's a bit jargony right now**
+
 We're working on implementing the new asset bundlers which can all share the same [BladeRunnerJS model](https://github.com/BladeRunnerJS/brjs/wiki/Model-And-Plugin-Design).
 
 These include:
+
 * HTML bundler
 * XML bundler
 * CSS resource bundler (stylesheets and images)We're implementing the new HTML, I18N and CSS bundlers to go with our new JS Bundler which supports NodeJS style code.
 * XML bundler
 
-The current (legacy) implementations are not compatible with detecting dependencies written in the to-be-supported NodeJS style. The work we're doing will allow them to be more efficient with dependency analysis, share common code and be smarter when keeping track of what work needs to be re-done when files are changed/added/removed on disk (cache management).
+The current (legacy) implementations are not compatible with detecting dependencies written in NodeJS style. The work we're doing will allow them to be more efficient with dependency analysis, share common code and be smarter when keeping track of what work needs to be re-done when files are changed/added/removed on disk (cache management).
+
+---
 
 Once we have these new bundlers implemented (and tested!), we'll be able to proceed to releasing BladeRunnerJS v0.4.
 

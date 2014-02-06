@@ -102,13 +102,38 @@ BladeRunnerJS processes the `<@js.bundle@/>` tag and replaces it with your JavaS
 
 ### JsTestDriver Plugin Support for BladeRunnerJS bundling
 
-**JSTD without the config???**
+Here's a very simplified example of a jsTestDriver.conf without a plugin to do the JS bundling work for you:
+
+```
+server: http://localhost:4224
+basepath: .
+
+load:
+  # thirdparty libraries
+  - ../../../../libraries-thirdparty/jasmine/src/jasmine-1.0.1/jasmine.js
+  - ../../../../libraries-thirdparty/jasmine/src/jasmine/JasmineAdapter.js
+  - ../../../../libraries-thirdparty/extjs/src/extjs/ext-caplintrader.js
+  - ../../../../libraries-thirdparty/openajax/src/openajax/OpenAjax.js
+  - ../../../../libraries-thirdparty/jstd/src/ApiProtector.js
+  - ../../../../libraries-thirdparty/jstd/src/jstd/mock4js.js
+
+  # other sdk libraries
+  <lots of relative path references>
+
+  # your source code
+  <lots of relative path references>
+
+test:
+   - tests/**.js
+```
+
+As you can imagine, including your dependencies explicitly and maintaining such a large list of relative paths is unmanageable and a maintenance nightmare!
 
 One of the great things about our JsTestDriver plugin is that it uses the same dependency analysis functionality for your tests and bundles all your dependencies from various locations (thirdparty libraries, SDK libraries, your own user-created-libraries as well as your actual application or module) into a single file.
 
-The biggest benefit is that now you don't have to specify hard-coded or regex paths for all your JS dependencies from these locations.
+The biggest benefit is that you don't have to specify the files you want loaded at test run-time, the JSTD plugin can do that for you.
 
-The JSTD plugin is declared at the top of your jsTestDriver.conf as a path to the plugin jar and it allowed you to write/run tests using BRJS and generated HTML and JS bundle files available for the tests at run-time.
+The JSTD plugin is declared at the top of your jsTestDriver.conf as a path to the plugin jar and it allowed you to write/run tests using BRJS and generated HTML and JS bundle files available for the tests at run-time. The exact same jsTestDriver.conf file can go from 100+ lines down to 12-14 lines.
 
 ```
 server: http://localhost:4224
@@ -126,7 +151,7 @@ test:
   - tests/**.js
 ```
 
-So now, in your test config all you are specifying is the location of where your tests are, a single line.
+So now, in your test config all you are specifying is the location of where your tests are, a single line. There's no additional maintenance cost in updating this jsTestDriver.conf file as the code you are testing changes it's dependencies.
 
 **This sounds like the main selling point**
 It's also worth noting that BladeRunnerJS will generate example test files for you whenever you create a new [Blade](http://bladerunnerjs.org/docs/concepts/blades/)!.

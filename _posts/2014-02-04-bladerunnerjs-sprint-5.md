@@ -4,7 +4,7 @@ title: "Sprint Demo - Dependency Analysis & Debugging Improvements"
 authors: [sospirited]
 thumb: yoda.jpg
 
-excerpt: In this latest sprint we've improved bundling performance, implemented support for auto-serving individual JS files, added jsTestDriver plugin support for our new bundler and started on the new html, i18n and css bundlers.
+excerpt: In this latest sprint we've improved the BRJS Dependency Analysis performance, implemented support for serving individual JavaScript files to improve the debugging experience, added jsTestDriver plugin support for our new bundler and started on the new HTML, i18n and css bundlers.
 
 ---
 
@@ -58,9 +58,9 @@ module.exports = App;
 
 BRJS can determine that you are using both `awesome/amazing/WowBladeViewModel` and `awesome/fantastic/MegaBladeViewModel` through analysing the code and looking for `require` statements. From here BRJS analyses those Blades for dependencies in the same way. BRJS also looks for any other resources associated with those Blades - CSS, images, HTML templates, i18n, config and so on - and bundles and serves those too.
 
-As stated above, it allows the dev server to only serve the assets that your application actually uses to the client. The same process is also followed when creating a deployment package for your application.
+As stated above, it allows the dev server to only serve the assets that your application actually uses to the client. What's more, the same process is also followed when creating a deployment package for your application.
 
-As you can imagine, analaysing dependencies via file parsing, detecting file changes using file-watching, managing a file cache and any other work that BRJS has to perform comes with its challenges. And up until this sprint the performance of the analysis process wasn't good enough.
+As you can imagine, analysing dependencies via file parsing, detecting file changes using file-watching, managing a file cache and any other work that BRJS has to perform comes with its challenges. And up until this sprint the performance of the analysis process wasn't good enough.
 
 Here's an image showing the progress we've made for our BladeRunnerJS dashboard load times over the past few weeks.
 
@@ -70,7 +70,7 @@ We're very pleased to have now got things to a much more acceptable level. Work 
 
 ### Improved Debugging thanks to BundlerPlugins
 
-In our [What is a Large Scale Complex JavaScript App post](http://bladerunnerjs.org/blog/large-scale-complex-javascript-apps/) we confirmed that a large app will of course have a large codebase. So, when it comes to concatenating the JavaScript in that codebase the resulting file can be *very* large.
+In the [What is a Large Scale Complex JavaScript App post](http://bladerunnerjs.org/blog/large-scale-complex-javascript-apps/) we confirmed that a large app will of course have a large codebase. So, when it comes to concatenating the JavaScript in that codebase the resulting file can be *very* large.
 
 Up until now, BladeRunnerJS would bundle your application JS content in a single file and serve that to the browser to ensure that app load-time during development was as fast as possible. This was much faster than serving individual script files via `<script>` tags, each resulting a server request. But it also came at a cost - a difficult JavaScript debugging experience...
 
@@ -102,7 +102,7 @@ BladeRunnerJS processes the `<@js.bundle@/>` tag and replaces it with your JavaS
 
 ### JsTestDriver Plugin Support for BladeRunnerJS bundling
 
-Here's a very simplified example of a jsTestDriver.conf without a plugin to do the JS bundling work for you:
+Here's a simplified example what a typical JsTestDriver config file (`jsTestDriver.conf`) would look like:
 
 ```
 server: http://localhost:4224
@@ -127,13 +127,11 @@ test:
    - tests/**.js
 ```
 
-As you can imagine, including your dependencies explicitly and maintaining such a large list of relative paths is unmanageable and a maintenance nightmare!
+As you can see, including your dependencies explicitly and maintaining such a large list of relative paths is a maintenance nightmare!
 
-One of the great things about our JsTestDriver plugin is that it uses the same dependency analysis functionality for your tests and bundles all your dependencies from various locations (thirdparty libraries, SDK libraries, your own user-created-libraries as well as your actual application or module) into a single file.
+One of the great things about the BRJS JsTestDriver plugin is that it uses the same dependency analysis functionality for your tests as it does for the development server or creating deployment packages. It bundles all your dependencies from various locations (SDK libraries, your app libraries, as well as your actual application or module) into a single file. So, you don't have to specify the files you want loaded at test run-time - the JSTD plugin can do that for you.
 
-The biggest benefit is that you don't have to specify the files you want loaded at test run-time, the JSTD plugin can do that for you.
-
-The JSTD plugin is declared at the top of your jsTestDriver.conf as a path to the plugin jar and it allowed you to write/run tests using BRJS and generated HTML and JS bundle files available for the tests at run-time. The exact same jsTestDriver.conf file can go from 100+ lines down to 12-14 lines.
+The JSTD plugin is declared at the top of your `jsTestDriver.conf` as a path to the plugin jar and it allows you to write/run tests using BRJS and generated HTML and JS bundle files available for the tests at run-time. The exact same `jsTestDriver.conf` file can go from 100+ lines down to 12-14 lines.
 
 ```
 server: http://localhost:4224
@@ -151,10 +149,9 @@ test:
   - tests/**.js
 ```
 
-So now, in your test config all you are specifying is the location of where your tests are, a single line. There's no additional maintenance cost in updating this jsTestDriver.conf file as the code you are testing changes it's dependencies.
+So now, in your test config all you are specifying is the location of where your tests are, a single line. There's no additional maintenance cost in updating this `jsTestDriver.conf` file as the code you are testing changes it's dependencies.
 
-**This sounds like the main selling point**
-It's also worth noting that BladeRunnerJS will generate example test files for you whenever you create a new [Blade](http://bladerunnerjs.org/docs/concepts/blades/)!.
+**What's even better is that you don't actually have to care about any of this! BRJS creates a default config file for you that you're unlikely to ever need to change.**
 
 ### Conferences and Talks
 
@@ -199,10 +196,9 @@ We use the term "bundlers" a lot when talking about BRJS. What we mean by this i
 We're working on implementing the following new asset bundlers which can all share the same [BladeRunnerJS model](https://github.com/BladeRunnerJS/brjs/wiki/Model-And-Plugin-Design). These include:
 
 * HTML bundler
-* XML bundler
 * CSS resource bundler (stylesheets and images)
-* XML bundler
 * i18n bundler
+* XML bundler
 
 The current (legacy) implementations are not compatible with detecting dependencies written in NodeJS/CommonJS style. The work we're doing will allow them to be more efficient when analysing dependencies, share common code and perform smart caching of assets.
 
@@ -210,4 +206,6 @@ Once we have these new bundlers in place, we'll release **BladeRunnerJS v0.4**. 
 
 ## Stay tuned!
 
-We're excited about the BladeRunnerJS v0.4 release. There are a number of ways of keeping track of progress: on [this blog](http://bladerunnerjs.org/blog), on [Twitter](https://twitter.com/BladeRunnerJS), on our [Google Plus page](https://plus.google.com/u/0/108556511900055348789) and on [Github](https://github.com/BladeRunnerJS/brjs). No Facebook!
+We're excited about the BladeRunnerJS v0.4 release. There are a number of ways of keeping track of progress: on [this blog](http://bladerunnerjs.org/blog), on [Twitter](https://twitter.com/BladeRunnerJS), on our [Google Plus page](https://plus.google.com/u/0/108556511900055348789), on [Github](https://github.com/BladeRunnerJS/brjs) or by subscribing to the BRJS mailing list below:
+
+{% include register_form.html %}

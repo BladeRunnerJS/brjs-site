@@ -15,7 +15,11 @@ template: post
         <span class="authors">
         {% for blog_author in page.authors %}
           {% assign author = site.authors[blog_author] %}
+          {% if author.url %}
+          <span class="author"><a href="{{ author.url }}">{{ author.display_name }}</a></span>
+          {% else %}
           <span class="author">{{ author.display_name }}</span>
+          {% endif %}
         {% endfor %}
         </span>
         <span class="date"> on {{ page.date | date_to_string }}</span>

@@ -21,17 +21,21 @@ authors:
   leggetter:
     display_name: Phil Leggetter
     twitter: "@leggetter"
+    url: "https://twitter.com/leggetter"
     github: leggetter
     gravatar:
   andyberry88:
     display_name: Andy Berry
     twitter: "@andyberry88"
+    url: "https://twitter.com/andyberry88"
     github: andyberry88
     gravatar:
   sospirited:
     display_name: Pre Vyas
     github: sospirited
+    url: "https://github.com/sospirited"
   jamest:
     display_name: James Turner
   kybernetikos:
     display_name: kybernetikos
+    url: "https://github.com/kybernetikos"

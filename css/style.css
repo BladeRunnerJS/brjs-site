@@ -765,6 +765,10 @@ body.post .post .crossed:after {
 .post .authors .author:first-child:before, .post-title .authors .author:first-child:before { content: ""; }
 .post .authors .author:last-child:after, .post-title .authors .author:last-child:after { content: ""; }
 
+.author a {
+  color: #999999;
+}
+
 #share_buttons {
   margin: -3% 7% 2% 7%;
 }

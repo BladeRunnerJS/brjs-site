@@ -15,11 +15,13 @@ template: post
         <span class="authors">
         {% for blog_author in page.authors %}
           {% assign author = site.authors[blog_author] %}
+          <span class="author">
           {% if author.url %}
-          <span class="author"><a href="{{ author.url }}">{{ author.display_name }}</a></span>
+            <a href="{{ author.url }}">{{ author.display_name }}</a>
           {% else %}
-          <span class="author">{{ author.display_name }}</span>
+            {{ author.display_name }}
           {% endif %}
+          </span>
         {% endfor %}
         </span>
         <span class="date"> on {{ page.date | date_to_string }}</span>

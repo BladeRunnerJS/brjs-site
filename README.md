@@ -48,6 +48,17 @@ The purpose of the concepts section is to provide enough basic detail for somebo
 
 The contents of the *How do I use it?* part shouldn't go into too much detail. Ideally, it should provide a brief example and then send the reader to the appropriate User Guide or Tutorial.
 
+#### Use
+
+The Use section should be a natural follow-on from the associated Concept. It should provide a solid example of how to achieve something.
+
+* Basic overview of usage
+* Example detailed usage
+
+#### Extend
+
+The ways you can extend the BRJS toolkit and also some of the front-end components e.g. Workbench Tools.
+
 ### Contribution
 
 Because the documentation is open source we hope it's easy to submit improvements and fixes to them using pull requests. However, if you see a mistake and either can't fix it, or don't have time to, please [raise an issue](https://github.com/bladerunnerjs/brjs/issues).

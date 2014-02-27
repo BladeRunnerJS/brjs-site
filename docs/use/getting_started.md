@@ -5,6 +5,12 @@ permalink: /docs/use/getting_started/
 notice: none
 ---
 
+<div class="alert alert-warning">
+  <p>
+    <strong>This Getting Started Guide is based on v0.4 of BladeRunnerJS which is not yet release. If you wish to try out this getting started guide you will need to build BladeRunnerJS from source. The source can be found in the <a href="https://github.com/BladeRunnerJS/brjs/tree/better-initial-dx">better-initial-dx</a> branch and then you can follow the <a href="https://github.com/BladeRunnerJS/brjs/tree/better-initial-dx#how-to-build-brjs">how to build guide</a> (it's pretty simple!) in order to create the toolkit.</strong>
+  </p>
+</div>
+
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
 This isn't your typical 2 minute getting started guide. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**.

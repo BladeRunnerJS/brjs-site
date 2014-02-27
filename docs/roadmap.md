@@ -7,31 +7,31 @@ notice: none
 
 We hope to have the following in place before Christmas 2013.
 
-### [In-built EventHub](https://github.com/BladeRunnerJS/brjs/issues/10)
+### ~~[In-built EventHub](https://github.com/BladeRunnerJS/brjs/issues/10)~~
 
 A key part of building a scalable application is loosely coupled communication between application components. We had an event hub, but took it out as it was a bit too complicated for general use cases. We want to add this key concept back in.
 
-### [Node.js style client-side code](https://github.com/BladeRunnerJS/brjs/issues/11)
+### ~~[Node.js style client-side code](https://github.com/BladeRunnerJS/brjs/issues/11)~~
 
 We don't like the way we currently need to write our JavaScript. We like the Node.js coding style and moduling system. So, we're adding support for it within BRJS applications.
 
 So, an `ExampleClass.js` will look like this:
 
     var br = require( 'br' );
-    
+
     var Property = require( 'br/presenter/Property');
     var PresentationModel = require( 'br/presenter/PresentationModel' );
-    
+
     function ExampleClass() {
       this.message = new Property( "Hello World!" );
     };
     br.extend(ExampleClass, PresentationModel);
-    
+
     ExampleClass.prototype.buttonClicked = function() {
       console.log( 'button clicked' );
     };
 
-### [Improved Debugging Experience](https://github.com/BladeRunnerJS/brjs/issues/46)
+### ~~[Improved Debugging Experience](https://github.com/BladeRunnerJS/brjs/issues/46)~~
 
 BRJS presently generates very large bundled JavaScript files which an make debugging difficult. We need to create a way of improving that essential debug workflow.
 

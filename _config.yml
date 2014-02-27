@@ -9,6 +9,8 @@ paginate: 7
 paginate_path: "blog/page/:num"
 
 markdown: redcarpet
+redcarpet:
+  extensions: ["strikethrough"]
 
 social:
   twitter_link: https://twitter.com/BladeRunnerJS

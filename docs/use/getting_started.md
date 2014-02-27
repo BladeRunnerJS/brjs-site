@@ -808,6 +808,12 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 ## Build and Deploy
 
+<div class="alert alert-warning">
+  <p>
+    <strong>The WAR command does not work in the <em>better-initial-dx</em> branch. This will be fixed for the v0.4 release.</strong>
+  </p>
+</div>
+
 For the moment we only support deploying as a [.WAR][war-file] file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
 
 [war-file]: http://en.wikipedia.org/wiki/WAR_file_format_(Sun)

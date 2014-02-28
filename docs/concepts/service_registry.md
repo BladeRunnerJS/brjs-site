@@ -42,7 +42,7 @@ MyService.prototype.doSomething = function() {
 In your initialisation code (`App.js` for an Aspect or `index.html` for a Workbench) you can register the service:
 
 ```javascript
-var MyService = mylib.MyService;
+var MyService = require( 'mylib/MyService' );
 ServiceRegistry.registerService( 'my.something-service', new MyService() );
 ```
 

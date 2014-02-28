@@ -40,7 +40,7 @@ Here's a work-in-progress representation of what you get with BRJS:
 
 ## Ghost: A great example of "open" source
 
-A big thanks to the Ghost team for demonstrating that open sourcing is about much more then simply sharing code; it's about open discussion, sharing ideas and an opportunity for everybody involved to learn.
+A big thanks to the Ghost team for demonstrating that open sourcing is about much more than simply sharing code; it's about open discussion, sharing ideas and an opportunity for everybody involved to learn.
 
 ## v0.4 release due shortly
 

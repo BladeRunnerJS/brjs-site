@@ -5,6 +5,13 @@ permalink: /docs/use/getting_started/
 notice: none
 ---
 
+
+<div class="alert alert-success">
+  <p>
+    <strong>This Getting Started Guide is based on <a href="https://github.com/BladeRunnerJS/brjs/releases/download/v0.4/BladeRunnerJS-v0.4-0-g59c3656.zip">v0.4 of BladeRunnerJS</a></strong>.
+  </p>
+</div>
+
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
 This isn't your typical 2 minute getting started guide. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**.

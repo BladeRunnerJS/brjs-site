@@ -5,12 +5,6 @@ permalink: /docs/use/getting_started/
 notice: none
 ---
 
-<div class="alert alert-warning">
-  <p>
-    <strong>This Getting Started Guide is based on v0.4 of BladeRunnerJS which is not yet release. If you wish to try out this getting started guide you will need to build BladeRunnerJS from source. The source can be found in the <a href="https://github.com/BladeRunnerJS/brjs/tree/better-initial-dx">better-initial-dx</a> branch and then you can follow the <a href="https://github.com/BladeRunnerJS/brjs/tree/better-initial-dx#how-to-build-brjs">how to build guide</a> (it's pretty simple!) in order to create the toolkit.</strong>
-  </p>
-</div>
-
 <p><strong>This guide provides you with a basic overview of getting started with BladeRunnerJS (BRJS), including covering some of the core concepts.</strong></p>
 
 This isn't your typical 2 minute getting started guide. This is because BRJS helps you build large-scale applications, so we need to go into a bit of detail. In this guide we'll follow the JavaScript convention - since conventions are good - and build a **Todo List**.
@@ -53,6 +47,8 @@ In the aspect directory you'll find an `index.html` entry point a `src` director
 This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjstodo`.
 
 ![](/docs/use/img/brjs-app-nothing-to-see-here.png)
+
+You can now either open a new CLI window to enter future commands in the getting started guide, or press Ctrl + C to kill the server and start it again next time you need the server.
 
 ## Create a BladeSet
 
@@ -160,13 +156,19 @@ The template markup indicates that the text of the `div` element will get the va
 
 ### Run the Blade in a Workbench
 
-Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`BRJS_HOME/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjstodo/todo-bladeset/blades/todoinput/workbench/`.
+Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`BRJS_HOME/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjstodo/todo-bladeset/blades/input/workbench/`.
 
 ![](/docs/use/img/hello-world-workbench.png)
 
 You'll notice that there's a **Visualise Knockout View Model** Workbench Tool that shows a tree visualisation of the View Model. In there you'll see a simple `message:Hello World!` name and value.
 
 If you click the `Log me` button the `buttonClicked` function is called and `button clicked` will be logged to the JavaScript console.
+
+<div class="alert alert-info github">
+    <p>
+        <strong>This thing's really slow!</strong> Due to the dependency analysis BladeRunnerJS performs on your JavaScript the initial load of any page will take slightly longer than subsequent loads. Subsequent load time is however slightly longer than we'd like so we're working to improve it.
+    </p>
+</div>
 
 ### Add Two-Way Data Binding
 
@@ -640,14 +642,13 @@ ItemsViewModelTest.prototype.testitemsBladeListensToItemAddedEvents = function()
 
   assertEquals( fakeEventHub.channelName , 'todo-list' );
   assertEquals( fakeChannel.eventName , 'todo-added' );
-  assertEquals( fakeChannel.context , itemsBlade );
+  assertEquals( fakeChannel.context , itemsViewModel );
 };
 ```
 
-Now you can execute the tests ensuring that the test server is running (`BRJS_HOME/sdk/brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
+Now you can execute the tests, using `BRJS_HOME/sdk/brjs test ../apps/brjstodo/todo-bladeset/blades/items/`, ensuring that the test server is running (`BRJS_HOME/sdk/brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
 
 ```bash
-› ./brjs test ../apps/brjstodo/todo-bladeset/blades/items/
 BladeRunnerJS version: v0.3-931-g715bf3c-DEV, built: 26 February 2014 22:26 GMT
 
 Server already running, not bothering to start a new instance...
@@ -694,6 +695,8 @@ In order to add the Blades to the default aspect we need to first update the asp
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+
 		<base href="@APP.VERSION@"/>
 
 		<title>My Application</title>
@@ -702,16 +705,17 @@ In order to add the Blades to the default aspect we need to first update the asp
 
 	</head>
 	<body>
-
-		<!-- new code -->
+        <!-- new code -->
 		<section id="todoapp"></section>
-		<!-- end of new code -->
+        <!-- end of new code -->
 
-		<!-- dev-minifier can be set to "combined" for all JS content to be bundled with a single request -->
+    <!-- dev-minifier can be set to "combined" for all JS content to be bundled with a single request -->
 		<@js.bundle dev-minifier="none" prod-minifier="combined"@/>
 		<script>
 			( function() {
 
+				// Register application EventHub. Required until the following is fixed:
+				// https://github.com/BladeRunnerJS/brjs/issues/354
 				var ServiceRegistry = require( 'br/ServiceRegistry' );
 				var EventHub = require( 'br/EventHub' );
 				ServiceRegistry.registerService( 'br.event-hub', new EventHub() );
@@ -723,6 +727,7 @@ In order to add the Blades to the default aspect we need to first update the asp
 		</script>
 	</body>
 </html>
+
 ```
 
 The `<@css.bundle theme="standard"@/>` tag is replaced at build time with a reference to a CSS bundle and the `<@js.bundle@/>` with a reference to the generated JavaScript source. This will be either numerous script tags for each JavaScript file or a single bundle file.
@@ -756,7 +761,7 @@ var App = function() {
 module.exports = App;
 ```
 
-At this point we haven't added anything to our default aspect and it will look exactly as it did at the start of this guide.
+At this point we haven't added any content to our page and it will just a blank page.
 
 In order for the Blade components to appear in the aspect we have to append the DOM elements that the `KnockoutComponent` instances create, to the Aspect (the main view into the Todo List web app). We do this by calling `component.getElement()` and appending the returned element append it to the `todoapp` element in the DOM:
 
@@ -808,12 +813,6 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 ## Build and Deploy
 
-<div class="alert alert-warning">
-  <p>
-    <strong>The WAR command does not work in the <em>better-initial-dx</em> branch. This will be fixed for the v0.4 release.</strong>
-  </p>
-</div>
-
 For the moment we only support deploying as a [.WAR][war-file] file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
 
 [war-file]: http://en.wikipedia.org/wiki/WAR_file_format_(Sun)
@@ -824,7 +823,9 @@ For the moment we only support deploying as a [.WAR][war-file] file so we'll cov
   </p>
 </div>
 
-All that you need to do to build the .WAR file is use the `war` command:
+First download Tomcat 6.0 from the [Apache Tomcat](http://tomcat.apache.org/) website.
+
+To build the WAR, run the `war` command:
 
     $ BRJS_HOME/sdk/brjs war brjstodo
     BladeRunnerJS version: BRJS-dev, built: 26 September 2013

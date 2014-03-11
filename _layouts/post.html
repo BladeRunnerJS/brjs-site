@@ -5,10 +5,11 @@ template: post
 
 <div class="container main">
 
+
   <div class="row">
 
     <div class="post col-md-offset-2 col-lg-8">
-  	
+
     	<h1>{{ page.title }}</h1>
     	<div class="meta">
         <span class="by">by</span>
@@ -27,7 +28,17 @@ template: post
         <span class="date"> on {{ page.date | date_to_string }}</span>
       </div>
 
+      {% case page.latest %}
+      {% when 'true' %}
+      {% else %}
       <div class="copy">
+        <div class="alert alert-success">
+          <p>
+            <strong>Read our latest: <a href="http://bladerunnerjs.org/blog/0.4-released/">BladeRunnerJS v0.4 Released</a></strong>.
+          </p>
+        </div>
+        {% endcase %}
+
     	  {{ content }}
       </div>
 

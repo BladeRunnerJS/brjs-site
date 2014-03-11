@@ -28,16 +28,16 @@ template: post
         <span class="date"> on {{ page.date | date_to_string }}</span>
       </div>
 
-      {% case page.latest %}
-      {% when 'true' %}
-      {% else %}
       <div class="copy">
+        {% if page.latest %}
+        <!-- latest blog post -->
+        {% else %}
         <div class="alert alert-success">
           <p>
             <strong>Read our latest: <a href="http://bladerunnerjs.org/blog/0.4-released/">BladeRunnerJS v0.4 Released</a></strong>.
           </p>
         </div>
-        {% endcase %}
+        {% endif %}
 
     	  {{ content }}
       </div>

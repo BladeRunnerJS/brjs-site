@@ -3,6 +3,8 @@ pygments: true
 relative_permalinks: false
 permalink: /blog/:title
 
+base_url: http://bladerunnerjs.org
+
 exclude: [ node_modules ]
 
 paginate: 7

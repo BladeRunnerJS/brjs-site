@@ -5,8 +5,6 @@ permalink: /docs/roadmap/
 notice: none
 ---
 
-We hope to have the following in place before Christmas 2013.
-
 ### ~~[In-built EventHub](https://github.com/BladeRunnerJS/brjs/issues/10)~~
 
 A key part of building a scalable application is loosely coupled communication between application components. We had an event hub, but took it out as it was a bit too complicated for general use cases. We want to add this key concept back in.

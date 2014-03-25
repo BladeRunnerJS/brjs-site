@@ -29,15 +29,17 @@ template: post
       </div>
 
       <div class="copy">
-        {% if page.latest %}
-        <!-- latest blog post -->
-        {% else %}
-        <div class="alert alert-success">
-          <p>
-            <strong>Read our latest: <a href="http://bladerunnerjs.org/blog/0.4-released/">BladeRunnerJS v0.4 Released</a></strong>.
-          </p>
-        </div>
-        {% endif %}
+        {% for post in site.posts %}
+          {% if page.latest %}
+          <!-- latest blog post -->
+          {% elsif post.latest %}
+          <div class="alert alert-success">
+            <p>
+              <strong>Read our latest: <a href="{{ post.url }}">{{ post.title }}</a></strong>.
+            </p>
+          </div>
+          {% endif %}
+        {% endfor %}
 
     	  {{ content }}
       </div>

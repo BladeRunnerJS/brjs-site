@@ -115,7 +115,7 @@ In attempt to achieve awareness we've done the following **since January 2014**:
 
   <div class="flip-container">
     <div class="stat flipper">
-      <h2 class="front"><span>10</span> Submitted CFPs</h2>
+      <h2 class="front"><span>11</span> Submitted CFPs</h2>
       <ul class="back">
         <li>Devs Love Bacon</li>
         <li>Technorama</li>
@@ -127,6 +127,7 @@ In attempt to achieve awareness we've done the following **since January 2014**:
         <li>Warm Crocodile Conf</li>
         <li>OSCON</li>
         <li>SPA Conference</li>
+        <li>JQuery EU</li>
       </ul>
     </div>
   </div>

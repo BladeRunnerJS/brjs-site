@@ -1,0 +1,218 @@
+.stats {
+  clear: both;
+  overflow: auto;
+  margin: auto;
+}
+
+.stat {
+  position: relative;
+  width: 22.5%;
+  min-width: 175px;
+  height: 150px;
+  float: left;
+  border-radius: 10px;
+  overflow: auto;
+  margin: 10px;
+
+  background-color: black;
+  color: white;
+}
+
+.stat a, .stat.a:visited {
+  color: #80ba27;
+}
+
+.stat h2 {
+  font-size: 22px;
+  text-align: center;
+  width: 100%;
+}
+
+.stat h2 span {
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px
+}
+
+.stat.smaller h2 {
+  font-size: 16px;
+  margin-top: 16px;
+  margin-bottom: 5px;
+}
+
+.stat.smaller h2 span {
+  font-size: 24px;
+  margin-bottom: 5px
+}
+
+.stat ul {
+  font-size: 0.9em;
+  line-height: 1.6em;
+  margin-left: 0px;
+  margin-top: 15px;
+}
+
+.stat li {
+  padding-left: 5px;
+  margin: 2px 0px 2px 0px;
+  margin: 0;
+}
+
+.stat .passed {
+  text-decoration: line-through;
+}
+
+.stat .fill {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+}
+
+/* Green */
+.stat.green {
+  background-color: #80BA27;
+}
+
+.stat.green a, .stat.green a:visited {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Blue */
+.stat.blue {
+  background-color: #00aced;
+}
+
+.stat.blue a, .stat.blue a:visited {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Orange */
+.stat.orange {
+  background-color: #fab000;
+}
+
+.stat.orange a, .stat.orange a:visited {
+  color: white;
+  text-decoration: underline;
+}
+
+/* fail */
+.stat.fail {
+  background-color: #4d4d4d;
+}
+
+.stat.fail a, .stat.fail a:visited {
+  color: white;
+  text-decoration: underline;
+}
+
+.stat.flipper {
+  background-image: url( '/blog/img/flip-white.png' );
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+/* simple */
+.flip-container {
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-ms-perspective: 1000;
+	perspective: 1000;
+
+	-ms-transform: perspective(1000px);
+	-moz-transform: perspective(1000px);
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+}
+
+/*
+.flip-container:hover .flipper, .flip-container.hover .flipper, #flip-toggle.flip .flipper {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	filter: FlipH;
+		-ms-filter: "FlipH";
+}
+*/
+
+/* START: Accommodating for IE */
+.flip-container:hover .back, .flip-container.hover .back {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.flip-container:hover .front, .flip-container.hover .front {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* END: Accommodating for IE */
+
+.front, .back {
+  width: 95%;
+}
+
+.flipper {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+	-ms-transition: 0.6s;
+
+	-moz-transition: 0.6s;
+	-moz-transform: perspective(1000px);
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+
+  -moz-transition: 0.6s;
+  -moz-transform-style: preserve-3d;
+
+  -o-transition: 0.6s;
+  -o-transform-style: preserve-3d;
+
+  -ms-transition: 0.6s;
+  -ms-transform-style: preserve-3d;
+
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	-webkit-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	z-index: 2;
+}
+
+.back {
+	-webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}

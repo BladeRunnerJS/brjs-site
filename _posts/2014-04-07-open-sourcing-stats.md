@@ -157,6 +157,23 @@ In attempt to achieve awareness we've done the following **since January 2014**:
     </div>
   </div>
 
+  <div class="flip-container">
+    <div class="stat">
+      <h2><span>1892</span> Git Commits</h2>
+    </div>
+  </div>
+
+  <div class="flip-container">
+    <div class="stat flipper">
+      <h2 class="front"><span>3</span> Releases</h2>
+      <ul class="back">
+        <li><a href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6">v0.6</a></li>
+        <li><a href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.5">v0.5</a></li>
+        <li><a href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6">v0.4</a></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
 <br />
@@ -197,23 +214,6 @@ Looking at stats alone this has resulted in:
   <div class="flip-container">
     <div class="stat">
       <h2><span>143</span> Downloads of BRJS</h2>
-    </div>
-  </div>
-
-  <div class="flip-container">
-    <div class="stat">
-      <h2><span>1892</span> Commits</h2>
-    </div>
-  </div>
-
-  <div class="flip-container">
-    <div class="stat flipper">
-      <h2 class="front"><span>3</span> Releases</h2>
-      <ul class="back">
-        <li><a href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6">v0.6</a></li>
-        <li><a href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.5">v0.5</a></li>
-        <li><a href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6">v0.4</a></li>
-      </ul>
     </div>
   </div>
 

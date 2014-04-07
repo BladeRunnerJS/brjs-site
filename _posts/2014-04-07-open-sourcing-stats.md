@@ -23,7 +23,7 @@ We've set out open sourcing BRJS in the hope that others use it and get benefit 
 
 The goal for the public part of the open sourcing process has been to raise awareness that BladeRunnerJS even exists and share some of the concepts and goals.
 
-In attempt to achieve awareness we've done the following **since January 2014**:
+In attempt to achieve awareness we've done the following, most of it since January 2014:
 
 <div class="stats">
 

@@ -240,11 +240,11 @@ So we really need to improve the feedback loop. The focus for the coming months 
 
 ### FutureJS
 
-The feedback will begin with a hands-on workshop that I'm very much looking forward to. The [How to Build Front-end Web Apps that Scale Workshop](http://futurejs.org/workshops/how-to-build-front-end-web-apps-that-scale) is at FutureJS in Barcelona, which is hotting up to be an amazing event. If you're interested you can use the code **JSWEEKLY** to get 10% discount on the entire event.
+The feedback will begin with a hands-on workshop that I'm very much looking forward to. The [How to Build Front-end Web Apps that Scale Workshop](http://futurejs.org/workshops/how-to-build-front-end-web-apps-that-scale) at FutureJS in Barcelona, which is hotting up to be an amazing event. If you're interested you can use the code **JSWEEKLY** to get 10% discount on the entire event - last batch of tickets just released.
 
 ### ScotlandJS & Scotch on the Rocks
 
-In May I'll be talking about [Testing Ginormous JavaScript Apps](http://scotlandjs.com/speakers/phil/) at ScotlandJS and then in June I'll be talking about the [State of Realtime Apps in 2014 and Beyond](http://www.sotr.eu/speakers.html#phil) at Scotch on the Rocks.
+In May I'll be talking about [Testing Ginormous JavaScript Apps](http://scotlandjs.com/speakers/phil/) at ScotlandJS and then in June about the [State of Realtime Apps in 2014 and Beyond](http://www.sotr.eu/speakers.html#phil) at Scotch on the Rocks.
 
 ## Have feedback? Get in touch
 

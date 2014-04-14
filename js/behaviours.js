@@ -69,12 +69,20 @@ $( function() {
     var githubReleaseUrl = 'https://api.github.com/repos/bladerunnerjs/brjs/releases';
     $.get( githubReleaseUrl, function( data ) {
       var latest = findLatestBRJSRelease( data );
-      $( 'a.brjs-latest-download' ).attr( 'href', latest );
+      $( 'a.brjs-latest-download' )
+        .attr( 'href', latest.zipball_url )
+        .attr( 'aria-label', bytesToMB( latest.assets[ 0 ].size ) )
+        .find( '.brjs-latest-version' ).text( 'BRJS ' + latest.tag_name );
     } );
   }
 
+  function bytesToMB( str ) {
+    var bytes = Number( str );
+    return (bytes / ( 1024 * 1024 ) ).toFixed( 2 ) + ' MB';
+  }
+
   function findLatestBRJSRelease( data ) {
-    return data[ 0 ].zipball_url;
+    return data[ 0 ];
   }
 
   updateBRJSDownloadLinks();

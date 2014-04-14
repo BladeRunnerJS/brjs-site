@@ -100,6 +100,18 @@ p.read-more a {
   color: #fff;
 }
 
+.btn.green {
+  border: 1px solid #80ba27 !important;
+  background: #80BA27;
+  color: #fff;
+}
+
+.btn.green:hover {
+  background: #73A922 !important;
+  border: 1px solid #80ba27 !important;
+  color: #fff;
+}
+
 /* NAVIGATION
 -------------------------------------------------- */
 
@@ -153,6 +165,11 @@ p.read-more a {
 
 .navbar-collapse {
   padding-right: 0;
+}
+
+.download-latest-nav {
+  padding: 6px 12px !important;
+  margin-top: 8px;
 }
 
 /* Google Custom Search overrides */
@@ -854,6 +871,12 @@ body.post #disqus_thread {
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  .download-latest-nav {
+    margin-top: 3px;
+  }
+}
 
 @media screen and (max-width: 1237px) {
   .call-to-action .row {

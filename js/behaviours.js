@@ -21,7 +21,7 @@ $( function() {
   function highlightCode() {
     $( 'pre code' ).each( function( i, el ) {
       el = $( el );
-      
+
       var code = $.trim( el.text() );
       var lang = 'javascript';
       if( code.indexOf( '$' ) === 0 ) {
@@ -38,7 +38,7 @@ $( function() {
   }
 
   // Bold code that is flagged as new
-  // New code is indicated as follows: 
+  // New code is indicated as follows:
   //
   // JavaScript
   //  /*** New code ***/
@@ -53,7 +53,7 @@ $( function() {
     // JavaScript
     html = html.replace(/^.*<span class="comment">\/\*{3} New code \*{3}\/<\/span>.*\n(\s*?)/gmi, '<div class="new-code js">$1' );
     html = html.replace(/\s+<span class="comment">\/\*{3} End of new code \*{3}\/<\/span>\n/gmi, '</div>' );
-    
+
     // HTML
     html = html.replace(/^.*<span class="comment">&lt;!-- New code --&gt;<\/span>.*\n(\s+)/gmi, '<div class="new-code html">$1' );
     html = html.replace(/\s+<span class="comment">&lt;!-- End of new code --&gt;<\/span>\n/gmi, '</div>' );
@@ -63,5 +63,21 @@ $( function() {
 
   decorateActiveLinks();
   highlightCode();
+
+  // Download latest BRJS links
+  function updateBRJSDownloadLinks() {
+    var githubReleaseUrl = 'https://api.github.com/repos/bladerunnerjs/brjs/releases';
+    $.get( githubReleaseUrl, function( data ) {
+      var latest = findLatestBRJSRelease( data );
+      $( 'a.brjs-latest-download' ).attr( 'href', latest );
+    } );
+  }
+
+  function findLatestBRJSRelease( data ) {
+    return data[ 0 ].zipball_url;
+  }
+
+  updateBRJSDownloadLinks();
+
 
 } );

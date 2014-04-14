@@ -12,7 +12,7 @@ The BRJS documentation is broken up into 3 high-level sections:
 * [Use](/docs/use/) - documentation about using BRJS to build an application
 * [Extend](/docs/extend) - docs on extending the BRJS toolkit functionality e.g. creating plugins
 
-If you are looking to try out BRJS then check out the <a href="/docs/use/getting_started" class="btn btn-success">Getting Started Guide</a>
+If you are looking to try out BRJS then check out the [Getting Started Guide](/docs/use/getting_started).
 
 ## Overview
 

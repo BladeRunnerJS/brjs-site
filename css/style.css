@@ -433,7 +433,7 @@ body.docs {
   background-color: #ffffff;
 }
 
-body.docs a.btn {
+body.docs a.brjs-btn.btn {
   height: 23px;
   font-size: 15px;
   font-weight: bold;

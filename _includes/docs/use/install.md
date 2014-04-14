@@ -4,9 +4,8 @@ In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/
 
 ## Download & Install BRJS
 
-Download the [latest BRJS release](https://github.com/BladeRunnerJS/brjs/releases/) and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI excutable is `BRJS_HOME/sdk/brjs`.
+<strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download the latest BRJS release</a></strong> and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI excutable is `BRJS_HOME/sdk/brjs`.
 
-<p><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="btn btn-success">Download BladeRunnerJS</a></p>
 
 <div class="alert alert-info">
   <p>

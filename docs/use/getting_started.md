@@ -8,7 +8,7 @@ notice: none
 
 <div class="alert alert-success">
   <p>
-    <strong>This Getting Started Guide is based on <a href="https://github.com/BladeRunnerJS/brjs/releases/download/v0.4/BladeRunnerJS-v0.4-0-g59c3656.zip">v0.4 of BladeRunnerJS</a></strong>.
+    <strong>This Getting Started Guide requires v0.4 of BladeRunnerJS and above</strong>. <strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
   </p>
 </div>
 

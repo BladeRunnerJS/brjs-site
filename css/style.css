@@ -61,7 +61,7 @@ body.home .content {
 /* GENERIC BUTTON STYLES
 -------------------------------------------------- */
 
-.btn, .cta-round {
+.brjs-btn, .cta-round {
   color: #fff;
   background: #80BA27;
   padding: 8px 20px;
@@ -94,7 +94,7 @@ p.read-more a {
   display: inline-block;
   }
 
-.btn:hover, .cta-round:hover, p.read-more a:hover {
+.btn.brjs-btn:hover, .cta-round:hover, p.read-more a:hover {
   background: #73A922;
   text-decoration: none;
   color: #fff;
@@ -213,7 +213,7 @@ p.read-more a {
     background: #80BA27;
   }
 
-  .container.intro .btn:hover {
+  .container.intro .btn.brjs-btn:hover {
     background: #73A922;
   }
 
@@ -400,7 +400,7 @@ p.read-more a {
 
 .home-get-started .cta-round {
   text-align: center;
-  min-width: 181px 
+  min-width: 181px
 }
 
 .home-get-started ul {
@@ -444,7 +444,7 @@ body.docs a.btn {
   line-height: 18px;
 }
 
-body.docs a.btn:hover {
+body.docs a.btn.brjs-btn:hover {
   color: #2a6496;
   text-decoration: underline;
 }
@@ -1082,7 +1082,7 @@ body.post #disqus_thread {
     margin: 3%;
   }
 
-  .home-get-started .cta-round { 
+  .home-get-started .cta-round {
     margin-top: 0px;
   }
 

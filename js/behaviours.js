@@ -87,5 +87,8 @@ $( function() {
 
   updateBRJSDownloadLinks();
 
+  $('body.docs .main').toc( {
+    startAt: 2
+  } );
 
 } );

@@ -878,6 +878,12 @@ body.post #disqus_thread {
   }
 }
 
+@media screen and (max-width: 399px) {
+  .download-latest-nav {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 1237px) {
   .call-to-action .row {
     font-size: 20px;

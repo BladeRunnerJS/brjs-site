@@ -466,10 +466,6 @@ body.docs a.btn.brjs-btn:hover {
   text-decoration: underline;
 }
 
-body.docs .main > ul:first-of-type {
-  font-weight: 500;
-}
-
 body.docs .col-lg-3 {
   display: inline-block;
   float: right;

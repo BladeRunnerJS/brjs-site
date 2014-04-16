@@ -874,7 +874,7 @@ body.post #disqus_thread {
   }
 }
 
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 470px) {
   .download-latest-nav {
     display: none !important;
   }

@@ -9,7 +9,7 @@ excerpt: Last week we released BRJS v0.6 that provides an incremental improvemen
 
 ---
 
-Last week we released [BRJS v0.6](https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6) that provides an incremental improvement upon v0.5. Since it's just an incremental improvement there's not much to shout about. So instead of talking about the latest release I thought I'd share some stats about our open sourcing process and the uptake of BRJS. If you'd like to get a copy of the latest release you can download directly below.
+Last week we released [BRJS v0.6](https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6) that provides an incremental improvement upon v0.5. Since it's just an incremental improvement there's not much to shout about. If you'd like to get a copy of the latest release you can download directly below.
 
 <center><a class="btn btn-success" role="button" aria-label="118.6 MB" href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.6">
   <span class="glyphicon glyphicon-arrow-down"></span> BladeRunnerJS-v0.6-0-g0341d73.zip

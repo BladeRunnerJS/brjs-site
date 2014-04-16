@@ -69,9 +69,15 @@ $( function() {
     var githubReleaseUrl = 'https://api.github.com/repos/bladerunnerjs/brjs/releases';
     $.get( githubReleaseUrl, function( data ) {
       var latest = findLatestBRJSRelease( data );
+      var downloadAsset = latest.assets[ 0 ];
+      // Example download URL. Not sure how to get this via the releases API so
+      // so hard-coding for now.
+      // https://github.com/BladeRunnerJS/brjs/releases/download/v0.7/BladeRunnerJS-v0.7-0-gff6e9cb.zip
       $( 'a.brjs-latest-download' )
-        .attr( 'href', latest.zipball_url )
-        .attr( 'aria-label', bytesToMB( latest.assets[ 0 ].size ) )
+        .attr( 'href', 'https://github.com/BladeRunnerJS/brjs/releases/download/' +
+                       latest.tag_name + '/' +
+                       downloadAsset.name )
+        .attr( 'aria-label', bytesToMB( downloadAsset.size ) )
         .find( '.brjs-latest-version' ).text( 'BRJS ' + latest.tag_name );
     } );
   }

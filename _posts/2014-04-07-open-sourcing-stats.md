@@ -19,7 +19,7 @@ So instead of talking about the latest release I thought I'd share some stats ab
 
 ## Open Sourcing Stats
 
-We've set out open sourcing BRJS in the hope that others use it and get benefit from it. From there we hope that we can gain from the knowlege, thoughts and potentially contribution of others. The project actually kicked off in June 2013 but it wasn't until March 2014 we did our **big** first public event ([QCon London](https://www.youtube.com/watch?v=eMMK51-jgjE)). Until that point we put a lot of hard work into design and development (a considerable re-write of the exiting BladeRunner codebase), got a website up, did a couple of talks and wrote a few blog posts.
+We've set out open sourcing BRJS in the hope that others use it and get benefit from it. From there we hope that we can gain from the knowledge, thoughts and potentially contribution of others. The project actually kicked off in June 2013 but it wasn't until March 2014 we did our **big** first public event ([QCon London](https://www.youtube.com/watch?v=eMMK51-jgjE)). Until that point we put a lot of hard work into design and development (a considerable re-write of the exiting BladeRunner codebase), got a website up, did a couple of talks and wrote a few blog posts.
 
 The goal for the public part of the open sourcing process has been to raise awareness that BladeRunnerJS even exists and share some of the concepts and goals.
 
@@ -113,6 +113,7 @@ In attempt to achieve awareness we've done the following, most of it since Janua
     </div>
   </div>
 
+  <a name="talk-stats"></a>
   <div class="flip-container">
     <div class="stat flipper">
       <h2 class="front"><span>11</span> Submitted CFPs</h2>

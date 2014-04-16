@@ -37,7 +37,7 @@ We have a blog post pending to explain more about this. We'll update this questi
 
 BladeRunnerJS is a solution for [Programming in the Large](http://en.wikipedia.org/wiki/Programming_in_the_large_and_programming_in_the_small). Although we *really* do want it to be a widely useful toolkit, large apps built by many contributors is the focus.
 
-The current trend with tooling, libraries and even software is to go "micro". But there is still benefit in having a fully functional and proven solution that is feature reach and productive "out of the box". From there, the requirement is to be able to add customisations to meet the requirements of software projects, while maintaining the core benefits of the solution.
+The current trend with tooling, libraries and even software is to go "micro". But there is still benefit in having a fully functional and proven solution that is feature rich and productive "out of the box". From there, the requirement is to be able to add customisations to meet the requirements of software projects, while maintaining the core benefits of the solution.
 
 ### Full Solution *not* Micro Tooling
 
@@ -81,13 +81,13 @@ It does:
 
 Our support for CommonJS/Node.js style requires is performed via a [bundler plugin](https://github.com/BladeRunnerJS/brjs/wiki/BladeRunnerJS-Plugin-Development-Guide#bundler-plug-in-relationships). It is therefore possible to add support for other languages such as TypeScript, CoffeeScript or ES6 via the same mechanism.
 
-### BRJS v Grunt/Gulp/Fez/Brocolli/AssetGraph
+### BRJS v Grunt/Gulp/Fez/Broccoli/AssetGraph
 
 Coming soon...
 
 ## Why isn't BladeRunnerJS written in Node.JS?
 
-We started the BladeRunner project in around 2011. Back then Node.js wasn't an option for a production-grade solution. When we started the open sourcing process (and renaming from "BladeRunner" to "BladeRunnerJS") we decided on a re-write. We again thought about using Node.js. Unfortunately Node.js isn't supported in some of the development environments of our target customers, so building the toolkit in Node.js still isn't an option for us.
+We started the BladeRunner project in around 2011. Back then, Node.js wasn't an option for a production-grade solution. When we started the open sourcing process (and renaming from "BladeRunner" to "BladeRunnerJS") we decided on a re-write. We again thought about using Node.js. Unfortunately Node.js isn't supported in some of the development environments of our target customers, so building the toolkit in Node.js still isn't an option for us.
 
 However, we do want to start integrating with some of the amazing Node.js tooling and we plan to do that via plugins. For more information see [Embracing Node.js](http://bladerunnerjs.org/blog/embracing-nodejs/).
 

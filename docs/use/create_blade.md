@@ -17,3 +17,8 @@ $ ./brjs create-blade <app-name> <bladeset-name> <blade-name>
 The following command will create a Blade called `input` in the `todo` BladeSet which is part of the `brjstodo` app.
 
 {% include docs/use/create_blade_example.md %}
+
+## Where next?
+
+Now that you know how to create a Blade you should take a look at [adding that
+Blade to an Aspect](/docs/use/add_blade_to_aspect/).

@@ -16,7 +16,7 @@ This file contains the most common paths to browser installations. Simply commen
 browserPaths:
   mac:
     # chrome enabled
-    chrome: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" 
+    chrome: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 #    firefox: /Applications/Firefox.app/Contents/MacOS/firefox
 #   !!safari is currently not supported in this version of BladeRunner!!
 #    safari: /Applications/Safari.app/Contents/MacOS/Safari
@@ -36,7 +36,7 @@ Run the tests for just the `todo-input` Blade:
 
 You can also run the tests and specify which browsers you wish to run the tests against. To do this you need to have the browsers configured in `test-runner.conf` (as above) and use call the `brjs test` command passing a `-b` flag and browser options, as follows:
 
-To target different browsers an additional parameter is passed to the bladerunner test-server, or bladerunner test commands, as documented in the output of the  bladerunner test help command. 
+To target different browsers an additional parameter is passed to the bladerunner test-server, or bladerunner test commands, as documented in the output of the  bladerunner test help command.
 
     $ ./brjs test <tests-path> -b <browsers>
 
@@ -50,17 +50,16 @@ An example of running tests for the `brjs-todo` app using Firefox and Chrome wou
 
 ## Running tests without setting config
 
-If you would rather not set configuration you can instead start the test server:
+If you would rather not set configuration you can instead start the test server and pass the `--no-browser` flag to indicate no browsers need to be configured:
 
-    $ ./brjs test-server
+    $ ./brjs test-server --no-browser
 
-This will start the test server listening on the port identified by the `portNumber` option in `BRJS_HOME/conf/test-runner.conf`. By default this is 4224. You can then navigate to `http://localhost:4224` which will set the browser listening for tests to run, and then execute tests and pass the `--no-browser` flag and passing the path to the tests you want to run.
+This will start the test server listening on the port identified by the `portNumber` option in `BRJS_HOME/conf/test-runner.conf`. By default this is 4224. You can then navigate to `http://localhost:4224` which will set the browser listening for tests to run, and then execute tests and passing the path to the tests you want to run.
 
 Run all tests for the `brjs-todo` application:
 
-    $ ./brjs test --no-browser ../apps/brjs-todo
+    $ ./brjs test ../apps/brjs-todo
 
 Run the tests for just the `todo-input` Blade:
 
-    $ ./brjs test --no-browser ../apps/brjs-todo/todo-bladeset/blades/todo-input
-
+    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input

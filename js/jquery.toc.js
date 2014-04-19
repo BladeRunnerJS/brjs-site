@@ -13,8 +13,6 @@
  *   http://www.gnu.org/licenses/gpl.html
  */
 (function($) {
-    var toggleHTML = '<div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">hide</a>]</span></div>';
-    var tocContainerHTML = '<div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>%1<ul>%2</ul></td></tr></tbody></table></div>';
 
     function createLevelHTML(anchorId, tocLevel, tocSection, tocNumber, tocText, tocInner) {
         var link = '<a href="#%1"><span class="tocnumber">%2</span> <span class="toctext">%3</span></a>%4'
@@ -34,14 +32,24 @@
             showAlways: false,
             saveShowStatus: true,
             contentsText: 'Contents',
+            allowHide: true,
             hideText: 'hide',
             showText: 'show',
-            startAt: 1
+            startAt: 1,
+            pageToc: null
         };
 
         if (settings) {
             $.extend(config, settings);
         }
+
+        var toggleHTML = '<div id="toctitle"><h2>Contents</h2>';
+        if( settings.allowHide ) {
+          toggleHTML += '<span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">hide</a>]</span>';
+        }
+        toggleHTML += '</div>';
+        
+        var tocContainerHTML = '<div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>%1<ul>%2</ul></td></tr></tbody></table></div>';
 
         var tocHTML = '';
         var tocLevel = 1;
@@ -96,7 +104,13 @@
             var replacedTocContainer = tocContainerHTML
                 .replace('%1', replacedToggleHTML)
                 .replace('%2', tocHTML);
-            tocContainer.prepend(replacedTocContainer);
+
+            var pageToc = tocContainer;
+            if( settings.pageToc ) {
+              pageToc = $( settings.pageToc );
+              pageToc.html( '' ); // clear any existing HTML
+            }
+            pageToc.prepend(replacedTocContainer);
 
             $('#toctogglelink').click(function() {
                 var ul = $($('#toc ul')[0]);

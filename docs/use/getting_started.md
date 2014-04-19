@@ -18,16 +18,20 @@ This isn't your typical 2 minute getting started guide. This is because BRJS hel
 
 We'll cover:
 
-* Downloading and installing BRJS
-* Creating an Application and BladeSet
-* Creating a Todo item `Input` Blade
-* Running and Testing Blades in Workbenches
-* Unit testing Blades
-* Creating a Todo `Items` Blade
-* Inter-Blade communication using an EventHub Service
-* Testing Blade interactions by stubbing Services
-* Adding Blades to an application Aspect
-* Building and Deploying a BRJS application to Apache Tomcat (Flat File deploy coming soon)
+<div id="page_toc">
+  <ul>
+  <li>Downloading and installing BRJS</li>
+  <li>Creating an Application and BladeSet</li>
+  <li>Creating a Todo item <code>Input</code> Blade</li>
+  <li>Running and Testing Blades in Workbenches</li>
+  <li>Unit testing Blades</li>
+  <li>Creating a Todo <code>Items</code> Blade</li>
+  <li>Inter-Blade communication using an EventHub Service</li>
+  <li>Testing Blade interactions by stubbing Services</li>
+  <li>Adding Blades to an application Aspect</li>
+  <li>Building and Deploying a BRJS application to Apache Tomcat (Flat File deploy coming soon)</li>
+  </ul>
+</div>
 
 It'll be time well-spent.
 

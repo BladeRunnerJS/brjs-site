@@ -80,3 +80,13 @@ myService.doSomething();
 <div class="alert alert-info">
   <p>If a service is defined in an <code>aliases.xml</code> but is not retrieved from the <code>ServiceRegistry</code> in any application or test code, the BRJS dependency analysis system will notice this and therefore not register it with the ServiceRegistry. Please see <a href="/docs/concepts/dependency_analysis/">Dependency Analysis</a> for more information.</p>
 </div>
+
+## Deregister a Service
+
+The service with the identifier `my.something-service` can be removed from the ServiceRegistry using the `deregisterService` function.
+
+```javascript
+var ServiceRegistry = require( 'br/ServiceRegistry' );
+
+ServiceRegistry.deregisterService( 'my.something-service' );
+```

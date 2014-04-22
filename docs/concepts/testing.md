@@ -18,7 +18,7 @@ You can use unit tests to test a single class in isolation, or how a number of c
 
 Within a BRJS application the tests reside with the functionality they are written to test. In the case of unit tests they should be in a `tests/test-unit` directory where `test` is at the same level as the `src` directory where the functional code is located.
 
-For more information and an example of a unit test see the docs on [writing tests](/docs/using/writing_tests).
+For more information and an example of a unit test see the docs on [writing tests](/docs/use/writing_tests).
 
 ## Business Facing Tests
 

@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Workbenches
+title: Workbench Tools
 permalink: /docs/concepts/workbench_tools/
 ---
 

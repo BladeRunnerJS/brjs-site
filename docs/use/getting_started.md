@@ -8,7 +8,7 @@ notice: none
 
 <div class="alert alert-success">
   <p>
-    <strong>This Getting Started Guide is based on <a href="https://github.com/BladeRunnerJS/brjs/releases/download/v0.4/BladeRunnerJS-v0.4-0-g59c3656.zip">v0.4 of BladeRunnerJS</a></strong>.
+    <strong>This Getting Started Guide requires v0.4 of BladeRunnerJS and above</strong>. <strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
   </p>
 </div>
 
@@ -18,16 +18,20 @@ This isn't your typical 2 minute getting started guide. This is because BRJS hel
 
 We'll cover:
 
-* Downloading and installing BRJS
-* Creating an Application and BladeSet
-* Creating a Todo item `Input` Blade
-* Running and Testing Blades in Workbenches
-* Unit testing Blades
-* Creating a Todo `Items` Blade
-* Inter-Blade communication using an EventHub Service
-* Testing Blade interactions by stubbing Services
-* Adding Blades to an application Aspect
-* Building and Deploying a BRJS application to Apache Tomcat (Flat File deploy coming soon)
+<div id="page_toc">
+  <ul>
+  <li>Downloading and installing BRJS</li>
+  <li>Creating an Application and BladeSet</li>
+  <li>Creating a Todo item <code>Input</code> Blade</li>
+  <li>Running and Testing Blades in Workbenches</li>
+  <li>Unit testing Blades</li>
+  <li>Creating a Todo <code>Items</code> Blade</li>
+  <li>Inter-Blade communication using an EventHub Service</li>
+  <li>Testing Blade interactions by stubbing Services</li>
+  <li>Adding Blades to an application Aspect</li>
+  <li>Building and Deploying a BRJS application to Apache Tomcat (Flat File deploy coming soon)</li>
+  </ul>
+</div>
 
 It'll be time well-spent.
 
@@ -95,25 +99,7 @@ To create a blade we use the `create-blade` command. This has the following form
 
 Let's create a new blade called `input` within the `todo` BladeSet in our `brjstodo` application:
 
-    $ BRJS_HOME/sdk/brjs create-blade brjstodo todo input
-
-This creates a `input` directory within `BRJS_HOME/apps/brjstodo/todo-bladeset/blades/` containing the following sub-directories:
-
-* `src` - for the JavaScript for the Blade
-* `tests` - for the blade tests
-* `themes` - for CSS and images
-* `workbench` - for the [Workbench](/docs/concepts/workbenches) for the Blade we're developing
-* `resources` - for everything else
-
-<div class="alert alert-info github">
-  <p>
-    In future:
-  </p>
-  <ul>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/3">A default blade will be created when an application is created</a></li>
-    <li>The <a href="https://github.com/BladeRunnerJS/brjs/issues/1">CLI will be context aware</a> so you can run <code>brjs create-blade</code> from within an application directory to create a blade for an app; you won't need to supply an app name, app namespace and BladeSet name</li>
-  </ul>
-</div>
+{% include docs/use/create_blade_example.md %}
 
 ### View the Code
 

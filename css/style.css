@@ -100,6 +100,18 @@ p.read-more a {
   color: #fff;
 }
 
+.btn.green {
+  border: 1px solid #80ba27 !important;
+  background: #80BA27;
+  color: #fff;
+}
+
+.btn.green:hover {
+  background: #73A922 !important;
+  border: 1px solid #80ba27 !important;
+  color: #fff;
+}
+
 /* NAVIGATION
 -------------------------------------------------- */
 
@@ -153,6 +165,11 @@ p.read-more a {
 
 .navbar-collapse {
   padding-right: 0;
+}
+
+.download-latest-nav {
+  padding: 6px 12px !important;
+  margin-top: 8px;
 }
 
 /* Google Custom Search overrides */
@@ -433,7 +450,7 @@ body.docs {
   background-color: #ffffff;
 }
 
-body.docs a.btn {
+body.docs a.brjs-btn.btn {
   height: 23px;
   font-size: 15px;
   font-weight: bold;
@@ -447,10 +464,6 @@ body.docs a.btn {
 body.docs a.btn.brjs-btn:hover {
   color: #2a6496;
   text-decoration: underline;
-}
-
-body.docs .main > ul:first-of-type {
-  font-weight: 500;
 }
 
 body.docs .col-lg-3 {
@@ -854,6 +867,18 @@ body.post #disqus_thread {
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  .download-latest-nav {
+    margin-top: 3px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .download-latest-nav {
+    display: none !important;
+  }
+}
 
 @media screen and (max-width: 1237px) {
   .call-to-action .row {

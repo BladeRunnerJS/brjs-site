@@ -324,7 +324,7 @@ function ItemsViewModel() {
 module.exports = ItemsViewModel;
 ```
 
-The class has a member variable called `todos` that is an [`observableArray'](http://knockoutjs.com/documentation/observableArrays.html) because it will contain a number of todo items. For testing purposes we've added a couple of default items. The main thing to note aboute the items right now is that they have a `title` property.
+The class has a member variable called `todos` that is an [`observableArray'](http://knockoutjs.com/documentation/observableArrays.html) because it will contain a number of todo items. For testing purposes we've added a couple of default items. The main thing to note about the items right now is that they have a `title` property.
 
 Next we need to update the View HTML template to loop over the `todos` Array and display each one in an unordered list. We can do this using the [`foreach`](http://knockoutjs.com/documentation/foreach-binding.html) binding.
 
@@ -356,7 +356,7 @@ We now have a way for a user to **input** a todo list item and a place to show t
 
 ### Update the Todo Input Blade
 
-Back in our `input` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry), which we `require`, as shown in the `ExamplePresentationModel` constructor below:
+Back in our `input` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry), which we `require`, as shown in the `InputViewModel` constructor below:
 
 ```javascript
 'use strict';
@@ -437,7 +437,7 @@ Ensure the BRJS server is running (`BRJS_HOME/sdk/brjs serve`) and open up the `
 
 #### Testing via a Unit Test
 
-Because we've introduced the concept and usage of the `ServiceRegistry` to our tests we should add a JSTestDriver `setUp` function to `input/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
+Because we've introduced the concept and usage of the `ServiceRegistry` we should add to our tests a JSTestDriver `setUp` function to `input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
 
 ```javascript
 var InputViewModelTest = TestCase( 'InputViewModelTest' );

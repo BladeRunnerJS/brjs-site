@@ -41,7 +41,7 @@ js: list.js, of.js, files.js
 
 # The CSS files to be included  when the library is bundled
 # Optional: defaults to including all CSS files
-js: list.css, of.css, files.css
+css: list.css, of.css, files.css
 ```
 
 ### Example

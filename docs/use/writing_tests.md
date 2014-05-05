@@ -13,6 +13,16 @@ Within a BRJS application the tests reside with the functionality they are writt
 
 ## Unit Tests
 
+### Syntax
+
+By default,
+assertions are made using the [js-test-driver assertion syntax](https://code.google.com/p/js-test-driver/wiki/Assertions).
+
+It is possible to use any other JavaScript runtime testing framework
+by simply including it; by default this would be via the `require` syntax e.g. `require( 'your-prefered-test-framework' )`.
+
+### Structure
+
 In the case of a unit tests they should be in a `tests/test-unit`.
 
 For example, the contents of a Blade directory is:
@@ -27,6 +37,8 @@ For example, the contents of a Blade directory is:
 |- themes/
 |- workbench/
 ```
+
+### Example
 
 In the following example we're going to test a single class for a `TodoItem` which would be found in the `src` directory. First, we can define the class:
 
@@ -51,7 +63,7 @@ The `TodoItem` class has two properties; `text` for the Todo item text and `done
 
 We can then define a test for this class:
 
-```javascript
+```js
 TodoItemTest = TestCase( 'TodoItemTest' );
 
 var TodoItem = require( 'brjstodo/TodoItem' );

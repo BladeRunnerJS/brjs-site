@@ -93,8 +93,18 @@ $( function() {
 
   updateBRJSDownloadLinks();
 
-  $('body.docs .main').toc( {
-    startAt: 2
-  } );
+  // ToC
+  function generateToC() {
+    var pageToc = $( '#page_toc' );
+    // only supply an pageToc element if just one has been specified
+    pageToc = ( pageToc.size() === 1? pageToc : null );
+    $('body.docs .main').toc( {
+      startAt: 2,
+      allowHide: false,
+      pageToc: pageToc
+    } );
+  }
+
+  generateToC();
 
 } );

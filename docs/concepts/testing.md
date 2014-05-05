@@ -51,3 +51,8 @@ Whilst from an automated-testing perspective they provide the strongest level of
 ### Manual Tests
 
 Some level of manual testing is more than likely always going to be required.
+
+## Where next?
+
+* [Writing Tests](/docs/use/running_tests/)
+* [Running Tests](/docs/use/writing_tests/)

@@ -39,7 +39,7 @@ In addition to the CLI, a number of commands can also be executed from a web das
 
 In order to support the BRJS conventions we developed the following JavaScript frameworks:
 
-* A **lightweight Object Oriented JavaScript framework** called [Topiary](https://github.com/BladeRunnerJS/topiary)
+* A **lightweight Object Oriented JavaScript framework** called [Topiarist](https://github.com/BladeRunnerJS/topiarist)
 * An [EventHub](/docs/concepts/event_hub/) library for decoupled communication between application functionality
 * A [ServiceRegistry](/docs/concepts/service_registry) where objects that offer a particular service can be registered and accessed throughout the application
 * A GUI library called [Presenter](/docs/concepts/presenter) built on [KnockoutJS](http://knockoutjs.com/) which implements the MVVM pattern, provides rich data-binding and domain modelling capabilities, and enables highly efficient UI testing

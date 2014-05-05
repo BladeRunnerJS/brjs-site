@@ -200,7 +200,7 @@ If `Bar` were to override `foo`, then there would still be no problem, because t
 
 <div class="ticked"><img src="http://yuml.me/diagram/scruffy;dir:LR;/class/[Foo|+foo();], [Foo]^-[Bar|+foo();], [Foo]^-[Baz], [MyClass], [Bar]^-[MyClass], [Baz]^-[MyClass]" /></div>
 
-If `Bar` *and* `Baz` were to provide implementations of `foo`, then there would be a problem, because topiarist has no way of knowing if the `Bar` concept of 'foo' is applicable to Baz'es or if the `Baz` concept of 'foo' is applicable to Bars.  Topiary will detect this and throw an error if you try to inherit in this case.
+If `Bar` *and* `Baz` were to provide implementations of `foo`, then there would be a problem, because topiarist has no way of knowing if the `Bar` concept of 'foo' is applicable to Baz'es or if the `Baz` concept of 'foo' is applicable to Bars.  Topiarist will detect this and throw an error if you try to inherit in this case.
 
 <div class="crossed"><img src="http://yuml.me/diagram/scruffy;dir:LR;/class/[Foo|+foo();],[Foo]^-[Bar|+foo();],[Foo]^-[Baz|+foo();],[MyClass],[Bar]^-[MyClass],[Baz]^-[MyClass]" /></div>
 

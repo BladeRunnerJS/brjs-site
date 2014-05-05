@@ -34,6 +34,8 @@ authors:
     url: "https://twitter.com/andyberry88"
     github: andyberry88
     gravatar:
+    avatar: https://avatars3.githubusercontent.com/u/726896?s=460
+    bio: Software Engineer and IL for the BladeRunnerJS project.
   sospirited:
     display_name: Pre Vyas
     github: sospirited
@@ -43,3 +45,5 @@ authors:
   kybernetikos:
     display_name: kybernetikos
     url: "https://github.com/kybernetikos"
+
+team: [ leggetter, andyberry88, domc, sospirited, jamest ]

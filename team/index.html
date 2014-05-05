@@ -1,0 +1,27 @@
+---
+layout: single_page
+title: The BladeRunnerJS Team
+notice: none
+---
+
+{% for team_member_name in site.team %}
+    <div class="team-member">
+        {% assign team_member = site.authors[team_member_name] %}
+        <h2 class="member-name">
+            {% if team_member.url %}<a href="{{ team_member.url }}">{% endif %}
+                {{ team_member.display_name }}
+            {% if team_member.url %}</a>{% endif %}
+        </h2>
+        <span class="member-meta">
+            {% if team_member.github %}<a class="social-icon github" href="//www.github.com/{{ team_member.github }}">{{ team_member.github }}</a>{% endif %}
+            {% if team_member.twitter %}<a class="social-icon twitter" href="//www.twitter.com/{{ team_member.twitter }}">@{{ team_member.twitter }}</a>{% endif %}
+        </span>
+        <div class="member-role">
+            {% if team_member.role %}{{ team_member.role }}{% endif %}
+        </div>
+        {% if team_member.avatar %}<img class="avatar" src="{{ team_member.avatar }}" />{% endif %}
+        <div class="member-bio">
+            {{ team_member.bio }}
+        </div>
+    </div>
+{% endfor %}

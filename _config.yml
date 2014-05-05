@@ -24,16 +24,14 @@ social:
 authors:
   leggetter:
     display_name: Phil Leggetter
-    twitter: "@leggetter"
-    url: "https://twitter.com/leggetter"
+    twitter: "leggetter"
+    url: "https://github.com/leggetter"
     github: leggetter
-    gravatar:
   andyberry88:
     display_name: Andy Berry
-    twitter: "@andyberry88"
-    url: "https://twitter.com/andyberry88"
+    twitter: "andyberry88"
+    url: "https://github.com/andyberry88"
     github: andyberry88
-    gravatar:
     avatar: https://avatars3.githubusercontent.com/u/726896?s=460
     bio: Software Engineer and IL for the BladeRunnerJS project.
   sospirited:

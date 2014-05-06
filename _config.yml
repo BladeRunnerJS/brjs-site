@@ -24,22 +24,34 @@ social:
 authors:
   leggetter:
     display_name: Phil Leggetter
-    twitter: "@leggetter"
-    url: "https://twitter.com/leggetter"
+    url: "https://github.com/leggetter"
+    twitter: "leggetter"
     github: leggetter
-    gravatar:
+    avatar: https://avatars2.githubusercontent.com/u/328367?s=460
+    role: Dev Evangelist
   andyberry88:
     display_name: Andy Berry
-    twitter: "@andyberry88"
-    url: "https://twitter.com/andyberry88"
+    url: "https://github.com/andyberry88"
+    twitter: "andyberry88"
     github: andyberry88
-    gravatar:
+    avatar: https://avatars3.githubusercontent.com/u/726896?s=460
+    role: Senior Software Engineer &amp; Iteration Lead
+  domc:
+    display_name: Dom Chambers
+    avatar: https://avatars0.githubusercontent.com/u/283294?s=460
+    role: Senior Software Engineer &amp; Tech Lead
   sospirited:
     display_name: Pre Vyas
-    github: sospirited
     url: "https://github.com/sospirited"
+    github: sospirited
+    avatar: https://avatars3.githubusercontent.com/u/1389953?s=460
+    role: Senior QA Engineer
   jamest:
     display_name: James Turner
+    avatar: https://avatars2.githubusercontent.com/u/5113519?s=460
+    role: Caplin System Architect and BRJS Product "Owner"
   kybernetikos:
     display_name: kybernetikos
     url: "https://github.com/kybernetikos"
+
+team: [ leggetter, andyberry88, domc, sospirited, jamest ]

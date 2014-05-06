@@ -24,22 +24,29 @@ social:
 authors:
   leggetter:
     display_name: Phil Leggetter
-    twitter: "leggetter"
     url: "https://github.com/leggetter"
+    twitter: "leggetter"
     github: leggetter
+    role: Dev Evangelist
+    bio:
   andyberry88:
     display_name: Andy Berry
-    twitter: "andyberry88"
     url: "https://github.com/andyberry88"
+    twitter: "andyberry88"
     github: andyberry88
     avatar: https://avatars3.githubusercontent.com/u/726896?s=460
-    bio: Software Engineer and IL for the BladeRunnerJS project.
+    role: Senior Software Engineer &amp; Iteration Lead
+  domc:
+    display_name: Dom Chambers
+    role: Senior Software Engineer &amp; Tech Lead
   sospirited:
     display_name: Pre Vyas
-    github: sospirited
     url: "https://github.com/sospirited"
+    github: sospirited
+    role: Senior QA Engineer
   jamest:
     display_name: James Turner
+    role: Caplin System Architect and BRJS Product "Owner"
   kybernetikos:
     display_name: kybernetikos
     url: "https://github.com/kybernetikos"

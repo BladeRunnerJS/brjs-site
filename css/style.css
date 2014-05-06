@@ -1280,3 +1280,53 @@ body.post #disqus_thread {
     font-size: 17px !important;
   }
 }
+
+
+/* this needs to be more specific than 'body.single_page .row' */
+body.single_page .team-members-row {
+    margin-top: 0;
+    argin-bottom: 25px;
+    border-top: 0;
+    line-height: inherit;
+    padding-top: 0;
+}
+@media screen and (max-width: 768px) {
+    .team-member {
+        margin-bottom:40px;
+    }
+}
+.team-member .member-name {
+    text-align: center;
+}
+.team-member .member-meta {
+    margin-top: 5px;
+}
+.team-member .member-role {
+    font-weight: bold;
+    text-align: center;
+}
+.team-member a {
+    color: black;
+}
+.team-member .fa {
+    display: block;
+    line-height: 1.5;
+}
+.team-member .fa:before {
+    padding-right: 3px;
+}
+.team-member .member-body .avatar {
+    text-align:center;
+}
+.team-member .member-body .avatar img {
+    max-width: 75%;
+    margin-top: 10px;
+}
+@media screen and (max-width: 768px) {
+    .team-member .member-body .avatar img {
+        max-width: 50%;
+    }
+    .team-member .member-bio {
+        margin-top:5px;
+    }
+}

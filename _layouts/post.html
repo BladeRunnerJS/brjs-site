@@ -17,11 +17,7 @@ template: post
         {% for blog_author in page.authors %}
           {% assign author = site.authors[blog_author] %}
           <span class="author">
-          {% if author.url %}
-            <a href="{{ author.url }}">{{ author.display_name }}</a>
-          {% else %}
-            {{ author.display_name }}
-          {% endif %}
+              <a href="/team/#{{ blog_author }}">{{ author.display_name }}</a>
           </span>
         {% endfor %}
         </span>

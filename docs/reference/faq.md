@@ -57,7 +57,7 @@ Although the same concerns will also be considered by other tools and libraries 
 
 ### BRJS v Yeoman
 
-BladeRunnerJS provides a scaffolding/application template solution. Some of that application template is fixed based on the concepts of [Aspects](/docs/concepts/aspects), [BladeSets](/docs/concepts/BladeSets) and [Blades](/docs/concepts/blades). However, the skeletons (files and in some cases, folders) that are generated will eventually be customisable via a [Scaffolding plugin](https://github.com/BladeRunnerJS/brjs/issues/126).
+BladeRunnerJS provides a scaffolding/application template solution. Some of that application template is fixed based on the concepts of [Aspects](/docs/concepts/aspects), [BladeSets](/docs/concepts/bladesets) and [Blades](/docs/concepts/blades). However, the skeletons (files and in some cases, folders) that are generated will eventually be customisable via a [Scaffolding plugin](https://github.com/BladeRunnerJS/brjs/issues/126).
 
 So, BRJS provides basic level of scaffolding functionality and extensibility (right now) in comparison to Yeoman, but that basic level is enough to provide a proven foundation for building a scalable complex web app.
 

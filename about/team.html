@@ -1,7 +1,7 @@
 ---
 layout: single_page
 title: The BladeRunnerJS Team
-notice: none
+permalink: /about/team/
 ---
 
 <div class="team-members">
@@ -19,22 +19,25 @@ notice: none
                         {% if team_member.url %}</a>{% endif %}
                     </h3>
 
+                    <div class="avatar">
+                    {% if team_member.avatar %}
+                        <img src="{{ team_member.avatar }}" />
+                    {% else %}
+                        <img src="/img/no-avatar.png" />
+                    {% endif %}
+                    </div>
+
                     <div class="member-role">
                         {% if team_member.role %}{{ team_member.role }}{% endif %}
                     </div>
 
-                    <div class="member-body">
-                        <div class="avatar">
-                            <div class="member-meta">
-                                {% if team_member.github %}<a class="fa fa-github" href="//www.github.com/{{ team_member.github }}">{{ team_member.github }}</a>{% endif %}
-                                {% if team_member.twitter %}<a class="fa fa-twitter" href="//www.twitter.com/{{ team_member.twitter }}">@{{ team_member.twitter }}</a>{% endif %}
-                            </div>
-                            {% if team_member.avatar %}
-                                <img src="{{ team_member.avatar }}" />
-                            {% else %}
-                                <img src="/img/no-avatar.png" />
-                            {% endif %}
-                        </div>
+                    <div class="member-meta">
+                    {% if team_member.github %}
+                      <a class="fa fa-github" href="//www.github.com/{{ team_member.github }}">{{ team_member.github }}</a>
+                    {% endif %}
+                    {% if team_member.twitter %}
+                      <a class="fa fa-twitter" href="//www.twitter.com/{{ team_member.twitter }}">@{{ team_member.twitter }}</a>
+                    {% endif %}
                     </div>
 
                 </div> <!-- end .team-member -->

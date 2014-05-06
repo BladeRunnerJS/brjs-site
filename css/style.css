@@ -874,8 +874,9 @@ body.post #disqus_thread {
   }
 }
 
-@media screen and (max-width: 470px) {
-  .download-latest-nav {
+/* Hide extra menu items */
+@media screen and (max-width: 540px) {
+  .download-latest-nav, .team-nav {
     display: none !important;
   }
 }
@@ -1292,16 +1293,14 @@ body.single_page .team-members-row {
 }
 .team-member {
     margin-bottom:40px;
-}
-.team-member .member-name {
     text-align: center;
 }
 .team-member .member-meta {
     margin-top: 5px;
 }
 .team-member .member-role {
-    font-weight: bold;
-    text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
 }
 .team-member a {
     color: black;
@@ -1313,15 +1312,12 @@ body.single_page .team-members-row {
 .team-member .fa:before {
     padding-right: 3px;
 }
-.team-member .member-body .avatar {
-    text-align:center;
-}
-.team-member .member-body .avatar img {
+.team-member .avatar img {
     max-width: 75%;
     margin-top: 10px;
 }
 @media screen and (max-width: 768px) {
-    .team-member .member-body .avatar img {
+    .team-member .avatar img {
         max-width: 50%;
     }
     .team-member .member-bio {

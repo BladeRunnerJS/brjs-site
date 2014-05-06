@@ -78,14 +78,37 @@ app-deps <app> [<aspect>] [-A|--all]
 #### Example
 
 ```
+› ./brjs app-deps brjstodo
+
 Aspect 'default' dependencies found:
     +--- 'default-aspect/index.html' (seed file)
-    |    \--- 'novox/Class1'
-    |    |    +--- 'novox/Class2'
-    +--- 'resources/xml/config.xml' (seed file)
-    |    \--- 'novox/Class1' (*)
+    |    \--- '../../libs/javascript/br-libs/br/src/br/ServiceRegistry.js' (*)
+    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Errors.js' (*)
+    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Core.js' (*)
+    |    |    |    |    \--- '../../libs/javascript/thirdparty/topiarist'
+    |    |    \--- '../../libs/javascript/br-libs/br/src/br/AliasRegistry.js'
+    |    \--- '../../libs/javascript/br-libs/br/src/br/EventHub.js' (*)
+    |    |    \--- '../../libs/javascript/thirdparty/emitr'
+    |    \--- 'default-aspect/src/brjstodo/App.js'
+    |    |    \--- '../../libs/javascript/br-libs/knockout/src/br/knockout/KnockoutComponent.js'
+    |    |    |    \--- '../../libs/javascript/thirdparty/ko' (*)
+    |    |    |    \--- '../../libs/javascript/br-libs/component/src/br/component/Component.js'
+    |    |    |    \--- 'alias!br.html-service' (alias dep.)
+    |    |    |    |    \--- '../../libs/javascript/br-libs/services/src/br/services/BRHtmlResourceService.js'
+    |    |    |    |    |    \--- '../../libs/javascript/br-libs/services/src/br/services/HtmlResourceService.js'
+    |    |    |    |    |    \--- '../../libs/javascript/br-libs/core/src/br/core/File.js'
+    |    |    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/I18n.js' (*)
+    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/I18N.js'
+    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/Translator.js'
+    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/LocalisedTime.js'
+    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/LocalisedDate.js'
+    |    |    |    |    |    |    |    |    \--- '../../libs/javascript/thirdparty/momentjs'
+    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/LocalisedNumber.js'
+    |    |    \--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
+    |    |    |    \--- 'alias!br.event-hub' (alias dep.) (*)
+    |    |    \--- 'todo-bladeset/blades/items/src/brjstodo/todo/items/ItemsViewModel.js'
 
-    (*) - dependencies omitted (listed previously)
+    (*) - subsequent instances not shown (use -A or --all to show)
 ```
 
 The `-p` prefix command-flag is powerful in that it will take the given `<require-path>` and find all dependencies for classes with that as it's prefix, E.g. 'novox'.
@@ -103,17 +126,47 @@ workbench-deps <app> <bladeset> <blade> [-A|--all]
 #### Example
 
 ```
-Workbench dependencies found:
-    +--- 'widget-bladeset/blades/clock/workbench/index.html' (seed file)
-    |    \--- 'default-aspect/src/novox/Class1.js'
-    |    \--- 'widget-bladeset/blades/clock/src/novox/widget/clock/Clock.js'
+› ./brjs workbench-deps brjstodo todo input
 
-    (*) - dependencies omitted (listed previously)
+Workbench dependencies found:
+    +--- 'todo-bladeset/blades/input/workbench/index.html' (seed file)
+    |    \--- '../../libs/javascript/br-libs/br/src/br/ServiceRegistry.js' (*)
+    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Errors.js' (*)
+    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Core.js' (*)
+    |    |    |    |    \--- '../../libs/javascript/thirdparty/topiarist'
+    |    |    \--- '../../libs/javascript/br-libs/br/src/br/AliasRegistry.js' (*)
+    |    \--- '../../libs/javascript/br-libs/br/src/br/EventHub.js' (*)
+    |    |    \--- '../../libs/javascript/thirdparty/emitr' (*)
+    |    \--- '../../libs/javascript/br-libs/workbench/src/br/workbench/tools/EventHubViewer.js'
+    |    |    \--- '../../libs/javascript/br-libs/knockout/src/br/knockout/KnockoutComponent.js' (*)
+    |    |    |    \--- '../../libs/javascript/thirdparty/ko' (*)
+    |    |    |    \--- '../../libs/javascript/br-libs/component/src/br/component/Component.js' (*)
+    |    |    |    \--- 'alias!br.html-service' (alias dep.) (*)
+    |    |    |    |    \--- '../../libs/javascript/br-libs/services/src/br/services/JSTDHtmlResourceService.js'
+    |    |    |    |    |    \--- '../../libs/javascript/br-libs/services/src/br/services/BRHtmlResourceService.js'
+    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/services/src/br/services/HtmlResourceService.js'
+    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/core/src/br/core/File.js'
+    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/I18n.js' (*)
+    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/I18N.js'
+    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/Translator.js'
+    |    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/LocalisedTime.js'
+    |    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/LocalisedDate.js'
+    |    |    |    |    |    |    |    |    |    \--- '../../libs/javascript/thirdparty/momentjs' (*)
+    |    |    |    |    |    |    |    |    \--- '../../libs/javascript/br-libs/i18n/src/br/i18n/LocalisedNumber.js'
+    |    |    \--- '../../libs/javascript/br-libs/workbench/src/br/workbench/ui/WorkbenchComponent.js' (*)
+    |    \--- '../../libs/javascript/br-libs/knockout/src/br/knockout/workbench/KnockoutModelTree.js'
+
+    lines removed for brevity
+
+    |    \--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
+    |    |    \--- 'alias!br.event-hub' (alias dep.) (*)
+
+    (*) - subsequent instances not shown (use -A or --all to show)
 ```
 
 ### brjs bundle-deps
 
-This command gives you exactly the same functionality as provided by `aspect-deps` and `workbench-deps`, but does so in a more generic manner by requiring you to provide the path to a bundlable directory, rather than providing context specific arguments for this. This means you can also use this command to inspect the bundles that would be generated for library, aspect, blade-set, blade and workbench tests.
+This command gives you exactly the same functionality as provided by `app-deps` and `workbench-deps`, but does so in a more generic manner by requiring you to provide the path to a bundlable directory, rather than providing context specific arguments for this. This means you can also use this command to inspect the bundles that would be generated for library, aspect, blade-set, blade and workbench tests.
 
 #### Usage
 
@@ -123,15 +176,34 @@ bundle-deps <bundle-dir> [-A|--all]
 
 #### Example
 
-For example, to see the bundle dependencies for the unit tests within a blade 'myblade', within the blade-set 'mybladeset', within the app 'myapp', you would need to run:
+For example, to see the bundle dependencies for the unit tests within a blade 'input',
+within the blade-set 'todo', within the app 'brjstodo', you would need to run:
 
-    ./brjs bundle-deps ../apps/myapp/mybladeset-bladeset/blades/myblade/tests/test-unit/js-test-driver
+```
+› ./brjs bundle-deps ../apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver/
+
+Bundle 'apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver' dependencies found:
+    +--- 'todo-bladeset/blades/input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js' (seed file)
+    |    \--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
+    |    |    \--- '../../libs/javascript/thirdparty/ko'
+    |    |    \--- '../../libs/javascript/br-libs/br/src/br/ServiceRegistry.js' (*)
+    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Errors.js' (*)
+    |    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Core.js' (*)
+    |    |    |    |    |    \--- '../../libs/javascript/thirdparty/topiarist'
+    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/AliasRegistry.js'
+    |    |    \--- 'alias!br.event-hub' (alias dep.)
+    |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/EventHub.js'
+    |    |    |    |    \--- '../../libs/javascript/thirdparty/emitr'
+
+    (*) - subsequent instances not shown (use -A or --all to show)
+```
 
 ### dep-insight (requirePath)
 
-#### Usage
+This command allows you track your dependency in reverse and is useful to see why
+a specific class is being bundled that you don't expect.
 
-This command allows you track your dependency in reverse and is useful to see why a specific class is being bundled that you don't expect.
+#### Usage
 
 ```
 dep-insight <app> <require-path> [<aspect>] [-p|--prefix] [-a|--alias] [-A|--all]
@@ -140,9 +212,12 @@ dep-insight <app> <require-path> [<aspect>] [-p|--prefix] [-a|--alias] [-A|--all
 #### Example
 
 ```
-Source module 'novox/Class1' dependencies found:
-    +--- 'novox/Class2'
-    |    \--- 'index.html'
+› ./brjs dep-insight brjstodo brjstodo/todo/input/InputViewModel
+
+Source module 'brjstodo/todo/input/InputViewModel' dependencies found:
+    +--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
+    |    \--- 'default-aspect/src/brjstodo/App.js'
+    |    |    \--- 'default-aspect/index.html' (seed file)
 ```
 
 ### dep-insight (alias)

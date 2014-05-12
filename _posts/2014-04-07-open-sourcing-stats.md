@@ -3,7 +3,7 @@ layout: post
 title: "Open Sourcing Stats & v0.6 Released"
 authors: [leggetter]
 thumb: stats.png
-latest: true
+latest: false
 
 excerpt: Last week we released BRJS v0.6 that provides an incremental improvement upon v0.5. Since it's just an incremental improvement there's not much to shout about. So instead of talking about the latest release I thought I'd share some stats about our open sourcing process and the uptake of BRJS.
 

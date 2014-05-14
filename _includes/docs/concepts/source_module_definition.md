@@ -1,0 +1,1 @@
+JavaScript Source is a special type of _linked-asset_ known as a _source-module_. _Source-Modules_ are addressable using a require path, and usually relate to a single JavaScript file on disk, but a single _source-module_ may also be composed from multiple JavaScript files too.

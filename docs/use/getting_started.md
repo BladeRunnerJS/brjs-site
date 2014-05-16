@@ -39,25 +39,7 @@ It'll be time well-spent.
 
 ## Create an Application
 
-Create a new application using the CLI:
-
-    $ BRJS_HOME/sdk/brjs create-app brjstodo
-
-This will create a new application called `brjstodo` within the `BRJS_HOME/apps` directory. Within that directory you'll also find a `default-aspect` directory. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app.
-
-<div class="alert alert-info">
-  <p>
-    BRJS apps presently have to reside within an <code>apps</code> folder in the unzip directory. Future releases will allow for <a href="https://github.com/BladeRunnerJS/brjs/issues/1">apps to be located anywhere on disk</a>.
-  </p>
-</div>
-
-In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this default aspect by starting the BRJS development server:
-
-    $ BRJS_HOME/sdk/brjs serve
-
-This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjstodo`.
-
-![](/docs/use/img/brjs-app-nothing-to-see-here.png)
+{% include docs/use/create_app_example.md %}
 
 You can now either open a new CLI window to enter future commands in the getting started guide, or press Ctrl + C to kill the server and start it again next time you need the server.
 

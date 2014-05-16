@@ -1,5 +1,5 @@
 ```bash
-$ BRJS_HOME/sdk/brjs create-blade brjstodo todo input
+$ ./brjs create-blade brjstodo todo input
 ```
 
 This creates a `input` directory within `BRJS_HOME/apps/brjstodo/todo-bladeset/blades/` containing the following sub-directories:

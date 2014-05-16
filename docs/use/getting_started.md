@@ -51,21 +51,7 @@ Before creating our Blades we first need to create a new BladeSet within the app
 
 [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
 
-Run the following command to create a `todo` BladeSet for the `brjstodo` app:
-
-    $ BRJS_HOME/sdk/brjs create-bladeset brjstodo todo
-
-This create a folder called `todo-bladeset` within the application.
-
-<div class="alert alert-info github">
-  <p>
-    In future:
-  </p>
-  <ul>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/2">BladeSets will be optional</a>. Right now a Blade must reside within a BladeSet</li>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/1">The CLI will be context-aware</a> so you can run <code>brjs create-bladeset</code> from within an application directory to create a BladeSet for an app.</li>
-  </ul>
-</div>
+{% include docs/use/create_bladeset_example.md %}
 
 With this basic application structure in place we can create our first Blade and start developing our Todo List app.
 

@@ -55,7 +55,7 @@ $( function() {
     html = html.replace(/\s+<span class="comment">\/\*{3} End of new code \*{3}\/<\/span>\n/gmi, '</div>' );
 
     // HTML
-    html = html.replace(/^.*<span class="comment">&lt;!-- New code --&gt;<\/span>.*\n(\s+)/gmi, '<div class="new-code html">$1' );
+    html = html.replace(/^.*<span class="comment">&lt;!-- New code --&gt;<\/span>.*\n(\s*?)/gmi, '<div class="new-code html">$1' );
     html = html.replace(/\s+<span class="comment">&lt;!-- End of new code --&gt;<\/span>\n/gmi, '</div>' );
 
     return html;

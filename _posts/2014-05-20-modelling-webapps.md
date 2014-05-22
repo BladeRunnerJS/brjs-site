@@ -70,7 +70,7 @@ Aspect 'default' dependencies found:
     (*) - dependencies omitted (listed previously)
 ```
 
-The full domain model also includes classes that represent tests, minifiers, deployable artifacts etc. In short it fully understands the semantics of and (dependency) structure of your web-app.
+The full domain model also includes classes that represent tests, minifiers, deployable artifacts etc. In short it fully understands the semantics and (dependency) structure of your web-app.
 It's not just a bunch of files but a rich model that is decoupled from the actual structure and contents on disk.
 
 ## BladeRunnerJS Plugins

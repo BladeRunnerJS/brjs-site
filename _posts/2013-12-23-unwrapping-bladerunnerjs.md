@@ -164,13 +164,13 @@ When building applications for users all over the world internationalisation and
 
 I decided to put this in the JavaScript framework section as JavaScript calls are also used to apply local languages, and using local date and number formats for display and data-entry. i18n is thus a cross-cutting-concern, from toolkit built process to application runtime.
 
-### MV\*: Presenter using KnockoutJS MVVM
+### MV\*: MVVM
 
 It's nearly universally agreed that a MV* is a good approach when building a front-end application. We chose to go with [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) (Model-View View-Model).
 
 <img src="/blog/img/ko-logo.png" align="right" style="margin:30px;" />
 
-The great thing about MVVM is that it works particularly well with data-binding. The View Model is a logical representation of the View so when you update the View Model you simply need to ensure that the View is updated to reflect the View Model state. In our case, we have a dedicated library to handle this called [Presenter](http://www.caplin.com/developer/component/presenter) which we built on top of the excellent [KnockoutJS](http://knockoutjs.com/).
+The great thing about MVVM is that it works particularly well with data-binding. The View Model is a logical representation of the View so when you update the View Model you simply need to ensure that the View is updated to reflect the View Model state. In our financial applications, we tend to use a dedicated library to handle this called [Presenter](http://www.caplin.com/developer/component/presenter) which we built on top of the excellent [KnockoutJS](http://knockoutjs.com/). In some applications we may use plain KnockoutJS.
 
 The game-changer here was that it allowed us to migrate a large number of selenium tests, which relied on checking DOM state, to tests that tested the View Model instead. This massively increased both the reliablity and speed of the tests. Combining this with the use of Services meant we could test the functionality offered by a Blade in isolation; from View Model to service interaction and service interaction through to the affect that would have on the View Model.
 

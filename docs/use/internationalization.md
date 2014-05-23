@@ -63,7 +63,7 @@ The token replacement works by replacing all i18n tokens in all HTML as it is st
 
 ## Internationalizing via JavaScript
 
-Let's add an internationalised Presenter property to the blade's presentation model at `$BLADE_ROOT/src/demo/blades/myblade/MybladeViewModel.js`.
+Let's add an internationalised property to the blade's view model at `$BLADE_ROOT/src/demo/blades/myblade/MybladeViewModel.js`.
 
 ```js
 'use strict';

@@ -26,7 +26,7 @@ For more information and an example of a unit test see the docs on [writing test
 
 ### Blade Functional Acceptance Tests
 
-Blades represent a vertical slice of application functionality so common practice within a BRJS application is to test a Blade using "Given-When-Then" style Acceptance Tests. You can test the Blade's [Presenter View Model component](/docs/concepts/presenter/), the Domain Model and it's interaction with the Service as a whole.
+Blades represent a vertical slice of application functionality so common practice within a BRJS application is to test a Blade using "Given-When-Then" style Acceptance Tests. You can test the Blade's View Model, the Domain Model and it's interaction with the Service as a whole.
 
 ![](https://docs.google.com/drawings/d/1y38qcsvoz-miI7hhAmkdeuH4zBNE4OC6gZ30rHienvg/pub?w=960&amp;h=720)
 

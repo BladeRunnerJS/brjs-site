@@ -14,7 +14,7 @@ bladeset in the Getting Started Guide.
   </p>
 </div>
 
-You can create new aspects on the BRJS dashboard or via the command line interface
+You can create new bladesets on the BRJS dashboard or via the command line interface
 by executing the following instruction:
 
 ```bash

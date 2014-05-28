@@ -77,12 +77,12 @@ var i18n = require( 'br/I18n' );
 function MybladeViewModel() {
   /*** new code ***/
   var text = i18n( 'demo.blades.myblade.helloworldmessage' );
-	this.message = ko.observable( text );
+  this.message = ko.observable( text );
   /*** end of new code ***/
 }
 
 MybladeViewModel.prototype.buttonClicked = function() {
-	console.log( 'button clicked' );
+  console.log( 'button clicked' );
 };
 
 module.exports = MybladeViewModel;

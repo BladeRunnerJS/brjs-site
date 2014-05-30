@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Internationalizating your app
+title: Internationalizing your app
 permalink: /docs/use/internationalization/
 ---
 
@@ -17,7 +17,7 @@ locales: en, de, es
 
 ## Include the Internationalization Bundler
 
-Include the Internationalisation Bundler in your app and workbench, by adding the `i18n.bundle` line into your `index.html` file.
+Include the Internationalization Bundler in your app and workbench, by adding the `i18n.bundle` line into your `index.html` file.
 
 ```html
 <head>
@@ -39,7 +39,7 @@ We will be using the workbench generated inside a newly created blade for this e
 
 ![](/docs/use/img/hello-world-workbench-no-console.png)
 
-Let's add a new element inside our HTML, which will be automatically internationalised. Internationalisation markup in BRJS takes the form of: `@{<token>}`. It's best to namespace your token so that other blades don't overwrite each other's tokens
+Let's add a new element inside our HTML, which will be automatically internationalized. Internationalization markup in BRJS takes the form of: `@{<token>}`. It's best to namespace your token so that other blades don't overwrite each other's tokens
 
 ```html
 <div id="demo.blades.myblade.view-template">
@@ -63,7 +63,7 @@ The token replacement works by replacing all i18n tokens in all HTML as it is st
 
 ## Internationalizing via JavaScript
 
-Let's add an internationalised property to the blade's view model at `$BLADE_ROOT/src/demo/blades/myblade/MybladeViewModel.js`.
+Let's add an internationalized property to the blade's view model at `$BLADE_ROOT/src/demo/blades/myblade/MybladeViewModel.js`.
 
 ```js
 'use strict';
@@ -124,7 +124,7 @@ If you miss out a translation, then the i18n makes it pretty obvious to you.
 
 ## I18n at Different Levels
 
-You can internationalise at different levels of your application, by locating property files under the different levels in their resource folders
+You can internationalize at different levels of your application, by locating property files under the different levels in their resource folders
 
 * Aspect: `/app/aspect/resources/i18n`
 * BladeSet: `/app/bladeset/resources/i18n`

@@ -29,3 +29,8 @@ Some key benefits of blades are:
 * Additional features can be developed, tested and added much more easily.
 * Blades developed for one user segment can easily be re-used later for another segment.
 * Blades developed for one platform (such as desktop) can easily be reused for another platform (such as tablet or phone).
+
+## Where next?
+
+Once you've created a blade you add them to [aspects](/docs/concepts) which are
+views into your application.

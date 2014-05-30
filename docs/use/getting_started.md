@@ -39,25 +39,7 @@ It'll be time well-spent.
 
 ## Create an Application
 
-Create a new application using the CLI:
-
-    $ BRJS_HOME/sdk/brjs create-app brjstodo
-
-This will create a new application called `brjstodo` within the `BRJS_HOME/apps` directory. Within that directory you'll also find a `default-aspect` directory. [Aspects](/docs/concepts/aspects/) represent entry points to your application and are a way of bringing together the Blades required for a specific *presentation* of your app.
-
-<div class="alert alert-info">
-  <p>
-    BRJS apps presently have to reside within an <code>apps</code> folder in the unzip directory. Future releases will allow for <a href="https://github.com/BladeRunnerJS/brjs/issues/1">apps to be located anywhere on disk</a>.
-  </p>
-</div>
-
-In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this default aspect by starting the BRJS development server:
-
-    $ BRJS_HOME/sdk/brjs serve
-
-This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjstodo`.
-
-![](/docs/use/img/brjs-app-nothing-to-see-here.png)
+{% include docs/use/create_app_example.md %}
 
 You can now either open a new CLI window to enter future commands in the getting started guide, or press Ctrl + C to kill the server and start it again next time you need the server.
 
@@ -69,21 +51,7 @@ Before creating our Blades we first need to create a new BladeSet within the app
 
 [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
 
-Run the following command to create a `todo` BladeSet for the `brjstodo` app:
-
-    $ BRJS_HOME/sdk/brjs create-bladeset brjstodo todo
-
-This create a folder called `todo-bladeset` within the application.
-
-<div class="alert alert-info github">
-  <p>
-    In future:
-  </p>
-  <ul>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/2">BladeSets will be optional</a>. Right now a Blade must reside within a BladeSet</li>
-    <li><a href="https://github.com/BladeRunnerJS/brjs/issues/1">The CLI will be context-aware</a> so you can run <code>brjs create-bladeset</code> from within an application directory to create a BladeSet for an app.</li>
-  </ul>
-</div>
+{% include docs/use/create_bladeset_example.md %}
 
 With this basic application structure in place we can create our first Blade and start developing our Todo List app.
 
@@ -324,7 +292,7 @@ function ItemsViewModel() {
 module.exports = ItemsViewModel;
 ```
 
-The class has a member variable called `todos` that is an [`observableArray'](http://knockoutjs.com/documentation/observableArrays.html) because it will contain a number of todo items. For testing purposes we've added a couple of default items. The main thing to note aboute the items right now is that they have a `title` property.
+The class has a member variable called `todos` that is an [`observableArray'](http://knockoutjs.com/documentation/observableArrays.html) because it will contain a number of todo items. For testing purposes we've added a couple of default items. The main thing to note about the items right now is that they have a `title` property.
 
 Next we need to update the View HTML template to loop over the `todos` Array and display each one in an unordered list. We can do this using the [`foreach`](http://knockoutjs.com/documentation/foreach-binding.html) binding.
 
@@ -356,7 +324,7 @@ We now have a way for a user to **input** a todo list item and a place to show t
 
 ### Update the Todo Input Blade
 
-Back in our `input` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry), which we `require`, as shown in the `ExamplePresentationModel` constructor below:
+Back in our `input` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry), which we `require`, as shown in the `InputViewModel` constructor below:
 
 ```javascript
 'use strict';
@@ -437,7 +405,7 @@ Ensure the BRJS server is running (`BRJS_HOME/sdk/brjs serve`) and open up the `
 
 #### Testing via a Unit Test
 
-Because we've introduced the concept and usage of the `ServiceRegistry` to our tests we should add a JSTestDriver `setUp` function to `input/tests/test-unit/js-test-driver/tests/ExampleClassTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
+Because we've introduced the concept and usage of the `ServiceRegistry` we should add to our tests a JSTestDriver `setUp` function to `input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
 
 ```javascript
 var InputViewModelTest = TestCase( 'InputViewModelTest' );

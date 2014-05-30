@@ -4,7 +4,7 @@ title: How to Use the ServiceRegistry
 permalink: /docs/use/service_registry/
 ---
 
-The [ServiceRegistry](/docs/concepts/service_registry) provides a way of loosely coupling an implementation of a [service](/docs/concepts/services/) from an implementation. It can be set up via code or configuration, is accessed via code at runtime and services can also be registered and deregistered via code at runtime.
+The [ServiceRegistry](/docs/concepts/service_registry) provides a way of loosely coupling an interface or contract of a [service](/docs/concepts/services/) from its implementation. It can be set up via code or configuration, is accessed via code at runtime and services can also be registered and deregistered via code at runtime.
 
 <div id="page_toc"></div>
 

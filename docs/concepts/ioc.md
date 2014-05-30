@@ -12,6 +12,4 @@ Using a logical name in your source code, whether it be Javascript, HTML or CSS,
 
 We sometimes need a level of indirection, so that dependencies can be expressed without knowing the concrete class that will end up being used (e.g. [services](/docs/concepts/services)).
 
-It is sometimes useful to specify components declaratively (e.g. presenter & grid), where it would be confusing to have to refer to the classes that provide some feature, rather than talking in terms of the feature itself.
-
 Another useful facet of aliases, is that they can be used to automatically discover all of the classes capable of implementing a particular interface, which makes it a good candidate for creating SPI (Service Provider Interface) type, auto-discovery mechanisms.

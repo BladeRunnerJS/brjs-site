@@ -33,7 +33,7 @@ Let's first take a look at the BRJS toolkit; the tooling that supports developme
 
 The first question many may ask is why Java and why not Node.js? James Turner recently wrote about how we plan to [embrace Node.js](http://bladerunnerjs.org/blog/embracing-nodejs/) covering the reasons and our future considerations.
 
-My summary would be: 
+My summary would be:
 
 * When we embarked on creating our development toolkit - nearly two years ago now - Node.js was in its infancy.
 * Our clients are large financial institutions that tend to have locked down environments. Initially Node.js wasn't an option.
@@ -92,7 +92,7 @@ We have our own [fork](https://github.com/BladeRunnerJS/brjs-JsTestDriver) of [J
 We're presently looking at [Karma](http://karma-runner.github.io/) integration because it’s flexibile, has the same benefits as JSTD, and is getting much more love at the moment.
 
 Karma also fits in easily with the BRJS plugin architecture and it has a plugin architecture all of it’s own.  It is a test-runner, so BRJS can use it to run any existing tests (providing backwards compatibility), and it can be used to run tests using alternative tools, or even tools that don’t exist yet. It also provides the kind of flexibility that we're looking for to all BRJS users; you can use an alternative test framework by writing either a BRJS plugin and/or a karma plugin.
- 
+
 In addition, we have heard that Karma interacts with browsers in a more efficient way than JSTD, providing a more reliable interface over which tests will run. Karma demonstrates how Node.js based testing tools can become part of the overall BRJS tool chain, by the simple addition of a suitable BRJS Command plugin.
 
 ## Lightweight JavaScript Framework
@@ -125,7 +125,7 @@ For more information please see the [Topiarist blog post](http://bladerunnerjs.o
 
 For applications to effectively scale their architecture need to be modular: constructed of pieces of functionality that can be easily tested and where the underlying implementation of certain parts of the application can change without impacting the application as a whole.
 
-The concept of [Blades](http://bladerunnerjs.org/docs/concepts/blades/) achieves this, but BRJS applications also have two further concepts that help, both of which can be driven by simple configuration (code setup or config files). 
+The concept of [Blades](http://bladerunnerjs.org/docs/concepts/blades/) achieves this, but BRJS applications also have two further concepts that help, both of which can be driven by simple configuration (code setup or config files).
 
 The first is through the use of [services](http://bladerunnerjs.org/docs/concepts/services/) to configure a single canonical instance of a class that fulfulls a service promised by an [Interface](http://bladerunner.org/docs/concepts/interaces/) e.g. a `LoggingService` where the intial implementation may log to `console.log` but a later implementation also sends log messages to a back-end web service.
 
@@ -164,13 +164,13 @@ When building applications for users all over the world internationalisation and
 
 I decided to put this in the JavaScript framework section as JavaScript calls are also used to apply local languages, and using local date and number formats for display and data-entry. i18n is thus a cross-cutting-concern, from toolkit built process to application runtime.
 
-### MV\*: Presenter using KnockoutJS MVVM
+### MV\*: MVVM
 
 It's nearly universally agreed that a MV* is a good approach when building a front-end application. We chose to go with [MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel) (Model-View View-Model).
 
 <img src="/blog/img/ko-logo.png" align="right" style="margin:30px;" />
 
-The great thing about MVVM is that it works particularly well with data-binding. The View Model is a logical representation of the View so when you update the View Model you simply need to ensure that the View is updated to reflect the View Model state. In our case, we have a dedicated library to handle this called [Presenter](http://bladerunnerjs.org/docs/concepts/presenter/) which we built on top of the excellent [KnockoutJS](http://knockoutjs.com/).
+The great thing about MVVM is that it works particularly well with data-binding. The View Model is a logical representation of the View so when you update the View Model you simply need to ensure that the View is updated to reflect the View Model state. In our financial applications, we tend to use a dedicated library to handle this called [Presenter](http://www.caplin.com/developer/component/presenter) which we built on top of the excellent [KnockoutJS](http://knockoutjs.com/). In some applications we may use plain KnockoutJS.
 
 The game-changer here was that it allowed us to migrate a large number of selenium tests, which relied on checking DOM state, to tests that tested the View Model instead. This massively increased both the reliablity and speed of the tests. Combining this with the use of Services meant we could test the functionality offered by a Blade in isolation; from View Model to service interaction and service interaction through to the affect that would have on the View Model.
 

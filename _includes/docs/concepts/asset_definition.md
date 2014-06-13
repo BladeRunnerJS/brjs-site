@@ -1,4 +1,4 @@
-_Assets_ are the generic word we use to describe all of the different types of content that can comprise an application. This includes:
+We use the generic word _Assets_ to describe all of the different types of content that can comprise an application. This includes:
 
 * JavaScript Source
 * HTML Templates

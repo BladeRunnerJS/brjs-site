@@ -4,8 +4,8 @@ title: How to Create an App
 permalink: /docs/use/create_app/
 ---
 
-The first stage in building an application with BladeRunnerJS (BRJS) is to create
-the structure for an application
+The first stage in building an application with BladeRunnerJS (BRJS) is to scaffold
+the skeleton (default structure) for an application
 
 There are two ways to create an app
 
@@ -44,7 +44,7 @@ server:
 ./brjs serve
 ```
 
-And navigating to [http://localhost:7070](http://localhost:7070). From there click the **New App** button
+And navigating to `http://localhost:7070`. From there click the **New App** button
 and follow the instructions.
 
 ### Example
@@ -53,9 +53,10 @@ Click the button ‘New App’
 
 ![](/docs/use/img/create-app-newapp.png)
 
-This brings up the a window which prompts you enter an ap name and app namespace.
+This brings up the a window which prompts you enter an app name and namespace:
 
 ![](/docs/use/img/create-app-newapp-name.png)
+*Note: this will change to require prefix in the future*
 
 Enter the App Name ‘brjstodo’ and App Namespace ‘brjs todo’ and click ‘Create’.
 
@@ -79,12 +80,12 @@ You can click on this icon to open it. However, as there are no bladesets yet cr
 
 Whichever method you use to create your new app, you will see that your new app automatically contains multiple directories including libraries and a `default-aspect` directory. In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
 
-You can view this aspect by starting the BRJS development server (if you haven't done so already) and navigating to http://localhost:7070/brjstodo.
+You can view this aspect by starting the BRJS development server (if you haven't done so already) and navigating to `http://localhost:7070/brjstodo`.
 
 ![](/docs/use/img/new-app-btn.png)
 
 ## Where next?
 
-- Now that you have created an app, the next thing to do is to [create a bladeset](docs/use/create_bladeset/)
-- Once you have a bladeset, you will be able to start [creating blades](docs/use/create_blade/).
-> - You may also want to create multiple aspects for your app instead of using the default aspect you have just created. Details on how to do this on the [Create an Aspect](/docs/use/create_aspect/) page.
+- Now that you have created an app, the next thing to do is to [create a bladeset](/docs/use/create_bladeset/)
+- Once you have a bladeset, you will be able to start [creating blades](/docs/use/create_blade/).
+- You may also want to create multiple aspects for your app instead of using the default aspect you have just created. Details on how to do this on the [Create an Aspect](/docs/use/create_aspect/) page.

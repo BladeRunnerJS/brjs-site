@@ -4,7 +4,7 @@ title: How to Create a Bladeset
 permalink: /docs/use/create_bladeset/
 ---
 
-In order to create a bladeset you first need to create an application. Follow our guide to [creating an app](http:///docs/use/create_app).
+In order to create a bladeset you first need to create an application. Follow our guide to [creating an app](/docs/use/create_app).
 
 As with apps, there are two ways to create an app
 
@@ -38,38 +38,38 @@ Start the BRJS development server by by entering
 ```bash
 ./brjs serve
 ```
-on the command line and navigate to http://localhost:7070. Click on the relevant app and select ‘New bladeset’.
+on the command line and navigate to `http://localhost:7070`. Click on the relevant app and select ‘New bladeset’.
 
 ###Example
 
 We are going to create a bladeset called `todo` within our existing app `brjstodo` which should be showing on your dashboard.
 
-![](\docs\use\img\create-bladeset-brjstodo-app.png\)
+![](/docs/use/img/create-bladeset-brjstodo-app.png)
 
 Open the app by clicking the button.
 
-![](\docs\use\img\create-bladeset-brjstodo-icon.png\)
+![](/docs/use/img/create-bladeset-brjstodo-icon.png)
 
 As the app does not currently contain any bladesets, there is nothing displayed here yet.
 Click the button in the top lefthand corner which says ‘New Bladeset’
 
-![](docs\use\img\create-bladeset-empty.png\)
+![](/docs/use/img/create-bladeset-empty.png)
 
 This brings up the a window which prompts you enter a bladeset name.
 
-![](docs\use\img\create-bladeset-new.png\)
+![](/docs/use/img/create-bladeset-new.png)
 
 Enter the bladeset name `todo`
 
-![](docs\use\img\create-bladeset-new-icon\)
+![](/docs/use/img/create-bladeset-new-icon.png)
 
 You will now see the name of the new bladeset displayed on the dashboard.
 
-![](docs\use\img\create-bladeset-new-todo\)
+![](/docs/use/img/create-bladeset-new-todo.png)
 
 
 
-If you hover over the bladeset box, you will see that you have two options ‘add blade’ and ‘run tests’. We go into more detail about adding blades on the [How to create a blade](docs/use/create_blade/) document.
+If you hover over the bladeset box, you will see that you have two options ‘add blade’ and ‘run tests’. We go into more detail about adding blades on the [How to create a blade](/docs/use/create_blade/) document.
 
 ##Results
 
@@ -83,9 +83,13 @@ Whichever method you have used to create your new bladeset, you will see that Bl
 <div class="alert alert-info">
 <p>
 In future:
-BladeSets will be optional. Right now a Blade must reside within a BladeSet
-The CLI will be context-aware so you can run brjs create-bladeset from within an application directory to create a BladeSet for an app.
 </p>
+
+<ul>
+  <li><a href="https://github.com/BladeRunnerJS/brjs/issues/2">Bladesets will be optional</a>. Right now a Blade must reside within a BladeSet</li>
+  <li>The <a href="https://github.com/BladeRunnerJS/brjs/issues/1">CLI will be context-aware</a> so you can run brjs create-bladeset from within an application directory to create a BladeSet for an app.</li>
+</ul>
+
 </div>
 
 ## Where next?

@@ -8,7 +8,7 @@ In order to create an [aspect](/docs/concepts/aspect/) you first need to [create
 
 <div class="alert alert-info">
 <p>
-Note that unlike apps, bladesets and blades, aspects can not currently be created on the BladeRunnerJS dashboard. Future releases will support [creating aspects from the dashboard](/https://github.com/BladeRunnerJS/brjs/issues/647).
+Note that unlike apps, bladesets and blades, aspects can not currently be created on the BladeRunnerJS dashboard. Future releases will support <a href="https://github.com/BladeRunnerJS/brjs/issues/647">creating aspects from the dashboard</a>.
 </p>
 </div>
 

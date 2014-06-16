@@ -1,0 +1,3 @@
+<p><strong>Blades</strong> are right at the heart of how BladeRunnerJS works. Each blade is a complete, individual, vertical slice of business functionality. They enable you to develop complex modular HTML5 applications that can be run and tested in isolation from the application as a whole.
+<br/> <br/>[](http://)
+A blade encapsulates all the required resources – JavaScript, HTML, CSS, XML, images, etc – to implement a particular high level feature. For example, a blade might implement a map UI, a chat window, a charting module or an alerting mechanism. A blade usually (but not always) corresponds to a particular area of the display.</p>

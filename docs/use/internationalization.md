@@ -116,6 +116,10 @@ Loading the app with a Spanish locale set in the browser, will display like this
 
 ## Useful Tips
 
+### Example Application
+
+The full [KnockoutJS BRJS Example Todo MVC example](https://github.com/BladeRunnerJS/brjs-todomvc-knockout) demonstrates how to use i18n within and application.
+
 ### Missing Translations
 
 If you miss out a translation, then the i18n makes it pretty obvious to you.

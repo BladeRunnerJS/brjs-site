@@ -90,3 +90,8 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 ServiceRegistry.deregisterService( 'my.something-service' );
 ```
+
+## Where next?
+
+You can see an example of a service being defined and used within an application in the [Knockout BRJS
+Todo MVC example app](https://github.com/BladeRunnerJS/brjs-todomvc-knockout). The service is defined in the `todomvc` library found in the `libs/todomvc` directory.

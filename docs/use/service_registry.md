@@ -91,6 +91,16 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 ServiceRegistry.deregisterService( 'my.something-service' );
 ```
 
+## Checking if a Service is Registered
+
+It is possible to check if a service with and identifier (e.g. `my.something-service`) is registered as follows:
+
+```javascript
+var ServiceRegistry = require( 'br/ServiceRegistry' );
+
+var isRegistered = ServiceRegistry.isServiceRegistered( 'my.something-service' );
+```
+
 ## Where next?
 
 You can see an example of a service being defined and used within an application in the [Knockout BRJS

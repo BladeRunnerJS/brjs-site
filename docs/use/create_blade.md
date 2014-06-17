@@ -13,7 +13,7 @@ There are two ways to create a blade
 
 We will go through both these ways below. Remember, you only need to follow one of the options as they both achieve the same thing.
 
-##Option 1. Creating a blade via the CLI
+## Option 1. Creating a blade via the CLI
 
 Once you have an application and a BladeSet you can create a Blade as follows:
 
@@ -31,7 +31,7 @@ $ ./brjs create-blade brjstodo todo input
 
 The `input` blade is represented on disk by a directory called `input` that resides under the directory called `blades` in the `brjstodo` app directory.
 
-##Option 2. Creating an app using the web dashboard
+## Option 2. Creating an app using the web dashboard
 
 Start the BRJS development server by by entering the following on the command line:
 
@@ -41,7 +41,7 @@ Start the BRJS development server by by entering the following on the command li
 
 and navigate to `http://localhost:7070`. Click on the relevant app and select ‘Add blade’.
 
-##Example
+### Example
 
 This example follows on from those in How to Create an App and How to Create a Bladeset where we created an app called `brjstodo` and a bladeset called `todo`.
 

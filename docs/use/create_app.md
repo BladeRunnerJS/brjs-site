@@ -82,7 +82,7 @@ Whichever method you use to create your new app, you will see that your new app 
 
 You can view this aspect by starting the BRJS development server (if you haven't done so already) and navigating to `http://localhost:7070/brjstodo`.
 
-![](/docs/use/img/new-app-btn.png)
+![](/docs/use/img/create-app-icon-brjstodo.png)
 
 ## Where next?
 

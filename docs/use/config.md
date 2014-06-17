@@ -24,6 +24,12 @@ loginRealm:						The login realm the Jetty server will use.
 								Default: BladeRunnerLoginRealm
 ```
 
+<div class="alert alert-info">
+	<p>
+		<a href="https://github.com/BladeRunnerJS/brjs/issues/280">The <code>bladerunner.conf</code> file will eventually be renamed to be <code>brjs.conf</code></a>.
+	</p>
+</div>
+
 ### app.conf
 
 Configuration options specific to an individual app. Located in the root of each app.

@@ -22,7 +22,7 @@ To start the development server run:
 
     $ brjs serve [(-p|--port) <port>]
 
-This will start the server. The `-p` flag is an optional port number. The default port is 7070. You can also change the port the server starts on by updating the value of the `jettyPort` configuration option in `BRJS_HOME/conf/brjs.conf`.
+This will start the server. The `-p` flag is an optional port number. The default port is 7070. You can also change the port the server starts on by updating the value of the `jettyPort` configuration option in `BRJS_HOME/conf/bladerunner.conf`.
 
 ## Start the Test Server
 

@@ -21,6 +21,8 @@ The Blade architecture was specifically developed to remedy this problem. Using 
 
 The Blade architecture does not limit what you can build in any way, and is fully compatible with virtually all current HTML5 libraries and tools. It simply offers a set of conventions for componentized development. BladeRunnerJS then provides a great set of tools to help do this efficiently.
 
+Each Blade is located in a physical folder on disk and all resources for the Blade exists under that folder. This is part of the BladeRunnerJS application model and is automatically served to the browser when the page is loaded.
+
 Some key benefits of blades are:
 
 * Different parts of the application can be built by different teams, without creating integration problems later.

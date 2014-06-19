@@ -1,20 +1,18 @@
 ---
 layout: docs
-title: How to Use the ServiceRegistry
+title: How to Use Services
 permalink: /docs/use/service_registry/
 ---
 
-The [ServiceRegistry](/docs/concepts/service_registry) provides a way of loosely coupling an interface or contract of a [service](/docs/concepts/services/) from its implementation. It can be set up via code or configuration, is accessed via code at runtime and services can also be registered and deregistered via code at runtime.
-
-<div id="page_toc"></div>
-
-## Registering a Service
+##Registering a Service
 
 Services can be registered in the for the following:
 
-* Aspects - used when the application is running
-* Workbenches - used when a Workbench is running
-* Tests - used when executing tests
+- Aspects - used when the application is running
+-
+- Workbenches - used when a Workbench is running
+-
+- Tests - used when executing tests
 
 The benefit of this is that you can register different services for these scenarios. For example, you may register a test mock service that enables assertions in tests in the Tests scenario and you may register a dummy service in a Workbench scenario to facilitate the development of a Blade.
 
@@ -22,71 +20,74 @@ Services can be registered through code or configuration.
 
 Services can also be deregistered via code.
 
-### Code
+##Code
 
-Services are instances of service classes which are identfied by a name. They are registered with the `ServiceRegistery` passing the name and an instance of the class.
+Services are instances of service classes which are identified by a name. They are registered with the `ServiceRegistry` passing the name and an instance of the class.
 
-The following service may be defined in `myapp/libs/mylib/MyService.js`. This defines that the full namespace to the class will be `mylib.MyService`:
+The following service may be defined in `myapp/libs/mylib/MyService.js`. This defines that the full require path of the class will be mylib/MyService:
 
-```javascript
-function MyService() {
-}
+`function MyService() {`
 
-MyService.prototype.doSomething = function() {
-  console.log( 'something' );
-};
-```
+`}`
 
-In your initialisation code (`App.js` for an Aspect or `index.html` for a Workbench) you can register the service:
+`MyService.prototype.doSomething = function() {`
 
-```javascript
-var MyService = require( 'mylib/MyService' );
-ServiceRegistry.registerService( 'my.something-service', new MyService() );
-```
+ ` console.log( 'something' );`
 
-### XML configuration
+`};`
 
-`aliases.xml` files can be found in a few locations within a BRJS application.
+In your initialisation code (App.js for an Aspect or index.html for a Workbench) you can register the service:
 
-* `<aspect>/resources/`
-* `<blade>/workbench/resources/`
-* `*/tests/test-unit/js-test-driver/resources/`
+`var MyService = require( 'mylib/MyService' );`
+
+`ServiceRegistry.registerService( 'my.something-service', new MyService() );`
+
+
+##XML configuration
+
+aliases.xml files can be found in a few locations within a BRJS application.
+
+- `<aspect>/resources/`
+-
+- `<blade>/workbench/resources/`
+-
+- `*/tests/test-unit/js-test-driver/resources/`
 
 These allow you to set up the services that are registered for the given alias (service) name:
 
-```xml
 <aliases xmlns="http://schema.caplin.com/CaplinTrader/aliases" useScenario="dev">
+
   <alias name="my.something-service" class="mylib.MyService"/>
+
 </aliases>
-```
 
-<div class="alert alert-info">
-  <p>The <code>useScenario="dev"</code> attribute is only present in test and development scenarios</p>
-</div>
 
-In the example above a new instance of the `mylib.MyService` is created and registered with the `ServiceRegistry` with the `my.something-service` identifier.
+The `useScenario="dev"` attribute is only present in test and development scenarios
 
-## Accessing a Service
+Note: the `alias` element will allow be updated to support a `requirePath` attribute to be consistent with the BRJS use of `require`. https://github.com/BladeRunnerJS/brjs/issues/724
+In the example above a new instance of the `mylib/MyService` is created and registered with the ServiceRegistry with the `my.something-service` identifier.
 
-The `MyService` that was registered earlier can be accessed via the logical name we gave it, `my.something-service`, anywhere in the application or test code:
+#Accessing a Service
 
-```javascript
-var ServiceRegistry = require( 'br/ServiceRegistry' );
+The MyService that was registered earlier can be accessed via the logical name we gave it, `my.something-service`, anywhere in the application or test code:
 
-var myService = ServiceRegistry.getService( 'my.something-service' );
-myService.doSomething();
-```
+`var ServiceRegistry = require( 'br/ServiceRegistry' );`
 
-<div class="alert alert-info">
-  <p>If a service is defined in an <code>aliases.xml</code> but is not retrieved from the <code>ServiceRegistry</code> in any application or test code, the BRJS dependency analysis system will notice this and therefore not register it with the ServiceRegistry. Please see <a href="/docs/concepts/dependency_analysis/">Dependency Analysis</a> for more information.</p>
-</div>
+`var myService = ServiceRegistry.getService( 'my.something-service' );`
 
-## Deregister a Service
+`myService.doSomething();`
 
-The service with the identifier `my.something-service` can be removed from the ServiceRegistry using the `deregisterService` function.
+If a service is defined in an `aliases.xml` but is not retrieved from the ServiceRegistry in any application or test code, the BRJS dependency analysis system will notice this and therefore not register it with the ServiceRegistry. See [Dependency Analysis](http://bladerunnerjs.org/docs/concepts/dependency_analysis/) for more information.
 
-```javascript
-var ServiceRegistry = require( 'br/ServiceRegistry' );
+#De-registering a Service
 
-ServiceRegistry.deregisterService( 'my.something-service' );
-```
+The service with the identifier my.something-service can be removed from the ServiceRegistry using the deregisterService function.
+
+`var ServiceRegistry = require( 'br/ServiceRegistry' );`
+
+`ServiceRegistry.deregisterService( 'my.something-service' );`
+
+##Where next?
+
+* Understand [Dependency Analysis](http://bladerunnerjs.org/docs/concepts/dependency_analysis/).
+* Find out more about the [ServiceRegistry](http://bladerunnerjs.org/docs/concepts/service_registry/) and [Services](http://bladerunnerjs.org/docs/concepts/services/).

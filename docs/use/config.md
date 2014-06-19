@@ -5,7 +5,7 @@ permalink: /docs/use/config/
 notice: none
 ---
 
-### bladerunner.conf
+### brjs.conf
 
 Configuration options for BladeRunner and the built in Jetty server. Located in the conf directory at the root of the BladeRunnerJS install.
 
@@ -23,12 +23,6 @@ loginRealm:						The login realm the Jetty server will use.
 								Only needed if you configure a login realm.
 								Default: BladeRunnerLoginRealm
 ```
-
-<div class="alert alert-info">
-	<p>
-		<a href="https://github.com/BladeRunnerJS/brjs/issues/280">The <code>bladerunner.conf</code> file will eventually be renamed to be <code>brjs.conf</code></a>.
-	</p>
-</div>
 
 ### app.conf
 

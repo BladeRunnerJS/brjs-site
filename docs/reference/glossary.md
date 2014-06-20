@@ -22,7 +22,7 @@ See *Asset*.
 
 ## Blade
 
-{% include docs/concepts/blade_overview.html %}
+{% include docs/concepts/blade_overview.md %}
 
 For more information see [/docs/concepts/blades].
 

@@ -77,12 +77,12 @@ var i18n = require( 'br/I18n' );
 function MybladeViewModel() {
   /*** new code ***/
   var text = i18n( 'demo.blades.myblade.helloworldmessage' );
-	this.message = ko.observable( text );
+  this.message = ko.observable( text );
   /*** end of new code ***/
 }
 
 MybladeViewModel.prototype.buttonClicked = function() {
-	console.log( 'button clicked' );
+  console.log( 'button clicked' );
 };
 
 module.exports = MybladeViewModel;
@@ -115,6 +115,10 @@ Loading the app with a Spanish locale set in the browser, will display like this
 ![](/docs/use/img/i18n-es.png)
 
 ## Useful Tips
+
+### Example Application
+
+The full [KnockoutJS BRJS Example Todo MVC example](https://github.com/BladeRunnerJS/brjs-todomvc-knockout) demonstrates how to use i18n within and application.
 
 ### Missing Translations
 

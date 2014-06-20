@@ -13,7 +13,7 @@ There are two ways to create a blade
 
 We will go through both these ways below. Remember, you only need to follow one of the options as they both achieve the same thing.
 
-##Option 1. Creating a blade via the CLI
+## Option 1. Creating a blade via the CLI
 
 Once you have an application and a BladeSet you can create a Blade as follows:
 
@@ -31,7 +31,7 @@ $ ./brjs create-blade brjstodo todo input
 
 The `input` blade is represented on disk by a directory called `input` that resides under the directory called `blades` in the `brjstodo` app directory.
 
-##Option 2. Creating an app using the web dashboard
+## Option 2. Creating an app using the web dashboard
 
 Start the BRJS development server by by entering the following on the command line:
 
@@ -39,29 +39,29 @@ Start the BRJS development server by by entering the following on the command li
 ./brjs serve
 ```
 
-and navigate to [http://localhost:7070](http://localhost:7070). Click on the relevant app and select ‘Add blade’.
+and navigate to `http://localhost:7070`. Click on the relevant app and select ‘Add blade’.
 
-##Example
+### Example
 
 This example follows on from those in How to Create an App and How to Create a Bladeset where we created an app called `brjstodo` and a bladeset called `todo`.
 
 We are now going to create a blade called `input` within the `todo` bladeset.
 
-![](\docs\use\img\create-blade-todo-bladeset)
+![](/docs/use/img/create-blade-todo-bladeset.png)
 
 Hover over the bladeset box to make the bladeset options visible. Two options will show “Add Blade” and “Run Tests”
 
 Click on “Add Blade” to bring up the below window.
 
-![](docs\use\img\create-blade-new)
+![](/docs/use/img/create-blade-new.png)
 
 Enter the blade name ‘input’.
 
-![](docs\use\img\create-blade-input)
+![](/docs/use/img/create-blade-input.png)
 
 You will now see the name of the new blades displayed underneath the bladeset name.
 
-![](docs\use\img\create-blade-input-icon)
+![](/docs/use/img/create-blade-input-icon.png)
 
 ##Results
 
@@ -76,17 +76,17 @@ This creates a `input` directory within `BRJS_HOME/apps/brjstodo/todo-bladeset/b
 
 <div class="alert alert-info">
 <p>
-
 In future:
+</p>
 
-<ul> <li>A default blade will be created when an application is created</li>
+<ul>
+  <li><a href="https://github.com/BladeRunnerJS/brjs/issues/3">A default blade will be created when an application is created</a></li>
+  <li>The <a href="https://github.com/BladeRunnerJS/brjs/issues/1">CLI will be context aware</a> so you can run <code>brjs create-blade</code> from within an application directory to create a blade for an app; you won't need to supply an app name, app namespace and bladeset name</li>
+</ul>
 
-<li>The CLI will be context aware so you can run brjs create-blade from within an application directory to create a blade for an app; you won't need to supply an app name, app namespace and BladeSet name</li></ul>
-<p>
 </div>
 
 ## Where next?
 
 - Now that you know how to create a Blade you should take a look at [adding that Blade to an Aspect](/docs/use/add_blade_to_aspect/).
 - For a better understanding of blades, look at the [blades](/docs/concepts/blades/) concepts page.
-

@@ -5,7 +5,7 @@ permalink: /docs/use/config/
 notice: none
 ---
 
-### bladerunner.conf
+### brjs.conf
 
 Configuration options for BladeRunner and the built in Jetty server. Located in the conf directory at the root of the BladeRunnerJS install.
 

@@ -146,12 +146,9 @@
   -o-transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
   transform: rotateY(0deg);
-<<<<<<< HEAD
-=======
 
   height: auto;
   overflow: auto;
->>>>>>> 1e29bbf1868285a10ae1332698097c92c5a20cbc
 }
 
 .flip-container:hover .front, .flip-container.hover .front {

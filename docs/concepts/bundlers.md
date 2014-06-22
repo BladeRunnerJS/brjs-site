@@ -57,3 +57,9 @@ The bundling process starts by determining a list of _seed_ _linked-assets_ for 
 * _linked-assets_ that contain references to _aliases_ are processed in much the same way as if they had direct _source-module_ references, except that the _alias_ is swapped for the concrete _source-module_ it points as part of the bundling process.
 * Once the backlog is empty, the final _bundle-set_ has effectively been generated, containing the list of all _source-modules_, _aliases_ and _asset-locations_ that could potentially be bundled.
 * Exactly which bits of the _bundle-set_ will actually be sent to the client depends on the tags used within the index page, and whether the `HTMLResourceService` and `XMLResourceService` classes are used within the application.
+
+## Where next?
+
+The Bundlers generally rely on the [BRJS Domain Model](/docs/concepts/model/) and [Dependency Analysis](/docs/concepts/dependency_analysis/) in order to build their bundles.
+
+The [BRJS CLI](/docs/use/commandline/) comes with a `bundle-deps` that allows you to visualize the dependencies of a bundle.

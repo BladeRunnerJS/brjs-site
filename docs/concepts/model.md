@@ -4,7 +4,7 @@ title: The BladeRunnerJS Model
 permalink: /docs/concepts/model/
 ---
 
-The BladeRunnerJS model is at the core of the BladeRunnerJS logic. The model provides an abstraction away from files on the disk and provides rich access to the components and Source Modules within an App.
+The BladeRunnerJS model is at the core of the BRJS toolkit. The model provides an abstraction away from files on the disk and provides rich access to the components and assets within an App.
 
 The model also provides extension points for plugins. New commands, bundlers and file type support can be easily added and hooked into the existing logic to handle dependencies and serve content.
 
@@ -16,7 +16,7 @@ Amidst the daily bustle of building web apps its easy to forget that things like
 
 ## BladeRunnerJS domain model
 
-If abstractions are so important, what is a good way to model a web app? For BRJS we've decided to create a fully fledged [domain model](http://en.wikipedia.org/wiki/Domain_model). Rather than try to describe the whole thing, a few examples will hopefully give a flavour of our approach. Each application is modelled as an instance of the `App` class. The bulk of an `App`'s code is contained in isolated features (components) called [`Blades`](http://bladerunnerjs.org/docs/concepts/blades/).
+If abstractions are so important, what is a good way to model a web app? For BRJS we've decided to create a fully fledged [domain model](http://en.wikipedia.org/wiki/Domain_model). Each application is modelled as an instance of the `App` class. The bulk of an `App`'s code is contained in isolated features (components) called [`Blades`](http://bladerunnerjs.org/docs/concepts/blades/).
 
 To list blades in an App simply execute the following code:
 
@@ -39,6 +39,13 @@ public interface Asset {
 
 As you can infer from the interface, `Assets`  are responsible for transforming their input into a readable stream (e.g. compiling CoffeeScript to JavaScript). They also provide string names (decoupled from their location on disk) by which they can be referenced.
 
+Core application model concepts include:
+
+* [Apps](/docs/concepts/apps/)
+* [Aspects](/docs/concepts/aspects/)
+* [Bladesets](/docs/concepts/bladesets/)
+* [Blades](/docs/concepts/blades/)
+
 ## Advantages of a domain model
 
 #### Creates a ["ubiquitous language"](http://www.peoplematter.com/blog/domain-driven-design-importance-ubiquitous-language)
@@ -49,7 +56,7 @@ This enables us to reason about a web app and aids communication between develop
 
 Many plugins are provided as part of core BRJS but it is easy to add new ones. Rather than just being able to look at files, plugins access the domain model.
 
-The dependency analysis plugin uses the dependency model (which is a graph) to generate the output shown above. Similarly we just created a plugin that automatically creates an [application cache](http://www.html5rocks.com/en/tutorials/appcache/beginner/) for a mobile project. It consisted of a few hundred lines of code - querying the domain model and generating the `.appcache` file.  
+The dependency analysis plugin uses the dependency model (which is a graph) to generate the output shown above. Similarly you can create a plugin that automatically creates an [application cache](http://www.html5rocks.com/en/tutorials/appcache/beginner/) for a mobile project. It consisted of a few hundred lines of code - querying the domain model and generating the `.appcache` file. You can find the [brjs-appcache-plugin source code here](https://github.com/caplin/brjs-appcache/).
 
 #### BRJS [memoizes](http://en.wikipedia.org/wiki/Memoization) the output of model methods
 

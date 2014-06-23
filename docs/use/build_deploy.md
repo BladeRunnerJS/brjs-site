@@ -8,9 +8,13 @@ BladeRunnerJS (BRJS) provides built-in support for building your application. It
 
 ## Application Versioning
 
-<p class="doc-feedback alert alert-warning">
-  Coming soon...
-</p>
+When an application is built the location of assets is auto-generated to include a version string which is the timestamp at the point the build is executed.
+
+When you build and deploy your application the `index.html` [aspect](/docs/concepts/aspects/) entry point will refer to the versioned assets (JS, CSS, HTML templates etc.).
+
+If you build and deploy your application as a WAR a filter is included to set caching headers that `index.html` aspect files are not cached as they are the entry point to your application and will change on each build. The rest of the application assets will be cached.
+
+However, if you build and deploy your application as static assets **you will need to ensure that `index.html` aspect files are not cached** by configuring your server appropriately.
 
 ## Building your App
 

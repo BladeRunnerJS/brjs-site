@@ -101,6 +101,20 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var isRegistered = ServiceRegistry.isServiceRegistered( 'my.something-service' );
 ```
 
+## Using different services in different situations
+
+Often, you want to run one set of services in the application, but then a different set when running tests, perhaps composed primarily of test doubles. BladeRunner supports 'scenarios' to enable you to specify different aliases for particular situations. Since the services are picked up from aliases, this enables you to configure a different set of services.
+
+Typically, you'll use the default scenario when you're running the application, and use a different scenario when running tests.
+
+You can configure the scenario you are using by setting the `useScenario` attribute on the top level tag in an `aliases.xml` file. The `aliases.xml` file goes in a resources folder in your `js-test-driver` directory if you are changing the scenario for a test (although it could potentially go in an aspect or a workbench).
+
+```xml
+<aliases usescenario="test" xmlns="http://schema.caplin.com/CaplinTrader/aliases">
+  <!--  extra overrides go here if necessary -->
+</aliases>
+```
+
 ## Where next?
 
 You can see an example of a service being defined and used within an application in the [Knockout BRJS

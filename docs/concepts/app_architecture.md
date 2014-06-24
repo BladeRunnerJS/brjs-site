@@ -127,6 +127,12 @@ Since each feature can be built in isolation it's possible to have multiple team
 
 This results in teams working in parallel unaffected by code changes or hold-ups elsewhere in development. Services and aspects are integration points where teams must ensure contracts are defined upfront and are evolved through effective communication, but the surface areas for these are as small as possible to try and reduce integration slow down.
 
+### Blades can use any library
+
+Blades can use any library or UI framework. As above, MVVM provides a number of values but the architecture isn't tied to using this or the default Knockout solution.
+
+It's even possible for different blades to use different libraries, if required.
+
 ## Where next?
 
 For more benefits, please read through each of the [BRJS concepts](/docs/concepts/).

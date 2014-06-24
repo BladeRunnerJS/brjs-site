@@ -122,7 +122,7 @@ It's possible to inject a test double configured to behave in a particular way f
 
 Since each feature can be built in isolation it's possible to have multiple teams working on different features. This can be split into:
 
-* Vertical features represented by blades
+* Vertical business features represented by blades
 * Access to backend services represented by services
 
 This results in teams working in parallel unaffected by code changes or hold-ups elsewhere in development. Services and aspects are integration points where teams must ensure contracts are defined upfront and are evolved through effective communication, but the surface areas for these are as small as possible to try and reduce integration slow down.

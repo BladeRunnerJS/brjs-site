@@ -63,3 +63,15 @@ Run all tests for the `brjs-todo` application:
 Run the tests for just the `todo-input` Blade:
 
     $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+
+## Debugging Tests
+
+Once you have your tests written and running you are likely to get to a point where you want to work out why a particular test is failing. By default tests run in a browser (i.e. not headless) and when this is the case you can easily add a `debugger` statement to your test, or the code that you are testing, and the browser will stop code execution as if a break point were set at that line of code.
+
+The steps for debugging tests are as simple as:
+
+1. Add `debugger` statement to the area of code you wish to debug
+2. Execute the test e.g. ``./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input`. *Note: The smallest group of tests you can execute at the moment are to a Blade level.*
+3. Debug the test using browser developer tools
+
+Some browsers may require the developer tools to be open in order to react to the break point.

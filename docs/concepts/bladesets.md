@@ -12,7 +12,8 @@ permalink: /docs/concepts/bladesets/
 
 Bladesets provide a way of grouping related blades so that they can share common code or resources.
 
-Note: In future releases, bladesets will be optional. For now, a Blade must reside within a bladeset
+<div class="alert alert-info">
+<p>Note: In future releases, bladesets will be optional. For now, a Blade must reside within a bladeset </p></div>
 
 ## **Benefits of Bladesets
 

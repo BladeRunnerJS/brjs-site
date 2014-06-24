@@ -530,7 +530,7 @@ In `_todoAdded` we just need to add the item to the `todos` Knockout `observable
 
 Open up the `items` Workbench via `http://localhost:7070/brjstodo/todo-bladeset/blades/items/workbench/` ensuring the BRJS development web server is running (`BRJS_HOME/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
 
-```
+``` js
 var sr = require( 'br/ServiceRegistry' );
 var hub = sr.getService( 'br.event-hub' );
 hub.channel( 'todo-list' ).trigger( 'todo-added', { title: 'console todo item' } );
@@ -587,7 +587,7 @@ ItemsViewModelTest.prototype.setUp = function() {
 };
 
 var ItemsViewModel = require( 'brjstodo/todo/items/ItemsViewModel' );
-```
+``` js
 
 <div class="alert alert-info">
   <p>
@@ -788,14 +788,16 @@ First download Tomcat 6.0 from the [Apache Tomcat](http://tomcat.apache.org/) we
 
 To build the WAR, run the `war` command:
 
-    $ BRJS_HOME/sdk/brjs war brjstodo
-    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
+```js
+$ BRJS_HOME/sdk/brjs war brjstodo
+BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
-    Successfully created war file
+Successfully created war file```
 
 Deploying to Tomcat is a simple as copying the `brjstodo.war` file to the Tomcat `webapps` directory:
 
-    $ cp brjstodo.war path_to_tomcat_install/webapps/
+```js
+$ cp brjstodo.war path_to_tomcat_install/webapps/ ```
 
 By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjstodo` to see your application running in a deployed environment.
 

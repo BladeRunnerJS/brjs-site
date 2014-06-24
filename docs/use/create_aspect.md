@@ -33,9 +33,9 @@ As part of this a `mobile-aspect` directory is created in the `brjstodo` applica
 directory.
 
 In the newly created aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this default aspect by starting the BRJS development server:
-
-    $ ./brjs serve
-
+```bash
+$ ./brjs serve
+```
 This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjstodo/mobile`.
 
 ## Where next?

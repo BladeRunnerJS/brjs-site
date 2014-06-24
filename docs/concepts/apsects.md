@@ -35,7 +35,8 @@ for example:
 
 `brjs create-aspect example-app login`
 
-Note: This is only done through the command line at the moment. We will be adding this on the the dashboard at a later date. [Details are on GitHUb](https://github.com/BladeRunnerJS/brjs/issues/748)
+<div class="alert alert-info">
+<p>Note: This is only done through the command line at the moment. We will be adding this on the the dashboard at a later date. [Details are on GitHUb](https://github.com/BladeRunnerJS/brjs/issues/748)</p></div>
 
 ## Where Next?
 

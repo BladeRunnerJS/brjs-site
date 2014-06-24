@@ -10,7 +10,7 @@ the details required to add internationalization support to your BRJS applicatio
 ## Set up Supported Locales
 Have a look in `app.conf`. It defines the locales that your app will support
 
-```
+```conf
 requirePrefix: <namespace>
 locales: en, de, es
 ```
@@ -51,7 +51,7 @@ Let's add a new element inside our HTML, which will be automatically internation
 
 Then define the token translation inside the file: `$BLADE_ROOT/resources/i18n/en/en.properties`
 
-```
+```prop
 demo.blades.myblade.title=Cool Title
 ```
 
@@ -90,7 +90,7 @@ module.exports = MybladeViewModel;
 
 Then add the translation to the i18n resource file.
 
-```
+```prop
 demo.blades.myblade.title=Cool Title
 /*** new code ***/
 demo.blades.myblade.helloworldmessage=Internationalized Hello World!
@@ -105,7 +105,7 @@ After a refresh of the blade workbench, your token should have been replaced, an
 
 Create a file `$BLADE_ROOT/resources/i18n/es/es.properties` file, containing:
 
-```
+```prop
 demo.blades.myblade.title=Titulo Guay
 demo.blades.myblade.helloworldmessage=Hola Mundo Internacionalizado!
 ```

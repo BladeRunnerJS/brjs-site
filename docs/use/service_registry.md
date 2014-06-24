@@ -57,8 +57,12 @@ These allow you to set up the services that are registered for the given alias (
 
 The `useScenario="dev"` attribute is only present in test and development scenarios
 
-Note: the `alias` element will allow be updated to support a `requirePath` attribute to be consistent with the BRJS use of `require`. https://github.com/BladeRunnerJS/brjs/issues/724
-In the example above a new instance of the `mylib/MyService` is created and registered with the ServiceRegistry with the `my.something-service` identifier.
+<div class="alert alert-info">
+<p>Note: the `alias` element will allow be updated to support a `requirePath` attribute to be consistent with the BRJS use of `require`. [See GitHub for more details](https://github.com/BladeRunnerJS/brjs/issues/724)
+<br/>
+<br/>
+
+In the example above a new instance of the `mylib/MyService` is created and registered with the ServiceRegistry with the `my.something-service` identifier.<p></div>
 
 ## Accessing a Service
 

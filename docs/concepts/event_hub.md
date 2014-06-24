@@ -10,7 +10,7 @@ The EventHub enables blades to communicate with other.
 
 It is available by default in any BladeRunnerJS application and is a publish-subscribe event service. Publish-subscribe is the best choice for BladeRunnerJS as it supports our model of Separation of Concerns., The publishers are loosely coupled to the subscribers allowing separate processes to run in isolation.
 
-Blades access EventHub using the [Service Registry](http://bladerunnerjs.org/docs/concepts/service_registry/)
+Blades access EventHub using the [Service Registry](http://bladerunnerjs.org/docs/concepts/service_registry/).
 
 ##Benefits of the EventHub
 
@@ -22,61 +22,60 @@ Using EventHub to ensure that blades do not directly interact with each other ha
 
 The EventHub is accessed from the [Service Registry](http://bladerunnerjs.org/docs/concepts/service_registry/):
 
-`var ServiceRegistry = require( 'br/ServiceRegistry' );`
+```js
+var ServiceRegistry = require( 'br/ServiceRegistry' );
 
-`function MyClass() {`
+  function MyClass() {
 
-  `this.eventHub = ServiceRegistry.getService( 'br.event-hub' );`
-}
+  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+}```
 
 ###Channels
 Channels can be accessed from the EventHub service:
 
-`function MyClass() {`
+```js
+function MyClass() {
 
-  `this.eventHub = ServiceRegistry.getService( 'br.event-hub' );`
+  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
 
-
-`this.channel = eventHub.channel( 'my-channel' );`
-
-`}`
+  this.channel = eventHub.channel( 'my-channel' );
+} ```
 
 ###Events
 Events can be bound to on a channel:
 
-`function MyClass() {`
+```js
+function MyClass() {
 
-  `this.eventHub = ServiceRegistry.getService( 'br.event-hub' );`
+  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
 
-  `this.channel = eventHub.channel( 'my-channel' );`
+  this.channel = eventHub.channel( 'my-channel' );
 
+  this.channel.on( 'my-event', this.handleEvent, this );
+}```
 
-`this.channel.on( 'my-event', this.handleEvent, this );`
+```js
+MyClass.prototype.handleEvent = function( eventData ) {
 
-`}`
-
-
-`MyClass.prototype.handleEvent = function( eventData ) {`
-
- ` // do something with the data`
-  
-`}`
+ // do something with the data
+}```
 
 And events can be triggered on channels:
 
-`function MyClass() {`
- ` this.eventHub = ServiceRegistry.getService( 'br.event-hub' );`
+```js
+function MyClass() {
 
- ` this.channel = eventHub.channel( 'my-channel' );`
+  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
 
- `this.channel.on( 'my-event', this.handleEvent, this );`
+  this.channel = eventHub.channel( 'my-channel' );
 
+  this.channel.on( 'my-event', this.handleEvent, this );
 
- `this.channel.trigger( 'my-event', { some: 'event' } );`
-}
+  this.channel.trigger( 'my-event', { some: 'event' } );
+}```
 
 ##Where Next
 
-To find out more about Workbenches see the [Workbenches ](http://bladerunnerjs.org/docs/concepts/workbenches/)page
+To find out more about Workbenches, see the [Workbenches ](http://bladerunnerjs.org/docs/concepts/workbenches/)page
 
 To understand how the Service Registry works, see the [Service Registry](http://bladerunnerjs.org/docs/concepts/service_registry/) page

@@ -43,9 +43,11 @@ You can get the emitr dependency separately from [here](http://BladeRunnerJS.git
 The following lines will pull the libraries from github. For a proper deployment, you should
 download them or check them out of github.
 
-```
-   <script type="text/javascript" src="http://BladeRunnerJS.github.io/emitr/target/single/emitr.js"></script>
-   <script type="text/javascript" src="http://BladeRunnerJS.github.io/fell/target/single/fell-no-emitr.js"></script>
+```js
+   <script type="text/javascript" src="http://BladeRunnerJS.github.io/emitr/target/single/emitr.js">
+   </script>
+   <script type="text/javascript" src="http://BladeRunnerJS.github.io/fell/target/single/fell-no-emitr.js">
+   </script>
 ```
 
 In node, add fell to your package.json dependencies:

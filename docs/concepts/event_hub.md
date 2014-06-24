@@ -28,6 +28,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
   function MyClass() {
 
   this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  
 }```
 
 ###Channels
@@ -37,8 +38,12 @@ Channels can be accessed from the EventHub service:
 function MyClass() {
 
   this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  
+  /*** new code ***/
 
   this.channel = eventHub.channel( 'my-channel' );
+  
+   /*** end of new code ***/
 } ```
 
 ###Events

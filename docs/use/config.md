@@ -9,7 +9,7 @@ notice: none
 
 Configuration options for BladeRunner and the built in Jetty server. Located in the conf directory at the root of the BladeRunnerJS install.
 
-```js
+```
 jettyPort:						The port the built in Jetty server will bind to.
 								Default: 7070.
 
@@ -28,7 +28,7 @@ loginRealm:						The login realm the Jetty server will use.
 
 Configuration options specific to an individual app. Located in the root of each app.
 
-```js
+```
 requirePrefix:	Prefix for the app.
                 Default: appns
 
@@ -50,12 +50,12 @@ Styles can be overridden multiple times, for example if an app has the style 'st
 
 If no `js-style` is found the default is `node.js`.  Possible values are `node.js` &amp; `namespaced-js`.
 
-```js
+```
 node.js
 ```
 ###test-runner.conf
 
-```js
+```
 jsTestDriverJar:	Path to location of JsTestDriver.jar in sdk
 
 

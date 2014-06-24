@@ -27,7 +27,7 @@ For an existing library to be used and picked up by BladeRunnerJS it needs to be
 
 In order for the library to then be used a `library.manifest` file should be created. This is a [YAML](http://en.wikipedia.org/wiki/YAML) configuration file with the following format and options:
 
-```yaml
+```
 # the JavaScript reference that this library exports
 exports: name
 
@@ -48,7 +48,7 @@ css: list.css, of.css, files.css
 
 For example, if we wanted to use [Zepto](http://zeptojs.com/) within our application we can simply create a `libs/zepto` folder and download the latest [`zepto.js` file](http://zeptojs.com/zepto.js) into that directory. The final step is to create a `library.manifest` file. Zepto exports a `Zepto` object and we only have `zepto.js` to bundle so  a `js` configuration option, but we'll add it for completeness.
 
-```js
+```
 js: zepto.js
 exports: Zepto
 ```

@@ -6,7 +6,7 @@ permalink: /docs/use/logging/
 
 BladeRunnerJS comes with a library that enables you to generate custom log messages of various severity levels, from anywhere within your application.
 
-The library is called [fell](https://github.com/BladeRunnerJS/fell) and is available as a standalone library. *Usage of fell is optional*, but you should consider using it if any of the following goals fit your application logging requirements:
+The library is called [fell](https://github.com/BladeRunnerJS/fell) and is available as a standalone library. *Usage of fell is optional* but you should consider using it if any of the following goals fit your application logging requirements:
 
 * Very low cost when logging at a level not in use.
 * Friendly to unit testing.
@@ -23,7 +23,7 @@ var Log = require('fell').Log;
 
 ## The Default Logger
 
-The default configuration has it outputting to the console (if one is available), so you can start
+The default configuration outputs to the console (if one is available) so you can start
 using it immediately:
 
 ```js
@@ -58,11 +58,11 @@ To take advantage of this control, you can configure particular loggers to log a
 You can set up your logging by calling configure before initializing the BRJS application or within a Workbench.  It takes up to three arguments. The first argument is the default log level that will be done for all loggers that don't have more specific configuration.
 
 The second argument is a map containing logger names to the levels that they should log at.  This
-is interpreted hierarchically, so in the above example the logger `mymodule.MyClass` will log at
-level `info`, since it matches the `mymodule` configuration.  The logger `mymodule.some.hierarchy`
+is interpreted hierarchically so in the above example the logger `mymodule.MyClass` will log at
+level `info` since it matches the `mymodule` configuration.  The logger `mymodule.some.hierarchy`
 will log at level `fatal`, as will any loggers with names that start `mymodule.some.hierarchy.`.
 
-The third argument is an array of destinations that log events should be routed too.  If you don't
+The third argument is an array of destinations that log events should be routed to.  If you don't
 pass anything (as in the above example), this will default to an array containing only a logger that
 outputs to the console object in environments that support this.
 
@@ -73,10 +73,10 @@ Log.configure( 'error', {
 } );
 ```
 
-Calling `Log.configure` clears the state of the logger, so the levels, configuration and log
+Calling `Log.configure` clears the state of the logger so the levels, configuration and log
 destinations are all reset.
 
-If you want to modify the logging while in use you can use methods specifically for that:
+If you want to modify the logging while in use, you can use methods specifically for that:
 
 ```js
 var fell = require( 'fell' );
@@ -101,7 +101,7 @@ Log.removeDestination( store );
 Care must be taken when testing for log messages in order to avoid writing fragile tests.
 
 In order to help with this, the provided LogStore destination detects when it's loaded with [JsHamcrest](http://danielfm.github.io/jshamcrest)
-integrated, and provides a number of jshamcrest matchers to be used when unit testing.
+integrated and provides a number of jshamcrest matchers to be used when unit testing.
 
 Here's an example of usage:
 
@@ -162,8 +162,8 @@ describe('My object', function() {
 ```
 
 The provided matchers, `LogStore.contains`, `LogStore.containsAll` and `LogStore.event` also accept
-JsHamcrest matchers as arguments.  You can make your tests less brittle by accepting anything that
-makes sense for the code to do.  So if your code currently logs at 'debug', but it would also make
+JsHamcrest matchers as arguments.  You can make your tests less fragile by accepting anything that
+makes sense for the code to do.  So if your code currently logs at 'debug' but it would also make
 sense for it to log the same message at 'info', check against `either('debug').or('info')` rather
 than checking against what your code actually does.
 
@@ -179,7 +179,7 @@ The fell logger by default uses a string interpolation function so that the part
 that change do not break the message matching and so that they can be compared separately.
 
 Fell matchers don't require you to test every log message. This is desirable, as many log messages
-don't form part of your public interface, and testing them would increase the frailty of the tests
+don't form part of your public interface and testing them would increase the fragility of the tests
 without providing any benefit.
 
 ## Where next?

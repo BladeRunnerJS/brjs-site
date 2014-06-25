@@ -4,17 +4,17 @@ title: BladeRunnerJS Application Architecture
 permalink: /docs/concepts/app_architecture/
 ---
 
-BladeRunnerJS differs from other toolkits in that is has knowledge of application concepts such as [blades](/docs/concepts/blades/) (for more information see [Modelling Web Apps](/blog/modelling-webapps/)). What this means is that parts of the application architecture are tied to the toolkit. This doesn't mean that the toolkit or application architecture is inflexible, it simply means that there is a solid foundation that everything else has to be built upon.
+BladeRunnerJS differs from other toolkits in that is has knowledge of application concepts such as [blades](/docs/concepts/blades/) (for more information see [Modelling Web Apps](/blog/modelling-webapps/)). What this means is that parts of the application architecture are tied to the toolkit. This doesn't mean that the toolkit or application architecture is inflexible, however. It simply means that there is a solid foundation that everything else is built upon.
 
 ## BRJS Architecture
 
-The architecture within a running BladeRunnerJS application can be built out of a selection of modules. There are **foundation** modules that are required within every application, a set of **highly recommended** modules that we believe should be used in every application (although the toolkit doesn't enforce this)  and a set of **optional** modules that you can pick and choose from. On top of that you write your application and UI logic. BRJS defaults to using KnockoutJS but you can use any other library that you wish for your app and UI logic e.g. AngularJS, Ember, Backbone, Web Components (Polymer/Brick).
+The architecture within a running BladeRunnerJS application can be built out of a selection of modules. There are **foundation** modules that are required within every application, a set of **highly recommended** modules that we believe should be used in every application (although the toolkit doesn't enforce this)  and a set of **optional** modules that you can pick and choose from. On top of that, you write your application and UI logic. BRJS defaults to using KnockoutJS but you can use any other library that you wish for your app and UI logic e.g. AngularJS, Ember, Backbone, Web Components (Polymer/Brick).
 
 ![BRJS Runtime Application Architecture](/docs/concepts/img/brjs-app-runtime.png)
 
 ### Foundation
 
-This foundation includes three
+This foundation includes:
 
 * [Blades](/docs/concepts/blades/) - each application feature should be encapsulated in a blade although what goes into a blade is entirely up to you
 * [bladeset](/docs/concepts/bladesets) and [libraries](/docs/concepts/libraries/) - code cannot be directly shared between blades so shared code should be in a bladeset or a library
@@ -23,13 +23,13 @@ This foundation includes three
 
 **Of the above points, only the Node.js style modules directly relate to the application runtime** (hence why they're not in the above *runtime* diagram). Blades, bladesets, libraries and aspects are all concepts to ensure separation of concerns and building an application in a modular way. These build restrictions ensure that application features can't directly talk to each other and instead have to use a loosely coupled communication mechanism (e.g. the [EventHub](/docs/use/event_hub)).
 
-From that point there are **optional** additions that can be used as required.
+From that point, there are **optional** additions that can be used as required.
 
 *<sup>†</sup> it is also possible to write your own [bundling mechanism](/docs/concepts/bundlers/) as a [BRJS plugin](/docs/extend/) and thus write application code in other ways*
 
 ### Highly Recommended
 
-Out of these addition there are two that are **highly recommended** to be used:
+Of these additions, there are two whose use is **highly recommended**:
 
 * [ServiceRegistry](/docs/concepts/service_registry/) - used to expose services to access shared resources e.g. Web APIs
 * [EventHub](/docs/concepts/event_hub/) - A publish-subscribe messaging service, accessed via the ServiceRegistry
@@ -46,7 +46,7 @@ The additional optional architectural components are:
 
 ## Architecture Walkthrough
 
-A traditional view of an full application architecture may look something like the following:
+A traditional view of a full application architecture may look something like the following:
 
 ![](/docs/concepts/img/app-disection.png)
 
@@ -67,10 +67,10 @@ In addition, the three concerns - accessing services, business logic, controllin
 Although this looks fine, there are a number of potential problems:
 
 1. If two controllers access the same backend service there is potential for duplication of effort and code
-2. If code is shared between controllers a change in that code for one feature can have a side effect on another
-3. This type of solution can result in tight coupling between business logic and the implementation of code that accesses services making change difficult to manage
+2. If code is shared between controllers, a change in that code for one feature can have a side effect on another
+3. This type of solution can result in tight coupling between business logic and the implementation of code that accesses services, making change difficult to manage
 4. Controllers access backend services directly via AJAX calls or by creating WebSocket connections making testing difficult
-5. Depending on the MVC/MV* solution, testing may require assertions being made against the DOM which can result in unreliable and inconsistent result due to browser rendering timings
+5. Depending on the MVC/MV* solution, testing may require assertions being made against the DOM. This can result in unreliable and inconsistent result due to browser rendering timings
 
 These potential problems can be avoided with the introduction of two architectural decisions:
 
@@ -79,7 +79,7 @@ These potential problems can be avoided with the introduction of two architectur
 
 ### Services
 
-[Services](/docs/concepts/services/) can be be used to access shared resources such as backend services. They can solve the potential problems - points 1 to 4 - introduced above by:
+[Services](/docs/concepts/services/) can be be used to access shared resources such as backend services. They can solve the potential problems, shown as points 1 to 4 above, by:
 
 * Centralising code that accesses services
 * Providing a defined contract/protocol/interface for interacting with services
@@ -90,7 +90,7 @@ These potential problems can be avoided with the introduction of two architectur
 
 ### A DOM Abstraction
 
-By using a DOM abstraction it's possible to make assertions against that abstraction during test and avoid the problems that direct DOM assertions can introduce. By default a BRJS uses a MVVM ([Knockout](http://knockoutjs.com/)) solution as it provides this benefit directly since the ViewModel is a logical representation of the view. However, as pointed out earlier, it is possible to use any other MV* solution and in doing so achieve the same benefits.
+By using a DOM abstraction, it's possible to make assertions against that abstraction during test and avoid the problems that direct DOM assertions can introduce. By default a BRJS uses a MVVM ([Knockout](http://knockoutjs.com/)) solution which provides this benefit directly as the ViewModel is a logical representation of the view. However, as pointed out earlier, it is possible to use any other MV* solution and in doing so, achieve the same benefits.
 
 ![](/docs/concepts/img/app-disection-mvvm-services.png)
 
@@ -100,7 +100,7 @@ There are a number of benefits to this approach.
 
 ### Blades can be Run in Isolation
 
-Since blades cannot access code defined by other blades and they access backend services through a Services layer it is possible to run a blade in isolation within a [workbench](/docs/concepts/workbenches). This results in a productive developer workflow, unaffected by changes in unrelated parts of the application.
+Since blades cannot access code defined by other blades and they access backend services through a Services layer, it is possible to run a blade in isolation within a [workbench](/docs/concepts/workbenches). This results in a productive developer workflow, unaffected by changes in unrelated parts of the application.
 
 ### Apps are Composed of Blades
 
@@ -120,7 +120,7 @@ It's possible to inject a test double configured to behave in a particular way f
 
 ### Effective Team Working
 
-Since each feature can be built in isolation it's possible to have multiple teams working on different features. This can be split into:
+Since each feature can be built in isolation, it's possible to have multiple teams working on different features. This can be split into:
 
 * Vertical business features represented by blades
 * Access to backend services represented by services

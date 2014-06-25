@@ -1,4 +1,4 @@
-# BladeRunnerJS Website & Documentation
+# BladeRunnerJS Website & Docs
 
 ## Website
 

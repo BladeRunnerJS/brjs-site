@@ -90,7 +90,7 @@ These potential problems can be avoided with the introduction of two architectur
 
 ### A DOM Abstraction
 
-By using a DOM abstraction it's possible to make assertions against that abstraction during test and avoid the problems that direct DOM assertions can introduce. For this reason alone, by default a BRJS uses a MVVM ([Knockout](http://knockoutjs.com/)) solution as it provides a great benefit. However, as pointed out earlier, it is possible to use any other MV* solution.
+By using a DOM abstraction it's possible to make assertions against that abstraction during test and avoid the problems that direct DOM assertions can introduce. By default a BRJS uses a MVVM ([Knockout](http://knockoutjs.com/)) solution as it provides this benefit directly since the ViewModel is a logical representation of the view. However, as pointed out earlier, it is possible to use any other MV* solution and in doing so achieve the same benefits.
 
 ![](/docs/concepts/img/app-disection-mvvm-services.png)
 
@@ -129,7 +129,7 @@ This results in teams working in parallel unaffected by code changes or hold-ups
 
 ### Blades can use any library
 
-Blades can use any library or UI framework. As above, MVVM provides a number of values but the architecture isn't tied to using this or the default Knockout solution.
+Blades can use any library or UI framework. As above, MVVM provides a number of benefits but the architecture isn't tied to using this or the default Knockout solution.
 
 It's even possible for different blades to use different libraries, if required.
 

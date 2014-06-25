@@ -4,9 +4,9 @@ title: Interfaces
 permalink: /docs/concepts/interfaces/
 ---
 
-**Interfaces** are a well known concept in object-oriented programming. Although they are not native to JavaScript they provide a number of benefit when building large applications.
+**Interfaces** are a well known concept in object-oriented programming. Although they are not native to JavaScript, they provide a number of benefit when building large applications.
 
-The core BRJS framework provides a mechanism to define and use Interfaces within a JavaScript application through it's use of the [Topiarist library](https://github.com/BladeRunnerJS/topiarist).
+The core BRJS framework provides a mechanism to define and use Interfaces within a JavaScript application through its use of the [Topiarist library](https://github.com/BladeRunnerJS/topiarist).
 
 Interfaces are used by [services](/docs/concepts/services/), the [ServiceRegistry](/docs/concepts/service_registry) and can also be used anywhere within a BRJS application that you wish to define a contract/protocol of interaction with an object.
 
@@ -66,12 +66,12 @@ Quadruped.prototype.getGender = function() {
 module.exports = Quadruped;
 ```
 
-If another class implements the `Animal` interface, it must implement all its methods as well, or **an exception will be thrown after the declaration**. For example: if a class states that it implements `Animal`, but does not provide an implementation for the method `speak()``. Although we can't do static type checking we do get fast feedback that there is a problem in our code.
+If another class implements the `Animal` interface, it must implement all its methods as well, or **an exception will be thrown after the declaration**. For example: if a class states that it implements `Animal`, but does not provide an implementation for the method `speak()`. Although we can't do static type checking, we do get fast feedback that there is a problem in our code.
 
 ## Where Next?
 
-You may also notice the Quadruped class hasn't implemented the speak() method, which effectively makes this an abstract class. For more information check out the [Classes docs](/docs/concepts/classes).
+You may also notice the Quadruped class hasn't implemented the `speak()` method, which effectively makes this an abstract class. For more information check out the [Classes docs](/docs/concepts/classes).
 
-Take a look at [services](/docs/concepts/services/), how they tie into Interfaces. Also see the [ServiceRegistry](/docs/concepts/service_registry) where services are registered.
+Take a look at [services](/docs/concepts/services/) and how they tie into Interfaces. Also see the [ServiceRegistry](/docs/concepts/service_registry) where services are registered.
 
-[Topiarist](https://github.com/BladeRunnerJS/topiarist) enables both classes and interfaces and we wrote up an [introductory blog post on Topiarist](http://bladerunnerjs.org/blog/topiarist/) that's worth taking a look at.
+[Topiarist](https://github.com/BladeRunnerJS/topiarist) enables both classes and Interfaces and we wrote up an [introductory blog post on Topiarist](http://bladerunnerjs.org/blog/topiarist/) that's worth taking a look at.

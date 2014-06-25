@@ -47,7 +47,9 @@ You can now either open a new CLI window to enter future commands in the getting
 
 Before creating our Blades we first need to create a new BladeSet within the application using the CLI. The format of this command is:
 
-    $ BRJS_HOME/sdk/brjs create-bladeset <app-name> <bladeset-name>
+```bash
+$ BRJS_HOME/sdk/brjs create-bladeset <app-name> <bladeset-name>
+```
 
 [BladeSets](/docs/concepts/bladesets) provide a way of grouping related blades so that they can share common code or resources. For now we don't need to worry about BladeSets. All you need to know is that within the BladeSet directory there's a `blades` directory where we're going to create our blades - our functionality.
 
@@ -63,7 +65,9 @@ With this basic application structure in place we can create our first Blade and
 
 To create a blade we use the `create-blade` command. This has the following format:
 
-    $ BRJS_HOME/sdk/brjs create-blade <app-name> <bladeset-name> <blade-name>
+```bash
+$ BRJS_HOME/sdk/brjs create-blade <app-name> <bladeset-name> <blade-name>
+```
 
 Let's create a new blade called `input` within the `todo` BladeSet in our `brjstodo` application:
 
@@ -79,7 +83,7 @@ Within `apps/brjstodo/todo-bladeset/blades/input/src/brjstodo/todo/input` you'll
 
 Open up `InputViewModel.js` to see the following:
 
-```javascript
+```js
 'use strict';
 
 var ko = require( 'ko' );
@@ -139,7 +143,7 @@ To do this update the `message` instance variable to be called something more re
 
 Finally, instead of having to click a button we should handle the *Enter/Return* key being pressed as an indication of a new todo item being finalized. Let's rename `buttonClicked` to `keyPressed` and only handle the key press if it was the correct key by checking `event.keyCode` to ensure its value equals `ENTER_KEY_CODE`:
 
-```javascript
+```js
 'use strict';
 
 var ko = require( 'ko' );
@@ -203,7 +207,7 @@ A core concept with BRJS is building a JavaScript application that scales. One o
 
 When you scaffold a new Blade a test class is also created. The scaffolded test can be found in `input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js`:
 
-```javascript
+```js
 var InputViewModelTest = TestCase("InputTest");
 
 var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
@@ -231,7 +235,9 @@ InputViewModelTest.prototype.testSomething = function() {
 
 There are a few ways to run the tests using JSTestDriver, but the simplest is probably to start the test server using the CLI:
 
-    $ BRJS_HOME/sdk/brjs test-server --no-browser
+```bash
+$ BRJS_HOME/sdk/brjs test-server --no-browser
+```
 
 The test server will then start up on the default port (4224) and continue running in the terminal/console that you started it in.
 
@@ -239,7 +245,9 @@ Then in the web browser (or browsers) you wish to execute the tests in navigate 
 
 You can now run the tests by opening up another terminal/console tab/window and executing `BRJS_HOME/sdk/brjs test path_to_directory_to_scan_for_tests`. In our case we just want to run the `input` tests by running:
 
-    $ BRJS_HOME/sdk/brjs test ../apps/brjstodo/todo-bladeset/blades/input/
+```bash
+$ BRJS_HOME/sdk/brjs test ../apps/brjstodo/todo-bladeset/blades/input/
+```
 
 If all goes well you should see output similar to the following:
 
@@ -275,7 +283,7 @@ This will create all the same assets that were created for the first blade, but 
 
 Open up the newly generated `ItemsViewModel.js` and update the JavaScript as follows:
 
-```javascript
+```js
 'use strict';
 
 var ko = require( 'ko' );
@@ -326,7 +334,7 @@ We now have a way for a user to **input** a todo list item and a place to show t
 
 Back in our `input` Blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry), which we `require`, as shown in the `InputViewModel` constructor below:
 
-```javascript
+```js
 'use strict';
 
 var ko = require( 'ko' );
@@ -358,7 +366,7 @@ module.exports = InputViewModel;
 
 Now, in the `keyPressed` function we can trigger an event called `todo-added` on a `todo-list` channel to tell any interested parties (the `items` Blade) that a new Todo list item has been input, and the user has indicated they want to add it. The `eventData` we send with the event will have a `title` property representing the todo item text. We can also clear down the `todoText` and associated element value.
 
-```javascript
+```js
 'use strict';
 
 var ko = require( 'ko' );
@@ -407,7 +415,7 @@ Ensure the BRJS server is running (`BRJS_HOME/sdk/brjs serve`) and open up the `
 
 Because we've introduced the concept and usage of the `ServiceRegistry` we should add to our tests a JSTestDriver `setUp` function to `input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js`. In this function we can create a `fakeEventHub` to capture any events that are triggered. We then deregister any existing services with the `br.event-hub` identifier and then register our fake event hub. The `fakeEventHub` variable has a scope so that it's accessible to the new test (the first test doesn't need to be updated):
 
-```javascript
+```js
 var InputViewModelTest = TestCase( 'InputViewModelTest' );
 
 /*** new code ***/
@@ -452,7 +460,7 @@ InputViewModelTest.prototype.testSomething = function() {
 
 Now add the new test to ensure that when the `keyPressed` function is executed (which will normally be called via the user pressing *Enter* in the `<input>` element) that an event is triggered on the Event Hub.
 
-```javascript
+```js
 InputViewModelTest.prototype.testEnterKeyPressedTriggersEventOnEventHub = function() {
   // Initialize
   var testTodoTextValue = 'write some code and test it';
@@ -490,7 +498,7 @@ Now the `input` Blade is triggering an event on the EventHub, the `items` Blade 
 
 First, get access to the `ServiceRegistry` and then register for the event on the channel:
 
-```javascript
+```js
 'use strict';
 
 var ko = require( 'ko' );
@@ -530,7 +538,7 @@ In `_todoAdded` we just need to add the item to the `todos` Knockout `observable
 
 Open up the `items` Workbench via `http://localhost:7070/brjstodo/todo-bladeset/blades/items/workbench/` ensuring the BRJS development web server is running (`BRJS_HOME/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
 
-```
+``` js
 var sr = require( 'br/ServiceRegistry' );
 var hub = sr.getService( 'br.event-hub' );
 hub.channel( 'todo-list' ).trigger( 'todo-added', { title: 'console todo item' } );
@@ -552,7 +560,7 @@ As with the `input` Blade we can also test the `items` Blade with the help of se
 
 First we want to set up a fake service that helps us interact with our Blade. **Replace** the contents of `items/tests/test-unit/js-test-driver/tests/ItemsViewModelTest.js` with the following:
 
-```javascript
+```js
 var ItemsViewModelTest = TestCase( 'ItemsViewModelTest' );
 
 var ServiceRegistry = require( 'br/ServiceRegistry' );
@@ -587,7 +595,7 @@ ItemsViewModelTest.prototype.setUp = function() {
 };
 
 var ItemsViewModel = require( 'brjstodo/todo/items/ItemsViewModel' );
-```
+``` js
 
 <div class="alert alert-info">
   <p>
@@ -597,7 +605,7 @@ var ItemsViewModel = require( 'brjstodo/todo/items/ItemsViewModel' );
 
 This code ensures that any interaction with the `br.event-hub` service is captured so that we can test it. Our test will then simply check that the correct channel name is being subscribed to, the appropriate event is being bound to and that it is the `itemsViewModel` that is doing the binding:
 
-```javascript
+```js
 ItemsViewModelTest.prototype.testitemsBladeListensToItemAddedEvents = function() {
   var itemsViewModel = new ItemsViewModel();
 
@@ -627,7 +635,7 @@ Tests Passed.
 
 As explained above, we also want to make sure the View Model is updated with a new item when the `todo-added` event is received:
 
-```javascript
+```js
 ItemsViewModelTest.prototype.testItemsViewModelAddsItemOnTodoAddedEvent = function() {
   var itemsViewModel = new ItemsViewModel();
 
@@ -657,8 +665,6 @@ In order to add the Blades to the default aspect we need to first update the asp
 <html>
 	<head>
 		<meta charset="UTF-8">
-
-		<base href="@APP.VERSION@"/>
 
 		<title>My Application</title>
 
@@ -697,7 +703,7 @@ The element with the ID of `header` will have the Todo Input element appended to
 
 Open `brjstodo/default-aspect/src/brjstodo/App.js` and in the `App` class create two instances of the objects we've just defined and tested; an Input `InputViewModel` and an Items `ItemsViewModel`. In addition we're going to use a class called `KnockoutComponent` that helps us create a DOM element from our view template and deal with binding that element to the view model. To do this we create a new `KnockoutComponent` instance and pass in an identifier to our view template and the view model instance:
 
-```javascript
+```js
 'use strict';
 
 /*** new code ***/
@@ -726,7 +732,7 @@ At this point we haven't added any content to our page and it will just a blank 
 
 In order for the Blade components to appear in the aspect we have to append the DOM elements that the `KnockoutComponent` instances create, to the Aspect (the main view into the Todo List web app). We do this by calling `component.getElement()` and appending the returned element append it to the `todoapp` element in the DOM:
 
-```javascript
+```js
 'use strict';
 
 var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
@@ -788,14 +794,18 @@ First download Tomcat 6.0 from the [Apache Tomcat](http://tomcat.apache.org/) we
 
 To build the WAR, run the `war` command:
 
-    $ BRJS_HOME/sdk/brjs war brjstodo
-    BladeRunnerJS version: BRJS-dev, built: 26 September 2013
+```bash
+$ BRJS_HOME/sdk/brjs war brjstodo
+BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
-    Successfully created war file
+Successfully created war file
+```
 
 Deploying to Tomcat is a simple as copying the `brjstodo.war` file to the Tomcat `webapps` directory:
 
-    $ cp brjstodo.war path_to_tomcat_install/webapps/
+```bash
+$ cp brjstodo.war path_to_tomcat_install/webapps/
+```
 
 By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjstodo` to see your application running in a deployed environment.
 
@@ -815,7 +825,7 @@ This comprehensive getting started guide has introduced you to [Blades](/docs/co
 
 Believe it or not, this just scrapes the surface of BladeRunnerJS. So...
 
-## Where next?
+## Where Next?
 
 ### Finish the Todo App
 

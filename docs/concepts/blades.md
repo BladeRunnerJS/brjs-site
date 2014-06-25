@@ -47,8 +47,7 @@ for example:
 $ ./brjs create-blade brjstodo todo input
 ```
 
-
-## Where next?
+## Where Next?
 
 - For more information about creating blades see [How to Create a Blade](/docs/use/create_blade/).
 - The [Getting Started guide](/docs/use/getting_started/) covers everything you need to get going, including instructions on how to create applications, bladesets and blades.

@@ -3,6 +3,7 @@ layout: docs
 title: Interfaces
 permalink: /docs/concepts/interfaces/
 ---
+
 **Interfaces** are a well known concept in object-oriented programming. Although they are not native to JavaScript they provide a number of benefit when building large applications.
 
 The core BRJS framework provides a mechanism to define and use Interfaces within a JavaScript application through it's use of the [Topiarist library](https://github.com/BladeRunnerJS/topiarist).
@@ -67,7 +68,7 @@ module.exports = Quadruped;
 
 If another class implements the `Animal` interface, it must implement all its methods as well, or **an exception will be thrown after the declaration**. For example: if a class states that it implements `Animal`, but does not provide an implementation for the method `speak()``. Although we can't do static type checking we do get fast feedback that there is a problem in our code.
 
-## Where next?
+## Where Next?
 
 You may also notice the Quadruped class hasn't implemented the speak() method, which effectively makes this an abstract class. For more information check out the [Classes docs](/docs/concepts/classes).
 

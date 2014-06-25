@@ -20,7 +20,6 @@ Once you have an application and a BladeSet you can create a Blade as follows:
 ```bash
 $ ./brjs create-blade <app-name> <bladeset-name> <blade-name>
 ```
-
 ### Example
 
 The following command will create a Blade called `input` in the `todo` BladeSet which is part of the `brjstodo` app.

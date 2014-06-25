@@ -300,7 +300,7 @@ And German:
 
 ## Localized CSS
 
-The CSS used in your application can also be locale specific. For instance, we may want to set the background with national colors.
+The CSS used in your application can also be locale specific. For instance, we may want to set the background with national colors or increase the dimensions of elements containing text where words and sentences may be longer in different languages.
 
 To do this creates files called `color_en.css` for the English locale and `colors_de.css` for the German in the `standard/themes/standard` directory. Here you can set the locale-specific css. Note that locale-specific theme css overrides general theme css so let's first define the shared styles in `myblade/themes/standard/style.css`:
 

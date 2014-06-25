@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Internationalizing your app
+title: Internationalizing your App
 permalink: /docs/use/internationalization/
 ---
 

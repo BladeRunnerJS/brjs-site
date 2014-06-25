@@ -4,7 +4,7 @@ title: Classes
 permalink: /docs/concepts/classes/
 ---
 
-**Classes** are a well known concept in object-oriented programming. The core BRJS framework provides a mechanism to write Object Oriented code in a defined structure. In addition it provides mechansims for inheritance, [Interfaces](/docs/concepts/interaces) and type checking. This is achieved by using a library called [Topiarist](https://github.com/BladeRunnerJS/topiarist).
+**Classes** are a well known concept in object-oriented programming. The core BRJS framework provides a mechanism to write Object Oriented code in a defined structure. In addition, it provides mechansims for inheritance, [Interfaces](/docs/concepts/interaces) and type checking. This is achieved by using a library called [Topiarist](https://github.com/BladeRunnerJS/topiarist).
 
 Use of this mechanism within BladeRunnerJS is optional, but recommended.
 

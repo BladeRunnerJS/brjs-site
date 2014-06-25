@@ -23,6 +23,8 @@ The blades architecture and workflow was specifically developed to remedy this p
 
 Blades do not limit what you can build in any way, and are fully compatible with virtually all current HTML5 libraries and tools. They simply offer a set of conventions for componentized development. BladeRunnerJS then provides a great set of tools to help do this efficiently.
 
+Each blade is located in a physical folder on disk and all resources for the blade exists under that folder. This is part of the [BRJS application model](/docs/concepts/model/) and is automatically served to the browser when the page is loaded.
+
 Some key benefits of blades are:
 
 * Different parts of the application can be built by different teams, without creating integration problems later.

@@ -11,7 +11,7 @@ Blades can be run in isolation during development in a [Workbench](/docs/concept
 ![The contents of a Blade](/blog/img/blades.png)
 <small class="fig-text">What goes into a <strong>Blade</strong>?</small>
 
-Because application components are broken down into small pieces of functionality, with assets grouped by feature (not type), and because a blade only interacts with other application features through the EventHub or through services, they can be run in isolation in BRJS [Workbenches](/docs/concepts/workbenches).
+Because application components are broken down into small pieces of functionality, with assets grouped by feature (not type), and because a blade only interacts with other application features through an event emitter or through services, they can be run in isolation in BRJS [Workbenches](/docs/concepts/workbenches).
 
 ## Benefits of the Blade approach
 
@@ -20,6 +20,8 @@ Complex web applications built in HTML5 can reveal shortcomings in the conventio
 The Blade architecture was specifically developed to remedy this problem. Using the best available open-source libraries and emerging standards, and building on top of these where necessary, Blades provide a lightweight and flexible way of building HTML5 applications out of re-usable components.
 
 The Blade architecture does not limit what you can build in any way, and is fully compatible with virtually all current HTML5 libraries and tools. It simply offers a set of conventions for componentized development. BladeRunnerJS then provides a great set of tools to help do this efficiently.
+
+Each Blade is located in a physical folder on disk and all resources for the Blade exists under that folder. This is part of the BladeRunnerJS application model and is automatically served to the browser when the page is loaded.
 
 Some key benefits of blades are:
 

@@ -8,7 +8,7 @@ Services provide access to shared resources. They are a means of decoupling impl
 
 For example, a `PersistenceService`, used within the application, may have one implementation that persists data to a database via a web service and another that persists to `localStorage`. Which one is used depends on whether the application is online. The application logic using the service doesn't care which implementation is used as long as the contract - defined by the interface - is fulfilled when interacting with it.
 
-Services can be registered and accessed from any part of the application via a [ServiceRegistry](http://bladerunnerjs.org/docs/concepts/service_registry/).
+Services can be registered and accessed from any part of the application via a [ServiceRegistry](/docs/concepts/service_registry/).
 Service contracts (the functions they provide) can be enforced through the use of interfaces if required.
 
 ## Benefits of Services

@@ -42,8 +42,8 @@ $ ./brjs create-aspect example-app login
 
 ## Where Next?
 
-For further information, see How to [Create an Aspect](http://bladerunnerjs.org/docs/concepts/aspects/)
+For further information, see How to [Create an Aspect](/docs/concepts/aspects/)
 
-Once you have created aspects, see this page to start [Adding blades to aspects](http://bladerunnerjs.org/docs/use/add_blade_to_aspect/).
+Once you have created aspects, see this page to start [Adding blades to aspects](/docs/use/add_blade_to_aspect/).
 
-Visit the relevant component pages for more information on [blades](http://bladerunnerjs.org/docs/concepts/blades/) and [bladesets](http://bladerunnerjs.org/docs/concepts/bladesets/).
+Visit the relevant component pages for more information on [blades](/docs/concepts/blades/) and [bladesets](/docs/concepts/bladesets/).

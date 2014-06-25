@@ -22,6 +22,6 @@ Using EventHub to ensure that blades do not directly interact with each other re
 
 To find out how to use the EventHub see the [How to use the EventHub section](/docs/use/event_hub/).
 
-To find out more about Workbenches, see the [Workbenches ](http://bladerunnerjs.org/docs/concepts/workbenches/) page.
+To find out more about Workbenches, see the [Workbenches ](/docs/concepts/workbenches/) page.
 
-To understand how the Service Registry works, see the [Service Registry](http://bladerunnerjs.org/docs/concepts/service_registry/) page.
+To understand how the Service Registry works, see the [Service Registry](/docs/concepts/service_registry/) page.

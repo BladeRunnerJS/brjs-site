@@ -36,8 +36,8 @@ $ ./brjs create-bladeset brjstodo todo
 
 ## Where Next?
 
-The [creating bladesets](http://bladerunnerjs.org/docs/use/create_bladeset/) docs will give you more information on creating bladesets and what you will find in a bladeset directory.
+The [creating bladesets](/docs/use/create_bladeset/) docs will give you more information on creating bladesets and what you will find in a bladeset directory.
 
-Once you have created your bladesets, you can start [creating blades](http://bladerunnerjs.org/docs/use/create_blade/) to go in them.
+Once you have created your bladesets, you can start [creating blades](/docs/use/create_blade/) to go in them.
 
-To understand how to create and edit libraries, see [Using Libraries](http://bladerunnerjs.org/docs/use/use_libraries/).
+To understand how to create and edit libraries, see [Using Libraries](/docs/use/use_libraries/).

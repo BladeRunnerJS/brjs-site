@@ -68,4 +68,6 @@ Even though Alias groups are defined in `aliasDefinitions.xml` files, their cont
 
 ## Where next?
 
+Read the [JavaScript API documentation](http://apidocs.bladerunnerjs.org/v0.9/js/index.html#br.AliasRegistry.html).
+
 The AliasRegistry is used by the ServiceRegistry so a good way of gaining a further understanding of the AliasRegistry is to read up on [ServiceRegistry](/docs/concepts/service_registry) and [how to use the ServiceRegistry](/docs/use/service_registry).

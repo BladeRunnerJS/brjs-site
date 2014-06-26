@@ -48,6 +48,10 @@ body.home .content {
   overflow: hidden;
 }
 
+.alert a {
+  text-decoration: underline;
+}
+
 /* Font Awesome
 -------------------------------------------------- */
 .fa-1 {

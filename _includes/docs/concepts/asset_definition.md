@@ -6,3 +6,5 @@ We use the generic word _Assets_ to describe all of the different types of conte
 * CSS Resources (e.g. Images, Typefaces, etc)
 * I18N Properties Files
 * XML Configuration
+
+For more information see the [concept section on Assets](/docs/concepts/assets/).

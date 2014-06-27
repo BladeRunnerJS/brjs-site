@@ -3,7 +3,6 @@ layout: post
 title: "Modelling Web Apps"
 authors: [jamest]
 thumb: abstract-domain-model.png
-latest: true
 
 excerpt: Most web app development environments and toolsets treat an app as a bunch of files. The files are initially created using scaffolding tools such as Yeoman and then built and deployed with the likes of Grunt, Gulp and Broccoli. These stitch together tools like file-watchers, CSS compilers, JavaScript compressors like Uglify/Closure etc. BladeRunnerJS takes a radically different approach - implementing a rich domain model for a web app. Find out why...
 

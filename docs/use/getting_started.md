@@ -84,16 +84,23 @@ Within `apps/brjstodo/todo-bladeset/blades/input/src/brjstodo/todo/input` you'll
 Open up `InputViewModel.js` to see the following:
 
 ```js
+
 'use strict';
 
 var ko = require( 'ko' );
+var i18n = require( 'br/I18n' );
+var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function InputViewModel() {
-  this.message = ko.observable( 'Hello World!' );
+  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  this.welcomeMessage = ko.observable( 'Welcome to your new Blade.' );
+  this.buttonClickMessage = ko.observable( i18n( 'brjstodo.todo.input.button.click.message' ) );
 }
 
 InputViewModel.prototype.buttonClicked = function() {
   console.log( 'button clicked' );
+  var channel = this.eventHub.channel('input-channel');
+  channel.trigger( 'hello-event', { some: 'Hello World!' } );
 };
 
 module.exports = InputViewModel;
@@ -112,12 +119,19 @@ The view definition can be found in an HTML template in `input/resources/html/vi
 
 ```html
 <div id="brjstodo.todo.input.view-template">
-  <div class="hello-world-message" data-bind="text:message"></div>
-  <button class="button" data-bind="click:buttonClicked">Log me</button>
+  <div class="todo-input-blade">
+    <h1 class="hello-world-message">
+       @{brjstodo.todo.input.hello.world}
+    </h1>
+    <p class="welcome-message" data-bind="text:welcomeMessage"></p>
+    <p>Try using alternative stylesheets to switch the theme.</p>
+    <p data-bind="text:buttonClickMessage"></p>
+    <button class="button" data-bind="click:buttonClicked">Say Hello!</button>
+  </div>
 </div>
 ```
 
-The template markup indicates that the text of the `div` element will get the value of the View Model's `message` property (`data-bind="text:message"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
+The template markup indicates that the text of the third `p` element will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
 
 ### Run the Blade in a Workbench
 

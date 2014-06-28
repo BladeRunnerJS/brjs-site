@@ -131,25 +131,21 @@ The view definition can be found in an HTML template in `input/resources/html/vi
 </div>
 ```
 
-The template markup indicates that the text of the third `p` element will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
+Towards the bottom of the template you will see that the text of the third `p` element will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
 
 ### Run the Blade in a Workbench
 
-Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`BRJS_HOME/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjstodo/todo-bladeset/blades/input/workbench/`.
+Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`BRJS_HOME/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjstodo/workbench/todo/input/en/`.
 
-![](/docs/use/img/hello-world-workbench.png)
+![](/docs/use/img/brjstodo-workbench.png)
 
 You'll notice that there's a **Visualise Knockout View Model** Workbench Tool that shows a tree visualisation of the View Model. In there you'll see a simple `message:Hello World!` name and value.
 
 If you click the `Log me` button the `buttonClicked` function is called and `button clicked` will be logged to the JavaScript console.
 
-<div class="alert alert-info github">
-    <p>
-        <strong>This thing's really slow!</strong> Due to the dependency analysis BladeRunnerJS performs on your JavaScript the initial load of any page will take slightly longer than subsequent loads. Subsequent load time is however slightly longer than we'd like so we're working to improve it.
-    </p>
-</div>
-
 ### Add Two-Way Data Binding
+
+First, we do not need the i18n library or the EventHub service, we can remove these two requires and clear the InputViewModel constructor.  
 
 Next, let's edit the Blade to display an `<input>` element with a two-way binding between the View and View Model.
 
@@ -188,10 +184,13 @@ module.exports = InputViewModel;
 
 We also update `view.html` to contain an `input` element where the element's `value` property is bound to the newly named `todoText` value. We want instant two-way binding so we also need to add `valueUpdate:'afterkeydown'` to the `data-bind` attribute. And we also want to call the newly named `keyPressed` function when a key is pressed in the input to check to see if it was the *Enter/Return* key. We do this by adding `event: { keypress: keyPressed }` to the `data-bind` attribute.
 
-Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute, remove the unused `<button>` element, wrap in a `<header>` element and add a `<h1>` to indicate this is where the todos are entered:
+Finally, update the `class` attribute to indicate the input is a `todo-input`, add a `placeholder` attribute, remove the unused `<button>` element, wrap in a `<header>` element and add a `<h1>` to indicate this is where the todos are entered.
+
+The content of `input/resources/html/view.html` should now look like this:
 
 ```html
 <div id="brjstodo.todo.input.view-template">
+/*** New code ***/
   <header id="header">
     <h1>todos</h1>
     <input id="new-todo" type="text" class="todo-input"
@@ -200,6 +199,7 @@ Finally, update the `class` attribute to indicate the input is a `todo-input`, a
                       event: { keypress: keyPressed }"
            placeholder="What needs to be done?" />
   </header>
+/*** End of new code ***/
 </div>
 ```
 

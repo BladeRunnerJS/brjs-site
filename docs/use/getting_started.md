@@ -145,7 +145,7 @@ If you click the `Log me` button the `buttonClicked` function is called and `but
 
 ### Add Two-Way Data Binding
 
-First, we do not need the i18n library or the EventHub service, we can remove these two requires and clear the InputViewModel constructor.  
+For now we do not need the i18n library or the EventHub service, we can remove these two requires and clear the InputViewModel constructor. To read more about these libraries you can go [here](/docs/use/internationalization) and [here](/docs/concepts/event_hub).  
 
 Next, let's edit the Blade to display an `<input>` element with a two-way binding between the View and View Model.
 

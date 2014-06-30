@@ -788,36 +788,30 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 ## Build and Deploy
 
-For the moment we only support deploying as a [.WAR][war-file] file so we'll cover building and deploying to [Apache Tomcat](http://tomcat.apache.org/).
-
-[war-file]: http://en.wikipedia.org/wiki/WAR_file_format_(Sun)
-
-<div class="alert alert-info github">
-  <p>
-    We presently only support WAR deployment. This is restrictive so <a href="https://github.com/BladeRunnerJS/brjs/issues/18">supporting Flat File build and deployment</a> is a priority.
-  </p>
-</div>
+Here we'll cover building our app to flat-file and deploying to [Apache Tomcat](http://tomcat.apache.org/).
 
 First download Tomcat 6.0 from the [Apache Tomcat](http://tomcat.apache.org/) website.
 
-To build the WAR, run the `build-app` command with the `-w` flag:
+To build the app, run the `build-app` command:
 
 ```bash
-$ BRJS_HOME/sdk/brjs build-app -w brjstodo
+$ BRJS_HOME/sdk/brjs build-app brjstodo
 BladeRunnerJS version: BRJS-dev, built: 26 September 2013
 
-Successfully created war file
+Built app 'brjstodo' available at 'path_to_brjs\generated\built-apps\brjstodo'
 ```
 
-Deploying to Tomcat is a simple as copying the `brjstodo.war` file to the Tomcat `webapps` directory:
+Deploying to Tomcat is a simple as copying the generated brjstodo folder to the Tomcat `webapps` directory:
 
 ```bash
-$ cp brjstodo.war path_to_tomcat_install/webapps/
+$ cp brjstodo path_to_tomcat_install/webapps/
 ```
 
 By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjstodo` to see your application running in a deployed environment.
 
 ![](/docs/use/img/deployed-to-tomcat.png)
+
+You can also do the same by deploying to a war file using the `build-app` command with the `-w` flag.
 
 <div class="alert alert-info github">
   <p>

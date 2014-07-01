@@ -75,7 +75,7 @@ If you've any thoughts about the talk, please tweet at us via [@BladeRunnerJS](h
 
 We submitted a talk on [Testing Ginormous JavaScript applications](http://scotlandjs.com/speakers/phil/) through the standard CFP which was fortunate enough to be selected.
 
-Since one of the team was speaking, ScotlandJS is an international event and both [Andy](https://twitter.com/andyberry88) live in Scotland it also seemed worth getting involved as much as possible. So BladeRunnerJS was also a sponsor and we took up a booth.
+Since one of the team was speaking, ScotlandJS is an international event and both [Andy](https://twitter.com/andyberry88) and I live in Scotland it also seemed worth getting involved as much as possible. So BladeRunnerJS was also a sponsor and we took up a booth.
 
 ### Talk Video
 

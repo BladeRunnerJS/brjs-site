@@ -1,6 +1,6 @@
 ## Prerequisites
 
-In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed. To deploy the built app you'll need access to an installation of [Apache Tomcat 6.x](http://tomcat.apache.org/) (installing is as simple as download and unzip).
+In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed. To deploy the built app you'll need any web server that can serve static files, for example [PHP's built in web server](http://www.php.net/manual/en/features.commandline.webserver.php), [Python's SimpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html), or [Apache Tomcat 6.x](http://tomcat.apache.org/).
 
 ## Download & Install BRJS
 

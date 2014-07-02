@@ -8,7 +8,7 @@ notice: none
 
 <div class="alert alert-success">
   <p>
-    <strong>This Getting Started Guide requires v0.4 of BladeRunnerJS and above</strong>. <strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
+    <strong>This Getting Started Guide requires v0.10 of BladeRunnerJS and above</strong>. <strong><a href="http://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
   </p>
 </div>
 
@@ -107,7 +107,7 @@ module.exports = InputViewModel;
 
 ```
 
-Above, `InputViewModel` is a View Model which is bound to a view. You'll also see that we `require` something called `ko`. This is a reference to [Knockout](http://knockoutjs.com/) and we use this by default for building View Models.
+`InputViewModel` is a View Model which is bound to a view. You'll also see that we `require` something called `ko`. This is a reference to [Knockout](http://knockoutjs.com/) and we use this by default for building View Models.
 
 <div class="alert alert-info github">
   <ul>
@@ -131,7 +131,7 @@ The view definition can be found in an HTML template in `input/resources/html/vi
 </div>
 ```
 
-Towards the bottom of the template you will see that the text of the third `p` element will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`).
+You will see that the text `<p data-bind="text:buttonClickMessage"></p>` will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`). The `@{brjstodo.todo.input.hello.world}` causes the text to be loaded from internationalization files. We'll ignore internationalization for the purposes of this guide but you can read more [here](http://localhost:4000/docs/use/internationalization/).
 
 ### Run the Blade in a Workbench
 

@@ -67,7 +67,7 @@ Below is an example of how to define an alias group:
 Even though Alias groups are defined in `aliasDefinitions.xml` files, their contents follows the syntax of `alias.xml` files as shown in the above code snippet. If a group is used, its aliases will be treated as if they were included in your `aliases.xml`. This means, that they will override any existing aliases regardless of the scenario being used.
 
 ## Where next?
-
-Read the [JavaScript API documentation](http://apidocs.bladerunnerjs.org/v0.9/js/index.html#br.AliasRegistry.html).
-
+<!-- TODO: enable this link once the docs have been updated since the URLs will change
+Read the [JavaScript API documentation](http://apidocs.bladerunnerjs.org/latest/js/index.html#br.AliasRegistry.html).
+-->
 The AliasRegistry is used by the ServiceRegistry so a good way of gaining a further understanding of the AliasRegistry is to read up on [ServiceRegistry](/docs/concepts/service_registry) and [how to use the ServiceRegistry](/docs/use/service_registry).

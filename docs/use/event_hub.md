@@ -231,6 +231,9 @@ function MyClass() {
 
 ## Where next?
 
-Find out more about the [ServiceRegistry](/docs/concepts/service_registry) or [creating your own services](/docs/use/service_registry).
+<!-- TODO: enable this link once the docs have been updated since the URLs will change
+Read the [JavaScript API documentation](http://apidocs.bladerunnerjs.org/latest/js/index.html#br.EventHub.html).
+-->
+Find out more about the [ServiceRegistry](/docs/concepts/service_registry)  [creating your own services](/docs/use/service_registry).
 
 The EventHub uses our open source [emitr library](https://github.com/BladeRunnerJS/emitr) and each of the channel objects is an `emitr`. You can take a look at the GitHub repo for more information on that library.

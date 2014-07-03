@@ -66,10 +66,6 @@ If the library does not need to export anything (if, for example, it is purely t
 exports: {}
 ```
 
-<div class="alert alert-info">
-  <p>To enforce the <code>exports</code> property when a library doesn't export anything is crazy! In a future release <a href="https://github.com/BladeRunnerJS/brjs/issues/779"><code>exports</code> will not be mandatory</a> and that lack of the property will indicate it doesn't export anything.<p>
-</div>
-
 ## Where Next?
 
 To find out how to create new libraries and use existing libraries, go to [Using Libraries](/docs/use/user_libraries/).

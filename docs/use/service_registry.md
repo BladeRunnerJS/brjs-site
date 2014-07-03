@@ -107,5 +107,7 @@ You can configure the scenario you are using by setting the `useScenario` attrib
 ```
 
 ## Where Next?
-
+<!-- TODO: enable this link once the docs have been updated since the URLs will change
+Read the [JavaScript API documentation](http://apidocs.bladerunnerjs.org/latest/js/index.html#br.ServiceRegistry.html).
+-->
 You can see an example of a service being defined and used within an application in the [Knockout BRJS Todo MVC example app](https://github.com/BladeRunnerJS/brjs-todomvc-knockout). The service is defined in the `todomvc` library found in the `libs/todomvc` directory.

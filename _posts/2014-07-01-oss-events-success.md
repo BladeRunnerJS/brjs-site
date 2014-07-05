@@ -20,7 +20,7 @@ Every so often it's worth taking a look back at the events you've been involved 
 * May 1 - 3, 2014
 * ~200 attendees
 
-[FutureJS](http://futurejs.com) - as you can probably work out from the name - is a JavaScript-focused event. It's run by the team at [:codegram](http://codegram.com/) who are based in Spain.
+[FutureJS](http://futurejs.org) - as you can probably work out from the name - is a JavaScript-focused event. It's run by the team at [:codegram](http://codegram.com/) who are based in Spain.
 
 FutureJS was a great experience for Andy, James and myself. The JavaScript community sometimes gets a bad reputation for being highly opinionated and unaccepting of things that doesn't adhere to current trends. FutureJS provided a clear demonstration that JavaScript events can be about variety, sharing ideas and learning. There were talks demonstrating current and future technologies, compile-to-js languages, security and much more.
 
@@ -91,7 +91,7 @@ In the talk I spoke about some of the problems we came across when trying to *"d
 
 Having a booth at an event gives you a platform; it states that you want to speak to people and that you have something to demo. It's also likely that you've got some swag to give away.
 
-At ScotlandJS we didn't speak to as many people as I would have liked to even though our booth position was prominent. I'm not entirely sure why that was the case. It could be that our demo wasn't interesting enough for the audience; it was [Caplin Trader](http://www.caplin.com/caplin-trader) running along side a [workbench](/docs/concepts/workbenches/) that shows a single tile running in isolation so it's possible that the financial angle put off the attendees? My talk was on day one and although I didn't speak specifically about BRJS I did mention it. But even then it didn't result in more people coming up and having a chat.
+At ScotlandJS we didn't speak to as many people as I would have liked to even though our booth position was prominent. I'm not entirely sure why that was the case. It could be that our demo wasn't interesting enough for the audience; it was [Caplin Trader](http://www.caplin.com/business/page/caplin-trader) running along side a [workbench](/docs/concepts/workbenches/) that shows a single tile running in isolation so it's possible that the financial angle put off the attendees? My talk was on day one and although I didn't speak specifically about BRJS I did mention it. But even then it didn't result in more people coming up and having a chat.
 
 That said, we did speak to people from large consultancies and other well known brands.
 
@@ -134,7 +134,7 @@ I was also asked to sit on a group panel discussing **When is enough enough?**:
 
 <a href="https://twitter.com/leggetter/status/474481510603821056"><img src="/blog/img/sotr-booth.jpg" style="width: 300px; margin-left: 20px; float: right;" /></a>
 
-For SotR we had the same booth setup as ScotlandJS, but we had a lot more people come to speak to us. Being honest, I don't really know why that's the case. Maybe the range of attendees and it being a less a more general web event meant our product was of more interest?
+For SotR we had the same booth setup as ScotlandJS, but we had a lot more people come to speak to us. Being honest, I don't really know why that's the case. Maybe the range of attendees and it being a more general web event meant our product was of more interest?
 
 ### Some Stats
 

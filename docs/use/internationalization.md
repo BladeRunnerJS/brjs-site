@@ -37,6 +37,20 @@ Run the [workbench](/docs/concepts/workbenches) for the blade and it should look
 
 ![](/docs/use/img/locale-start.png)
 
+## Understanding how locale URLs are handled in BRJS
+
+Before we continue we need to first understand how the URLs used in an app change depending on the locale currently in use.
+
+When a request is made to `/myapp/` a 'locale forwarding' page is returned to the browser. Using the browsers' `Accept-Language` header; the value of the locale cookie and the locales the app supports this page forwards the browser to a localized app page, for example `/myapp/en/`. This localized app page then contains the neccessary CSS, JS, XML and HTML requests for the app.
+
+In order to change the currently selected locale the browser must re-request the `/myapp/` URL so the locale forwarder can recalculate the locale and send the browser to the correct page.
+
+<div class="alert alert-info">
+<p>
+This mechanism currently prevents users of your app refreshing the page in order to change their locale. We hope to add a <a href="https://github.com/BladeRunnerJS/brjs/issues/804">mechanism</a> where apps can optionally push users back to the locale forwarder if they are using the incorrect locale.
+</p>
+</div>
+
 ## Set up Supported Locales
 
 Have a look in `app.conf` within the application root directory. It defines the locales that your app will support
@@ -85,6 +99,8 @@ Refresh the workbench, and it should look like this.
 ![](/docs/use/img/locale-html-token.png)
 
 The token replacement works by replacing all i18n tokens in all HTML as it is streamed through the HTML Bundler.
+
+Note: We were able to simply refresh the page here rather than requesting the 'locale forwarder' since we weren't changing the locale we were using.
 
 ## Internationalizing via JavaScript
 

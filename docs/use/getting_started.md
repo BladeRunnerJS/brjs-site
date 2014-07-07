@@ -8,7 +8,7 @@ notice: none
 
 <div class="alert alert-success">
   <p>
-    <strong>This Getting Started Guide requires v0.10 of BladeRunnerJS and above</strong>. <strong><a href="http://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
+    <strong>This Getting Started Guide requires v0.10 of BladeRunnerJS or above</strong>. <strong><a href="http://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
   </p>
 </div>
 
@@ -35,7 +35,21 @@ We'll cover:
 
 It'll be time well-spent.
 
-{% include docs/use/install.md %}
+## Prerequisites
+
+In order to run BRJS you'll need [JRE 7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jre-7-download-432155.html) installed. To deploy the built app you'll need any web server that can serve static files, for the purposes of this guide well be using [Apache Tomcat](http://tomcat.apache.org/) since it's easy to install and it's only requirement is a JVM which you'll already have in order to run BRJS.
+
+## Download & Install BRJS
+
+<strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download the latest BRJS release</a></strong> and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI excutable is `BRJS_HOME/sdk/brjs`.
+
+
+<div class="alert alert-info">
+  <p>
+    We're working towards a <a href="https://github.com/BladeRunnerJS/brjs/issues/1">global install</a>. For the moment you'll need to execute the <code>brjs</code> command via <code>BRJS_HOME/sdk/brjs</code>.
+  </p>
+</div>
+
 
 ## Create an Application
 
@@ -131,7 +145,7 @@ The view definition can be found in an HTML template in `input/resources/html/vi
 </div>
 ```
 
-You will see that the text `<p data-bind="text:buttonClickMessage"></p>` will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`). The `@{brjstodo.todo.input.hello.world}` causes the text to be loaded from internationalization files. We'll ignore internationalization for the purposes of this guide but you can read more [here](http://localhost:4000/docs/use/internationalization/).
+You will see that the text `<p data-bind="text:buttonClickMessage"></p>` will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`). The `@{brjstodo.todo.input.hello.world}` causes the text to be loaded from internationalization files. We'll ignore internationalization (i18n) for the purposes of this guide but you can read more [here](http://localhost:4000/docs/use/internationalization/).
 
 ### Run the Blade in a Workbench
 
@@ -378,7 +392,7 @@ InputViewModel.prototype.keyPressed = function( item, event ) {
 module.exports = InputViewModel;
 ```
 
-Now, in the `keyPressed` function we can trigger an event called `todo-added` on a `todo-list` channel to tell any interested parties (the `items` Blade) that a new Todo list item has been input, and the user has indicated they want to add it. The `eventData` we send with the event will have a `title` property representing the todo item text. We can also clear down the `todoText` and associated element value.
+Now, in the `keyPressed` function we can trigger an event called `todo-added` on a `todo-list` channel to tell any interested parties (the `items` Blade) that a new Todo list item has been input, and the user has indicated they want to add it. The `eventData` we send with the event will have a `title` property representing the todo item text. We can also clear down the `todoText` and it's associated element value.
 
 ```js
 'use strict';
@@ -672,7 +686,7 @@ Both the `input` and `items` Blades have the functionality that we're looking fo
 
 ## Adding the Blades to an Aspect
 
-In order to add the Blades to the default aspect we need to first update the aspect HTML to provide some basic structure. Open up `brjstodo/default-aspect/index.html` remove the div element containing the app class and update it to look as follows:
+In order to add the Blades to the default aspect we need to first update the aspect's HTML to provide some basic structure. Open up `brjstodo/default-aspect/index.html` remove the div element containing the app class and update it to look as follows:
 
 ```html
 <!DOCTYPE html>
@@ -790,7 +804,7 @@ You now have a reasonable looking Todo List app based on the styling of [Todo MV
 
 Here we'll cover building our app to flat-file and deploying to [Apache Tomcat](http://tomcat.apache.org/).
 
-First download Tomcat 6.0 from the [Apache Tomcat](http://tomcat.apache.org/) website.
+First download Tomcat 6.0 from the [Apache Tomcat](http://tomcat.apache.org/) website and extract it to a known location.
 
 To build the app, run the `build-app` command:
 
@@ -807,7 +821,7 @@ Deploying to Tomcat is a simple as copying the generated brjstodo folder to the 
 $ cp brjstodo path_to_tomcat_install/webapps/
 ```
 
-By default Tomcat runs on port 8080. Once it's running (`path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjstodo` to see your application running in a deployed environment.
+By default Tomcat runs on port 8080. Once it's running (run `path_to_tomcat_install/startup.sh` or `path_to_tomcat_install/startup.bat`) navigate to `localhost:8080/brjstodo` to see your application running in a deployed environment.
 
 ![](/docs/use/img/deployed-to-tomcat.png)
 

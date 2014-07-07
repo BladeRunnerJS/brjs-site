@@ -104,7 +104,7 @@ In order to create a Bootstrap library you would download the release and place 
 depends: jquery
 js: js/bootstrap.min.js
 css: css/bootstrap.min.css
-exports: {}
+exports: "{}"
 ```
 
 If you also wanted the Bootstrap Theme files you would update the manifest and add the `bootstrap-theme.min.css` to the `css` value, as follows:
@@ -115,7 +115,7 @@ js: js/bootstrap.min.js,
 /*** new code ***/
 css: css/bootstrap.min.css,bootstrap-theme.min.css
 /*** end of new code ***/
-exports: {}
+exports: "{}"
 ```
 
 In order to use Bootstrap you still need to `require` it in JavaScript. The string value to be passed to the `require` function is the name of the folder that Bootstrap lives within:

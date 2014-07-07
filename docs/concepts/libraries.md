@@ -39,7 +39,7 @@ What is bundled and served by BRJS depends on the presence of a manifest file. I
 depends: jquery, lib1, someLib
 js: js/*.js
 css: css/*.js
-exports: {}
+exports: "{}""
 ```
 
 The key `depends` allows a third-party library to depend on another library (including BRJS conformant libraries). For example, if you wanted to use twitter bootstrap to lay out your app and then include jquery to do the more complex JavaScript, you can set this up so that the twitter bootstrap third-party library depends on the jQuery third-party library.
@@ -63,7 +63,7 @@ exports: jQuery
 If the library does not need to export anything (if, for example, it is purely there for css) then you can export an empty object. This is specified by adding a pair of empty braces:
 
 ```
-exports: {}
+exports: "{}"
 ```
 
 ## Where Next?

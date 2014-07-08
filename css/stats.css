@@ -225,6 +225,9 @@
   -o-transform: rotateY(-180deg);
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
+<<<<<<< HEAD
+=======
   height: 0;
   overflow: hidden;
+>>>>>>> 1e29bbf1868285a10ae1332698097c92c5a20cbc
 }

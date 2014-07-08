@@ -26,11 +26,15 @@ Now you can execute tests by running the `brjs test` command and supplying a pat
 
 Run all tests for the `brjs-todo` application:
 
-    $ ./brjs test ../apps/brjs-todo
+```bash
+$ ./brjs test ../apps/brjs-todo
+```
 
 Run the tests for just the `todo-input` Blade:
 
-    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+```bash
+$ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+```
 
 ## Running tests with specific browsers
 
@@ -38,28 +42,44 @@ You can also run the tests and specify which browsers you wish to run the tests 
 
 To target different browsers an additional parameter is passed to the bladerunner test-server, or bladerunner test commands, as documented in the output of the  bladerunner test help command.
 
-    $ ./brjs test <tests-path> -b <browsers>
-
+```bash
+$ ./brjs test <tests-path> -b <browsers>
+```
 Above, `browsers` is a comma separated list of labels used for each browser in the `browserPaths` section of the `testrunner.conf` file. i.e. Chrome, Firefox, Internet Explorer, etc. You can add additional labels with your own names (e.g. ie10) if you want to test against particular versions of a browser.
 
 An example of running tests for the `brjs-todo` app using Firefox and Chrome would be:
-
-    $ ./brjs test ../apps/brjs-todo -b firefox,chrome
-
-*Note: firefox and chrome would need to be commented out in `test-runner.conf`*
+```bash
+$ ./brjs test ../apps/brjs-todo -b firefox,chrome
+```
+<div class="alert alert-info">
+<p>Note: firefox and chrome would need to be commented out in `test-runner.conf`
+</p></div>
 
 ## Running tests without setting config
 
 If you would rather not set configuration you can instead start the test server and pass the `--no-browser` flag to indicate no browsers need to be configured:
-
-    $ ./brjs test-server --no-browser
-
+```bash
+$ ./brjs test-server --no-browser
+```
 This will start the test server listening on the port identified by the `portNumber` option in `BRJS_HOME/conf/test-runner.conf`. By default this is 4224. You can then navigate to `http://localhost:4224` which will set the browser listening for tests to run, and then execute tests and passing the path to the tests you want to run.
 
 Run all tests for the `brjs-todo` application:
 
-    $ ./brjs test ../apps/brjs-todo
-
+```bash
+$ ./brjs test ../apps/brjs-todo
+```
 Run the tests for just the `todo-input` Blade:
+```bash
+$ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+```
+## Debugging Tests
 
-    $ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+Once you have your tests written and running, you are likely to get to a point where you want to work out why a particular test is failing. By default, tests run in a browser (i.e. not headless) and when this is the case, you can easily add a `debugger` statement to your test or the code that you are testing. The browser will stop code execution as if a break point were set at that line of code.
+
+The steps for debugging tests are as simple as:
+
+1. Add `debugger` statement to the area of code you wish to debug
+2. Execute the test e.g. `./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input`. *Note: The smallest group of tests you can execute at the moment are to a blade level.*
+3. Debug the test using browser developer tools
+
+Some browsers may require the developer tools to be open in order to react to the break point.

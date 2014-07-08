@@ -48,6 +48,10 @@ body.home .content {
   overflow: hidden;
 }
 
+.alert a {
+  text-decoration: underline;
+}
+
 /* Font Awesome
 -------------------------------------------------- */
 .fa-1 {
@@ -1323,4 +1327,8 @@ body.single_page .team-members-row {
     .team-member .member-bio {
         margin-top:5px;
     }
+}
+
+.error404 .logo img {
+    margin-top:20px !important;
 }

@@ -4,7 +4,13 @@ title: How to Create an Aspect
 permalink: /docs/use/create_aspect/
 ---
 
-In order to create an [aspect](/docs/concepts/aspect/) you first need to [create an application](/docs/use/create_app).
+In order to create an [aspect](/docs/concepts/aspect/) you first need to [create an application](/docs/use/create_app). Follow our guide to creating an app before you follow the instructions below.
+
+<div class="alert alert-info">
+<p>
+Note that unlike apps, bladesets and blades, aspects can not currently be created on the BladeRunnerJS dashboard. Future releases will support <a href="https://github.com/BladeRunnerJS/brjs/issues/647">creating aspects from the dashboard</a>.
+</p>
+</div>
 
 Once you have an application you can create an aspect as follows:
 
@@ -27,12 +33,13 @@ As part of this a `mobile-aspect` directory is created in the `brjstodo` applica
 directory.
 
 In the newly created aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this default aspect by starting the BRJS development server:
-
-    $ ./brjs serve
-
+```bash
+$ ./brjs serve
+```
 This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjstodo/mobile`.
 
 ## Where next?
 
-Now that you know how to create an aspect you should take a look at [adding a
-blade to an aspect](/docs/use/add_blade_to_aspect/).
+- You may have already created bladesets and blades for your app, if not, take a look at [Creating Bladesets](/docs/use/create_bladeset/).
+- Once you have created aspects and blades, you should take a look at [adding a blade to an aspect](/docs/use/add_blade_to_aspect/).
+- For more information about aspects, see the [aspects](/docs/concepts/aspects/) concept page.

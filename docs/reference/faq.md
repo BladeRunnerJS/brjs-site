@@ -47,7 +47,7 @@ This means BRJS offers many of the things that a combination of "micro tooling" 
 
 **This doesn't mean that BRJS is a monolithic application**; it does consist of many different parts and BRJS makes use of a number of external open source libraries and tools. It just packages the usage up into a consistent and productive developer experience.
 
-See [Unwrapping BladeRunnerJS](http://bladerunnerjs.org/blog/unwrapping-bladerunnerjs/).
+See the [Application Architecture overview](/docs/concepts/app_architecture/) and the blog post on [Unwrapping BladeRunnerJS](http://bladerunnerjs.org/blog/unwrapping-bladerunnerjs/).
 
 ### Focusing on *Large Apps* contributed to by *Many* individuals
 
@@ -83,7 +83,7 @@ Our support for CommonJS/Node.js style requires is performed via a [bundler plug
 
 ### BRJS v Grunt/Gulp/Fez/Broccoli/AssetGraph
 
-Coming soon...
+See [Modelling Web Apps](/blog/modelling-webapps/).
 
 ## Why isn't BladeRunnerJS written in Node.JS?
 

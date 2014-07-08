@@ -57,3 +57,37 @@ The bundling process starts by determining a list of _seed_ _linked-assets_ for 
 * _linked-assets_ that contain references to _aliases_ are processed in much the same way as if they had direct _source-module_ references, except that the _alias_ is swapped for the concrete _source-module_ it points as part of the bundling process.
 * Once the backlog is empty, the final _bundle-set_ has effectively been generated, containing the list of all _source-modules_, _aliases_ and _asset-locations_ that could potentially be bundled.
 * Exactly which bits of the _bundle-set_ will actually be sent to the client depends on the tags used within the index page, and whether the `HTMLResourceService` and `XMLResourceService` classes are used within the application.
+
+##How bundlers work in practice
+
+There are three basic scenarios in which you will run your application, and bundling works slightly differently in each of them:
+
+Displaying in a browser during development
+Running tests on your code
+Building a deployable application
+
+### Scenario 1 – Displaying in a Browser during Development
+
+During development, you would want to display a blade in a browser, either in isolation (in a workbench page, while you are working on it) or as part of the whole application, which you would do by viewing the `index.html` page of a particular aspect.
+
+In either case, every time the browser requests a page, the bundlers run as servlets within BRJS’s embedded app server. They treat the requested page as a "seed" file and perform a recursive dependency analysis (which is to say that they check which resources are going to be needed to display the page, and then go and fetch them), before producing bundle files that contain all the code needed to run the application.
+
+This means that any time a line of source code is changed, that affects any part of the page being displayed, the result can be seen just by refreshing your browser. The bundlers are written with performance in mind, and workbench pages typically take just a few tenths of a second to reload.
+
+### Scenario 2 – Running Tests on Your Code
+
+Test code is placed in the `tests` directory of the appropriate aspect, bladeset or blade (depending on exactly what you are testing at the time). BRJS uses [js-test-driver](https://code.google.com/p/js-test-driver/) to run tests, and the JsTestDriver.conf file – a copy of which resides in the tests folder being used at the time – determines which tests to run. The bundlers are executed by js-test-driver every time tests are run.
+
+See the [Tests](/docs/concepts/testing) concepts page, [Writing Tests](/docs/use/writing_tests/) and [Running Tests](/docs/use/running_tests).
+
+### Scenario 3 - Building a Deployable Application
+
+When deploying an app, the bundlers generate static bundle files (which can optionally be archived in a WAR) and can be deployed to a production environment. BRJS and thus Bundlers are not used in a production environment.
+
+For more information see [Building and Deploying Apps](/docs/use/build_deploy/).
+
+## Where next?
+
+The Bundlers generally rely on the [BRJS Domain Model](/docs/concepts/model/) and [Dependency Analysis](/docs/concepts/dependency_analysis/) in order to build their bundles.
+
+The [BRJS CLI](/docs/use/commandline/) comes with a `bundle-deps` that allows you to visualize the dependencies of a bundle.

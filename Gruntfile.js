@@ -28,11 +28,26 @@ module.exports = function(grunt) {
         }]
       }
 
+    },
+
+    image_resize: {
+      resize: {
+        options: {
+          width: 1024
+        },
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: 'docs/',                  // Src matches are relative to this path
+          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
+          dest: 'docs/'                  // Destination path prefix
+        }]
+      }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.registerTask('default', ['imagemin']);
+  grunt.loadNpmTasks('grunt-image-resize');
+  grunt.registerTask('default', ['image_resize', 'imagemin']);
 
 };

@@ -1,4 +1,4 @@
-# BladeRunnerJS Website and Documentation
+# BladeRunnerJS Website & Docs
 
 ## Website
 
@@ -17,7 +17,7 @@ To run the website locally:
     gem install jekyll
     gem install redcarpet # may not be required
     jekyll serve -w
-    
+
 Navigate to `localhost:4000` to see the site running.
 
 #### Gotcha: Error installing redcarpet

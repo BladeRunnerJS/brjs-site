@@ -17,4 +17,4 @@ In the aspect directory you'll find an `index.html` entry point a `src` director
 
 This will start the development web server running on localhost port 7070. You can view the aspect by navigating to `http://localhost:7070/brjstodo`.
 
-![](/docs/use/img/brjs-app-nothing-to-see-here.png)
+![](/docs/use/img/brjstodo_app_first_load.png)

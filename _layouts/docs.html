@@ -10,7 +10,7 @@ template: docs
 		<div class="col-lg-9">
 
 			<h1>{{ page.title }}</h1>
-	
+
 			<div class="main">
 				{% include docs/wip.html %}
 
@@ -27,14 +27,14 @@ template: docs
 				<input type="submit" value="Search" class="btn-black" />
 			</form>
 
-			<h4><a href="/docs/use/">Use</a></h4>
+			<a href="/docs/use/"><h4>Use</h4></a>
 			{% include docs/use/toc.html %}
 
-			<h4><a href="/docs/concepts/">Concepts</a></h4>
-			
+			<a href="/docs/concepts/"><h4>Concepts</h4></a>
+
 			{% include docs/concepts/toc.html %}
 
-			<h4><a href="/docs/extend/">Extend</a></h4>
+			<a href="/docs/extend/"><h4>Extend</h4></a>
 			{% include docs/extend/toc.html %}
 
 			<h4>Reference</h4>

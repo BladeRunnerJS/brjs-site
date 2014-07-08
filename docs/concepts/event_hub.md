@@ -4,64 +4,24 @@ title: EventHub
 permalink: /docs/concepts/event_hub/
 ---
 
-The EventHub is a core BRJS JavaScript [Service](/docs/concepts/services) available in any BRJS application. It is a publish-subscribe event service that decouples the communication between blades and provides a primary way for them to communicate with each other.
+The EventHub is a core BRJS JavaScript [Service](/docs/concepts/services) available in any BRJS application. It is a [publish-subscribe](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) event service, accessed via the [ServiceRegistry](/docs/concepts/service_registry/), that decouples the communication between blades and provides a primary way for them to communicate with each other.
 
-The EventHub is accessed from the [Service Registry](/docs/concepts/service_registry):
+There are various situations where you would want to use the Event Hub, such as:
 
-```javascript
-var ServiceRegistry = require( 'br/ServiceRegistry' );
+* Dragging from one blade and dropping in another
+* Logging from multiple blades onto a single "log viewer" blade
+* A "theme selector" blade telling all other blades to render to a new theme
 
-function MyClass() {
-  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
-}
-```
+## Benefits of the EventHub
 
-Channels can be accessed from the EventHub service:
+Blades can't directly access functionality exposed by other blades. Communicating via the EventHub allows them to communicate with each other in a loosely coupled way.
 
-```javascript
-function MyClass() {
-  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+Using EventHub to ensure that blades do not directly interact with each other results in it being easy to change, add or remove additional blades without side effects. It also enables developer tooling such as [Workbenches](/docs/concepts/workbenches/). There is more information on what it can do on the Workbench page.
 
-  /*** new code ***/
-  this.channel = eventHub.channel( 'my-channel' );
-  /*** end of new code ***/
-}
-```
+## Where Next?
 
-Events can be bound to on a channel:
+To find out how to use the EventHub see the [How to use the EventHub section](/docs/use/event_hub/).
 
-```javascript
-function MyClass() {
-  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+To find out more about Workbenches, see the [Workbenches ](/docs/concepts/workbenches/) page.
 
-  this.channel = eventHub.channel( 'my-channel' );
-
-  /*** new code ***/
-  this.channel.on( 'my-event', this.handleEvent, this );
-  /*** end of new code ***/
-}
-
-/*** new code ***/
-MyClass.prototype.handleEvent = function( eventData ) {
-  // do something with the data
-}
-/*** end of new code ***/
-```
-
-And events can be triggered on channels:
-
-```javascript
-function MyClass() {
-  this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
-
-  this.channel = eventHub.channel( 'my-channel' );
-
-  this.channel.on( 'my-event', this.handleEvent, this );
-
-  /*** new code ***/
-  this.channel.trigger( 'my-event', { some: 'event' } );
-  /*** end of new code ***/
-}
-```
-
-Each channel is an `Emitr` object. For more information see the [emitr github repo](https://github.com/BladeRunnerJS/emitr).
+To understand how the Service Registry works, see the [Service Registry](/docs/concepts/service_registry/) page.

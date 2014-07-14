@@ -4,7 +4,7 @@ title: Libraries
 permalink: /docs/concepts/libraries/
 ---
 
-Libraries in BladeRunnerJS, like those in other web applications, can contain the definition of useful functionality, UI components or [services](http://bladerunnerjs.org/docs/concepts/services/).
+Libraries in BladeRunnerJS, like those in other web applications, can contain the definition of useful functionality, UI components or [services](/docs/concepts/services/).
 
 There are two types of library - **BRJS conformant libraries** (libraries that BRJS presently understands "out of the box") and **third-party libraries**. Both types of libraries contain configuration in order to identify to BRJS which type they are.
 
@@ -12,7 +12,7 @@ There are two types of library - **BRJS conformant libraries** (libraries that B
   <p>Note: In the future we hope to provide "out of the box" support for other types of libraries that have been drawn down from popular package management repositories such as npm and bower. Right now, you can use these, but you need to put in a little bit of work in order to achieve this.<p>
 </div>
 
-For information on how to create or edit libraries, see [How to Use Libraries](http://bladerunnerjs.org/docs/use/use_libraries/).
+For information on how to create or edit libraries, see [How to Use Libraries](/docs/use/use_libraries/).
 
 ## Library Structure
 

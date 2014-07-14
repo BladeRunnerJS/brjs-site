@@ -74,7 +74,8 @@ brjs create-library brjstodo thirlib thir –t thirdparty
 For a library to be used and picked up by BRJS, it needs to be within the `libs` folder of an application and the command does this for you. However, you can do this manually. Within that folder there should be a `thirdparty-library.manifest` file. This is a YAML configuration file with the following format and options:
 
 ```
-# the JavaScript reference that this library exports
+# the JavaScript reference that this library exports.
+# Optional. No default.
 exports: JSReference
 
 # optional list of other libraries this one depends on
@@ -104,7 +105,6 @@ In order to create a Bootstrap library you would download the release and place 
 depends: jquery
 js: js/bootstrap.min.js
 css: css/bootstrap.min.css
-exports: "{}"
 ```
 
 If you also wanted the Bootstrap Theme files you would update the manifest and add the `bootstrap-theme.min.css` to the `css` value, as follows:
@@ -115,7 +115,6 @@ js: js/bootstrap.min.js,
 /*** new code ***/
 css: css/bootstrap.min.css,bootstrap-theme.min.css
 /*** end of new code ***/
-exports: "{}"
 ```
 
 In order to use Bootstrap you still need to `require` it in JavaScript. The string value to be passed to the `require` function is the name of the folder that Bootstrap lives within:

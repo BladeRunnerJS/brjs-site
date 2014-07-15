@@ -4,7 +4,7 @@ title: Libraries
 permalink: /docs/concepts/libraries/
 ---
 
-Libraries in BladeRunnerJS, like those in other web applications, can contain the definition of useful functionality, UI components or [services](http://bladerunnerjs.org/docs/concepts/services/).
+Libraries in BladeRunnerJS, like those in other web applications, can contain the definition of useful functionality, UI components or [services](/docs/concepts/services/).
 
 There are two types of library - **BRJS conformant libraries** (libraries that BRJS presently understands "out of the box") and **third-party libraries**. Both types of libraries contain configuration in order to identify to BRJS which type they are.
 
@@ -12,7 +12,7 @@ There are two types of library - **BRJS conformant libraries** (libraries that B
   <p>Note: In the future we hope to provide "out of the box" support for other types of libraries that have been drawn down from popular package management repositories such as npm and bower. Right now, you can use these, but you need to put in a little bit of work in order to achieve this.<p>
 </div>
 
-For information on how to create or edit libraries, see [How to Use Libraries](http://bladerunnerjs.org/docs/use/use_libraries/).
+For information on how to create or edit libraries, see [How to Use Libraries](/docs/use/use_libraries/).
 
 ## Library Structure
 
@@ -25,7 +25,7 @@ BRJS libraries will contain the following directories:
 - `src` - for the JavaScript for the Blade
 - `tests` - for the blade tests
 - `resources` - for HTML, CSS and everything else
-- `lib.conf` - configuration for the library
+- `br-lib.conf` - configuration for the library
 
 A BRJS library has a config file `br-lib.conf`. The contents of which is [YAML](http://en.wikipedia.org/wiki/YAML) that has a required prefix stipulated by the user. The default prefix for an app is `appns`.
 
@@ -39,7 +39,7 @@ What is bundled and served by BRJS depends on the presence of a manifest file. I
 depends: jquery, lib1, someLib
 js: js/*.js
 css: css/*.js
-exports: "{}""
+exports: AJavaScriptReference
 ```
 
 The key `depends` allows a third-party library to depend on another library (including BRJS conformant libraries). For example, if you wanted to use twitter bootstrap to lay out your app and then include jquery to do the more complex JavaScript, you can set this up so that the twitter bootstrap third-party library depends on the jQuery third-party library.
@@ -60,11 +60,7 @@ Unlike `depends`, `js` and `css`, the exports key is mandatory. In order for the
 exports: jQuery
 ```
 
-If the library does not need to export anything (if, for example, it is purely there for css) then you can export an empty object. This is specified by adding a pair of empty braces:
-
-```
-exports: "{}"
-```
+If the library does not need to export anything (if, for example, it is purely there for css) then simply omit the `exports` property from the manifest file.
 
 ## Where Next?
 

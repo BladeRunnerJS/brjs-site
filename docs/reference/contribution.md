@@ -5,7 +5,7 @@ permalink: /docs/reference/contribution/
 notice: none
 ---
 
-Before we can accept patches, we need you to indicate that you agree with the follow CLA.
+Before we can accept patches, we need you to indicate that you agree with the following CLA.
 
 Other projects require a similar agreement: jQuery, Firefox, Apache, Yeoman and many more.
 

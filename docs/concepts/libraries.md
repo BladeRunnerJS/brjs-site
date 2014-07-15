@@ -64,4 +64,4 @@ If the library does not need to export anything (if, for example, it is purely t
 
 ## Where Next?
 
-To find out how to create new libraries and use existing libraries, go to [Using Libraries](/docs/use/user_libraries/).
+To find out how to create new libraries and use existing libraries, go to [Using Libraries](/docs/use/use_libraries/).

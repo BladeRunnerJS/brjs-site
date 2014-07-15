@@ -37,9 +37,9 @@ A directory with the name `todolib` will then be created in the libs directory o
 - `src` - for the JavaScript for the Blade
 - `tests` - for the blade tests
 - `resources` - for HTML, CSS and everything else
-- `lib.conf` - configuration for the library
+- `br-lib.conf` - configuration for the library
 
-There is more information on BRJS conformant libraries in [About Libraries](/docs/concepts/libraries/)..
+There is more information on BRJS conformant libraries and the `br-lib.conf` library configuration file in [About Libraries](/docs/concepts/libraries/)..
 
 ### Use a BladeRunnerJS Conformant Library
 

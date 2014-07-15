@@ -16,9 +16,6 @@ jettyPort:						The port the built in Jetty server will bind to.
 defaultFileCharacterEncoding:	The input encoding for files read by BRJS.
 								Default: UTF-8
 
-browserCharacterEncoding:		The encoding of files delivered to the browser
-								Default: UTF-8
-
 loginRealm:						The login realm the Jetty server will use.
 								Only needed if you configure a login realm.
 								Default: BladeRunnerLoginRealm

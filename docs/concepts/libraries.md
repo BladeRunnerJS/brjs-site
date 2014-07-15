@@ -25,7 +25,7 @@ BRJS libraries will contain the following directories:
 - `src` - for the JavaScript for the Blade
 - `tests` - for the blade tests
 - `resources` - for HTML, CSS and everything else
-- `lib.conf` - configuration for the library
+- `br-lib.conf` - configuration for the library
 
 A BRJS library has a config file `br-lib.conf`. The contents of which is [YAML](http://en.wikipedia.org/wiki/YAML) that has a required prefix stipulated by the user. The default prefix for an app is `appns`.
 

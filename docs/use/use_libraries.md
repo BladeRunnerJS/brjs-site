@@ -81,7 +81,6 @@ In order to create a Bootstrap library you would download the release and place 
 depends: jquery
 js: js/bootstrap.min.js
 css: css/bootstrap.min.css
-exports: "{}"
 ```
 
 **Note**: the 'boostrap' library `depends` on a 'jQuery' library so the 'jquery' library must also exist. 'jQuery' is currently packaged as part of the BRJS release package.
@@ -94,7 +93,6 @@ js: js/bootstrap.min.js,
 /*** new code ***/
 css: css/bootstrap.min.css,bootstrap-theme.min.css
 /*** end of new code ***/
-exports: "{}"
 ```
 
 In order to use Bootstrap you need to `require` it in JavaScript. The string value to be passed to the `require` function is the name of the library which is defined by the name of the folder the library lives within.

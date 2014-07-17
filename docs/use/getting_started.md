@@ -145,7 +145,7 @@ The view definition can be found in an HTML template in `input/resources/html/vi
 </div>
 ```
 
-You will see that the text `<p data-bind="text:buttonClickMessage"></p>` will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`). The `@{brjstodo.todo.input.hello.world}` causes the text to be loaded from internationalization files. We'll ignore internationalization (i18n) for the purposes of this guide but you can read more [here](http://localhost:4000/docs/use/internationalization/).
+You will see that the text `<p data-bind="text:buttonClickMessage"></p>` will get the value of the View Model's `buttonClickMessage` property (`data-bind="text:buttonClickMessage"`)  and that the `buttonClick` View Model function will be called when the `button` is clicked (`data-bind="click:buttonClicked"`). The `@{brjstodo.todo.input.hello.world}` causes the text to be loaded from internationalization files. We'll ignore internationalization (i18n) for the purposes of this guide but you can read more [here](http://bladerunnerjs.org/docs/use/internationalization/).
 
 ### Run the Blade in a Workbench
 

@@ -28,7 +28,7 @@ Each blade is located in a physical folder on disk and all resources for the bla
 Some key benefits of blades are:
 
 * Different parts of the application can be built by different teams, without creating integration problems later.
-* Developers can build and test blades in isolation, without having to build the whole application every time, mmaking the process far more efficient and productive.
+* Developers can build and test blades in isolation, without having to build the whole application every time, making the process far more efficient and productive.
 * Business features are componentized and isolated from each other, eliminating the problem of creating inter-dependent ‘spaghetti’ code.
 * Additional features can be developed, tested and added much more easily.
 * Old unused features can be removed without side effects

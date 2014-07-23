@@ -204,7 +204,7 @@ The content of `input/resources/html/view.html` should now look like this:
 
 ```html
 <div id="brjstodo.todo.input.view-template">
-/*** New code ***/
+   <!-- New code -->
   <header id="header">
     <h1>todos</h1>
     <input id="new-todo" type="text" class="todo-input"
@@ -213,7 +213,7 @@ The content of `input/resources/html/view.html` should now look like this:
                       event: { keypress: keyPressed }"
            placeholder="What needs to be done?" />
   </header>
-/*** End of new code ***/
+  <!-- End of new code -->
 </div>
 ```
 

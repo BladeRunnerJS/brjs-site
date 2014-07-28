@@ -3,8 +3,7 @@ layout: post
 title: "Open Sourcing, Events & Measuring Success"
 authors: [leggetter]
 thumb: brjs-stand-scotlandjs.jpg
-bgimg: /blog/img/scotlandjs-talk.jpg
-latest: true
+latest: false
 
 excerpt: Every so often it's worth taking a look back at the events you've been involved in and what the outcome of that involvement was. In April I wrote a post on Open Sourcing Stats. This post continues with that theme of open reflection and process transparency. It's also very important as a way of reporting back to the business that's funding the project. So, here are the details about what we've been doing (workshops, talks, sponsorship), how we've felt they've gone and some stats related to each event. What events have you been involved in and how do you track and measure the success of those events?
 

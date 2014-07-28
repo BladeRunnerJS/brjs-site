@@ -17,18 +17,18 @@ ForwardJS took place in San Francisco last week. It was a great event consisting
 
 On the day before the main event I ran a workshop covering How to Build Large Front-End Apps that Scale. By "scale" I mean grow in a maintainable way. The workshop covers principles and practices that help this take place and we use the BladeRunnerJS toolkit to help demonstrate these.
 
-I've had some feedback from the workshop already and it seemed to go down really well. Although we used BRJS, the skills and ideas are very much transferrable to other tools. From the product point of view it was really valuable to have run a workshop and see first-hand how others find using BRJS. Thanks to everybody that attended and I'll post more information after I've gathered and analysed further feedback.
+I've had some feedback from the workshop already and it seemed to go down really well. Although we used BRJS, the skills and ideas are very much transferrable to other tools. From the product point of view it was really valuable to run a workshop and see first-hand how others find using BRJS. Thanks to everybody that attended and I'll post more information after I've gathered and analysed further feedback.
 
 ## Facebook's FluxJS
 
 One of the core takeaways from the workshop should be the importance of building applications in consistent ways; if this application is going to stand the test of time it needs to be as easy as possible for anybody to pick up, extend and maintain the codebase.
 
-[Bill Fisher](https://twitter.com/fisherwebdev) and [Jing Chen](https://twitter.com/jingc) spoke at ForwardJS about [FluxJS](http://facebook.github.io/react/blog/2014/05/06/flux.html). Flux is much more an application pattern than it is a library (although they are open sourcing some of the components they use). At the start of the talk Jing stated that they use FluxJS because they need to build Facebook apps in consistent and maintainable ways from the very beginning. By applying contraints at the start it ensure that they avoid problems as the apps become larger and more complex.
+[Bill Fisher](https://twitter.com/fisherwebdev) and [Jing Chen](https://twitter.com/jingc) spoke at ForwardJS about [FluxJS](http://facebook.github.io/react/blog/2014/05/06/flux.html). Flux is much more an application pattern than it is a library (although they are open sourcing some of the components they use). At the start of the talk Jing stated that they use FluxJS because they need to build Facebook apps in consistent and maintainable ways from the very beginning. By applying contraints at the start it ensures that they avoid problems as the apps become larger and more complex.
 
 <blockquote class="twitter-tweet" lang="en"><p>Applying constraints on your web app from the start will stop it getting out of control as complexity and size increases <a href="https://twitter.com/hashtag/forwardjs?src=hash">#forwardjs</a> <a href="https://twitter.com/hashtag/fluxjs?src=hash">#fluxjs</a></p>&mdash; Phil Leggetter (@leggetter) <a href="https://twitter.com/leggetter/statuses/492813388758528001">July 25, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-It's great to [yet again](https://twitter.com/floydophone/status/462529304904364032) see that Facebook are taking very similar approaches to building their applications as we do with our [Caplin Trader](http://www.caplin.com/business/page/caplin-trader) products.
+It's great to [yet again](https://twitter.com/floydophone/status/462529304904364032) see that Facebook are taking very similar approaches to building their applications as we do with our [Caplin Trader](http://www.caplin.com/business/page/caplin-trader) products - all enabled and supported by BladeRunnerJS.
 
 ## ES6 Modules & HTTP2
 
@@ -56,7 +56,7 @@ class MyThing {
 }
 ```
 
-At ForwardJS [Guy Bedford](https://twitter.com/guybedford) gave a talk on SPDY/[HTTP2](http://http2.github.io/) and how that may relate to ES6 modules. He covered how multiple HTTP requests can be pipelined over a single HTTP request and how applications will automatically benefit as HTTP2 is enabled on clients and servers.
+At ForwardJS [Guy Bedford](https://twitter.com/guybedford) gave a talk on SPDY/[HTTP2](http://http2.github.io/) and how that may relate to ES6 modules. He covered how HTTP2 enables multiple requests to be pipelined over a single connection and how applications will automatically benefit as HTTP2 is enabled on clients and servers.
 
 ```html
 <head>
@@ -84,9 +84,9 @@ Until then we'll need to continue to use tooling that concatenates files of the 
 
 <img src="/blog/img/webcomponents.svg" align="right" style="margin-left: 20px; margin-bottom: 20px;" />
 
-At Caplin we've been building componentised web applications for a number of years. [Blades](/docs/concepts/blades/) can be considered components and it may be that they become Web Components in future BRJS applications. Web Components were mentioned at ForwardJS, both in the keynote and in a talk by [Erik Bryn](https://twitter.com/ebryn).
+Web Components were mentioned at ForwardJS, both in the [keynote by Christian Heilmann](https://www.youtube.com/watch?v=emicZVMZxac&sns=tw) and in a talk by [Erik Bryn](https://twitter.com/ebryn). At Caplin we've been building componentised web applications for a number of years. [Blades](/docs/concepts/blades/) can be considered components and it may be that the implementation of Blades becomes Web Components in future BRJS applications since we're not tied to any specific front-end technology.
 
-Exactly what goes into a Web Component is open for discussion. A [FIRST (Focused, Independent, Reusable, Small & Testable) approach](http://addyosmani.com/firs/) is being touted, but I'm not entirely sure you can be quite so rigid with your Web Component structure and strategy. Should your application be a single Web Component composed of many other components? Should a component only offer a small piece of functionality or should it offer a vertical slide of functionality - a business feature? I think this topic deserves a post all of its own.
+Exactly what goes into a Web Component is open for discussion. A [FIRST (Focused, Independent, Reusable, Small & Testable) approach](http://addyosmani.com/firs/) is being touted, but I'm not entirely sure you can be quite so rigid with your Web Component structure and strategy. Should your application be an HTML page that imports and uses a number of components? Should that HTML page import and instantiate a single Web Component composed of many other components? Should a component only offer a small piece of functionality or should it offer a vertical slide of functionality - a business feature? I think this topic deserves a post all of its own.
 
 ## Forward 2 - More Forwarder
 

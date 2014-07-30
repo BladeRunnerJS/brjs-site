@@ -66,12 +66,15 @@ Include the Internationalization Bundler in your app's `default-aspect/index.htm
 
 ```html
 <head>
-<title>Workbench</title>
+    <@base.tag@/>
+	<meta charset="UTF-8">
 
-<@css.bundle theme="standard"@ />
+    <title>Workbench</title>
+
+    <@css.bundle theme="standard"@ />
 
 <!-- new code -->
-<@i18n.bundle@/>
+    <@i18n.bundle@/>
 <!-- end of new code -->
 
 </head>

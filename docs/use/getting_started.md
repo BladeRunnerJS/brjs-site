@@ -692,6 +692,7 @@ In order to add the Blades to the default aspect we need to first update the asp
 <!DOCTYPE html>
 <html>
 	<head>
+        <@base.tag@/>
 		<meta charset="UTF-8">
 
 		<title>My Application</title>

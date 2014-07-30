@@ -623,7 +623,7 @@ ItemsViewModelTest.prototype.setUp = function() {
 };
 
 var ItemsViewModel = require( 'brjstodo/todo/items/ItemsViewModel' );
-``` js
+```
 
 <div class="alert alert-info">
   <p>

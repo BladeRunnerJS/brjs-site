@@ -149,7 +149,7 @@ You will see that the text `<p data-bind="text:buttonClickMessage"></p>` will ge
 
 ### Run the Blade in a Workbench
 
-Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`BRJS_HOME/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjstodo/workbench/todo/input/en/`.
+Now that you've seen the View Model class and the view template, let's launch a Workbench and see the Blade running in isolation. Ensure the development web server is running (`BRJS_HOME/sdk/brjs serve`) and navigate to the workbench via `http://localhost:7070/brjstodo/todo/input/workbench/en/`.
 
 ![](/docs/use/img/brjstodo-workbench.png)
 
@@ -350,7 +350,7 @@ Update the `items` view, `BRJS_HOME/apps/brjstodo/todo-bladeset/blades/items/res
 </div>
 ```
 
-If you ensure the BRJS development server is running (`BRJS_HOME/sdk/brjs serve`) and launch the Workbench for this Blade via `http://localhost:7070/brjstodo/workbench/todo/items/en/` you'll see the two hard-coded list items.
+If you ensure the BRJS development server is running (`BRJS_HOME/sdk/brjs serve`) and launch the Workbench for this Blade via `http://localhost:7070/brjstodo/todo/items/workbench/en/` you'll see the two hard-coded list items.
 
 ![](/docs/use/img/todo-items-workbench.png)
 
@@ -435,7 +435,7 @@ Before we update the `items` Blade to listen for this event, let's first see how
   </p>
 </div>
 
-Ensure the BRJS server is running (`BRJS_HOME/sdk/brjs serve`) and open up the `input` Workbench via `http://localhost:7070/brjstodo/workbench/todo/input/en/`. If you input some text and press *Enter* you'll see a message appear in the **EventHub Logging** Workbench Tool. It's logged as a *DeadEvent* because nobody is actually listening to this event. You can manually inspect this to ensure the information logged is as expected.
+Ensure the BRJS server is running (`BRJS_HOME/sdk/brjs serve`) and open up the `input` Workbench via `http://localhost:7070/brjstodo/todo/input/workbench/en/`. If you input some text and press *Enter* you'll see a message appear in the **EventHub Logging** Workbench Tool. It's logged as a *DeadEvent* because nobody is actually listening to this event. You can manually inspect this to ensure the information logged is as expected.
 
 ![](/docs/use/img/testing-in-the-workbench.png)
 
@@ -564,7 +564,7 @@ In `_todoAdded` we just need to add the item to the `todos` Knockout `observable
 
 #### Testing in the Workbench
 
-Open up the `items` Workbench via `http://localhost:7070/brjstodo/workbench/todo/items/en/` ensuring the BRJS development web server is running (`BRJS_HOME/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
+Open up the `items` Workbench via `http://localhost:7070/brjstodo/todo/items/workbench/en/` ensuring the BRJS development web server is running (`BRJS_HOME/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
 
 ``` js
 var sr = require( 'br/ServiceRegistry' );

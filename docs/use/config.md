@@ -49,10 +49,10 @@ localeCookieName	The string identifier for the locale setting in the cookie
 Styles can be overridden multiple times, for example if an app has the style 'style1', a bladeset can have the style 'style2',
 	and a blade inside that bladeset could have the style 'style1'.
 
-If no `js-style` is found the default is `node.js`.  Possible values are `node.js` &amp; `namespaced-js`.
+If no `js-style` is found the default is `common-js`.  Possible values are `common-js` &amp; `namespaced-js`.
 
 ```
-node.js
+common-js
 ```
 
 ### test-runner.conf

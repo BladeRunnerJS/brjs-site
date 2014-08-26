@@ -4,7 +4,7 @@ title: How to Create an Aspect
 permalink: /docs/use/create_aspect/
 ---
 
-In order to create an [aspect](/docs/concepts/aspect/) you first need to [create an application](/docs/use/create_app). Follow our guide to creating an app before you follow the instructions below.
+In order to create an [aspect](/docs/concepts/aspects/) you first need to [create an application](/docs/use/create_app). Follow our guide to creating an app before you follow the instructions below.
 
 <div class="alert alert-info">
 <p>

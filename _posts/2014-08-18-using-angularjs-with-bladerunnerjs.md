@@ -9,36 +9,38 @@ excerpt: ""
 
 ---
 
-For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. [Angular](https://angularjs.org/) is by far the most popular front-end framework so it makes sense to demonstrate how to use it with BRJS first. Although we've done some work internally to ensure this is the case we need to:
+For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. [Angular](https://angularjs.org/) is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first. Although we've done some work internally to ensure this is the case we need to:
 
 1. Provide some examples of using BRJS with Angular
 * Make it easy to get started with BRJS and Angular
 * Demonstrate best practice when using BRJS and Angular
 
-Points 1 and 2 are relatively simple. The reason for this post is to discuss point 3 - "best practice" when **using Angular within a BRJS app**.
+Points 1 and 2 are relatively simple. For Point 3 we'll break a commonly used application into features/components and build each of these features in isolation as Angular Directives. Hopefully this will then demonstrate "best practice" when **using Angular within a BRJS app**.
 
-In order to do this we'll re-create the [Todo MVC application](http://todomvc.com/) using BRJS and Angular.
+The application that we're going to re-create using BRJS is Angular version of the [Todo MVC application](http://todomvc.com/). We'll also try to reuse as much code as possible from the [default Todo MVC Angular app](https://github.com/tastejs/todomvc/tree/gh-pages/architecture-examples/angularjs).
 
 ## BRJS Application Structure
 
-The purpose of BladeRunnerJS is to give you all the tooling required to build a scalable modular front-end application. BRJS applications consist of:
+The purpose of BladeRunnerJS is to provide an "out of the box" solution that gives you everything you need to build a scalable modular front-end application. Both in terms of tooling and an application architecture. BRJS applications consist of:
 
 * [blades](http://bladerunnerjs.org/docs/concepts/blades) - where each blade is an application feature (a *slice* of application functionality)
 * [services](http://bladerunnerjs.org/docs/concepts/services) - a [cross cutting concern](http://en.wikipedia.org/wiki/Cross-cutting_concern) that can be used independently by multiple application features - often used for accessing shared resources and to facilitate inter-blade communication
 
 Within our Todo application we'll have three blades:
 
-* input - to input new todo items
-* items - to display a list of existing Todo items
-* filter - to allow actions to be performed of the list of items
+* **input** - to input new todo items
+* **items** - to display a list of existing Todo items
+* **filter** - to allow actions to be performed of the list of items
+
+![](/blog/img/brjs-angular-tutorial/brjs-angular-todomvc-directives.png)
 
 We'll have a single service that will provide Todo specific functionality:
 
-* TodoService - add, update, remove and get Todo items
+* **TodoService** - add, update, remove and get Todo items
 
 The service will be defined within a [library](http://bladerunnerjs.org/docs/concepts/libraries/).
 
-One of the main driving forces behind BRJS application architecture is testability. But for the sake of brevity we'll omit writing tests from this post.
+*Note: One of the main driving forces behind BRJS application architecture is testability. But for the sake of brevity we'll omit writing tests from this post.*
 
 ## Using the BRJS toolkit
 
@@ -87,6 +89,8 @@ var angular = require( 'angular' );
 
 The trend towards [building componentised web apps](http://www.futureinsights.com/home/the-state-of-the-componentised-web.html) continues so as well as each blade representing a feature within our Todo app it will also be a component.
 
+*Note: there are other ways to use Angular within a BRJS app. We'll potentially cover this in the future*
+
 First, let's scaffold out the `Input` blade using the CLI:
 
 ```
@@ -113,7 +117,7 @@ Now we have the basic scaffolding in place we can create an [Angular Directive](
 First we should define the HTML template. The convention here is to separate HTML and JavaScript so let's create create a `view.html` within the `blades/input/resources/html/` directory with the following content:
 
 ```html
-<header id="brjstodo.ng.input.view-template" class="input-component">
+<header id="brjstodo.input.view-template" class="input-component">
 	<h1>todos</h1>
 	<form id="todo-form" ng-submit="addTodo()">
 		<input class="todo-input" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
@@ -133,7 +137,7 @@ var InputDirective = function() {
 
 	this.restrict = 'E';
 	this.replace = true;
-	this.template = HtmlService.getHTMLTemplate( 'brjstodo.ng.input.view-template' ).outerHTML;
+	this.template = HtmlService.getHTMLTemplate( 'brjstodo.input.view-template' ).outerHTML;
 
 	this.controller = function( $scope ) {
 		$scope.newTodo = '';
@@ -156,7 +160,59 @@ var InputDirective = function() {
 module.exports = InputDirective;
 ```
 
-You'll noticed that we're just logging the `todoItem` at the moment. Instead of doing that we actually want to persist the todo item and also ensure that items blade is informed about the new item. We achieve this using services - let's create a `TodoService` to handle this.
+You'll noticed that we're just logging the `todoItem` at the moment. We'll fix this shortly. But first let's see our directive Blade running in a [workbench](http://bladerunnerjs.org/docs/concepts/workbenches/).
+
+## Running Angular Directive Blades in Workbenches
+
+Right now BRJS doesn't support offer alternative templating support so the default blade template creates you files related to Blades that use Knockout. One of these files is the `blades/input/workbench/index.html` file. This file is there to let you run and develop your blade in isolation.
+
+We need to update this to display our Angular directive. To do this replace the JavaScript below the `// ViewModel that is being created in the workbench` comment, including the calls to `addModelViewer` and `addComponent`, with the following:
+
+```js
+var angular = require( 'angular' );
+var InputDirective = require( 'brjstodo/ng/input/InputDirective' );
+angular.module('brjstodo', [])
+	.directive('todoInput', function() {
+		return new InputDirective();
+	} );
+```
+
+Additionally, add the following after the `</script>` closing tag:
+
+```html
+<style>
+	.ng-workbench {
+		position: relative;
+		top: 100px;
+		margin: auto;
+		width: 450px;
+	}
+</style>
+
+
+<div class="ng-workbench" ng-app="brjstodo">
+	<todo-input></todo-input>
+</div>
+```
+
+The `<todo-input></todo-input>` directive is now in the workbench. We can view the workbench by running the BRJS dev server using `./brjs serve` and then navigating to `http://localhost:7070/brjstodo/default/input/workbench/en/`.
+
+![](/blog/img/brjs-angular-tutorial/input-directive-workbench.png)
+
+## Styling a Directive Blade
+
+Styles can be defined either within the blade or within the application entry point (the [aspect](http://bladerunnerjs.org/docs/concepts/aspects)). When the CSS concatenation ([bundling](http://bladerunnerjs.org/docs/concepts/bundlers/)) takes place the blade CSS will first be included and then the entry point CSS. The purpose of including the CSS in this order is so that an application can override blade CSS and thus it can more easily be reused and a different "skin" applied.
+
+Anyway, to make things simple and focused let's just download two assets and put them in the `apps/brjstodo/themes/common/` directory:
+
+* [styles.css](https://raw.githubusercontent.com/BladeRunnerJS/brjs-todomvc-angular/master/themes/common/style.css)
+* [bg.png](https://raw.githubusercontent.com/BladeRunnerJS/brjs-todomvc-angular/master/themes/common/bg.png)
+
+When you refresh the workbench you'll now see styling applied to the input blade.
+
+![](/blog/img/brjs-angular-tutorial/input-directive-workbench-styled.png)
+
+Next, we can take a look at persisting the todo item and also ensure that items blade is informed about the new item. We achieve this using services - let's create a `TodoService` to handle this.
 
 ## The TodoService
 
@@ -166,7 +222,7 @@ Let's create the `TodoService` within a library. [Libraries](/docs/concepts/libr
 
 ```
 $ ./brjs create-library brjstodo todomvc
-``
+```
 
 This creates a directory called `todomvc` within `apps/brjstodo/libs/` with the following structure:
 
@@ -177,7 +233,7 @@ apps/brjstodo/libs/todomvc
 └── test-unit
 ```
 
-Within the `src` directory create a `TodoService.js` file with the following contents:
+Within the `src` directory create a `TodoService.js` file with the following contents (you can delete or ignore the file that's created by default):
 
 ```js
 var br = require( 'br/Core' );
@@ -255,39 +311,396 @@ Within this in place you can now update `blades/input/src/InputDirective.js` to 
 var ServiceRegistry = require( 'br/ServiceRegistry' )
 
 var InputDirective = function() {
-  var HtmlService = ServiceRegistry.getService( 'br.html-service' );
-  /*** new code ***/
-  var todoService = ServiceRegistry.getService( 'todomvc.storage' );
-  /*** end of new code ***/
+	var HtmlService = ServiceRegistry.getService( 'br.html-service' );
+	/*** new code ***/
+	var todoService = ServiceRegistry.getService( 'todomvc.storage' );
+	/*** end of new code ***/
 
-  this.restrict = 'E';
-  this.replace = true;
-  this.template = HtmlService.getHTMLTemplate( 'brjstodo.ng.input.view-template' ).outerHTML;
+	this.restrict = 'E';
+	this.replace = true;
+	this.template = HtmlService.getHTMLTemplate( 'brjstodo.ng.input.view-template' ).outerHTML;
 
-  this.controller = function( $scope ) {
-    $scope.newTodo = '';
-    $scope.addTodo = function() {
-      var newTodo = $scope.newTodo.trim();
-      if (!newTodo.length) {
-        return;
-      }
+	this.controller = function( $scope ) {
+		$scope.newTodo = '';
+		$scope.addTodo = function() {
+			var newTodo = $scope.newTodo.trim();
+			if (!newTodo.length) {
+				return;
+			}
 
-      var todoItem = { title: newTodo };
-      /*** new code ***/
-      todoService.addTodo( todoItem );
-      /*** end of new code ***/
+			var todoItem = { title: newTodo };
+			/*** new code ***/
+			todoService.addTodo( todoItem );
+			/*** end of new code ***/
 
-      $scope.newTodo = '';
-    }
-  };
+			$scope.newTodo = '';
+		}
+	};
 
 };
 
 module.exports = InputDirective;
 ```
 
+Use the input blade in the workbench and every time you add a new item you'll see the current list of items output to the console.
+
+We've done much more than just build our first feature. We've:
+
+* Scaffolded our app
+* Introduced core BRJS ideas including [blades](http://bladerunnerjs.org/docs/concepts/blades/), [services](http://bladerunnerjs.org/docs/concetps/services/)
+* Created a [library](http://bladerunnerjs.org/docs/concetps/libraries/) defining the TodoService that can be used by any application feature/blade/directive
+* Registered the TodoService with the [ServiceRegistry](http://bladerunnerjs.org/docs/concetps/service_registry/)
+* Built our first blade
+* Styled our first blade
+
+We can now push on with creating the next two Todo List features.
+
 ## Create the Items blade
+
+Next up is the items blade; the blade that shows all the existing todo items, allows them to be edited, marked as complete and deleted.
+
+First, scaffold out the blade:
+
+```
+$ ./brjs create-blade brjstodo default items
+```
+
+And then define the view for the items in `blades/items/resources/html/view.html`:
+
+```html
+<section id="brjstodo.items.view-template" class="items-component" ng-show="todos.length" ng-cloak>
+	<input name="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+	<label for="toggle-all">Mark all as complete</label>
+	<ul class="todo-list">
+		<li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+			<div class="view">
+				<input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="doneEditing(todo)">
+				<label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+				<button class="destroy" ng-click="removeTodo(todo)"></button>
+			</div>
+			<form ng-submit="doneEditing(todo)">
+				<input class="edit" ng-trim="false" ng-model="todo.title" todo-escape="revertEditing(todo)" ng-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
+			</form>
+		</li>
+	</ul>
+</section>
+
+```
+
+Next, create a file called `ItemsDirective.js` in `blades/items/src` to define our items Angular directive. Here's the full definition:
+
+```js
+'use strict';
+
+var angular = require( 'angular' );
+var ServiceRegistry = require( 'br/ServiceRegistry' );
+
+function ItemsDirective() {
+	var HtmlService = ServiceRegistry.getService( 'br.html-service' );
+	var todoService = ServiceRegistry.getService( 'todomvc.storage' );
+
+	this.restrict = 'E';
+	this.replace = true;
+	this.template = HtmlService.getHTMLTemplate( 'brjstodo.items.view-template' ).outerHTML;
+
+	this.controller = function( $scope ) {
+		$scope.todos = todoService.getTodos();
+		$scope.editedTodo = null;
+		$scope.originalTodo = null;
+
+		function update() {
+			var todos = todoService.getTodos();
+			var completedCount = 0;
+			todos.forEach(function (todo) {
+				completedCount += ( todo.completed? 1 : 0 );
+			});
+			$scope.allChecked = ( todos.length === completedCount );
+		}
+
+		// Note: could use $scope.$watch here. But that feels like magic.
+		todoService.on( 'todo-added', update );
+		todoService.on( 'todo-updated', update );
+		todoService.on( 'todo-removed', update );
+
+		$scope.editTodo = function (todo) {
+			$scope.editedTodo = todo;
+			// Clone the original todo to restore it on demand.
+			$scope.originalTodo = angular.extend({}, todo);
+		};
+
+		$scope.doneEditing = function (todo) {
+			$scope.editedTodo = null;
+			todo.title = todo.title.trim();
+
+			if (!todo.title) {
+				$scope.removeTodo(todo);
+			}
+			else {
+				todoService.updateTodo( todo );
+			}
+		};
+
+		$scope.revertEditing = function (todo) {
+			todo.title = $scope.originalTodo.title;
+			todo.completed = $scope.originalTodo.completed;
+			$scope.doneEditing(todo);
+		};
+
+		$scope.removeTodo = function (todo) {
+			todoService.removeTodo( todo );
+		};
+
+		$scope.markAll = function (completed) {
+			var todos = todoService.getTodos();
+			todos.forEach(function (todo) {
+				todo.completed = !completed;
+				todoService.updateTodo( todo );
+			});
+		};
+
+	};
+}
+
+module.exports = ItemsDirective;
+
+```
+
+The `ItemsDirective` already retrieves and interacts with `TodoService` so we need to ensure that it's registered with the `ServiceRegistry`. As before we do this by updating the `aliases.xml` for the workbench in `blades/items/workbench/resources/aliases.xml`:
+
+```xml
+<aliases xmlns="http://schema.caplin.com/CaplinTrader/aliases" useScenario="dev">
+	<alias name="todomvc.storage" class="todomvc.TodoService" />
+</aliases>
+```
+
+Finally, we want to show see the `ItemsDirective` running in isolation in the workbench as we did with the `InputDirective`. To do that we must update the workbench declaration in `blades/items/workbench/index.html` to include and define the directive:
+
+```js
+var angular = require( 'angular' );
+var ItemsDirective = require( 'brjstodo/items/ItemsDirective' );
+angular.module('brjstodo', [])
+	.directive('todoItems', function() {
+		return new ItemsDirective();
+	} );
+```
+
+Provide some styling to ensure the directive is displayed in the middle of the workbench:
+
+```html
+<style>
+	.ng-workbench {
+		position: relative;
+		top: 100px;
+		margin: auto;
+		width: 450px;
+	}
+</style>
+```
+
+And finally declare the workbench wrapper and the `<todo-items>` directive element:
+
+```html
+<div class="ng-workbench" ng-app="brjstodo">
+	<todo-items></todo-items>
+</div>
+```
+
+All being well we can now see - **and interactive with** - the items directive running in the workbench:
+
+![](/blog/img/brjs-angular-tutorial/items-directive-workbench.png)
+
+You can test the directive in a few ways:
+
+* Add items via the input workbench and then refresh the items workbench
+* Execute `ServiceRegistry.getService( 'todomvc.storage' ).addTodo( { title: 'test' } )` in the console (*you may need to refresh the workbench*)
+* Add calls to the `TodoService.addTodo` in the workbench `index.html`
 
 ## Create the Filter blade
 
+The last blade to create is the filter blade Angular directive that sits at the bottom of the app UI. To do this we following the exact same steps as we did with the other blades:
+
+Scaffold out the blade using the CLI:
+
+```
+$ ./brjs create-blade brjstodo default filter
+```
+
+Define the filter directive view in `blades/filter/resources/html/view/html`:
+
+```html
+<footer id="brjstodo.filter.view-template" class="filter-component" ng-show="todos.length" ng-cloak>
+	<span class="todo-count"><strong>{{remainingCount}}</strong>
+		<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+	</span>
+
+	<button class="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed ({{completedCount}})</button>
+</footer>
+```
+
+Create a `FilterDirective.js` file in `blades/filter/src`:
+
+```js
+'use strict';
+
+var ServiceRegistry = require( 'br/ServiceRegistry' );
+
+function FilterDirective() {
+	var HtmlService = ServiceRegistry.getService( 'br.html-service' );
+	var todoService = ServiceRegistry.getService( 'todomvc.storage' );
+
+	this.restrict = 'E';
+	this.replace = true;
+	this.template = HtmlService.getHTMLTemplate( 'brjstodo.filter.view-template' ).outerHTML;
+
+	this.controller = function( $scope ) {
+
+		$scope.todos = todoService.getTodos();
+
+		update();
+
+		function update() {
+			var todos = todoService.getTodos();
+			var completedCount = 0;
+			todos.forEach(function (todo) {
+				completedCount += ( todo.completed? 1 : 0 );
+			});
+			$scope.remainingCount = ( todos.length - completedCount );
+			$scope.completedCount = completedCount;
+		}
+
+		$scope.clearCompletedTodos = function () {
+			var todos = todoService.getTodos();
+			var todo, i;
+			for( i = todos.length - 1; i >= 0; --i ) {
+				todo = todos[ i ];
+				if( todo.completed ) {
+					todoService.removeTodo( todo );
+				}
+			}
+		};
+
+		todoService.on( 'todo-added', update );
+		todoService.on( 'todo-updated', update );
+		todoService.on( 'todo-removed', update );
+	}
+}
+
+module.exports = FilterDirective;
+
+```
+
+Update the workbench aliases definition (`blades/filter/workbench/resources/aliases.xml`) so the `TodoService` is available:
+
+```xml
+<aliases xmlns="http://schema.caplin.com/CaplinTrader/aliases" useScenario="dev">
+	<alias name="todomvc.storage" class="todomvc.TodoService" />
+</aliases>
+```
+
+And update the workbench (`blades/filter/workbench/index.html`) to set up the `FilterDirective`.
+
+Add the definition:
+
+```js
+var angular = require( 'angular' );
+var FilterDirective = require( 'brjstodo/filter/FilterDirective' );
+angular.module('brjstodo', [])
+	.directive('todoFilter', function() {
+		return new FilterDirective();
+	} );
+```
+
+Add some styling:
+
+```html
+<style>
+.ng-workbench {
+	position: relative;
+	top: 100px;
+	margin: auto;
+	width: 450px;
+}
+</style>
+```
+
+Add the workbench wrapper and declare the `todo-filter` element:
+
+```html
+<div class="ng-workbench" ng-app="brjstodo">
+	<todo-filter></todo-filter>
+</div>
+```
+
+Resulting in something like the following:
+
+![](/blog/img/brjs-angular-tutorial/filter-directive-workbench.png)
+
+## Bringing It All Together
+
+But how do you bring each of the blade directives into the app? We've actually seen how you include and use the directives in the workbench. We now just do that in the application entry point - the `apps/brjstodo/index.html` file at the root of the app.
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<@base.tag@/>
+		<meta charset="UTF-8">
+
+		<title>BRJS Angular Todo MVC</title>
+
+		<@css.bundle theme="standard" @/>
+
+	</head>
+	<body>
+
+<!-- new code -->
+		<div id="todoapp" ng-app="brjstodo">
+			<todo-input></todo-input>
+			<todo-items></todo-items>
+			<todo-filter></todo-filter>
+		</div>
+<!-- end of new code -->
+
+		<@i18n.bundle @/>
+    	<!-- dev-minifier can be set to "combined" for all JS content to be bundled with a single request -->
+		<@js.bundle dev-minifier="none" prod-minifier="combined"@/>
+		<script>
+/*** new code ***/
+			var InputDirective = require( 'brjstodo/input/InputDirective' );
+			var ItemsDirective = require( 'brjstodo/items/ItemsDirective' );
+			var FilterDirective = require( 'brjstodo/filter/FilterDirective' );
+
+			var angular = require( 'angular' );
+			angular.module( 'brjstodo', [] )
+				.directive('todoInput', function() {
+					return new InputDirective();
+				} )
+				.directive('todoItems', function() {
+					return new ItemsDirective();
+				} )
+				.directive('todoFilter', function() {
+					return new FilterDirective();
+				} );
+/*** end of new code ***/
+		</script>
+	</body>
+</html>
+```
+
+The main parts of the code are highlighted above. The HTML is added to declare the three directives, the directives are `require`d and defined. It's nice, simple and clean.
+
+<a href="http://bladerunnerjs.github.io/brjs-todomvc-angular/"><img src="/blog/img/brjs-angular-tutorial/brjs-angular-todomvc.png" /></a>
+
 ## Conclusion
+
+One of the main focuses of BladeRunnerJS it building applications in a modular way. Hopefully this tutorial has demonstrated both how to use BRJS with Angular and that Angular directives fit naturally into this approach.
+
+There are a number of benefits of building the blade directives in isolation using workbenches:
+
+* Each directive can be built in parellel speeding up delivery
+* Changes are made in isolation so don't impact other developers
+* The directives are naturally decoupled meaning new versions can easily be swapped in
+* Service definitions can be swapped out in test scenarios to make testing easier
+* In larger applications reload times can be drastically reduce as you only reload the assets for a single directive
+
+Now, go forth and build truly scalable front-end web apps with BladeRunnerJS and Angular!

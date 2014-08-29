@@ -677,6 +677,13 @@ Resulting in something like the following via `http://localhost:7070/brjstodo/de
 		</div>
 <!-- end of new code -->
 
+
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+			<p>Built with <a href="http://bladerunnerjs.org">BladeRunnerJS</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+
 		<@i18n.bundle @/>
     	<!-- dev-minifier can be set to "combined" for all JS content to be bundled with a single request -->
 		<@js.bundle dev-minifier="none" prod-minifier="combined"@/>
@@ -704,6 +711,8 @@ Resulting in something like the following via `http://localhost:7070/brjstodo/de
 ```
 
 The main parts of the code are highlighted above. The HTML is added to declare the three directives, the directives are `require`d and defined. It's nice, simple and clean.
+
+You can view the full application running by going to `http://localhost:7070/brjstodo/`.
 
 <a href="http://bladerunnerjs.github.io/brjs-todomvc-angular/"><img src="/blog/img/brjs-angular-tutorial/brjs-angular-todomvc.png" /></a>
 

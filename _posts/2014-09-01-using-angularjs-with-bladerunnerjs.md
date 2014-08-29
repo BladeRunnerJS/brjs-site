@@ -2,14 +2,19 @@
 layout: post
 title: "Using AngularJS with BladeRunnerJS"
 authors: [leggetter]
-thumb: angularjs.png
+thumb: brjs-angular-tutorial/brjs-plus-angular-250.png
 latest: true
 
-excerpt: ""
+excerpt: "For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. Angular is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first."
 
 ---
 
-For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. [Angular](https://angularjs.org/) is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first. Although we've done some work internally to ensure this is the case we need to:
+<img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" />
+For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. [Angular](https://angularjs.org/) is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first.
+
+## What this post covers
+
+Although we've done some work internally to ensure this is the case we need to:
 
 1. Provide some examples of using BRJS with Angular
 * Make it easy to get started with BRJS and Angular
@@ -19,7 +24,7 @@ This post will go some way to helping with all three of these things, although I
 
 The application that we're going to re-create using BRJS is the Angular version of the [Todo MVC application](http://todomvc.com/). We'll also try to reuse as much code as possible from the [default Todo MVC Angular app](https://github.com/tastejs/todomvc/tree/gh-pages/architecture-examples/angularjs).
 
-## What we're not going to cover
+## What it doesn't cover
 
 This post is about **how to use Angular with BRJS** and **BRJS Applications Architecture**. So, we're not going to cover:
 

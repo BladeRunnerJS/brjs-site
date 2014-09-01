@@ -68,15 +68,19 @@ For now, applications need to reside within an `apps` folder within the `BladeRu
 
 ```
 apps/brjstodo
-├── app.conf    		# Application configuration
-├── index.html  		# Application entry point
-├── libs        		# Other app libraries
-├── resources   		# For other app resources
-├── src         		# For app-level JavaScript
-├── test-acceptance # Application acceptance tests
-├── test-unit   		# Application unit tests
-└── themes      		# CSS and images
+├── app.conf    				# Application configuration
+├── index.html  				# Application entry point
+├── libs        				# Other app libraries
+├── resources   				# For other app resources
+├── src         				# For app-level JavaScript
+├── test-acceptance 		# Application acceptance tests
+├── test-unit   				# Application unit tests
+├── themes      				# CSS and images
+├── unbundled-resources # legacy
+└── WEB-INF      				# legacy
 ```
+
+Delete the `WEB-INF` and `unbundled-resources` directories as they're not required for this tutorial.
 
 ## Adding Angular to a BRJS App
 

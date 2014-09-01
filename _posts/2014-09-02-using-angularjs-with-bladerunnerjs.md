@@ -184,7 +184,7 @@ We need to update this to display our Angular directive. To do this replace the 
 
 ```js
 var angular = require( 'angular' );
-var InputDirective = require( 'brjstodo/ng/input/InputDirective' );
+var InputDirective = require( 'brjstodo/input/InputDirective' );
 angular.module('brjstodo', [])
 	.directive('todoInput', function() {
 		return new InputDirective();

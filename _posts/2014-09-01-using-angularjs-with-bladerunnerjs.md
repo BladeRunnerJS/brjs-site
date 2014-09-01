@@ -367,7 +367,7 @@ We've done much more than just build our first feature. We've:
 * Built our first blade
 * Styled our first blade
 
-We can now push on with creating the next two Todo List features.
+We can now push on with creating the next two Todo List features. The process of building the next two directive blades will be very similar to creating the input directive blade. This is great since one of the things we want when building complex applications is to do things in consistent ways.
 
 ## Create the Items blade
 
@@ -712,7 +712,15 @@ Resulting in something like the following via `http://localhost:7070/brjstodo/de
 
 The main parts of the code are highlighted above. The HTML is added to declare the three directives, the directives are `require`d and defined. It's nice, simple and clean.
 
-You can view the full application running by going to `http://localhost:7070/brjstodo/`.
+Finally, we also need to set up the `ServiceRegistry`. Update `apps/brjstodo/resources/aliases.xml`:
+
+```xml
+<aliases xmlns="http://schema.caplin.com/CaplinTrader/aliases" useScenario="dev">
+	<alias name="todomvc.storage" class="todomvc.TodoService" />
+</aliases>
+```
+
+You can now view the full application running by going to `http://localhost:7070/brjstodo/`.
 
 <a href="http://bladerunnerjs.github.io/brjs-todomvc-angular/"><img src="/blog/img/brjs-angular-tutorial/brjs-angular-todomvc.png" /></a>
 

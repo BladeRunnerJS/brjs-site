@@ -14,7 +14,7 @@ For quite a while now we've spoken about it being possible to use any framework/
 
 ## What this post covers
 
-Although we've done some work internally to ensure this is the case we need to:
+Although we've done some work internally to ensure AngularJS can be used within a BRJS app we need to do more. We need to:
 
 1. Provide some examples of using BRJS with Angular
 * Make it easy to get started with BRJS and Angular
@@ -76,11 +76,11 @@ apps/brjstodo
 ├── test-acceptance 		# Application acceptance tests
 ├── test-unit   				# Application unit tests
 ├── themes      				# CSS and images
-├── unbundled-resources # legacy
+├── unbundled-resources # Assets that shouldn't be minified and bundled
 └── WEB-INF      				# legacy
 ```
 
-Delete the `WEB-INF` and `unbundled-resources` directories as they're not required for this tutorial.
+Delete the `WEB-INF` directory as it's not required for this tutorial.
 
 ## Adding Angular to a BRJS App
 

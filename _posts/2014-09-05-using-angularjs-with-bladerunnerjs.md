@@ -2,7 +2,7 @@
 layout: post
 title: "Using AngularJS with BladeRunnerJS"
 authors: [leggetter]
-thumb: brjs-angular-tutorial/brjs-plus-angular-250.png
+thumb: brjs-angular-tutorial/brjs-angular-sml.png
 latest: true
 
 excerpt: "For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. Angular is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first."
@@ -20,7 +20,7 @@ Although we've done some work internally to ensure AngularJS can be used within 
 * Make it easy to get started with BRJS and Angular
 * Demonstrate best practice when using BRJS and Angular
 
-This post will go some way to helping with all three of these things, although I'm sure we can do more to help with getting started in the future. My approach for "best practice" when **using Angular within a BRJS app** will be to break a commonly used application into features/components and build each of these features in isolation as [Angular Directives](https://docs.angularjs.org/guide/directive).
+This post will go some way to helping with all three of these things, although I'm sure we can do more to help with getting started in the future. My approach for "best practice" when **using Angular within a BRJS app** will be to break a commonly used application into features/components and build each of these features in isolation as [Angular Directives](https://docs.angularjs.org/guide/directive). Ideas for best practice will undoubtedly evolve over time, but this provides a good starting point (please provide your feedback).
 
 The application that we're going to re-create using BRJS is the Angular version of the [Todo MVC application](http://todomvc.com/). We'll also try to reuse as much code as possible from the [default Todo MVC Angular app](https://github.com/tastejs/todomvc/tree/gh-pages/architecture-examples/angularjs).
 
@@ -30,6 +30,7 @@ This post is about **how to use Angular with BRJS** and **BRJS Applications Arch
 
 * **Testing** - One of the main driving forces behind the BRJS application architecture is testability. But for the sake of brevity we'll omit writing tests from this post.
 * **Feature Code** - We're also not going to go into any real detail when it comes to the feature code. The focus will be the features as a whole and how they interact.
+* **Angular Services** - The app gets services via BRJS mechanism. Opens of how best to approach is are worth dicussing in comments or a separate blog post.
 
 ## BRJS Application Structure
 
@@ -55,6 +56,12 @@ The service will be defined within a [library](http://bladerunnerjs.org/docs/con
 ## Using the BRJS toolkit
 
 The BRJS toolkit comes with an [executable CLI](http://bladerunnerjs.org/docs/use/commandline/) that provide you with everything you need to automate common tasks when building BRJS apps. This includes scaffolding your app, a development server, running your blades in isolation in [workbenches](http://bladerunnerjs.org/docs/concepts/workbenches/), [running tests](http://bladerunnerjs.org/docs/use/running_tests/), running your full app and more. The CLI can be found within the `BladeRunnerJS/sdk/` directory. Execute `./brjs help` to find out more.
+
+In order to follow the rest of the tutorial you'll need to download BRJS v0.12 or later:
+
+<center><a class="btn btn-success" role="button" aria-label="~50 MB" href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.12">
+	<span class="glyphicon glyphicon-arrow-down"></span> BladeRunnerJS-v0.12.zip
+</a></center>
 
 ## Create the Todo App
 

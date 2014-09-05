@@ -32,7 +32,7 @@ This post is about **how to use Angular with BRJS** and **BRJS Applications Arch
 
 * **Testing** - One of the main driving forces behind the BRJS application architecture is testability. But for the sake of brevity we'll omit writing tests from this post.
 * **Feature Code** - We're also not going to go into any real detail when it comes to the feature code. The focus will be the features as a whole and how they interact.
-* **Angular Services** - The app gets services via BRJS mechanism. Opens of how best to approach is are worth discussing in comments, via the [app repo](https://github.com/BladeRunnerJS/brjs-todomvc-angular/) or a separate blog post.
+* **Angular Services** - The app gets services via BRJS mechanism. Please provide your feedback on this approach by commenting below or raising issues and pull requests against the [BRJS and Angular Todo MVC repo](https://github.com/BladeRunnerJS/brjs-todomvc-angular/).
 
 ## BRJS Application Structure
 
@@ -61,7 +61,7 @@ The BRJS toolkit comes with an [executable CLI](http://bladerunnerjs.org/docs/us
 
 In order to follow the rest of the tutorial you'll need to download BRJS v0.12 or later:
 
-<center><a class="btn btn-success" role="button" aria-label="52 MB" href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.12">
+<center><a class="btn btn-success brjs-latest-download" role="button" aria-label="52 MB" href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.12">
 	<span class="glyphicon glyphicon-arrow-down"></span> BladeRunnerJS-v0.12.0-gbf2529e.zip
 </a></center>
 
@@ -90,7 +90,7 @@ apps/brjstodo
 
 ## Adding Angular to a BRJS App
 
-We know we're going to be using Angular so before we do anything else let's add the `angular.js` library to the applications. Third Party [Libraries](http://bladerunnerjs.org/docs/concepts/libraries/) are easily added to a BRJS application.
+We know we're going to be using Angular so before we do anything else let's add the `angular.js` library to the applications. Third-party [Libraries](http://bladerunnerjs.org/docs/concepts/libraries/) are easily added to a BRJS application.
 
 Within `apps/brjstodo/libs` create an `angular` directory. Within that directory add the [`angular.js` JavaScript library](http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js). Finally, create a `thirdparty-lib.manifest` with the following contents:
 

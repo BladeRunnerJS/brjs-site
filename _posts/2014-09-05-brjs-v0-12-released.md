@@ -5,11 +5,11 @@ authors: [leggetter]
 thumb: br-logo-black-bg-150x150.png
 latest: false
 
-excerpt: "BladeRunnerJS (BRJS) v0.12 represents the first release that contains some significant improvements that are focused on helping everybody get started with using BRJS. Read more to find out about the intuitive app structure, static file deployment, API Docs and AngularJS tutorial."
+excerpt: "BladeRunnerJS (BRJS) v0.12 represents the first release that contains some significant improvements that are focused on making it much easier for everybody to get started using BRJS. Read more to find out about the intuitive app structure, static file deployment, API Docs and AngularJS tutorial."
 
 ---
 <img src="/blog/img/{{ page.thumb }}" style="margin: 30px;" align="right" />
-BladeRunnerJS (BRJS) v0.12 represents the first release that contains some significant improvements that are focused on helping everybody get started with using BRJS.
+BladeRunnerJS (BRJS) v0.12 represents the first release that contains some significant improvements that are focused on making it much easier for everybody to get started using BRJS.
 
 The [application structure is now much more intuitive](#app-structure) for developers coming from apps with more traditional web app structures. You can also now [build and deploy your BRJS app as static files](#static-deploy) to the directory of your choice making it easy to deploy on any platform. [API reference docs](#api-docs) are now available. And we've published a [Using AngularJS with BRJS tutorial](#brjs-angular) showing one way of using AngularJS within a BladeRunnerJS app.
 

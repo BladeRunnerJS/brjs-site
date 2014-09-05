@@ -3,7 +3,7 @@ layout: post
 title: "Thoughts from ForwardJS"
 authors: [leggetter]
 thumb: forwardhex.png
-latest: true
+latest: false
 
 excerpt: "ForwardJS took place in San Francisco last week. It was a great event consisting of progressive workshops and talks. Here's a post covering our involvement and the things I found most interesting: FluxJS, ES6 and Web Components."
 

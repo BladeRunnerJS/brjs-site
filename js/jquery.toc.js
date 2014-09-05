@@ -14,6 +14,21 @@
  */
 (function($) {
 
+    function createAnchorId( config, el, tocLevel, tocSection, innerSection ) {
+      var anchorId = 'unknown';
+      var anchorNameEl = el.prev( 'p' ).find( 'a[name]' );
+      if( anchorNameEl.size() ) {
+        anchorId = anchorNameEl.attr( 'name' );
+      }
+      else {
+        anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
+        if( innerSection ) {
+          anchorId =+ '-' + innerSection;
+        }
+      }
+      return anchorId;
+    }
+
     function createLevelHTML(anchorId, tocLevel, tocSection, tocNumber, tocText, tocInner) {
         var link = '<a href="#%1"><span class="tocnumber">%2</span> <span class="toctext">%3</span></a>%4'
             .replace('%1', anchorId)
@@ -48,7 +63,7 @@
           toggleHTML += '<span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">hide</a>]</span>';
         }
         toggleHTML += '</div>';
-        
+
         var tocContainerHTML = '<div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>%1<ul>%2</ul></td></tr></tbody></table></div>';
 
         var tocHTML = '';
@@ -65,18 +80,21 @@
 
             h1.nextUntil('h' + config.startAt).filter('h' + (config.startAt + 1 ) ).each(function() {
                 ++innerSection;
-                var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection + '-' +  + innerSection;
-                $(this).attr('id', anchorId);
+                var anchorEl = $( this );
+                console.log( anchorEl.prev( 'a' ) );
+                var anchorId = createAnchorId( config, anchorEl, tocLevel, tocSection, innerSection );
+                anchorEl.attr('id', anchorId);
                 levelHTML += createLevelHTML(anchorId,
                     tocLevel + 1,
                     tocSection + innerSection,
                     itemNumber + '.' + innerSection,
-                    $(this).text());
+                    anchorEl.text());
             });
             if (levelHTML) {
                 levelHTML = '<ul>' + levelHTML + '</ul>\n';
             }
-            var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
+
+            var anchorId = createAnchorId( config, h1, tocLevel, tocSection );
             h1.attr('id', anchorId);
             tocHTML += createLevelHTML(anchorId,
                 tocLevel,

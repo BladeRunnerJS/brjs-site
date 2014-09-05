@@ -18,6 +18,7 @@ For full API information see the [EventHub API Docs](http://apidocs.bladerunnerj
 
 For more information see the [EventHub docs](/docs/concepts/event_hub/).
 
+<a name="HtmlResourceService"></a>
 ## HtmlResourceService
 
 The HtmlResourceService performs an asynchronous HTTP request and retrieves the HTML bundle file from the app-server.
@@ -35,7 +36,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var htmlService = ServiceRegistry.getService( 'br.html-service' );
 ```
 
-For more information see the [XmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/HtmlResourceService.html).
+For more information see the [HtmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/HtmlResourceService.html).
 
 ## XMLResourceService
 

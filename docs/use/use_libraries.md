@@ -127,6 +127,12 @@ With the files and place and configuration set up it's now possible to use Zepto
 var Zepto = require( 'zepto' );
 ```
 
+### Prevent Polluting the 'Global Namespace'
+
+Typically libraries, like [JQuery](http://jquery.com/), define an object on `Window` which pollutes the global namespace and makes them available to classes that don't explicitly require them which can cause brittle code.
+
+Libraries are now starting to include [UMD](http://github.com/umdjs/umd) or support for loading the library as a `CommonJS` module, for example you'll see `module.exports` at the top of [jQuery](https://code.jquery.com/jquery-1.11.1.js). You can make use of this definition by including `commonjsDefinition: true` in your `thirdparty-lib.manifest` which will cause the library to be wrapped in a `define` block and prevent the default globalisation of the library.
+
 ## Where Next?
 
 For more information about libraries, see [About Libraries](/docs/concepts/libraries/)

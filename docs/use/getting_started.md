@@ -236,27 +236,31 @@ A core concept with BRJS is building a JavaScript application that scales. One o
 When you scaffold a new Blade a test class is also created. The scaffolded test can be found in `input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js`:
 
 ```js
-var InputViewModelTest = TestCase("InputTest");
+(function(){
+    var InputViewModelTest = TestCase("InputTest");
 
-var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
+    var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
 
-InputViewModelTest.prototype.testSomething = function() {
-  var model = new InputViewModel();
-  assertEquals( 'Hello World!', model.message() );
-};
+    InputViewModelTest.prototype.testSomething = function() {
+      var model = new InputViewModel();
+      assertEquals( 'Hello World!', model.message() );
+    };
+}());
 ```
 
 The simplest test we can write at the moment is to check that the `todoText` field is initialized with an empty string value.
 
 ```javascript
-var InputViewModelTest = TestCase( 'InputViewModelTest' );
+(function(){
+    var InputViewModelTest = TestCase( 'InputViewModelTest' );
 
-var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
+    var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
 
-InputViewModelTest.prototype.testSomething = function() {
-  var model = new InputViewModel();
-  assertEquals( '', model.todoText() );
-};
+    InputViewModelTest.prototype.testSomething = function() {
+      var model = new InputViewModel();
+      assertEquals( '', model.todoText() );
+    };
+}());
 ```
 
 ### Run the Test

@@ -46,11 +46,13 @@ depends: someOtherLibrary
 js: js/*.js
 css: css/*.js
 exports: myLibrary
+commonjsDefinition: true
 ```
 
 - `depends` allows a third-party library to depend on another library (including BRJS conformant libraries). For example, if a 'twitterbootstrap' had a dependeny on a 'jquery' library you could use the `depends` configuration. This option is needed to explicitly define dependencies since, unlike other types of source code, BRJS cannot infer depencies for Thirdparty libraries since the structure of the source code is unknown.
 - `js` and `css` configure the JavaScript and CSS files that should be bundled when this library is used. By default all `.js` and `.css` files in the root of the library directory are bundled. The option can support limited wildcards, for example `src/*.js` and `**/*.js` to bundle all '.js' files in the 'src' directory and all 'js' files in all directories and sub-directories respectively.
 - `exports` defines the name of the objet that this library 'exports'. In order for the BRJS module system to work with this type of library each library must define the JavaScript reference that it exports. For example 'jQuery' is written to define 'jQuery' on the window object (e.g `window.jQuery = ...`) so the value of `exports` would be 'jQuery'. The value of `exports` is not always the same as the name of the library. For example 'knockout' defines 'ko' on the window object, so the value of `exports` would be 'ko'. If the library does not need to export anything (for example, it is solely used for css) then you can export an empty object. This is specified by setting `exports` to `"{}"` (note the `"`s which are needed to define a literal `{}`).
+- `commonjsDefinition` defines whether or not this library should be treated as a CommonJS library. This causes the library to be wrapped in a `define` block, preventing it from defining itself on `window`.
 
 ## Where Next?
 

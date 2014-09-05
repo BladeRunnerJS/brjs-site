@@ -65,3 +65,8 @@ You can now reference [full list of API docs](http://apidocs.bladerunnerjs.org/)
 For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. Angular is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first.
 
 So, go checkout the [Using AngularJS with BladeRunnerJS tutorial](http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/).
+
+<a name="release-notes"></a>
+## Release Notes
+
+The [full release notes for v0.12](https://github.com/BladeRunnerJS/brjs/releases/tag/v0.12) are also available.

@@ -64,23 +64,25 @@ The `TodoItem` class has two properties; `text` for the Todo item text and `done
 We can then define a test for this class:
 
 ```js
-TodoItemTest = TestCase( 'TodoItemTest' );
+(function(){
+    TodoItemTest = TestCase( 'TodoItemTest' );
 
-var TodoItem = require( 'brjstodo/TodoItem' );
+    var TodoItem = require( 'brjstodo/TodoItem' );
 
-TodoItemTest.prototype.setUp = function() {
-  this.todoItem = new TodoItem();
-};
+    TodoItemTest.prototype.setUp = function() {
+      this.todoItem = new TodoItem();
+    };
 
-TodoItemTest.prototype.test_text_can_be_set = function() {
-  var text = 'write your first unit test'
-  this.todoItem.setText( text  );
-  assertEquals( this.todoItem.text, text );
-};
+    TodoItemTest.prototype.test_text_can_be_set = function() {
+      var text = 'write your first unit test'
+      this.todoItem.setText( text  );
+      assertEquals( this.todoItem.text, text );
+    };
 
-TodoItemTest.prototype.tearDown = function() {
-  this.todoItem = undefined;
-};
+    TodoItemTest.prototype.tearDown = function() {
+      this.todoItem = undefined;
+    };
+}());
 ```
 
 The test above defines a new `TestCase` giving it a name. Then it uses `require` to reference the `TodoItem` class and initializes a member instance called `todoItem` on the `TodoItemTest`, within a `setUp` function. The `setUp` function is executed before each test is run. There is also a `tearDown` function that's executed after every test is run in which the `todoItem` is set to `undefined` in order to ensure not state is leaked into later tests (although in this case there aren't any right now).
@@ -175,47 +177,48 @@ The `keyPressed` function is called when the user presses a key in the view. Thi
 As we stated above, the purpose of this test is to make sure that pressing `Enter`/`Return` when text has been entered into the an `input` will result in the new todo item being added to a `todoService` by ensuring the `addTodo` has been called.
 
 ``` js
-'use strict';
+(function(){
+    'use strict';
 
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
+    var ServiceRegistry = require( 'br/ServiceRegistry' );
+    var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
 
-require( 'jasmine' );
+    require( 'jasmine' );
 
-describe('The Input', function() {
+    describe('The Input', function() {
 
-  it( 'Should add new todo items to the TodoService', function() {
-    // Setup
-    var todoService = jasmine.createSpyObj( 'todos', [ 'addTodo' ] );
-    ServiceRegistry.registerService( 'todomvc.storage', todoService );
+      it( 'Should add new todo items to the TodoService', function() {
+        // Setup
+        var todoService = jasmine.createSpyObj( 'todos', [ 'addTodo' ] );
+        ServiceRegistry.registerService( 'todomvc.storage', todoService );
 
-    var testTodoTitle = 'write some code and test it';
-    var todoInputBlade = new InputViewModel();
+        var testTodoTitle = 'write some code and test it';
+        var todoInputBlade = new InputViewModel();
 
-    /*** new code ***/
-    // Set text in view model
-    todoInputBlade.todoText( testTodoTitle );
-    /*** end of new code ***/
+        /*** new code ***/
+        // Set text in view model
+        todoInputBlade.todoText( testTodoTitle );
+        /*** end of new code ***/
 
-    var expectedEventData = {
-      title: testTodoTitle
-    };
+        var expectedEventData = {
+          title: testTodoTitle
+        };
 
-    // Execute test
-    /*** new code ***/
-    // simulate key press with enter keyCode
-    todoInputBlade.keyPressed( null, { keyCode: 13 } );
-    /*** end of new code ***/
+        // Execute test
+        /*** new code ***/
+        // simulate key press with enter keyCode
+        todoInputBlade.keyPressed( null, { keyCode: 13 } );
+        /*** end of new code ***/
 
-    // Assert
-    /*** new code ***/
-    // assert service has been interacted with
-    expect( todoService.addTodo ).toHaveBeenCalledWith( expectedEventData );
-    /*** end of new code ***/
-  } );
+        // Assert
+        /*** new code ***/
+        // assert service has been interacted with
+        expect( todoService.addTodo ).toHaveBeenCalledWith( expectedEventData );
+        /*** end of new code ***/
+      } );
 
-});
-
+    });
+}());
 ```
 
 The `require( 'jasmine' )` ensures that jasmine is available for the tests. `jasmine.createSpyObj` is used to create a spy object (some may refer to this as a mock) and this is added to the `ServiceRegistry` before any other set up. This ensures the service is ready to be used by the feature functionality:

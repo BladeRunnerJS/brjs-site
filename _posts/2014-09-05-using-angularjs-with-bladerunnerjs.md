@@ -20,9 +20,11 @@ Although we've done some work internally to ensure AngularJS can be used within 
 * Make it easy to get started with BRJS and Angular
 * Demonstrate best practice when using BRJS and Angular
 
-This post will go some way to helping with all three of these things, although I'm sure we can do more to help with getting started in the future. My approach for "best practice" when **using Angular within a BRJS app** will be to break a commonly used application into features/components and build each of these features in isolation as [Angular Directives](https://docs.angularjs.org/guide/directive). Ideas for best practice will undoubtedly evolve over time, but this provides a good starting point (please provide your feedback).
+This post will go some way to helping with all three of these things, although I'm sure we can do more to help with getting started in the future. My approach for "best practice" when **using Angular within a BRJS app** will be to break a commonly used application into features/components and build each of these features in isolation as [Angular Directives](https://docs.angularjs.org/guide/directive). Ideas for best practice will undoubtedly evolve over time, but this provides a good starting point.
 
 The application that we're going to re-create using BRJS is the Angular version of the [Todo MVC application](http://todomvc.com/). We'll also try to reuse as much code as possible from the [default Todo MVC Angular app](https://github.com/tastejs/todomvc/tree/gh-pages/architecture-examples/angularjs).
+
+**Please provide your feedback by raising issues and pull requests against the [BRJS and Angular Todo MVC repo](https://github.com/BladeRunnerJS/brjs-todomvc-angular/).**
 
 ## What it doesn't cover
 
@@ -30,7 +32,7 @@ This post is about **how to use Angular with BRJS** and **BRJS Applications Arch
 
 * **Testing** - One of the main driving forces behind the BRJS application architecture is testability. But for the sake of brevity we'll omit writing tests from this post.
 * **Feature Code** - We're also not going to go into any real detail when it comes to the feature code. The focus will be the features as a whole and how they interact.
-* **Angular Services** - The app gets services via BRJS mechanism. Opens of how best to approach is are worth dicussing in comments or a separate blog post.
+* **Angular Services** - The app gets services via BRJS mechanism. Opens of how best to approach is are worth discussing in comments, via the [app repo](https://github.com/BladeRunnerJS/brjs-todomvc-angular/) or a separate blog post.
 
 ## BRJS Application Structure
 
@@ -45,7 +47,7 @@ Within our Todo application we'll have three blades:
 * **items** - to display a list of existing Todo items
 * **filter** - to allow actions to be performed of the list of items
 
-![](/blog/img/brjs-angular-tutorial/brjs-angular-todomvc-directives.png)
+![Todo MVC Blades](/blog/img/brjs-angular-tutorial/brjs-angular-todomvc-directives.png)
 
 We'll have a single service that will provide Todo specific functionality:
 
@@ -55,12 +57,12 @@ The service will be defined within a [library](http://bladerunnerjs.org/docs/con
 
 ## Using the BRJS toolkit
 
-The BRJS toolkit comes with an [executable CLI](http://bladerunnerjs.org/docs/use/commandline/) that provide you with everything you need to automate common tasks when building BRJS apps. This includes scaffolding your app, a development server, running your blades in isolation in [workbenches](http://bladerunnerjs.org/docs/concepts/workbenches/), [running tests](http://bladerunnerjs.org/docs/use/running_tests/), running your full app and more. The CLI can be found within the `BladeRunnerJS/sdk/` directory. Execute `./brjs help` to find out more.
+The BRJS toolkit comes with an [executable CLI](http://bladerunnerjs.org/docs/use/commandline/) that provide you with everything you need to automate common tasks when building BRJS apps. This includes scaffolding your app, a development server, running your blades in isolation in [workbenches](http://bladerunnerjs.org/docs/concepts/workbenches/), [running tests](http://bladerunnerjs.org/docs/use/running_tests/), running your full app and more. The [CLI](http://bladerunnerjs.org/docs/use/commandline/) can be found within the `BladeRunnerJS/sdk/` directory. Execute `./brjs help` to find out more.
 
 In order to follow the rest of the tutorial you'll need to download BRJS v0.12 or later:
 
-<center><a class="btn btn-success" role="button" aria-label="~50 MB" href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.12">
-	<span class="glyphicon glyphicon-arrow-down"></span> BladeRunnerJS-v0.12.zip
+<center><a class="btn btn-success" role="button" aria-label="52 MB" href="https://github.com/BladeRunnerJS/brjs/releases/tag/v0.12">
+	<span class="glyphicon glyphicon-arrow-down"></span> BladeRunnerJS-v0.12.0-gbf2529e.zip
 </a></center>
 
 ## Create the Todo App
@@ -71,7 +73,7 @@ Use the `create-app` command to scaffold a BRJS application.
 $ ./brjs create-app brjstodo
 ```
 
-For now, applications need to reside within an `apps` folder within the `BladeRunnerJS` directory. The above command will create an application called `brjstodo` within the `apps` directory (`BladeRunnerjs/apps/brjstodo/`). That directory will have the following contents:
+For now, applications need to reside within an `apps` folder within the `BladeRunnerJS` directory. The above command will create an application called `brjstodo` within the `apps` directory (`BladeRunnerJS/apps/brjstodo/`). That directory will have the following contents:
 
 ```
 apps/brjstodo
@@ -83,11 +85,8 @@ apps/brjstodo
 ├── test-acceptance 		# Application acceptance tests
 ├── test-unit   				# Application unit tests
 ├── themes      				# CSS and images
-├── unbundled-resources # Assets that shouldn't be minified and bundled
-└── WEB-INF      				# legacy
+└── unbundled-resources # Assets that shouldn't be minified and bundled
 ```
-
-Delete the `WEB-INF` directory as it's not required for this tutorial.
 
 ## Adding Angular to a BRJS App
 
@@ -96,7 +95,7 @@ We know we're going to be using Angular so before we do anything else let's add 
 Within `apps/brjstodo/libs` create an `angular` directory. Within that directory add the [`angular.js` JavaScript library](http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js). Finally, create a `thirdparty-lib.manifest` with the following contents:
 
 ```
-exports: angular
+exports: window.angular
 ```
 
 The purpose of this manifest file is to define how the contents of the `angular` library directory are used. In this case everything will be bundled (well, just the `angular.js` file). The `exports` property identifies the JavaScript object to be exported from the module. For more information on the manifest file see the [BRJS libraries docs](http://bladerunnerjs.org/docs/concepts/libraries/).
@@ -121,7 +120,7 @@ $ ./brjs create-blade brjstodo default input
 
 *Note: `default` is presently required but we'll [remove the need for it](https://github.com/BladeRunnerJS/brjs/issues/885) in the future.**
 
-This will create all the basic assets required for the blade within `apps/brjstodo/blades/input`. The contents will be as follows:
+This will create all the basic assets required for the blade within the default blades location: `apps/brjstodo/blades/input`. The contents will be as follows:
 
 ```
 blades/input
@@ -135,7 +134,7 @@ blades/input
 └── workbench      	# Files to run the blade in isolation
 ```
 
-Now we have the basic scaffolding in place we can create an [Angular Directive](https://docs.angularjs.org/guide/directive) that represents the input component for the Todo app.
+Now we have the basic app and blade skeleton in place we can create an [Angular Directive](https://docs.angularjs.org/guide/directive) that represents the input component for the Todo app.
 
 First we should define the HTML template. The convention here is to separate HTML and JavaScript so let's update the existing `view.html` within the `blades/input/resources/html/` directory with the following content:
 
@@ -185,11 +184,13 @@ var InputDirective = function() {
 module.exports = InputDirective;
 ```
 
-You'll noticed that we're just logging the `todoItem` at the moment. We'll fix this shortly. But first let's see our directive Blade running in a [workbench](http://bladerunnerjs.org/docs/concepts/workbenches/).
+A few points to note: The directive is being defined as an object that needs to be instantiated rather than an object literal and the template HTML is being retrieved via the [HtmlResourceService](http://bladerunnerjs.org/docs/reference/available_services/#HtmlResourceService) rather than using Angular. The latter is to take advantage of BRJS HTMl [bundling](http://bladerunnerjs.org/docs/concepts/bundlers/).
+
+You'll also noticed that we're just logging the `todoItem` at the moment. We'll fix this shortly. But first let's see our directive Blade running in a [workbench](http://bladerunnerjs.org/docs/concepts/workbenches/).
 
 ## Running Angular Directive Blades in Workbenches
 
-Right now BRJS doesn't offer [alternative templating support](https://github.com/BladeRunnerJS/brjs/issues/126) so the default blade template creates you files related to Blades that use Knockout. One of these files is the `blades/input/workbench/index.html` file. This file is there to let you run and develop your blade in isolation.
+Right now BRJS doesn't offer [alternative templating support](https://github.com/BladeRunnerJS/brjs/issues/126) so the default blade template creates you files related to Blades that use [KnockoutJS](http://knockoutjs.com/). One of these files is the `blades/input/workbench/index.html` file. This file is there to let you run and develop your blade in isolation (in a workbench).
 
 We need to update this to display our Angular directive. To do this replace the JavaScript below the `// ViewModel that is being created in the workbench` comment, including the calls to `addModelViewer` and `addComponent`, with the following:
 
@@ -233,7 +234,7 @@ Anyway, to make things simple and focused let's just download two assets and put
 * [styles.css](https://raw.githubusercontent.com/BladeRunnerJS/brjs-todomvc-angular/master/themes/common/style.css)
 * [bg.png](https://raw.githubusercontent.com/BladeRunnerJS/brjs-todomvc-angular/master/themes/common/bg.png)
 
-When you refresh the workbench you'll now see styling applied to the input blade.
+CSS and images in this directory will be bundled with all themes. When you refresh the workbench you'll now see styling applied to the input blade.
 
 ![](/blog/img/brjs-angular-tutorial/input-directive-workbench-styled.png)
 

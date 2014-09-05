@@ -8,7 +8,9 @@ excerpt: I'm very excited that after 4 months of hard work we've released BladeR
 
 ---
 
-<strong>We've now released v0.12. Please view the release detail in the <a href="http://bladerunnerjs.org/blog/brjs-v0-12-released/">Angular JS Tutorial + Intuitive App Structures - BladeRunnerJS v0.12 Released</a> blog post</strong>.
+<div class="alert alert-warning">
+<strong>If you're here looking for the details on the v0.12 release you can find it here: <a href="http://bladerunnerjs.org/blog/brjs-v0-12-released/">Angular JS Tutorial + Intuitive App Structures - BladeRunnerJS v0.12 Released</a>. The recent email newsletter contained a link that incorrectly sent people here. Please do read the <a href="http://bladerunnerjs.org/blog/brjs-v0-12-released/">v0.12 release details</a>.</strong>
+</div>
 
 I'm very excited that after 4 months of hard work we've **released BladeRunnerJS v0.1**. As outlined in the [Introducing BladeRunnerJS blog post](http://bladerunnerjs.org/2013/09/16/introducing-bladerunnerjs/) we've been working on decoupling BRJS from a product called [Caplin Trader](http://www.caplin.com/caplin-trader), doing some re-architecting and making the codebase open source. There's a lot more work still to be done in order for us to meet the functionality we believe justifies a v1.0 release - take a look at the [roadmap to v1.0][roadmap] - but we now have the [code in github](https://github.com/BladeRunnerJS/brjs/), some [basic documentation](http://bladerunnerjs.org/docs/) in place and a [getting started guide][getting_started] that does both a good job of introducing the core BRJS concepts and highlights some of the changes we're going to make on the road to v1.0.
 

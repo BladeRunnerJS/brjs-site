@@ -62,9 +62,18 @@ You can now reference [full list of API docs](http://apidocs.bladerunnerjs.org/)
 <a name="brjs-angular"></a>
 ## Using AngularJS with BRJS
 
+<a href="http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/"><img src="http://bladerunnerjs.org/blog/img/brjs-angular-tutorial/brjs-angular-sml.png" style="margin: 30px;" align="right" /></a>
 For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. Angular is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first.
 
 So, go checkout the [Using AngularJS with BladeRunnerJS tutorial](http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/).
+
+<a name="workshop"></a>
+## BladeRunnerJS Workshop
+
+If you are in or around London on Wednesday 10th September why not head to our London HQ at 6pm for a [workshop](http://attending.io/events/brjs-workshop-london)? We'll split into teams and "companies" who will collaborate on building complex front-end web applications using BladeRunnerJS. It will also be an opportunity to meet up with others who are building large scale JavaScript apps, work with them and chat over food and drink.</p>
+
+You can find out much more <strong>and register</strong> on the [How to Build Front-End Web Apps that Scale using BladeRunnerJS](http://attending.io/events/brjs-workshop-london) event page.
+
 
 <a name="release-notes"></a>
 ## Release Notes

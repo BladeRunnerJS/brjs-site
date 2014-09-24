@@ -75,7 +75,7 @@ Build the app:
 › ./brjs build-app brjsapp public
 ```
 
-Create a new DivShot app and answer all the questions ensuring that the current (`public`) directory is chose as the app directory:
+Create a new DivShot app and answer all the questions ensuring that the current (`public`) directory is chosen as the app directory:
 
 ```
 › divshot init

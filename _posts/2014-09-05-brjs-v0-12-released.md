@@ -42,7 +42,7 @@ You can now use the `build-app <app-name> <path>` command to build your applicat
 
 Here are a few examples of building and deploying an app to different hosting services:
 
-* [DivShot](http://bladerunnerjs.org/docs/use/build_deploy/#divshot)
+* [Divshot](http://bladerunnerjs.org/docs/use/build_deploy/#divshot)
 * [GitHub pages](http://bladerunnerjs.org/docs/use/build_deploy/#gh-pages)
 * [Firebase hosting](http://bladerunnerjs.org/docs/use/build_deploy/#firebase)
 

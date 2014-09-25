@@ -56,11 +56,11 @@ The structure of the contents of timestamp version directory is as follows:
 Here are some examples of building and deploying BRJS static apps:
 
 <a name="divshot"></a>
-#### Deploy to DivShot
+#### Deploy to Divshot
 
-[DivShot](http://rfrr.al/kqiu) focus on offering static hosting for developers.
+[Divshot](http://rfrr.al/kqiu) focus on offering static hosting for developers.
 
-You'll need a DivShot account, have the CLI installed and have authenticated the CLI. Once you do you can deploy a BRJS app to DivShot as follows:
+You'll need a Divshot account, have the CLI installed and have authenticated the CLI. Once you do you can deploy a BRJS app to Divshot as follows:
 
 Make a directory inside your app directory where the app is going to be built to and navigate into it:
 
@@ -75,7 +75,7 @@ Build the app:
 › ./brjs build-app brjsapp public
 ```
 
-Create a new DivShot app and answer all the questions ensuring that the current (`public`) directory is chosen as the app directory:
+Create a new Divshot app and answer all the questions ensuring that the current (`public`) directory is chosen as the app directory:
 
 ```
 › divshot init

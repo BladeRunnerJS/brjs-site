@@ -21,6 +21,8 @@ The default BRJS application configuration has been proven to provide a producti
 
 Right now BladeRunnerJS templates use Knockout by default. But there's no reason why you can't use Angular, Ember, React or any other front-end framework *with BladeRunnerJS*.
 
+We do have a tutorial that demonstrates how to [Use AngularJS within a BladeRunnerJS app](http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/). More examples of using BRJS with other technologies to follow.
+
 ## How do Blades relate to Web Components?
 
 Blades and Web Components represent similar concepts.

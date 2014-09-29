@@ -33,21 +33,25 @@ So, an `ExampleClass.js` will look like this:
 
 BRJS presently generates very large bundled JavaScript files which an make debugging difficult. We need to create a way of improving that essential debug workflow.
 
-### [Simplified Directory Structure](https://github.com/BladeRunnerJS/brjs/issues/19)
+### ~~[Simplified Directory Structure](https://github.com/BladeRunnerJS/brjs/issues/19)~~
 
 BRJS originally borrowed a lot from Java; the directory structure was one of those things. We've realised that this adds unnecessary complexity to folder structure so we're going to fix this and go with a much simpler, flatter directory structure.
 
-### [Make BladeSets Optional](https://github.com/BladeRunnerJS/brjs/issues/2)
+### ~~[Make BladeSets Optional](https://github.com/BladeRunnerJS/brjs/issues/2)~~
 
 [BladeSets](http://bladerunnerjs.org/docs/concepts/bladesets) can be a very useful BRJS feature. But you *may* not actually need them, especially when you first start building your application.
 
-### [Make Aspects Optional](https://github.com/BladeRunnerJS/brjs/issues/17)
+### ~~[Make Aspects Optional](https://github.com/BladeRunnerJS/brjs/issues/17)~~
 
 As with BladeSets, [Aspects](http://bladerunnerjs.org/docs/concepts/aspects) are a really powerful feature. But you may not always need multiple aspects into your application. So we're going to make Aspects optional.
 
-### [Flat File Deployment](https://github.com/BladeRunnerJS/brjs/issues/18)
+### ~~[Flat File Deployment](https://github.com/BladeRunnerJS/brjs/issues/18)~~
 
 The original requirement for BRJS was to be able to create deployable WAR files. This is very restrictive so we're going to add Flat File deployment.
+
+### [Improved Scaffolding Support](https://github.com/BladeRunnerJS/brjs/issues/126)
+
+The template shipped with BRJS is presently hard-coded to use Knockout. Since BRJS can be used with other technologies it makes sense to add support for other templates to be created and used when scaffolding applications.
 
 ### [Global Install](https://github.com/BladeRunnerJS/brjs/issues/1)
 

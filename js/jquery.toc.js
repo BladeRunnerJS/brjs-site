@@ -23,7 +23,7 @@
       else {
         anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
         if( innerSection ) {
-          anchorId =+ '-' + innerSection;
+          anchorId += '-' + innerSection;
         }
       }
       return anchorId;
@@ -81,7 +81,6 @@
             h1.nextUntil('h' + config.startAt).filter('h' + (config.startAt + 1 ) ).each(function() {
                 ++innerSection;
                 var anchorEl = $( this );
-                console.log( anchorEl.prev( 'a' ) );
                 var anchorId = createAnchorId( config, anchorEl, tocLevel, tocSection, innerSection );
                 anchorEl.attr('id', anchorId);
                 levelHTML += createLevelHTML(anchorId,

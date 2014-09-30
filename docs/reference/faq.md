@@ -21,7 +21,7 @@ The default BRJS application configuration has been proven to provide a producti
 
 Right now BladeRunnerJS templates use Knockout by default. But there's no reason why you can't use Angular, Ember, React or any other front-end framework *with BladeRunnerJS*.
 
-We do have a tutorial that demonstrates how to [Use AngularJS within a BladeRunnerJS app](http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/). More examples of using BRJS with other technologies to follow.
+We have a tutorial that demonstrates how to [Use AngularJS within a BladeRunnerJS app](http://bladerunnerjs.org/blog/using-angularjs-with-bladerunnerjs/). More examples of using BRJS with other technologies to follow.
 
 ## How do Blades relate to Web Components?
 
@@ -87,9 +87,12 @@ Our support for CommonJS/Node.js style requires is performed via a [bundler plug
 
 See [Modelling Web Apps](/blog/modelling-webapps/).
 
-## Why isn't BladeRunnerJS written in Node.JS?
+<a name="nodejs"></a>
+## Why isn't BladeRunnerJS written in Node.JS? Why is it written in Java?
 
-We started the BladeRunner project in around 2011. Back then, Node.js wasn't an option for a production-grade solution. When we started the open sourcing process (and renaming from "BladeRunner" to "BladeRunnerJS") we decided on a re-write. We again thought about using Node.js. Unfortunately Node.js isn't supported in some of the development environments of our target customers, so building the toolkit in Node.js still isn't an option for us.
+We started the BladeRunner project in around 2011. Back then, Node.js wasn't an option for a product that we ship to our customers since it was unstable. When we started the open sourcing process (and renaming from "BladeRunner" to "BladeRunnerJS") we decided on a re-write. We again thought about using Node.js. Unfortunately Node.js isn't supported in some of the development environments of our target customers, so building the toolkit in Node.js still isn't an option for us.
+
+There may also be benefits from using Java - a language that supports threading - when it comes to benefit gains in processing and building very large scale JavaScript applications. We still need to investigate this further to prove/disprove this theory.
 
 However, we do want to start integrating with some of the amazing Node.js tooling and we plan to do that via plugins. For more information see [Embracing Node.js](http://bladerunnerjs.org/blog/embracing-nodejs/).
 
@@ -101,26 +104,17 @@ However, we'd recommend that you split your application functionality up by feat
 
 ## Can I get support?
 
-Yes.
+Yes. Please see our [Support page](/support).
 
-By:
-
-* [Asking a question on Twitter](https://twitter.com/BladeRunnerJS)
-* [Raising an issue in github](https://github.com/BladeRunnerJS/brjs/issues/new)
-
-If you're interested in a supported licence then please [drop us an email](mailto:bladerunnerjs@caplin.com)
+If you're interested in a supported license then please [drop us an email](mailto:bladerunnerjs@caplin.com)
 
 ## Can you do some training?
 
-Maybe.
-
-Please [drop us an email](mailto:bladerunnerjs@caplin.com).
+Yes. Please [drop us an email](mailto:bladerunnerjs@caplin.com).
 
 ## Will you do a Webinar to tell me more?
 
-Maybe.
-
-Please [drop us an email](mailto:bladerunnerjs@caplin.com).
+Please [drop us an email](mailto:bladerunnerjs@caplin.com) with your requirements.
 
 ## Can you add support for \*insert-cool-new-feature\*?
 

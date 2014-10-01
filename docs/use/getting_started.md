@@ -253,7 +253,7 @@ The simplest test we can write at the moment is to check that the `todoText` fie
 }() );
 ```
 
-Each blade comes not with unit tests and acceptance tests and we'll cover acceptance tests later.
+Each blade comes not unit tests and acceptance tests and we'll cover acceptance tests later.
 
 ### Run the Test
 
@@ -605,7 +605,7 @@ This gets the `event-hub` from the `ServiceRegistry` and then triggers a `todo-a
 
 As with the `input` Blade we can also test the `items` blade with the help of services. In this case we want to assert the state of the View Model following defined service behaviour. Specifically, we want to ensure that the blade registers for the appropriate event with the EventHub and that when that event occurs the View Model data is updated.
 
-First we want to set up a fake service that helps us interact with our blade. **Replace** the contents of `items/test-unit/tests/ItemsViewModelTest.js` with the following:
+First we want to set up a fake service that helps us interact with our blade. **Replace** the contents of `items/test-acceptance/tests/ItemsViewModelTest.js` with the following:
 
 ```js
 'use strict';
@@ -777,7 +777,7 @@ var App = function() {
 module.exports = App;
 ```
 
-At this point we haven't added any content to our page and it will just a blank page. You can
+At this point we haven't added any content to our page and it will just a blank page.
 
 In order for the Blade components to appear in the aspect we have to append the DOM elements that the `KnockoutComponent` instances create, to the Aspect (the main view into the Todo List web app). We do this by calling `component.getElement()` and appending the returned element append it to the `todoapp` element in the DOM:
 
@@ -792,11 +792,11 @@ var KnockoutComponent = require( 'br/knockout/KnockoutComponent' );
 var App = function() {
 	var inputViewModel = new InputViewModel();
 	var inputComponent =
-		new KnockoutComponent( 'brjstodo.todo.input.view-template', inputViewModel );
+		new KnockoutComponent( 'brjstodo.input.view-template', inputViewModel );
 
 	var itemsViewModel = new ItemsViewModel();
 	var itemsComponent =
-		new KnockoutComponent( 'brjstodo.todo.items.view-template', itemsViewModel );
+		new KnockoutComponent( 'brjstodo.items.view-template', itemsViewModel );
 
 	/*** new code ***/
 	var todoAppEl = document.getElementById( 'todoapp' );

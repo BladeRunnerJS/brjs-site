@@ -253,7 +253,7 @@ The simplest test we can write at the moment is to check that the `todoText` fie
 }() );
 ```
 
-Each blade comes not unit tests and acceptance tests and we'll cover acceptance tests later.
+Each blade comes with unit tests and acceptance tests and we'll cover acceptance tests later.
 
 ### Run the Test
 

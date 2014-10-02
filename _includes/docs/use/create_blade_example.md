@@ -1,21 +1,16 @@
 ```bash
-$ ./brjs create-blade brjstodo todo input
+$ ./brjs create-blade brjstodo default input
 ```
 
-This creates a `input` directory within `BRJS_HOME/apps/brjstodo/todo-bladeset/blades/` containing the following sub-directories:
+This creates a `input` directory within `BRJS_HOME/apps/brjstodo/blades/` containing the following sub-directories:
 
 * `src` - for the JavaScript for the Blade
-* `tests` - for the blade tests
+* `test-unit` - blade unit tests
+* `test-acceptance` - blade acceptance tests
 * `themes` - for CSS and images
 * `workbench` - for the [Workbench](/docs/concepts/workbenches) for the Blade we're developing
 * `resources` - for everything else
 
-<div class="alert alert-info github">
-<p>
-In future:
-</p>
-<ul>
-<li><a href="https://github.com/BladeRunnerJS/brjs/issues/3">A default blade will be created when an application is created</a></li>
-<li>The <a href="https://github.com/BladeRunnerJS/brjs/issues/1">CLI will be context aware</a> so you can run <code>brjs create-blade</code> from within an application directory to create a blade for an app; you won't need to supply an app name, app namespace and BladeSet name</li>
-</ul>
+<div class="alert alert-info">
+  <p>The <code>default</code> parameter ensures that the blade is created within the <code>blades</code> directory. The format of this command will change when we add support for <a href="https://github.com/BladeRunnerJS/brjs/issues/885">context aware commands</a>.</p>
 </div>

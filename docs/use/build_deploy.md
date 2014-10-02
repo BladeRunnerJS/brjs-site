@@ -31,6 +31,7 @@ The command for building application is:
 
 Where the `app-name` is the name of the application you wish to build and `target-dir` is where you want the output of the build to go. The `-w` or `--war` command allows you to set the output to be built as a [WAR file](http://en.wikipedia.org/wiki/WAR_(file_format)).
 
+<a name="static"></a>
 ### Build as Static Files
 
 If you wish to deploy your application to any web server or a CDN then it's likely that you'll want to use the BRJS toolkit to build your assets into concatenated file bundles that can be served as static files.
@@ -158,6 +159,7 @@ View your deployed app in your web browser:
 › firebase open
 ```
 
+<a name="war"></a>
 ### Build as WAR
 
 If you are deploying to an environment that supports WAR file then BRJS provides support for building a deployable WAR. This is achieved using the `-w` flag:
@@ -168,7 +170,13 @@ If you are deploying to an environment that supports WAR file then BRJS provides
 
 *Note: in the above example `~/apps` must exist*
 
-This will create a `myapp.war` file in `~/apps`. You can now deploy the `.war` file to your WAR supporting web server.
+This will create a `myapp.war` file in `~/apps`. You can now deploy the `.war` file to your WAR supporting web server. For example, deploying to Tomcat is a simple as copying the generated WAR file to the Tomcat `webapps` directory
+
+<div class="alert alert-info github">
+  <p>
+    You may find that in deploying this application it will result in the root Tomcat application (<code>localhost:8080</code>) failing. We are aware of this and are <a href="https://github.com/BladeRunnerJS/brjs/issues/192">investigating</a>.
+  </p>
+</div>
 
 ## Where next?
 

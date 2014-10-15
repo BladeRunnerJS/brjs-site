@@ -16,11 +16,16 @@ body {
   background: linear-gradient(to bottom,  #ffffff 0%,#d6d6d6 20%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d6d6d6',GradientType=0 );
   line-height: 1.5em;
-  font: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 15px;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
-  padding: 3%;
+  padding: 0 0 3% 0;
+} 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
 }
 
 pre {
@@ -69,9 +74,9 @@ body.home .content {
   color: #fff;
   background: #80BA27;
   padding: 8px 20px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   margin-left: 3%;
   height: 63px;
   min-width: 75px;
@@ -86,9 +91,9 @@ p.read-more a {
   color: #fff;
   background: #80BA27;
   padding: 0px 20px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   height: 46px;
   min-width: 75px;
   font-size: 17px;
@@ -135,9 +140,6 @@ p.read-more a {
 .navbar {
   margin-bottom: 0px;
   padding: 5px 25px;
-  border-radius: 10px 10px 0px 0px;
-  -webkit-border-radius: 10px 10px 0px 0px;
-  -moz-border-radius: 10px 10px 0px 0px;
 }
 
 .navbar-header {
@@ -149,9 +151,20 @@ p.read-more a {
   padding-bottom: 5px;
 }
 
-.navbar-wrapper .container {
+.navbar-wrapper .container.nav {
   padding-left: 0px;
   padding-right: 0px;
+  max-width: inherit;
+  top: 0;
+  background-color: #222;
+  height: 61px;
+}
+
+.navbar-wrapper .container .navbar-inverse {
+  position: fixed;
+  height: 61px;
+  width: 100%;
+  background-color: rgba(36,36,36,0.9);
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -228,9 +241,9 @@ p.read-more a {
     font-weight: 400;
     letter-spacing: -1px;
     border: 1px solid #80ba27 !important;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
     background: #80BA27;
   }
 
@@ -313,9 +326,9 @@ p.read-more a {
   padding: 20px;
   margin: 0px 2.5% 2%;
   background: #3F3F40;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
 }
 
 .call-to-action * {
@@ -356,9 +369,9 @@ p.read-more a {
       width: 98%;
       padding: 3px 25px 0px;
       border: 0px;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
     }
 
     .subscribe-form input[type='submit']{
@@ -366,9 +379,9 @@ p.read-more a {
       display: inline-block;
       height: 59px;
       margin-left: -84px;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
     }
 
   /* 2ND HOMEPAGE CALL TO ACTION
@@ -572,8 +585,8 @@ body.single_page .row {
   body.blog_list .logo.row, body.single_page .logo.row {
     border-top: 0px;
     font-size: 45px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     background: #fff;
     margin: 4% 4% 0% 4%;
     padding: 32px 30px 78px 34px;
@@ -695,8 +708,8 @@ body.post h1 {
   text-align: center;
   font-size: 45px;
   color: #000;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   background: #fff;
   margin: 4% 4% 0% 4%;
   padding: 2.5% 3% 113px 3%;
@@ -804,9 +817,9 @@ body.post #disqus_thread {
   background-color: #222222;
   margin-bottom: 0px;
   padding: 22px 30px 13px 30px;
-  border-radius: 0px 0px 10px 10px;
-  -webkit-border-radius: 0px 0px 10px 10px;
-  -moz-border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 4px 4px;
+  -webkit-border-radius: 0px 0px 4px 4px;
+  -moz-border-radius: 0px 0px 4px 4px;
 
   color: #fff;
 }
@@ -874,7 +887,7 @@ body.post #disqus_thread {
 
 @media screen and (max-width: 768px) {
   .download-latest-nav {
-    margin-top: 3px;
+    /*margin-top: 3px;*/
   }
 }
 
@@ -1121,10 +1134,10 @@ body.post #disqus_thread {
   }
 }
 
+
+
 @media screen and (max-width: 600px) {
-  body {
-    padding: 0px;
-  }
+
 
   body.docs .col-lg-3 {
     margin-bottom: 0px;
@@ -1140,12 +1153,6 @@ body.post #disqus_thread {
 
   .content {
     padding-bottom: 15px;
-  }
-
-  .navbar {
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
   }
 
   .brjs-jumbo .intro p {

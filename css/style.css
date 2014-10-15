@@ -23,9 +23,18 @@ body {
   padding: 0 0 3% 0;
 } 
 
+a, button, input {
+  transition: all 0.5s ease;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lato', sans-serif;
   font-weight: 500;
+  color: #80BA27;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #80BA27;
 }
 
 pre {
@@ -42,6 +51,10 @@ body.home .content {
   padding: 0px 3px 40px 9px;
 }
 
+h1 + .main .alert {
+  margin: 20px 0;
+}
+
 .alert > p + ul,
 .alert > ul + p {
   margin-top: 5px;
@@ -55,6 +68,10 @@ body.home .content {
 
 .alert a {
   text-decoration: underline;
+}
+
+.alert-success {
+  color: #67A10E;
 }
 
 /* Font Awesome
@@ -165,10 +182,17 @@ p.read-more a {
   height: 61px;
   width: 100%;
   background-color: rgba(36,36,36,0.9);
+  border-bottom:3px solid #222;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   color: #fff;
+  border-radius: 200px;
+  padding: 5px 13px 6px 13px;
+}
+
+.navbar-inverse .navbar-nav > li > a:not(.green):hover {
+  background: rgba(0,0,0,0.3)!important;
 }
 
 .navbar-nav {
@@ -178,6 +202,11 @@ p.read-more a {
 
 .navbar-nav > li {
   float: left;
+  padding-right: 3px;
+}
+
+.navbar-nav > li:not(.btn-holder) {
+  padding-top: 10px;
 }
 
 .navbar-collapse {
@@ -445,6 +474,16 @@ p.read-more a {
 
 /* DOCUMENTS
 -------------------------------------------------- */
+
+body.docs .toc-col {
+  background-color: #f6f6f6;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin: 0;
+}
+
 body.docs .toc-col .doc-feedback {
   font-size: 0.9em;
   color: #656565;
@@ -452,15 +491,34 @@ body.docs .toc-col .doc-feedback {
   margin-top: 20px;
 }
 
+body.docs .toc-col input.search-box {
+  border: 1px solid #ddd;
+  text-indent: 10px;
+  line-height: 23px;
+  height: 34px;
+}
+
+body.docs .toc-col input.search-box:focus {
+  background: #FEFFC8;
+}
+
 body.docs .toc-col .btn-black {
   font-family: inherit;
   color: #fff;
-  background-color: #333333;
+  background-color: #666;
   border: 0;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
+  padding-left: 13px;
+  padding-right: 13px;
+  border-radius: 4px;
+  border-radius: 4px;
   line-height: 23px;
+  height: 32px;
+  margin-top: 0;
+  margin-left: 5px;
+}
+
+body.docs .toc-col .btn-black:hover {
+  background-color: #555;
 }
 
 body.docs {
@@ -1314,7 +1372,7 @@ body.single_page .team-members-row {
   font-weight: bold;
 }
 .team-member a {
-    color: black;
+    color: #80BA27;
 }
 .team-member .fa {
     display: block;

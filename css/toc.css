@@ -14,10 +14,14 @@
  */
 
 #toc-container {
+  margin: 10px 0;
   display: inline-block;
-  background-color: #F9F9F9;
-  border: 1px solid #AAAAAA;
-  padding: 10px;
+  background-color: #f6f6f6;
+  border: 1px solid #e2e2e2;
+  padding: 0;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 
 #toc, .toc, .mw-warning {
@@ -25,24 +29,28 @@
     padding: 5px;
 }
 #toc h2, .toc h2 {
-    border: medium none;
-    display: inline;
-    font-size: 100%;
+    font-size: 120%;
     font-weight: bold;
-    padding: 0;
+    padding: 5px 15px 6px 15px;
+    background: #e2e2e2;
+    margin: 0;
+    outline: 1px solid #e2e2e2;
+    color: #777;
 }
 #toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle {
-    text-align: center;
+    text-align: left;
+    margin-bottom: 10px;
 }
 #toc ul, .toc ul {
     list-style-image: none;
     list-style-type: none;
     margin-left: 0;
-    padding-left: 0;
+    padding: 10px 15px;
     text-align: left;
 }
 #toc ul ul, .toc ul ul {
     margin: 0 0 0 2em;
+    padding: 5px 0;
 }
 #toc .toctoggle, .toc .toctoggle {
     font-size: 94%;

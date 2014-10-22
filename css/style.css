@@ -818,7 +818,12 @@ body.single_page .row {
 	background-color: #80BA27;
   }
   body.blog_list .pager > li.disabled > a {
-	 font-weight: #aaa;
+	 font-weight: normal;
+   background: #aaa;
+  }
+  body.blog_list .pager > li.disabled > a:hover {
+   color: #fff;
+   background: #999;
   }
 
 /* BLOG POST

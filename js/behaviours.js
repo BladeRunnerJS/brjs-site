@@ -91,8 +91,6 @@ $( function() {
     return data[ 0 ];
   }
 
-  updateBRJSDownloadLinks();
-
   // ToC
   function generateToC() {
     var pageToc = $( '#page_toc' );
@@ -105,6 +103,32 @@ $( function() {
     } );
   }
 
+  function setupSmoothScroll() {
+    var scrollTime = 700;
+    var offsetFromNav = 15;
+    var $navHolder = $("#navbar-wrapper");
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          var targetTop = target.offset().top - $navHolder.height() - offsetFromNav;
+          $('html,body').animate({
+            scrollTop: targetTop
+          }, scrollTime);
+          return false;
+        }
+      }
+    });
+    $('a[href=#]').click(function() {
+      $('html,body').animate({
+          scrollTop: 0
+        }, scrollTime/2);
+    })
+  }
+
+  updateBRJSDownloadLinks();
   generateToC();
+  setupSmoothScroll();
 
 } );

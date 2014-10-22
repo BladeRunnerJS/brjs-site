@@ -818,7 +818,7 @@ body.single_page .row {
 	background-color: #80BA27;
   }
   body.blog_list .pager > li.disabled > a {
-	color: #999999;
+	 font-weight: #aaa;
   }
 
 /* BLOG POST

@@ -645,7 +645,12 @@ body.docs .main .fig-text {
 
 body.docs .toc-col ul {
   list-style: none;
+  padding-left: 0;
+}
+
+body.docs .toc-col ul li {
   padding-left: 15px;
+  background: url('../img/chevron.png') 2px center no-repeat;
 }
 
 body.docs .toc-col h4 a,

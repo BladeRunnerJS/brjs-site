@@ -27,10 +27,11 @@ a, button, input {
   transition: all 0.5s ease;
 }
 
+a.btn-home-cta {
+  transition: background 0.5s ease;
+}
+
 a {
-  /*border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;*/
   padding: 1px 0;
   border-bottom: 1px solid rgba(66,139,202,0);
 }
@@ -38,6 +39,11 @@ a:hover {
   background: #ECF3FA;
   text-decoration: none;
   border-bottom: 1px solid rgba(66,139,202,0.4);
+}
+
+a.clear-link:hover {
+  background: transparent;
+  border-bottom: 1px solid rgba(66,139,202,0);
 }
 
 .member-meta a,
@@ -95,6 +101,10 @@ h1 + .main .alert {
 
 .alert-success {
   color: #67A10E;
+}
+
+.btn-home {
+  width: 300px;
 }
 
 /* Font Awesome
@@ -544,6 +554,18 @@ body.docs .toc-col input.search-box {
 }
 
 body.docs .toc-col input.search-box:focus {
+  background: #FEFFC8;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  background: #ffffff;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
   background: #FEFFC8;
 }
 
@@ -1014,6 +1036,12 @@ body.post #disqus_thread {
   }
 }
 
+@media screen and (max-width: 570px) {
+  .download-latest-nav {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 1237px) {
   .call-to-action .row {
     font-size: 20px;
@@ -1088,6 +1116,19 @@ body.post #disqus_thread {
 }
 
 @media screen and (max-width: 860px) {
+
+  body.single_page .logo.row, body.post h1, body.docs h1 {
+    color: #fff;
+    font-size: 36px;
+    padding: 18px 10px 21px 10px !important;
+    margin: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    background: url('../img/green.jpg' ) 30% 0% !important;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
   body.blog_list .blog-list .post-image {
     display: none;
   }
@@ -1109,6 +1150,10 @@ body.post #disqus_thread {
 
 @media screen and (max-width: 960px) {
 
+  .navbar-nav {
+    margin-top: -5px;
+  }
+
   .primary-features .col-lg-4, .marketing .col-lg-4 {
     text-align: center;
     width: 50%;
@@ -1124,7 +1169,7 @@ body.post #disqus_thread {
     width: 100%;
   }
 
- .blog_list .logo, body.single_page .logo.row, body.post h1, body.docs h1 {
+ .blog_list .logo {
     color: #fff;
     font-size: 36px;
     padding: 18px 10px 21px 10px !important;

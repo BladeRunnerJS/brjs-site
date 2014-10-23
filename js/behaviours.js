@@ -120,7 +120,7 @@ $( function() {
         }
       }
     });
-    $('a[href=#]:not(.collapser)').click(function() {
+    $('a[href=#]:not(#collapser)').click(function() {
       $('html,body').animate({
           scrollTop: 0
         }, scrollTime/2);

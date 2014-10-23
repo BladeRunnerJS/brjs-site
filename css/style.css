@@ -72,9 +72,30 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   border-bottom: none;
 }
 
-.toc-col h1, .toc-col h2, .toc-col h3, .toc-col h4, .toc-col h5, .toc-col h6,
-.toc-col h1 a, .toc-col h2 a, .toc-col h3 a, .toc-col h4 a, .toc-col h5 a, .toc-col h6 a {
+.toc-col h1, .toc-col h2, .toc-col h3, .toc-col h4, .toc-col h5, .toc-col h6 {
   color: #777;
+  border-bottom: 1px solid rgba(66,139,202,0);
+  display: inline-block;
+}
+
+.toc-col a + a:before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 1px;
+  clear: both;
+  margin-top: -10px;
+}
+
+
+.toc-col h5 {
+  font-size: 100%;
+}
+
+.toc-col a h1:hover, .toc-col a h2:hover, .toc-col a h3:hover, .toc-col a h4:hover, .toc-col a h5:hover, .toc-col a h6:hover {
+  /*background: #ECF3FA;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(66,139,202,0.4);*/
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {

@@ -23,6 +23,13 @@ body {
   padding: 0 0 3% 0;
 } 
 
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+body.blog_list .blog-list .post-title a {
+  /*color: #777;*/
+  color: #80BA27;
+}
+
 a, button, input {
   transition: all 0.5s ease;
 }
@@ -59,13 +66,6 @@ body.blog_list .blog-list .post-title a {
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   border-bottom: none;
-}
-
-h1, h2, h3, h4, h5, h6,
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
-body.blog_list .blog-list .post-title a {
-  /*color: #777;*/
-  color: #80BA27;
 }
 
 .toc-col h1, .toc-col h2, .toc-col h3, .toc-col h4, .toc-col h5, .toc-col h6,

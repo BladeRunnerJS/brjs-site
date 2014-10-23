@@ -120,15 +120,23 @@ $( function() {
         }
       }
     });
-    $('a[href=#]').click(function() {
+    $('a[href=#]:not(.collapser)').click(function() {
       $('html,body').animate({
           scrollTop: 0
         }, scrollTime/2);
     })
   }
 
+  function setupMobileMenu() {
+    $('a#collapser').click(function() {
+      $('body').toggleClass('menu-on');
+      return false;
+    })
+  }
+
   updateBRJSDownloadLinks();
   generateToC();
   setupSmoothScroll();
+  setupMobileMenu();
 
 } );

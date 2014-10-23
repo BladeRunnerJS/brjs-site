@@ -23,6 +23,17 @@ body {
   padding: 0 0 3% 0;
 } 
 
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+body.blog_list .blog-list .post-title a {
+  color: #80BA27;
+  /*color: #777;*/
+}
+
+/*.home h1 {
+  color: #fff;
+}*/
+
 a, button, input {
   transition: all 0.5s ease;
 }
@@ -51,15 +62,19 @@ a.clear-link:hover {
   border-bottom: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+body.blog_list .blog-list .post-title a {
   font-family: 'Lato', sans-serif;
   font-weight: 500;
-  color: #80BA27;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: #80BA27;
   border-bottom: none;
+}
+
+.toc-col h1, .toc-col h2, .toc-col h3, .toc-col h4, .toc-col h5, .toc-col h6,
+.toc-col h1 a, .toc-col h2 a, .toc-col h3 a, .toc-col h4 a, .toc-col h5 a, .toc-col h6 a {
+  color: #777;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
@@ -705,7 +720,8 @@ body.single_page .row {
 
   /* BLOG LIST ROW
   -------------------------------------------------- */
-  body.blog_list .container.content {
+  body.blog_list .container.content,
+  body.single_page .container.content {
     padding: 0px;
     background-repeat: no-repeat;
     background-size: 100% 161px;
@@ -725,7 +741,6 @@ body.single_page .row {
   body.blog_list h1, body.single_page h1 {
     text-align: center;
     margin-top: 0px;
-    color: #000;
     font-size: 45px;
   }
 
@@ -766,7 +781,6 @@ body.single_page .row {
     }
 
     body.blog_list .blog-list .post-title a {
-      color: #000;
       display: block;
       font-size: 30px;
       line-height: 37px;
@@ -848,7 +862,6 @@ body.post .container.main {
 body.post h1 {
   text-align: center;
   font-size: 45px;
-  color: #000;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   background: #fff;
@@ -890,7 +903,6 @@ body.post .fig-text {
 
 body.post .copy {
   padding: 5%;
-  background: #F6F6F6;
   margin: -45px 7% 4% 7%;
   line-height: 25px;
 }
@@ -1035,6 +1047,10 @@ body.post #disqus_thread {
   display: none !important;
 }
 
+#collapser {
+  display: none;
+}
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -1047,15 +1063,114 @@ body.post #disqus_thread {
 
 /* Hide extra menu items */
 @media screen and (max-width: 540px) {
-  .download-latest-nav, .team-nav {
+/*  .download-latest-nav, .team-nav {
     display: none !important;
   }
-}
+*/}
 
 @media screen and (max-width: 570px) {
-  .download-latest-nav {
+/*  .download-latest-nav {
     display: none !important;
-  }
+  }*/
+
+#collapser {
+  color: #fff;
+  display: inline-block;
+  margin-top: 5px;
+  border: none;
+  position: relative;
+  color: rgba(255,255,255,0.8);
+  padding-left: 40px;
+}
+
+#collapser:before,
+#collapser:after,
+#collapser span:after,
+#collapser span:before {
+  content: " ";
+  display: block;
+  background: #999;
+  height: 5px;
+  width: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+#collapser span:before {
+  top: 0px;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+#collapser span:after {
+  top: 20px;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+#collapser:hover {
+  background: transparent;
+  border: none;
+}
+
+#navbar-wrapper ul.nav.navbar-nav {
+  background: #333;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  border-bottom: 5px solid rgba(0,0,0,0.1);
+  transition: opacity 0.5s ease;
+}
+
+.menu-on #collapser:before {
+  -ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.menu-on #collapser:after {
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.menu-on #collapser span:before {
+  opacity: 0;
+}
+
+.menu-on #collapser span:after {
+  opacity: 0;
+}
+
+.menu-on #navbar-wrapper ul.nav.navbar-nav {
+  display: block;
+  opacity: 1;
+}
+
+#navbar-wrapper .nav.navbar-nav li {
+  display: block;
+  width: 100%;
+  padding: 0;
+}
+
+#navbar-wrapper .nav.navbar-nav a {
+  text-align: center;
+  margin: 0;
+  padding: 15px 0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
 }
 
 @media screen and (max-width: 1237px) {
@@ -1164,7 +1279,7 @@ body.post #disqus_thread {
   }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 860px) {
 
   .navbar-nav {
     margin-top: -5px;
@@ -1264,7 +1379,6 @@ body.post #disqus_thread {
 
   .blog-list .post-title a {
     font-weight: bold;
-    color: #000;
     display: block;
     font-size: 24px;
     line-height: 29px;

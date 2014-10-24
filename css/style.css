@@ -928,8 +928,22 @@ body.post .copy {
   line-height: 25px;
 }
 
-body.post .copy p, body.post .copy ul {
-  margin-bottom: 30px;
+body.post .copy p {
+  margin-bottom: 25px;
+}
+
+body.post .copy ul, body.post .copy ol  {
+  margin: 15px 0 20px 0;
+  padding: 0 0 0 20px;
+}
+
+body.post .copy p + ul, body.post .copy p + ol  {
+  margin: -10px 0 20px 0;
+}
+
+body.post .copy ul li, body.post .copy ol li {
+  margin: 0;
+  padding: 0;
 }
 
 body.post .copy p:last-child {
@@ -1145,7 +1159,7 @@ body.post #disqus_thread {
   top: 65px;
   left: 0;
   width: 100%;
-  opacity: 0;
+  display: none;
   border-bottom: 5px solid rgba(0,0,0,0.1);
   transition: opacity 0.5s ease;
 }
@@ -1174,7 +1188,6 @@ body.post #disqus_thread {
 
 .menu-on #navbar-wrapper ul.nav.navbar-nav {
   display: block;
-  opacity: 1;
 }
 
 #navbar-wrapper .nav.navbar-nav li {
@@ -1186,7 +1199,7 @@ body.post #disqus_thread {
 #navbar-wrapper .nav.navbar-nav a {
   text-align: center;
   margin: 0;
-  padding: 15px 0;
+  padding: 11px 0;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;

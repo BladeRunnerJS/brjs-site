@@ -97,7 +97,7 @@ $( function() {
     // only supply an pageToc element if just one has been specified
     pageToc = ( pageToc.size() === 1? pageToc : null );
     $('body.docs .main').toc( {
-      startAt: 2,
+      startAt: 1,
       allowHide: false,
       pageToc: pageToc
     } );
@@ -116,6 +116,7 @@ $( function() {
           $('html,body').animate({
             scrollTop: targetTop
           }, scrollTime);
+          location.hash = this.hash;
           return false;
         }
       }

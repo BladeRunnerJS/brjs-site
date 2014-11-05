@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anonymously Tracking Toolkit Usage with Keen IO and Pusher"
+title: "Anonymously Tracking Developer Toolkit Usage with Keen IO and Pusher"
 authors: [leggetter]
 thumb: keen-io-brjs-pusher.png
 latest: true

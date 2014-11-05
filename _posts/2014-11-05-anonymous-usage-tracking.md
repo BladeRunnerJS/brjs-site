@@ -2,7 +2,7 @@
 layout: post
 title: "Anonymously Tracking Toolkit Usage with Keen IO and Pusher"
 authors: [leggetter]
-thumb: brjs-angular-tutorial/brjs-angular-sml.png
+thumb: keen-io-brjs-pusher.png
 latest: true
 
 excerpt: "For a recent hack day Andy Berry and I decided to add opt-in anonymous usage tracking to the BladeRunnerJS toolkit. We used Keen IO to capture, analyse and visualise the statistics, and Pusher to add realtime updates to a BladeRunnerJS dashboard app we built. In this post I'll cover why we wanted to do this and how it was achieved."

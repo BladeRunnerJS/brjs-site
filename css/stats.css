@@ -2,6 +2,8 @@
   clear: both;
   overflow: auto;
   margin: auto;
+
+  color: white;
 }
 
 .stat {
@@ -26,6 +28,7 @@
   font-size: 22px;
   text-align: center;
   width: 100%;
+  color: white;
 }
 
 .stat h2 span {
@@ -33,17 +36,20 @@
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 10px
+  color: white;
 }
 
 .stat.smaller h2 {
   font-size: 16px;
   margin-top: 16px;
   margin-bottom: 5px;
+  color: white;
 }
 
 .stat.smaller h2 span {
   font-size: 24px;
   margin-bottom: 5px
+  color: white;
 }
 
 .stat h3 {
@@ -51,6 +57,7 @@
   font-size: 14px;
   margin-top: 16px;
   margin-bottom: 5px;
+  color: white;
 }
 
 .stat ul {

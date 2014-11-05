@@ -8,6 +8,7 @@ permalink: /docs/use/use_libraries/
 
 There are two types of library: BladeRunnerJS conformant libraries and third-party libraries. For more information on the difference, see [Libraries](/docs/concepts/libraries/).
 
+<a name="brjs-lib"></a>
 # BladeRunnerJS Conformant Library
 
 "Conformant" libraries are libraries that follow the same directory structure as Blades. All assets are placed in a 'resources' directory, tests within a 'tests' directory and all source code withi in a 'src' directory. All source code should also be placed within a folder structure that is the same as the require path to that file, for example the module "mylib/some/cool/Thing" would be in 'src/mylib/some/cool/Thing.js'.

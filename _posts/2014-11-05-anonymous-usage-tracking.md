@@ -75,9 +75,9 @@ With that - and assuming a few developers will say "yes" to letting us collect d
 
 With the data safely stored away in Keen IO we now need a way of extracting that data and displaying it in a way that makes it easy visualise and make decisions from the data. We need a dashboard. Luckily Keen IO recently released a number of [dashboard templates](https://keen.io/blog/101269629091/charts-on-grids-responsive-dashboard-templates-with).
 
-Keen IO also provide a powerful JavaScript SDK for querying and visualising the data. One of the things I particularly like is that it removes the pain of taking the data you have and putting it into the structure required for your charting library of choice (I've seen Google and ChartJS listed so far).
-
 > the Keen IO SDK removes the pain of taking the data you have and putting it into the structure required for your charting library of choice
+
+Keen IO also provide a powerful JavaScript SDK for querying and visualising the data. One of the things I particularly like is that it removes the pain of taking the data you have and putting it into the structure required for your charting library of choice (I've seen Google and ChartJS listed so far).
 
 Once you've included the [Keen IO JavaScript SDK](https://github.com/keenlabs/keen-js) fetching and displaying data is as simple as first building a query:
 
@@ -429,8 +429,12 @@ My hunch is that Windows will top the list for BRJS. That's because I know a lot
 
 ## Conclusion
 
-Adding anonymouse usage tracking to the BladeRunnerJS toolkit was lots of fun. I love taking advantage of really powerful hosted services like Keen IO and Pusher and you can see just how easy they've made an otherwise more complex set of tasks.
+Adding anonymous usage tracking to the BladeRunnerJS toolkit was lots of fun. I love taking advantage of really powerful hosted services like Keen IO and Pusher and you can see just how easy they've made an otherwise more complex set of tasks.
 
-I'm also very hopeful that a reasonable number of developers will answer **Yes** to the anonymous data collection request so that we can get enough data to give us some real insights into everything about BRJS: onboarding process, the usage, how we can improve BRJS and much, much more.
+> The more data we have the more real insights we'll have into everything about BRJS: onboarding process, the usage, how we can improve BRJS and much, much more.
+
+I'm also very hopeful that a reasonable number of developers will answer **Yes** to the anonymous data collection request. The more data we have the more real insights we'll have into everything about BRJS: onboarding process, the usage, how we can improve BRJS and much, much more.
 
 BladeRunnerJS is of course open source. So you can **dig into [the plugin code](https://github.com/BladeRunnerJS/brjs/)** and see how we've achieved the tracking functionality in full detail (right now it's in the [this branch](https://github.com/BladeRunnerJS/brjs/tree/hack-day-2014-usage-stats)). You can also take a look at **the [BRJS Usage Dashboard](https://github.com/BladeRunnerJS/brjs-usage-dashboard) application code** that was itself built using the BladeRunnerJS toolkit. You can also see live stats in a **[deployed version of the BRJS Usage Stats app](http://j.mp/brjs-dash)**.
+
+<link href="/css/quotes.css" rel="stylesheet" />

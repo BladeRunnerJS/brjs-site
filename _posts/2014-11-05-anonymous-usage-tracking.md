@@ -91,7 +91,7 @@ var query = new Keen.Query("count", {
 } );
 ```
 
-The the example above we're querying the `installs` collection and getting a `count` of operating systems (`os_name`) that BRJS has been installed on.
+The example above we're querying the `installs` collection and getting a `count` of operating systems (`os_name`) that BRJS has been installed on.
 
 The data is then visualized by executing the query and creating a new `Keen.Visualization` and adding the resulting chart to the and element with an `id` of `os-info-name`:
 

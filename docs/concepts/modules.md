@@ -6,7 +6,7 @@ permalink: /docs/concepts/modules/
 
 The default JavaScript [bundler](/docs/concepts/bundler/) in BladeRunnerJS (BRJS)
 lets you reference code using Node.js-style `require`, `module.exports` and `exports`
-syntax within your application's JavaScript.
+syntax within your application's JavaScript. The generated JavaScript is then supported within the browser using a library called [browser-modules](https://github.com/BladeRunnerJS/browser-modules).
 
 The contents of each JavaScript file within your application's codebase is entirely
 up to you. For example, you could have a single JavaScript file at the root of
@@ -97,6 +97,10 @@ var Baz = require( 'Bar' ).Baz;
 var baz = new Baz();
 baz.sayHi();
 ```
+
+## More about browser-modules
+
+The [browser-modules repository](https://github.com/BladeRunnerJS/browser-modules) provides much more information about how it works. This includes information on things like [circular dependency detection](https://github.com/BladeRunnerJS/browser-modules#circular-dependency-detection) and how that impacts CommonJS compliance.
 
 ## Where next?
 

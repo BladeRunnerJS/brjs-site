@@ -97,7 +97,7 @@ $( function() {
     // only supply an pageToc element if just one has been specified
     pageToc = ( pageToc.size() === 1? pageToc : null );
     $('body.docs .main').toc( {
-      startAt: 1,
+      startAt: 2,
       allowHide: false,
       pageToc: pageToc
     } );
@@ -125,14 +125,14 @@ $( function() {
       $('html,body').animate({
           scrollTop: 0
         }, scrollTime/2);
-    })
+    });
   }
 
   function setupMobileMenu() {
     $('a#collapser').click(function() {
       $('body').toggleClass('menu-on');
       return false;
-    })
+    });
   }
 
   updateBRJSDownloadLinks();

@@ -9,11 +9,11 @@ permalink: /docs/use/use_libraries/
 There are two types of library: BladeRunnerJS conformant libraries and third-party libraries. For more information on the difference, see [Libraries](/docs/concepts/libraries/).
 
 <a name="brjs-lib"></a>
-# BladeRunnerJS Conformant Library
+## BladeRunnerJS Conformant Library
 
 "Conformant" libraries are libraries that follow the same directory structure as Blades. All assets are placed in a 'resources' directory, tests within a 'tests' directory and all source code withi in a 'src' directory. All source code should also be placed within a folder structure that is the same as the require path to that file, for example the module "mylib/some/cool/Thing" would be in 'src/mylib/some/cool/Thing.js'.
 
-## Create a BladeRunnerJS Library
+### Create a BladeRunnerJS Library
 
 Before you can create a Library, you need to create an application. Details on how to do this are in our [guide to creating an app](/docs/use/create_app/).
 
@@ -35,7 +35,7 @@ A directory with the name `todolib` will then be created in the libs directory o
 
 There is more information on BRJS conformant libraries, including the structure and configuration file, in [About Libraries](/docs/concepts/libraries/).
 
-## Use a BladeRunnerJS Conformant Library
+### Use a BladeRunnerJS Conformant Library
 
 If the `todo` library that was created above has a class called `Item` defined in an `Item.js` file in the `src` directory, it can be referenced and used anywhere within an application as follows:
 
@@ -45,12 +45,12 @@ var Item = require( 'todo/Item' );
 
 When the source code of a library is used all CSS, HTML and other resources are included in their corresponding bundle. See [Dependency Analysis](/docs/concepts/dependency_analysis/) and [Bundlers](/docs/concepts/bundlers/).
 
-# Third Party Libraries
+## Third Party Libraries
 
 Third-party libraries are libraries that can have any arbitrary content. See the [libraries](/docs/concepts/libraries/) for more information about thirdparty libraries and how they differ from BladeRunnerJS conformant libraries.
 
 
-## Create a Third Party Library
+### Create a Third Party Library
 
 If you followed the example in [How to Create an App](/docs/use/create_app/), you should now have an app called `brjstodo`.
 
@@ -70,11 +70,11 @@ This will create an empty `myLib` library within the libs directory of the given
 
 For more detailed information on libraries and the contents of this configuration file see [About Libraries](/docs/concepts/libraries/).
 
-## Use or Import a Third Party Library
+### Use or Import a Third Party Library
 
 The two examples below demonstrate how to create and use thirdparty libraries. The first shows how libraries can be created without the use of the `create-library` command, the second with the `create-library` command.
 
-### Example - Bootstrap
+#### Example - Bootstrap
 
 In order to create a Bootstrap library you would download the release and place it in `<yourapp>/libs/bootstrap/`. Within that folder you would create a `thirdparty-lib.manifest` file with the following contents:
 
@@ -108,7 +108,7 @@ You need to do this even if you only want the CSS for bootstap to be included.
   <p>In future we may make it possible to <a href="https://github.com/BladeRunnerJS/brjs/issues/767">include CSS only libraries using some form of CSS include</a>.</p>
 </div>
 
-### Example - Zepto
+#### Example - Zepto
 
 If we wanted to use [Zepto](http://zeptojs.com/) within our application we first create the library.
 
@@ -128,7 +128,7 @@ With the files and place and configuration set up it's now possible to use Zepto
 var Zepto = require( 'zepto' );
 ```
 
-### Prevent Polluting the 'Global Namespace'
+#### Prevent Polluting the 'Global Namespace'
 
 Typically libraries, like [JQuery](http://jquery.com/), define an object on `Window` which pollutes the global namespace and makes them available to classes that don't explicitly require them which can cause brittle code.
 

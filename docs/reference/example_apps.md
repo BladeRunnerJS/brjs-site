@@ -42,3 +42,12 @@ The application comes with some dummy services to help with development. It also
 * [Workshop exercises](http://bladerunnerjs.github.io/scaling-js-apps/)
 * Live example - *Coming Soon...*
 * [Code on GitHub](https://github.com/BladeRunnerJS/modularapp)
+
+## BRJS Usage Dashboard
+
+The BRJS Usage Dashboard is an application we used to track realtime usage statistics for the BladeRunnerJS toolkit. It provides a set of blades that show statistics recorded and analysed using [Keen IO](http://keen.io) and updates in real-time thanks to [Pusher](http://pusher.com).
+
+You can read more about the application in the [Anonymously Tracking Developer Toolkit Usage with Keen IO and Pusher](http://bladerunnerjs.org/blog/anonymous-usage-tracking/) blog post.
+
+* [Live App](http://development.brjs-dash.divshot.io/)
+* [Code on GitHub](https://github.com/BladeRunnerJS/brjs-usage-dashboard)

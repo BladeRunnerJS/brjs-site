@@ -11,7 +11,7 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 
 ```js
 var ServiceRegistry = require( 'br/ServiceRegistry' );
-var htmlService = ServiceRegistry.getService( 'br.event-hub' );
+var htmlService = require( 'service!br.event-hub' );
 ```
 
 For full API information see the [EventHub API Docs](http://apidocs.bladerunnerjs.org/latest/js/EventHub.html).
@@ -33,7 +33,7 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 
 ```js
 var ServiceRegistry = require( 'br/ServiceRegistry' );
-var htmlService = ServiceRegistry.getService( 'br.html-service' );
+var htmlService = require( 'service!br.html-service' );
 ```
 
 For more information see the [HtmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/HtmlResourceService.html).
@@ -48,7 +48,7 @@ The services is accessed from the [ServiceRegistry](/docs/concepts/service_regis
 
 ```js
 var ServiceRegistry = require( 'br/ServiceRegistry' );
-var xmlService = ServiceRegistry.getService( 'br.xml-service' );
+var xmlService = require( 'service!br.xml-service' );
 ```
 
 For more information see the [XmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/XmlResourceService.html).
@@ -61,7 +61,7 @@ The services is accessed from the [ServiceRegistry](/docs/concepts/service_regis
 
 ```js
 var ServiceRegistry = require( 'br/ServiceRegistry' );
-var appMetaService = ServiceRegistry.getService( 'br.app-meta-service' );
+var appMetaService = require( 'service!br.app-meta-service' );
 ```
 
 For more information see the [AppMetaService API Docs](http://apidocs.bladerunnerjs.org/latest/js/AppMetaService.html).
@@ -74,7 +74,7 @@ The services is accessed from the [ServiceRegistry](/docs/concepts/service_regis
 
 ```js
 var ServiceRegistry = require( 'br/ServiceRegistry' );
-var localeService = ServiceRegistry.getService( 'br.locale-service' );
+var localeService = require( 'service!br.locale-service' );
 ```
 
 For more information see the [AppMetaService API Docs](http://apidocs.bladerunnerjs.org/latest/js/LocaleService.html).

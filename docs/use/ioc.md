@@ -23,8 +23,15 @@ The snippet below shows how a `foo.date-picker` alias is defined in the `bar` li
 In the browser, all information about aliases can be accessed from the `AliasRegistry`. The AliasRegistry allows you to find all aliases or just aliases that implement a particular interface. Commonly, you would want to find the class that an alias points to.  This is  shown in the following code snippet:
 
 ```js
-var AliasRegistry = require( 'br/AliasRegistry' );
-var DatePicker = AliasRegistry.getClass("foo.date-picker");
+var AliasRegistry = require('br/AliasRegistry');
+var DatePicker = AliasRegistry.getClass('foo.date-picker');
+var datePicker = new DatePicker();
+```
+
+A more convenient short-hand for the above code is as follows:
+
+```js
+var DatePicker = require('alias!foo.date-picker');
 var datePicker = new DatePicker();
 ```
 

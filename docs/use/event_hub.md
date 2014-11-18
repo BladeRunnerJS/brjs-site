@@ -16,7 +16,7 @@ The EventHub is a service and as such is accessed via the [ServiceRegistry](/doc
 var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
 }
 ```
 
@@ -36,7 +36,7 @@ The example below demonstrates how to access a channel from the event hub.
 var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   /*** new code ***/
   var channel = eventHub.channel( 'my-channel' );
   /*** end of new code ***/
@@ -65,7 +65,7 @@ The example below demonstrates using the `String` event name and data payload:
 var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
   /*** new code ***/
   var data = { 'some': 'data' };
@@ -81,7 +81,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
   /*** new code ***/
   channel.trigger( new MouseEvent( 100, 99 ) );
@@ -113,7 +113,7 @@ The following example uses `on` to bind to an event identified by a `String`. To
 var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
   /*** new code ***/
   channel.on( 'my-event', this.handleEvent, this );
@@ -134,7 +134,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
   /*** new code ***/
   channel.on( MouseEvent, this.handleEvent, this );
@@ -171,7 +171,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
 
   /*** new code ***/
@@ -220,7 +220,7 @@ var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
-  var eventHub = ServiceRegistry.getService( 'br.event-hub' );
+  var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
 
   /*** new code ***/

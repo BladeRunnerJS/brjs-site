@@ -85,7 +85,7 @@ var i18n = require( 'br/I18n' );
 var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function InputViewModel() {
-	this.eventHub = ServiceRegistry.getService( 'br.event-hub' );
+	this.eventHub = require 'service!br.event-hub' );
 	this.welcomeMessage = ko.observable( 'Welcome to your new Blade.' );
 	this.buttonClickMessage = ko.observable( i18n( 'brjstodo.input.button.click.message' ) );
 	this.logWelcome();
@@ -370,7 +370,7 @@ function InputViewModel() {
 	this.todoText = ko.observable( '' );
 
 	/*** new code ***/
-	this._eventHub = ServiceRegistry.getService( 'br.event-hub' );
+	this._eventHub = require 'service!br.event-hub' );
 	/*** end of new code ***/
 }
 
@@ -399,7 +399,7 @@ var ENTER_KEY_CODE = 13;
 function InputViewModel() {
 	this.todoText = ko.observable( '' );
 
-	this._eventHub = ServiceRegistry.getService( 'br.event-hub' );
+	this._eventHub = require 'service!br.event-hub' );
 }
 
 InputViewModel.prototype.keyPressed = function( item, event ) {
@@ -561,7 +561,7 @@ function ItemsViewModel() {
 	] );
 
 	/*** new code ***/
-	this._eventHub = ServiceRegistry.getService( 'br.event-hub' );
+	this._eventHub = require 'service!br.event-hub' );
 
 	// register to recieve events
 	this._eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );

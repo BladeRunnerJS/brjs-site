@@ -139,7 +139,7 @@ var ko = require( 'ko' );
 
 function InputViewModel() {
   this.todoText = ko.observable('');
-  this._todoService = ServiceRegistry.getService( 'todomvc.storage' );
+  this._todoService = require( 'service!todomvc.storage' );
 }
 
 InputViewModel.prototype.keyPressed = function( data, event ) {

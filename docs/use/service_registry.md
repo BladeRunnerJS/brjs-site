@@ -68,7 +68,14 @@ The MyService that was registered earlier can be accessed via the logical name w
 
 ```js
 var ServiceRegistry = require( 'br/ServiceRegistry' );
-var myService = ServiceRegistry.getService( 'my.something-service' );
+var myService = require( 'service!my.something-service' );
+myService.doSomething();
+```
+
+A more convenient short-hand for the above code is as follows:
+
+```js
+var myService = require( 'service!my.something-service' );
 myService.doSomething();
 ```
 

@@ -8,7 +8,7 @@ notice: none
 
 <div class="alert alert-success">
 	<p>
-		<strong>This Getting Started Guide requires v0.12 of BladeRunnerJS or above</strong>. <strong><a href="http://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
+		<strong>This Getting Started Guide requires v0.14 of BladeRunnerJS or above</strong>. <strong><a href="http://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download BladeRunnerJS</a></strong>.
 	</p>
 </div>
 
@@ -82,7 +82,6 @@ Within `apps/brjstodo/blades/input/src/` you'll find an `InputViewModel.js` file
 
 var ko = require( 'ko' );
 var i18n = require( 'br/I18n' );
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 function InputViewModel() {
 	this.eventHub = require 'service!br.event-hub' );
@@ -354,15 +353,12 @@ We now have a way for a user to **input** a todo list item and a place to show t
 
 ### Update the Todo Input Blade
 
-Back in our `input` blade we can access the EventHub service using the [ServiceRegistry](/docs/concepts/service_registry), which we `require`, as shown in the `InputViewModel` constructor below:
+Back in our `input` blade we can access the EventHub service using the via [ServiceRegistry](/docs/concepts/service_registry) using the `require( 'service!<service name>' )` syntax, as shown in the `InputViewModel` constructor below:
 
 ```js
 'use strict';
 
 var ko = require( 'ko' );
-/*** new code ***/
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-/*** end of new code ***/
 
 var ENTER_KEY_CODE = 13;
 
@@ -392,7 +388,6 @@ Now, in the `keyPressed` function we can trigger an event called `todo-added` on
 'use strict';
 
 var ko = require( 'ko' );
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 
 var ENTER_KEY_CODE = 13;
 
@@ -543,16 +538,12 @@ Tests Passed.
 
 Now the `input` blade is triggering an event on the EventHub, the `items` Blade should be updated to listen for that event and update the UI accordingly.
 
-First, get access to the `ServiceRegistry` and then register for the event on the channel:
+First, get the EventHub using `require( 'service!br-event-hub' )` and then register for the event on the channel:
 
 ```js
 'use strict';
 
 var ko = require( 'ko' );
-
-/*** New code ***/
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-/*** End of new code ***/
 
 function ItemsViewModel() {
 	this.todos = ko.observableArray( [
@@ -561,7 +552,7 @@ function ItemsViewModel() {
 	] );
 
 	/*** new code ***/
-	this._eventHub = require 'service!br.event-hub' );
+	this._eventHub = require( 'service!br.event-hub' );
 
 	// register to recieve events
 	this._eventHub.channel( 'todo-list' ).on( 'todo-added', this._todoAdded, this );
@@ -586,12 +577,11 @@ In `_todoAdded` we just need to add the item to the `todos` Knockout `observable
 Open up the `items` Workbench via `http://localhost:7070/brjstodo/default/items/workbench/en/` ensuring the BRJS development web server is running (`BRJS_HOME/sdk/brjs serve`). Open up the JavaScript console and enter the following code:
 
 ``` js
-var sr = require( 'br/ServiceRegistry' );
-var hub = sr.getService( 'br.event-hub' );
+var hub = require( 'service!br.event-hub' );
 hub.channel( 'todo-list' ).trigger( 'todo-added', { title: 'console todo item' } );
 ```
 
-This gets the `event-hub` from the `ServiceRegistry` and then triggers a `todo-added` event on the `todo-list` channel. When you do this you'll see a new `console todo item` added to the list in the UI.
+This gets the `event-hub` from the `ServiceRegistry` using `require( 'service!br.event-hub' )` and then triggers a `todo-added` event on the `todo-list` channel. When you do this you'll see a new `console todo item` added to the list in the UI.
 
 ![](/docs/use/img/todo-items-console-workbench.png)
 

@@ -13,8 +13,6 @@ The EventHub uses channels as a mechanism for partitioning data. Channels are sy
 The EventHub is a service and as such is accessed via the [ServiceRegistry](/docs/concepts/service_registry/). This means that it can be replaces if a better implementation is provided or for the purposes of testing.
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-
 function MyClass() {
   var eventHub = require( 'service!br.event-hub' );
 }
@@ -33,8 +31,6 @@ EventHub.channel( channelName );
 The example below demonstrates how to access a channel from the event hub.
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-
 function MyClass() {
   var eventHub = require( 'service!br.event-hub' );
   /*** new code ***/
@@ -62,8 +58,6 @@ Channel.trigger( Object );
 The example below demonstrates using the `String` event name and data payload:
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-
 function MyClass() {
   var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
@@ -77,7 +71,6 @@ function MyClass() {
 This example shows triggering an event using an object where the event type is identified based on the object type of the event data.
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
@@ -110,8 +103,6 @@ In both cases the `context` parameter is optional.
 The following example uses `on` to bind to an event identified by a `String`. To use `once` simply replace `on` with `once`:
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
-
 function MyClass() {
   var eventHub = require( 'service!br.event-hub' );
   var channel = eventHub.channel( 'my-channel' );
@@ -130,7 +121,6 @@ MyClass.prototype.handleEvent = function( data ) {
 The following example uses `on` to bind to an event identified by an Object type. To use `once` simply replace `on` with `once`:
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
@@ -167,7 +157,6 @@ Channel.off( Object, handler, context );
 The event identifier, `handler` and `context` parameters are all optional. The example below shows all the possible uses
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {
@@ -216,7 +205,6 @@ Channel.clearListeners( context );
 Here's an example:
 
 ```js
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 var MouseEvent = require( 'mouse/MouseEvent' );
 
 function MyClass() {

@@ -134,7 +134,6 @@ The View Model looks as follows:
 
 var ENTER_KEY_CODE = 13;
 
-var ServiceRegistry = require( 'br/ServiceRegistry' );
 var ko = require( 'ko' );
 
 function InputViewModel() {

@@ -8,11 +8,18 @@ In addition to supporting [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) mod
 
 ## Sub-Realms
 
-If you've started using [sub-realms](https://github.com/BladeRunnerJS/browser-modules#sub-realms) to help test your CommonJs modules, but your application continues to be dependent upon NamespacedJS modules too, then you will need to re-install all global module references after un-installing each _sub-realm_.
+If you've started using [sub-realms](https://github.com/BladeRunnerJS/browser-modules#sub-realms) to help test your CommonJs modules, but your application continues to be dependent upon NamespacedJS modules too, then you will need to re-install all global module references after installing and un-installing each _sub-realm_.
 
 For example, instead of writing this:
 
 ``` js
+var subrealm;
+
+beforeEach(function() {
+  subrealm = realm.subrealm();
+  subrealm.install();
+});
+
 afterEach(function() {
   subrealm.uninstall();
 });
@@ -21,6 +28,14 @@ afterEach(function() {
 you should instead write this:
 
 ``` js
+var subrealm;
+
+beforeEach(function() {
+  subrealm = realm.subrealm();
+  subrealm.install();
+  globalizeSourceModules();
+});
+
 afterEach(function() {
   subrealm.uninstall();
   globalizeSourceModules();

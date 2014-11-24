@@ -72,6 +72,13 @@ var myService = ServiceRegistry.getService( 'my.something-service' );
 myService.doSomething();
 ```
 
+A more convenient short-hand for the above code is as follows:
+
+```js
+var myService = require( 'service!my.something-service' );
+myService.doSomething();
+```
+
 If a service is defined in an `aliases.xml` but is not retrieved from the ServiceRegistry in any application or test code, the BRJS dependency analysis system will notice this and therefore not register it with the ServiceRegistry. See [Dependency Analysis](http://bladerunnerjs.org/docs/concepts/dependency_analysis/) for more information.
 
 ## De-registering a Service

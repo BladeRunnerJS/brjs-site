@@ -45,7 +45,7 @@
 
     $.fn.toc = function(settings) {
         var config = {
-            anchorPrefix: 'tocAnchor-',
+            anchorPrefix: '',
             showAlways: false,
             saveShowStatus: true,
             contentsText: 'Contents',

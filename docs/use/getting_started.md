@@ -39,7 +39,7 @@ It'll be time well-spent.
 
 In order to run BRJS you'll need Java 7 or above installed. If you haven't already got it installed we recommend [installing the JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) as it ensures that `java` is accessible from the command line/terminal after installation. To deploy the built app you'll need any web server that can serve static files, for the purposes of this guide well be using [Apache Tomcat](http://tomcat.apache.org/) since it's easy to install and it's only requirement is a JVM which you'll already have in order to run BRJS.
 
-## Download & Install BRJS
+## Download and Install BRJS
 
 <strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download the latest BRJS release</a></strong> and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI executable is `BRJS_HOME/sdk/brjs`.
 

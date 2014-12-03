@@ -3,7 +3,7 @@ layout: post
 title: "Using AngularJS with BladeRunnerJS"
 authors: [leggetter]
 thumb: brjs-angular-tutorial/brjs-angular-sml.png
-latest: true
+latest: false
 
 excerpt: "For quite a while now we've spoken about it being possible to use any framework/library (e.g. Backbone, Angular, Ember, React, Polymer) within a BladeRunnerJS (BRJS) app. Angular is by far the most popular front-end framework right now so it makes sense to demonstrate how to use it with BRJS first."
 

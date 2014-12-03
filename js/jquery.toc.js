@@ -22,8 +22,11 @@
       }
       else {
         // TODO: replace this work-around with a proper solution once <https://github.com/dafi/tocmd-generator/issues/1> is fixed
-//        anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
-        anchorId = encodeURIComponent(config.anchorPrefix + el.text().toLowerCase().replace(/ /g, '-'));
+        // anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
+        anchorId = encodeURIComponent(config.anchorPrefix + el.text().toLowerCase().replace(/ /g, '-') );
+        // remove encoded values that cause problems with % in later regexp
+        anchorId = anchorId.replace(/%\d/, '-');
+
         if( innerSection ) {
           anchorId += '-' + innerSection;
         }

@@ -96,4 +96,4 @@ The `users.properties` file is created inside the `conf` directory and is used f
 
 ```
 user: password,user
-``` 
+```

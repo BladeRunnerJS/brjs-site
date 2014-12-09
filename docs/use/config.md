@@ -45,7 +45,7 @@ localeCookieName	The string identifier for the locale setting in the cookie
 
 `.js-style` contains a single line that specifies the JavaScript coding style for a directory,
 	for use by AssetPlugins to determine which type of SourceModule to create for each source file.
-`js=style` files in parent directories apply to any sub-directories and styles in sub-directories will override those in parent directories.
+`js-style` files in parent directories apply to any sub-directories and styles in sub-directories will override those in parent directories.
 Styles can be overridden multiple times, for example if an app has the style 'style1', a bladeset can have the style 'style2',
 	and a blade inside that bladeset could have the style 'style1'.
 
@@ -69,3 +69,23 @@ defaultBrowser:
 browserPaths:
 
 ```
+
+### web.xml and jetty-env.xml
+
+BladeRunnerJS uses Jetty as its application server, therefore also creating the `web.xml` and `jetty-env.xml` in your webapp's `WEB-INF` directory. 
+
+`web.xml` is a deployment descriptor file which, among others, contains the classes, resources and configuration of the application, the mapping of URLs to servlets, as well as environment-specific deployment information for the production and development environments. Configurations pertaining to the development environment will be placed between the `<!-- start-env: dev -->` and `<!-- end-env -->` tags, while production-related entries will be located between the `<!-- start-env: prod` and `end-env -->` tags.
+
+```
+<!-- start-env: dev -->
+	<dev only xml here>
+<!-- end-env -->
+
+<!-- start-env: prod
+	<prod only xml here>
+end-env -->
+```
+
+For more information on how to configure this file, please see [The Deployment Descriptor: web.xml](https://cloud.google.com/appengine/docs/java/config/webxml).
+
+Entries in `jetty-env.xml` will be used to parse the references in `web.xml` and configuring the naming environment for the application. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).

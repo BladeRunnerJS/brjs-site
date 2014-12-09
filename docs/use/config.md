@@ -88,4 +88,12 @@ end-env -->
 
 For more information on how to configure this file, please see [The Deployment Descriptor: web.xml](https://cloud.google.com/appengine/docs/java/config/webxml).
 
-Entries in `jetty-env.xml` will be used to parse the references in `web.xml` and configuring the naming environment for the application. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
+Entries in `jetty-env.xml` is used to parse the references in `web.xml` and configuring the naming environment for the application. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
+
+### users.properties
+
+The `users.properties` file is created inside the `conf` directory and is used for configuring the usernames and passwords for the built-in Jetty server.
+
+```
+user: password,user
+``` 

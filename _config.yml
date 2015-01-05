@@ -1,5 +1,5 @@
 name: BladeRunnerJS (BRJS) - Divide &amp; conquer complex web apps
-highlighter: rouge
+pygments: true
 relative_permalinks: false
 permalink: /blog/:title
 

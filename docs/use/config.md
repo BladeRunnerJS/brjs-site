@@ -88,7 +88,7 @@ end-env -->
 
 For more information on how to configure this file, please see [The Deployment Descriptor: web.xml](https://cloud.google.com/appengine/docs/java/config/webxml).
 
-Entries in `jetty-env.xml` is used to parse the references in `web.xml` and configuring the naming environment for the application. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
+Entries in `jetty-env.xml` are used for parsing the references in `web.xml` and configuring the naming environment for the application. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
 
 ### users.properties
 

@@ -6,14 +6,14 @@ permalink: /docs/use/user_templates/
 
 ## Template Structure
 
-A template represents a collection of files and folder that will be created for the requested entity.
+A template represents a collection of files and folders that will be created for the requested entity.
 
 Templates exist in two locations:
 
 - `conf/templates`: user-defined templates. This is where you may add your own templates for use when creating entities.
 - `sdk/templates`: default templates provided by BladerunnerJS. **_These are not to be changed by the user._**
 
-Within these locations, the templates are organized in _template groups_. A template group represents the name by which the templates therein will be referenced when creating new entities. 
+Within these locations, the templates are organised into _template groups_. A template group represents the name by which the templates therein will be referenced when creating new entities. 
 
 If the requested template exists in both `conf/templates` and `sdk/templates`, the template from `conf/templates` will be used.
 
@@ -89,4 +89,4 @@ Tokens are aliases for namings that are automatically replaced when creating an 
 
 ## Usage
 
-Templates may be used for all the `create` commands by adding the flag `--template` or `-T` followed by the name of the template e.g. `create-app myApp --template myTemplate`. For this example, the templates must be located under `conf/templates/myTemplate`, and the app template under `conf/templates/myTemplate/app`. 
+Templates may be used for all the `create` commands by adding the flag `--template` or `-T` followed by the name of the template e.g. `create-app myApp --template myTemplate`. For this example, the templates must be located under `conf/templates/myTemplate`, and the app templates under `conf/templates/myTemplate/app`. 

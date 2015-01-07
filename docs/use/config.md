@@ -72,9 +72,9 @@ browserPaths:
 
 ### web.xml and jetty-env.xml
 
-BladeRunnerJS uses Jetty as its application server, therefore also creating the `web.xml` and `jetty-env.xml` in your webapp's `WEB-INF` directory. 
+BladeRunnerJS makes use of Jetty, a J2EE application server, which by default is hidden to the developer and configured automatically. The `web.xml` and `jetty-env.xml` files can be created in the `WEB-INF` directory either manually or by using the `j2eeify` command and used to configure custom webapp and server settings.
 
-`web.xml` is a deployment descriptor file which, among others, contains the classes, resources and configuration of the application, the mapping of URLs to servlets, as well as environment-specific deployment information for the production and development environments. Configurations pertaining to the development environment will be placed between the `<!-- start-env: dev -->` and `<!-- end-env -->` tags, while production-related entries will be located between the `<!-- start-env: prod` and `end-env -->` tags.
+`web.xml` is a deployment descriptor file which contains web application configuration such as servlet and filter configuration and authentication settings. The `web.xml` file is filtered during the `build-app` process to allow environment specific settings by using XML comments. Development only configurations can be placed between `<!-- start-env: dev -->` and `<!-- end-env -->` tags, while production-related entries can be placed between the `<!-- start-env: prod` and `end-env -->` tags.
 
 ```
 <!-- start-env: dev -->
@@ -86,9 +86,9 @@ BladeRunnerJS uses Jetty as its application server, therefore also creating the 
 end-env -->
 ```
 
-For more information on how to configure this file, please see [The Deployment Descriptor: web.xml](https://cloud.google.com/appengine/docs/java/config/webxml).
+For more information on `web.xml` configuration options, please see [The Deployment Descriptor: web.xml](https://cloud.google.com/appengine/docs/java/config/webxml).
 
-Entries in `jetty-env.xml` are used for parsing the references in `web.xml` and configuring the naming environment for the application. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
+Entries in `jetty-env.xml` are used for parsing the references in `web.xml` and configuring the naming environment for the application. While the `jetty-env.xml` file is contained within exported apps, unlike `web.xml` files they are not filtered or altered in any way. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
 
 ### users.properties
 

@@ -45,7 +45,7 @@ localeCookieName	The string identifier for the locale setting in the cookie
 
 `.js-style` contains a single line that specifies the JavaScript coding style for a directory,
 	for use by AssetPlugins to determine which type of SourceModule to create for each source file.
-`js=style` files in parent directories apply to any sub-directories and styles in sub-directories will override those in parent directories.
+`js-style` files in parent directories apply to any sub-directories and styles in sub-directories will override those in parent directories.
 Styles can be overridden multiple times, for example if an app has the style 'style1', a bladeset can have the style 'style2',
 	and a blade inside that bladeset could have the style 'style1'.
 
@@ -68,4 +68,32 @@ defaultBrowser:
 
 browserPaths:
 
+```
+
+### web.xml and jetty-env.xml
+
+BladeRunnerJS makes use of Jetty, a J2EE application server, which by default is hidden to the developer and configured automatically. The `web.xml` and `jetty-env.xml` files can be created in the `WEB-INF` directory either manually or by using the `j2eeify` command and used to configure custom webapp and server settings.
+
+`web.xml` is a deployment descriptor file which contains web application configuration such as servlet and filter configuration and authentication settings. The `web.xml` file is filtered during the `build-app` process to allow environment specific settings by using XML comments. Development only configurations can be placed between `<!-- start-env: dev -->` and `<!-- end-env -->` tags, while production-related entries can be placed between the `<!-- start-env: prod` and `end-env -->` tags.
+
+```
+<!-- start-env: dev -->
+	<dev only xml here>
+<!-- end-env -->
+
+<!-- start-env: prod
+	<prod only xml here>
+end-env -->
+```
+
+For more information on `web.xml` configuration options, please see [The Deployment Descriptor: web.xml](https://cloud.google.com/appengine/docs/java/config/webxml).
+
+Entries in `jetty-env.xml` are used for parsing the references in `web.xml` and configuring the naming environment for the application. While the `jetty-env.xml` file is contained within exported apps, unlike `web.xml` files they are not filtered or altered in any way. For more information on how to configure this file, please see [jetty-env.xml](http://www.eclipse.org/jetty/documentation/9.2.1.v20140609/jetty-env-xml.html).
+
+### users.properties
+
+The `users.properties` file is created inside the `conf` directory and is used for configuring the usernames and passwords for the built-in Jetty server.
+
+```
+user: password,user
 ```

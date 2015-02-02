@@ -39,11 +39,11 @@ Run the [workbench](/docs/concepts/workbenches) for the blade and it should look
 
 ## Understanding how locale URLs are handled in BRJS
 
-Before we continue we need to first understand how the URLs used in an app change depending on the locale currently in use.
+Before we continue we need to first understand how the URLs used in a multi-locale apps change depending on the locale currently in use &mdash; this information doesn't apply to single-locale apps however, since these don't include the locale within the app URL.
 
 When a request is made to `/myapp/` a 'locale forwarding' page is returned to the browser. Using the browsers' `Accept-Language` header; the value of the locale cookie and the locales the app supports this page forwards the browser to a localized app page, for example `/myapp/en/`. This localized app page then contains the neccessary CSS, JS, XML and HTML requests for the app.
 
-In order to change the currently selected locale the browser must re-request the `/myapp/` URL so the locale forwarder can recalculate the locale and send the browser to the correct page.
+In order to change the currently selected locale, the app will normally set a cookie, and the browser must re-request the `/myapp/` URL so the locale forwarder can recalculate the locale and send the browser to the correct page.
 
 <div class="alert alert-info">
 <p>
@@ -51,9 +51,11 @@ This mechanism currently prevents users of your app refreshing the page in order
 </p>
 </div>
 
+If you'd like to change the mechanism by which the active locale is chosen, or the mechanism by which assets for the active locale are made use of, please see the [Locale Customization](#locale-customization) section.
+
 ## Set up Supported Locales
 
-Have a look in `app.conf` within the application root directory. It defines the locales that your app will support
+Have a look in `app.conf` within the application root directory. It defines the locales that your app will support.
 
 ```
 requirePrefix: <namespace>
@@ -82,7 +84,7 @@ Include the Internationalization Bundler in your app's `default-aspect/index.htm
 
 ## Internationalizing via HTML
 
-Let's update the `<h1>` element inside our HTML, which will be automatically internationalized. Internationalization markup in BRJS takes the form of: `@{<token>}`. It's best to namespace your token so that other blades don't overwrite each other's tokens
+Let's update the `<h1>` element inside our HTML, which will be automatically internationalized. Internationalization markup in BRJS takes the form of: `@{<token>}`. It's best to namespace your token so that other blades don't overwrite each other's tokens.
 
 ```html
 <div class="locale-demo-blade" id="demo.blades.myblade.view-template">
@@ -91,13 +93,13 @@ Let's update the `<h1>` element inside our HTML, which will be automatically int
 </div>
 ```
 
-Then define the token translation inside the file: `myblade/resources/i18n/en/en.properties`
+Then define the token translation inside the file `myblade/resources/i18n/en/en.properties`.
 
 ```
 demo.blades.myblade.title=Internationalization Demo
 ```
 
-Refresh the workbench, and it should look like this.
+Refresh the workbench, and it should look like this:
 
 ![](/docs/use/img/locale-html-token.png)
 
@@ -406,3 +408,22 @@ You can internationalize at different levels of your application, by locating pr
 * Aspect: `/app/aspect/resources/i18n`
 * BladeSet: `/app/bladeset/resources/i18n`
 * Blade: `/app/bladeset/blade/resources/i18n`
+
+## Locale Customization
+
+BRJS relies on the following Javascript libraries to determine how localization is performed, both of which can be overridden to modify the default behaviour:
+
+  * `br-locale-provider` is responsible for determining the _active-locale_.
+  * `br-locale-switcher` is responsible for switching to the _active-locale_.
+
+### Determining The Locale
+
+The default implementation of `br-locale-provider` uses the browsers' `Accept-Language` header to set a _locale-cookie_ the first time the app is used, and then uses that _locale-cookie_ thereafter. Apps can provide an in-app locale switching menu that causes the cookie to be updated, and the main index page to be reloaded.
+
+However, apps might instead choose to store the locale with the user's preferences, so that the user doesn't need to set-up the locale when they first log-in from a new machine. Or, apps might instead might prefer to allow the locale to be selected at login.
+
+### Switching The Locale
+
+The default implemenation of `br-locale-switcher` switches to a locale specific version of the page. Since BRJS allows apps to be exported as a set of static files, this involves the _active-locale_ appearing within the URL.
+
+However, apps might instead prefer to load the locale specific resources directly into the main index page, avoiding the need for a page redirect to a URL that includes the _active-locale_ within it.

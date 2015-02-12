@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: User Templates
-permalink: /docs/use/user_templates/
+permalink: /docs/use/custom_templates/
 ---
 
 ## Template Structure

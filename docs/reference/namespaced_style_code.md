@@ -18,6 +18,10 @@ var subrealm;
 beforeEach(function() {
   subrealm = realm.subrealm();
   subrealm.install();
+
+  // defines go here...
+
+  // requires go here...
 });
 
 afterEach(function() {
@@ -33,7 +37,12 @@ var subrealm;
 beforeEach(function() {
   subrealm = realm.subrealm();
   subrealm.install();
+
+  // defines go here...
+
   globalizeSourceModules();
+
+  // requires go here...
 });
 
 afterEach(function() {

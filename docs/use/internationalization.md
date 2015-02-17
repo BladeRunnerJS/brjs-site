@@ -37,21 +37,6 @@ Run the [workbench](/docs/concepts/workbenches) for the blade and it should look
 
 ![](/docs/use/img/locale-start.png)
 
-## Understanding how locale URLs are handled in BRJS
-
-Before we continue we need to first understand how the URLs used in a multi-locale apps change depending on the locale currently in use &mdash; this information doesn't apply to single-locale apps however, since these don't include the locale within the app URL.
-
-When a request is made to `/myapp/` a 'locale forwarding' page is returned to the browser. Using the browsers' `Accept-Language` header; the value of the locale cookie and the locales the app supports this page forwards the browser to a localized app page, for example `/myapp/en/`. This localized app page then contains the neccessary CSS, JS, XML and HTML requests for the app.
-
-In order to change the currently selected locale, the app will normally set a cookie, and the browser must re-request the `/myapp/` URL so the locale forwarder can recalculate the locale and send the browser to the correct page.
-
-<div class="alert alert-info">
-<p>
-This mechanism currently prevents users of your app refreshing the page in order to change their locale. We hope to add a <a href="https://github.com/BladeRunnerJS/brjs/issues/804">mechanism</a> where apps can optionally push users back to the locale forwarder if they are using the incorrect locale.
-</p>
-</div>
-
-If you'd like to change the mechanism by which the active locale is chosen, or the mechanism by which assets for the active locale are made use of, please see the [Locale Customization](#locale-customization) section.
 
 ## Set up Supported Locales
 
@@ -61,6 +46,8 @@ Have a look in `app.conf` within the application root directory. It defines the 
 requirePrefix: <namespace>
 locales: en, de, es
 ```
+
+If you ensure that there is more than one locale at this point, then refresh the browser, you will see that the locale now appears within the URL. The [Understanding how locale switching is handled in BRJS](#understanding-how-locale-switching-is-handled-in-brjs) section explains the subtleties of how this works.
 
 ## Include the Internationalization Bundler
 
@@ -104,8 +91,6 @@ Refresh the workbench, and it should look like this:
 ![](/docs/use/img/locale-html-token.png)
 
 The token replacement works by replacing all i18n tokens in all HTML as it is streamed through the HTML Bundler.
-
-Note: We were able to simply refresh the page here rather than requesting the 'locale forwarder' since we weren't changing the locale we were using.
 
 ## Internationalizing via JavaScript
 
@@ -409,21 +394,85 @@ You can internationalize at different levels of your application, by locating pr
 * BladeSet: `/app/bladeset/resources/i18n`
 * Blade: `/app/bladeset/blade/resources/i18n`
 
-## Locale Customization
+## Understanding how locale switching is handled in BRJS
 
-BRJS relies on the following Javascript libraries to determine how localization is performed, both of which can be overridden to modify the default behaviour:
+Before we continue we first need to understand how locale switching is handled depending on the type of app in use. For the purposes of internationalization, there are three types of app:
 
-  * `br-locale-provider` is responsible for determining the _active-locale_.
-  * `br-locale-switcher` is responsible for switching to the _active-locale_.
+  1. Single-Locale Apps
+  1. Multi-Locale Apps (forwarding style)
+  1. Multi-Locale Apps (non-forwarding style)
 
-### Determining The Locale
+### Single-Locale Apps
 
-The default implementation of `br-locale-provider` uses the browsers' `Accept-Language` header to set a _locale-cookie_ the first time the app is used, and then uses that _locale-cookie_ thereafter. Apps can provide an in-app locale switching menu that causes the cookie to be updated, and the main index page to be reloaded.
+Single-Locale apps define only a single locale within their `app.conf` configuration file. For such apps, the served index page for apps and workbenches is the very same source index page that you will edit yourself, but with any logical tags replaced with their proper contents.
 
-However, apps might instead choose to store the locale with the user's preferences, so that the user doesn't need to set-up the locale when they first log-in from a new machine. Or, apps might instead might prefer to allow the locale to be selected at login.
+Accordingly, single-locale apps never display the locale within the URL.
 
-### Switching The Locale
 
-The default implemenation of `br-locale-switcher` switches to a locale specific version of the page. Since BRJS allows apps to be exported as a set of static files, this involves the _active-locale_ appearing within the URL.
+### Multi-Locale Apps
 
-However, apps might instead prefer to load the locale specific resources directly into the main index page, avoiding the need for a page redirect to a URL that includes the _active-locale_ within it.
+Multi-Locale apps return a switching-page instead of the source index page you normally edit. Instead, one copy of the source index page is created for each of the locales you define within `app.conf`.
+
+For example, if you define `locales: en, de` within your `app.conf`, then the following pages will be created:
+
+  * `index.html` (contains the switching-page)
+  * `en.html` (contains an English version of the source index page)
+  * `de.html` (contains a German version of the source index page)
+
+The switching page defers to the `br.locale-provider` service to determine the _active-locale_, and the `br.locale-switcher` service to switch to the active locale, allowing some flexibility in how locales are dealt with.
+
+BRJS comes pre-loaded with two implementations of the `br.locale-switcher` service:
+
+  * `BRLocaleForwardingSwitcher` for forwarding style apps (_the default_).
+  * `BRLocaleLoadingSwitcher` for non-forwarding style apps.
+
+
+#### Forwarding Multi-Locale Apps
+
+Forwarding style multi-locale apps cause the browser to load the active locale at a new URL. Although this causes the locale to appear within the URL, this is the default option as it has a number of advantages:
+
+  * The browser's _view-source_ feature continues to work.
+  * The browser's debugging tools tend to work better.
+  * The page can be introspected, and understood by developers familiar with HTML.
+
+
+#### Non-Forwarding Multi-Locale Apps
+
+Non-forwarding style apps have the following advantages:
+
+  * The locale doesn't appear within the URL.
+  * Bookmarks continue to work even if the locale changes.
+
+and can be enabled within your app by replacing this:
+
+```xml
+<alias name="br.locale-switcher"
+ defaultClass="br.services.locale.BRLocaleForwardingSwitcher"/>
+```
+
+in your `aliasDefinitions.xml` file, with this:
+
+```xml
+<alias name="br.locale-switcher"
+ defaultClass="br.services.locale.BRLocaleLoadingSwitcher"/>
+```
+
+
+## Understanding how the active locale is determined in BRJS
+
+When a request is made to `/myapp/` a locale-switching page is returned to the browser which uses the `br.locale-provider` service to determine the active locale. A single implementation of this service is provided with BladeRunnerJS, which works as follows:
+
+  1. If the `localestorage` contains a `locale` key, then this is used.
+  1. Otherwise, the browser's `Accept-Language` header is matched against the locales actually provided by the app, and the first match is used, assuming there is a match.
+  1. If there were no matches, then the first locale defined within `app.conf` is used.
+
+The determined active locale is then stored within `localstorage` ready for the next time the app is loaded.
+
+Given that the implementation of `br.locale-provider` may be changed in the future, overriding the active locale should be performed using the given locale services, and not by updating `localstorage` directly. This can be performed within code as follows:
+
+```js
+require('br.locale-provider').setActiveLocale(newLocale);
+require('br.locale-switcher').switch();
+```
+
+You are also free to provide your own implementation of the `br.locale-provider` service. For example, if you'd prefer the user's locale to be stored along with the user's settings on the server, so that they automatically get their preferred locale even when they login using a new computer or device.

@@ -471,8 +471,7 @@ The determined active locale is then stored within `localstorage` ready for the 
 Given that the implementation of `br.locale-provider` may be changed in the future, overriding the active locale should be performed using the public API, and not by updating `localstorage` directly. This can be performed within code as follows:
 
 ```js
-require('br.locale-provider').setActiveLocale(myLocale);
-require('br-locale/switcher').switchToActiveLocale();
+require('br-locale/switcher').switchLocale(myLocale);
 ```
 
 You are also free to provide your own implementation of the `br.locale-provider` service. For example, if you'd prefer the user's locale to be stored along with the user's settings on the server, so that they automatically get their preferred locale even when they login using a new computer or device.

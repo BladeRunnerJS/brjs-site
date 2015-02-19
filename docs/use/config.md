@@ -11,7 +11,10 @@ The configuration options for BladeRunnerJS and the built-in Jetty server, locat
 
   * `jettyPort`: The port the built in Jetty server will bind to (`7070` by default).
   * `defaultFileCharacterEncoding`: The input encoding for files read by BRJS (`UTF-8` by default).
+  * `ignoredPaths`: The list of paths that should be ignored when exporting via the `export-app` command (`.svn, .git` by default).
   * `loginRealm`: The login realm the Jetty server will use &mdash; only needed if you configure a login realm within `WEB-INF/web.xml` (`BladeRunnerLoginRealm` by default).
+  * `useNodeCommands`: Whether the Node.js versions of tools should be used in preference to the Rhino versions (`false` by default).
+  * `allowAnonymousStats`: Whether anonymous usage statistics can be made available centrally to help improve BRJS (_undefined_ by default).
 
 
 ### test-runner.conf
@@ -72,4 +75,3 @@ The configuration within `jetty-env.xml` is used to configure the Jetty server, 
 ### .js-style
 
 The `.js-style` files can be placed at arbitrary locations throughout the source code, and are used to indicate the style of any JavaScript modules within the same directory, or within child directories that don't contain an overriding `.js-style` file. Each `.js-style` file contains either the text `common-js` or the text `namespaced-js`, and nothing else.
-

@@ -31,3 +31,11 @@ brjs workbench-deps app1 default myblade
 ```
 
 then BRJS will iterate through `blades`' ancestors (`app1`, `brjs-apps` & `root`), only stopping at `root` as it contains a `brjs-apps` directory.
+
+If a `brjs-apps` directory is not found when the traversal of the ancestors has finished, BRJS will assume that the applications are stored in `$BRJS_HOME$/brjs-apps`.
+
+## Backwards Compatibility
+Please note that in traversing up through the parent directories of the current working directory the command was called from, the `apps` directory having a sibling `sdk` directory will be recognized as the preferred location for BRJS applications if found.
+
+## Apps in Multiple Locations
+BRJS apps may now be stored in several different locations, the active working directory being determined through the path the BRJS commands are run from.

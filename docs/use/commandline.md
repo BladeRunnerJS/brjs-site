@@ -6,6 +6,10 @@ permalink: /docs/use/commandline/
 
 The `brjs` executable is available to use for Windows, Mac and Linux. It is located in `BRJS_HOME/sdk`.
 
+## Adding BRJS to the `PATH`
+
+The `brjs` executable can either be run by specifying the path to the executable, for example `./brjs <args>` or `../../brjs <args>`, or by adding it to the `PATH` environment variable so it can be run from anywhere by using `brjs <args>`. The current working directory when `brjs` is executed is used to determine the apps' location, see [Custom Apps Location](/docs/use/custom_apps_location/) for more info.
+
 ## Help
 
 To get general help execute:

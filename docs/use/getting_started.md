@@ -366,7 +366,7 @@ function InputViewModel() {
 	this.todoText = ko.observable( '' );
 
 	/*** new code ***/
-	this._eventHub = require 'service!br.event-hub' );
+	this._eventHub = require( 'service!br.event-hub' );
 	/*** end of new code ***/
 }
 

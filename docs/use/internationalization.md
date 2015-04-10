@@ -55,7 +55,6 @@ Include the Internationalization Bundler in your app's `default-aspect/index.htm
 
 ```html
 <head>
-    <@base.tag@/>
 	<meta charset="UTF-8">
 
     <title>Workbench</title>

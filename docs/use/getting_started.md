@@ -708,7 +708,6 @@ To add the blades to the app open up `brjstodo/index.html` remove the div elemen
 <!DOCTYPE html>
 <html>
 	<head>
-		<@base.tag@/>
 		<meta charset="UTF-8">
 
 		<title>My Application</title>

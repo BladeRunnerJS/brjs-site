@@ -671,7 +671,6 @@ Resulting in something like the following via `http://localhost:7070/brjstodo/de
 <!DOCTYPE html>
 <html>
 	<head>
-		<@base.tag@/>
 		<meta charset="UTF-8">
 
 		<title>BRJS Angular Todo MVC</title>

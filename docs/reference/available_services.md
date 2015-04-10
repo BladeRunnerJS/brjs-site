@@ -13,7 +13,7 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 var htmlService = require( 'service!br.event-hub' );
 ```
 
-For full API information see the [EventHub API Docs](http://apidocs.bladerunnerjs.org/latest/js/EventHub.html).
+For full API information see the [EventHub API Docs](http://apidocs.bladerunnerjs.org/latest/js/module-br_EventHub.html).
 
 For more information see the [EventHub docs](/docs/concepts/event_hub/).
 
@@ -34,7 +34,7 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 var htmlService = require( 'service!br.html-service' );
 ```
 
-For more information see the [HtmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/HtmlResourceService.html).
+For more information see the [HtmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/module-br_services_HtmlResourceService.html).
 
 ## XMLResourceService
 
@@ -48,7 +48,7 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 var xmlService = require( 'service!br.xml-service' );
 ```
 
-For more information see the [XmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/XmlResourceService.html).
+For more information see the [XmlResourceService API Docs](http://apidocs.bladerunnerjs.org/latest/js/module-br_services_XmlResourceService.html).
 
 ## AppMetaService
 
@@ -60,7 +60,7 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 var appMetaService = require( 'service!br.app-meta-service' );
 ```
 
-For more information see the [AppMetaService API Docs](http://apidocs.bladerunnerjs.org/latest/js/AppMetaService.html).
+For more information see the [AppMetaService API Docs](http://apidocs.bladerunnerjs.org/latest/js/module-br_services_AppMetaService.html).
 
 ## LocaleService
 
@@ -72,4 +72,4 @@ The service is accessed from the [ServiceRegistry](/docs/concepts/service_regist
 var localeService = require( 'service!br.locale-service' );
 ```
 
-For more information see the [AppMetaService API Docs](http://apidocs.bladerunnerjs.org/latest/js/LocaleService.html).
+For more information see the [AppMetaService API Docs](http://apidocs.bladerunnerjs.org/latest/js/module-br_services_AppMetaService.html).

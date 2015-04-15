@@ -39,8 +39,4 @@ BRJS supports building [WAR files](war-files) so you can deploy your BRJS app as
 
 <strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download the latest BRJS release</a></strong> and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI executable is `BRJS_HOME/sdk/brjs`.
 
-<div class="alert alert-info">
-  <p>
-    We're working towards a <a href="https://github.com/BladeRunnerJS/brjs/issues/1">global install</a>. For the moment you'll need to execute the <code>brjs</code> command via <code>BRJS_HOME/sdk/brjs</code>.
-  </p>
-</div>
+*Note:* in order to use the `brjs` commands from any location on your machine, add `BRJS_HOME/sdk` to your `Path` in `Environment Variables`.

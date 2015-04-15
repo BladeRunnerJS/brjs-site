@@ -44,3 +44,8 @@ BRJS supports building [WAR files](war-files) so you can deploy your BRJS app as
     We're working towards a <a href="https://github.com/BladeRunnerJS/brjs/issues/1">global install</a>. For the moment you'll need to execute the <code>brjs</code> command via <code>BRJS_HOME/sdk/brjs</code>.
   </p>
 </div>
+
+*Note:* Upon running your first `brjs` command, you will be asked whether you would like to provide anonymous tracking of your use of BRJS. This means that information such as commands run, bundle times or operating system used, will be recorded for research purposes. We would like to encourage you to participate, as this will help us improve our products by gaining insight into common use cases and system specifications. Should you change your mind later on, you can always do so by either:
+
+- running any `brjs` command with the `--stats` flag (tracking enabled) or `--no-stats` flag (tracking disabled) **or**;
+- editing the value of the property `allowAnonymousStats` in your `BRJS_HOME/conf/brjs.conf` to `true` (tracking enabled) or `false` (tracking disabled).  

@@ -50,6 +50,10 @@ In order to run BRJS you'll need Java 7 or above installed. If you haven't alrea
 	</p>
 </div>
 
+*Note:* Upon running your first `brjs` command, you will be asked whether you would like to provide anonymous tracking of your use of BRJS. This means that information such as commands run, bundle times or operating system used, will be recorded for research purposes. We would like to encourage you to participate, as this will help us improve our products by gaining insight into common use cases and system specifications. Should you change your mind later on, you can always do so by either:
+
+- running any `brjs` command with the `--stats` flag (tracking enabled) or `--no-stats` flag (tracking disabled) **or**;
+- editing the value of the property `allowAnonymousStats` in your `BRJS_HOME/conf/brjs.conf` to `true` (tracking enabled) or `false` (tracking disabled).  
 
 ## Create an Application
 

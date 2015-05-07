@@ -78,7 +78,7 @@ You can click on this icon to open it. However, as there are no bladesets yet cr
   </p>
 </div>
 
-Whichever method you use to create your new app, you will see that your new app automatically contains multiple directories including libraries and a `default-aspect` directory. In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
+Whichever method you use to create your new app, you will see that your new app automatically contains multiple directories including libraries. In the aspect directory, your main one, you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
 
 You can view this aspect by starting the BRJS development server (if you haven't done so already) and navigating to `http://localhost:7070/brjstodo`.
 

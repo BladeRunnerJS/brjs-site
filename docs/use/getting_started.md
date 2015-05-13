@@ -768,7 +768,7 @@ module.exports = App;
 
 At this point we haven't added any content to our page and it will just a blank page.
 
-In order for the Blade components to appear in the aspect we have to append the DOM elements that the `KnockoutComponent` instances create, to the Aspect (the main view into the Todo List web app). We do this by calling `component.getElement()` and appending the returned element append it to the `todoapp` element in the DOM:
+In order for the Blade components to appear in the aspect we have to append the DOM elements that the `KnockoutComponent` instances create, to the Aspect (the main view into the Todo List web app). We do this by creating a `SimpleFrame` object for the component, then calling `frame.getElement()` on it and appending the returned element to the `todoapp` element in the DOM:
 
 ```js
 'use strict';
@@ -777,6 +777,7 @@ var InputViewModel = require( 'brjstodo/todo/input/InputViewModel' );
 var ItemsViewModel = require( 'brjstodo/todo/items/ItemsViewModel' );
 
 var KnockoutComponent = require( 'br/knockout/KnockoutComponent' );
+var SimpleFrame = require('br/component/SimpleFrame');
 
 var App = function() {
 	var inputViewModel = new InputViewModel();
@@ -789,8 +790,14 @@ var App = function() {
 
 	/*** new code ***/
 	var todoAppEl = document.getElementById( 'todoapp' );
-	todoAppEl.appendChild( inputComponent.getElement() );
-	todoAppEl.appendChild( itemsComponent.getElement() );
+	var inputFrame = new SimpleFrame(inputComponent, null, null);
+ 	todoAppEl.appendChild( inputFrame.getElement() );
+ 	inputFrame.trigger('attach');
+
+	var itemsFrame = new SimpleFrame(itemsComponent, null, null);
+ 	todoAppEl.appendChild( itemsFrame.getElement() );
+ 	itemsFrame.trigger('attach');
+
 	/*** end of new code ***/
 };
 

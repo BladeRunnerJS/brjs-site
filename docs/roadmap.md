@@ -49,10 +49,10 @@ As with BladeSets, [Aspects](http://bladerunnerjs.org/docs/concepts/aspects) are
 
 The original requirement for BRJS was to be able to create deployable WAR files. This is very restrictive so we're going to add Flat File deployment.
 
-### [Improved Scaffolding Support](https://github.com/BladeRunnerJS/brjs/issues/126)
+### ~~[Improved Scaffolding Support](https://github.com/BladeRunnerJS/brjs/issues/126)~~
 
 The template shipped with BRJS is presently hard-coded to use Knockout. Since BRJS can be used with other technologies it makes sense to add support for other templates to be created and used when scaffolding applications.
 
-### [Global Install](https://github.com/BladeRunnerJS/brjs/issues/1)
+### ~~[Global Install](https://github.com/BladeRunnerJS/brjs/issues/1)~~
 
 For legacy reasons, applications presently have to be located in a set directory within the BRJS install directory. We know this is a pain so we're going to provide a solution that enables a BRJS global install, allowing for your applications to be located anywhere on disk.

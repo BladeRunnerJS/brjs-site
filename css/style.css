@@ -21,7 +21,7 @@ body {
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
   padding: 0 0 3% 0;
-} 
+}
 
 h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
@@ -917,6 +917,14 @@ body.post .post img {
   display: block;
 }
 
+body.post .post img.pull-left {
+  padding-right:10px;
+}
+
+body.post .post img.pull-right {
+  padding-left:10px;
+}
+
 body.post .fig-text {
   display: block;
   text-align: center;
@@ -1019,7 +1027,7 @@ body.post #disqus_thread {
 .footer .social a {
   border-bottom: none;
   opacity: 0.6;
-}  
+}
 
 .footer a:hover {
   background-color: #333;

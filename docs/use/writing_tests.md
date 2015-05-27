@@ -11,6 +11,25 @@ Within a BRJS application the tests reside with the functionality they are writt
 * Aspect tests are located in `<aspect-name>/tests`
 * Library tests are located in `<library-name>/tests`
 
+BRJS uses [js-test-driver](https://code.google.com/p/js-test-driver/) to run tests, and the `jsTestDriver.conf` file – a copy of which resides in the tests folder being used at the time – determines which tests to run. The bundlers are executed by js-test-driver every time tests are run. Please note that if a path defined in the `load` or `serve` block starts with `bundles`, the bundle will be auto-generated. For more information as to the available keys, please see [js-test-driver](https://code.google.com/p/js-test-driver/).
+
+### Example
+```
+server: http://localhost:4224
+basepath: .
+
+load:
+  - bundles/i18n/en_i18n.bundle
+  - bundles/js/js.bundle
+
+serve:
+  - bundles/html.bundle
+  - bundles/xml.bundle
+
+test:
+  - tests/**.js
+```
+
 ## Unit Tests
 
 ### Syntax

@@ -22,7 +22,7 @@ For example, the below diagram shows three separate aspects: desktop, tablet and
 
 ## How to Use Aspects
 
-An aspect consists of an entry index.html page and a set of required resources. Each aspect potentially has access to all the resources and blades in its parent application, but it may be set up only to deliver a fraction of that to the end-users.
+An aspect consists of an entry index.html page and a set of required resources. Each aspect has access to all the resources and blades in its parent application, but it may be set up only to deliver a fraction of that to the end-users.
 
 You can create new aspects via the command line interface by executing the following instruction:
 
@@ -39,6 +39,8 @@ $ ./brjs create-aspect example-app login
 <div class="alert alert-info">
   <p>Note: This is only done through the command line at the moment. We will be adding this on the the dashboard at a later date. [Details are on GitHUb](https://github.com/BladeRunnerJS/brjs/issues/748)</p>
 </div>
+
+Your main app folder is considered your 'default' aspect, which is served up under `/` in the browser for example `localhost/example-app`. You may choose instead to use a directory name `default-aspect` to provide the same functionality instead. This is useful if you have several aspects, each of which can then be kept within it's own directory. To do this simply move `resources`, `src`, `tests`, `themes, `unbundled-resources` and `index.html` from directly inside your app directory to a directory named `default-aspect` within your app.
 
 ## Where Next?
 

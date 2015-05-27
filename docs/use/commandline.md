@@ -59,7 +59,7 @@ The command output have been modelled upon gradle's `dependencies` and `dependen
 
 ### brjs app-deps
 
-This command is to analyse the full set of dependencies for a given application aspect (e.g.`<myApp>/default-aspect`)
+This command is to analyse the full set of dependencies for a given application aspect (e.g.`<myApp>`)
 
 #### Usage
 
@@ -73,7 +73,7 @@ app-deps <app> [<aspect>] [-A|--all]
 › ./brjs app-deps brjstodo
 
 Aspect 'default' dependencies found:
-    +--- 'default-aspect/index.html' (seed file)
+    +--- 'index.html' (seed file)
     |    \--- '../../libs/javascript/br-libs/br/src/br/ServiceRegistry.js' (*)
     |    |    \--- '../../libs/javascript/br-libs/br/src/br/Errors.js' (*)
     |    |    |    \--- '../../libs/javascript/br-libs/br/src/br/Core.js' (*)
@@ -81,7 +81,7 @@ Aspect 'default' dependencies found:
     |    |    \--- '../../libs/javascript/br-libs/br/src/br/AliasRegistry.js'
     |    \--- '../../libs/javascript/br-libs/br/src/br/EventHub.js' (*)
     |    |    \--- '../../libs/javascript/thirdparty/emitr'
-    |    \--- 'default-aspect/src/brjstodo/App.js'
+    |    \--- 'src/brjstodo/App.js'
     |    |    \--- '../../libs/javascript/br-libs/knockout/src/br/knockout/KnockoutComponent.js'
     |    |    |    \--- '../../libs/javascript/thirdparty/ko' (*)
     |    |    |    \--- '../../libs/javascript/br-libs/component/src/br/component/Component.js'
@@ -172,9 +172,9 @@ For example, to see the bundle dependencies for the unit tests within a blade 'i
 within the blade-set 'todo', within the app 'brjstodo', you would need to run:
 
 ```
-› ./brjs bundle-deps ../apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver/
+› ./brjs bundle-deps ../brjs-apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver/
 
-Bundle 'apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver' dependencies found:
+Bundle 'brjs-apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver' dependencies found:
     +--- 'todo-bladeset/blades/input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js' (seed file)
     |    \--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
     |    |    \--- '../../libs/javascript/thirdparty/ko'
@@ -208,8 +208,8 @@ dep-insight <app> <require-path> [<aspect>] [-p|--prefix] [-a|--alias] [-A|--all
 
 Source module 'brjstodo/todo/input/InputViewModel' dependencies found:
     +--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
-    |    \--- 'default-aspect/src/brjstodo/App.js'
-    |    |    \--- 'default-aspect/index.html' (seed file)
+    |    \--- 'src/brjstodo/App.js'
+    |    |    \--- 'index.html' (seed file)
 ```
 
 ### dep-insight (alias)
@@ -229,7 +229,7 @@ dep-insight <app> <alias> -a [<aspect>] [-p|--prefix] [-A|--all]
 	    name: 'br.foolib.the-alias' (defined in 'br/foolib/resources/aliasDefinitions.xml')
 	    interface: 'br.foolib.TheInterface' (defined in 'br/foolib/resources/aliasDefinitions.xml')
 	    class: 'acme.MegaClass' (defined in 'helperlib/resources/aliasDefinitions.xml' within group 'helperlib.g1')
-	         -- (selected for use within 'default-aspect/resources/aliases.xml')
+	         -- (selected for use within 'resources/aliases.xml')
 
 	Alias 'br.foo.the-alias' dependencies found:
 	    +--- 'novox/pkg/SomeClass'

@@ -36,13 +36,13 @@ Where the `app-name` is the name of the application you wish to build and `targe
 
 If you wish to deploy your application to any web server or a CDN then it's likely that you'll want to use the BRJS toolkit to build your assets into concatenated file bundles that can be served as static files.
 
-For example, in the following example the app named `myapp` will be built to a directory `~/apps/myapp/`:
+For example, in the following example the app named `myapp` will be built to a directory `~/brjs-apps/myapp/`:
 
 ```bash
-./brjs build-app myapp ~/apps
+./brjs build-app myapp ~/brjs-apps
 ```
 
-*Note: in the above example `~/apps` must exist*
+*Note: in the above example `~/brjs-apps` must exist*
 
 The built application will consist of a directory for each locale, an `index.html` application entry point and a `v` directory containing another directory representing the timestamp version of the build e.g. `1403275456940` is `Fri Jun 20 2014 15:44:16 GMT+0100 (BST)`.
 
@@ -165,12 +165,12 @@ View your deployed app in your web browser:
 If you are deploying to an environment that supports WAR file then BRJS provides support for building a deployable WAR. This is achieved using the `-w` flag:
 
 ```bash
-./brjs build-app -w myapp ~/apps
+./brjs build-app -w myapp ~/brjs-apps
 ```
 
-*Note: in the above example `~/apps` must exist*
+*Note: in the above example `~/brjs-apps` must exist*
 
-This will create a `myapp.war` file in `~/apps`. You can now deploy the `.war` file to your WAR supporting web server. For example, deploying to Tomcat is a simple as copying the generated WAR file to the Tomcat `webapps` directory
+This will create a `myapp.war` file in `~/brjs-apps`. You can now deploy the `.war` file to your WAR supporting web server. For example, deploying to Tomcat is a simple as copying the generated WAR file to the Tomcat `webapps` directory
 
 <div class="alert alert-info github">
   <p>

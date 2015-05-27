@@ -6,9 +6,10 @@ permalink: /about/team/
 
 <div class="team-members">
 
+        <h2>Core Team</h2>
         {% for team_member_name in site.team %}
 
-            {% cycle 'add rows': '<div class="team-members-row row">', nil, nil %}
+            {% cycle 'add core team rows': '<div class="team-members-row row">', nil, nil %}
 
                 <div class="team-member col-sm-4" id="{{ team_member_name }}">
 
@@ -42,10 +43,49 @@ permalink: /about/team/
 
                 </div> <!-- end .team-member -->
 
-            {% cycle 'close rows': nil, nil, '</div>' %}
+            {% cycle 'close core team rows': nil, nil, '</div>' %}
 
         {% endfor %}
 
-        {% cycle 'close rows': nil, '</div>', '</div>' %}
+        {% cycle 'close core team rows': nil, '</div>', '</div>' %}
+
+        <h2>Other Contributors</h2>
+        {% for team_member_name in site.other_contributors %}
+
+            {% cycle 'add contributor rows': '<div class="team-members-row row">', nil, nil %}
+
+                <div class="team-member col-sm-4" id="{{ team_member_name }}">
+
+                    {% assign team_member = site.authors[team_member_name] %}
+                    <h3 class="member-name">
+                        {% if team_member.url %}<a href="{{ team_member.url }}">{% endif %}
+                            {{ team_member.display_name }}
+                        {% if team_member.url %}</a>{% endif %}
+                    </h3>
+
+                    <div class="avatar">
+                    {% if team_member.avatar %}
+                        <img src="{{ team_member.avatar }}" />
+                    {% else %}
+                        <img src="/img/no-avatar.png" />
+                    {% endif %}
+                    </div>
+
+                    <div class="member-meta">
+                    {% if team_member.github %}
+                      <a class="fa fa-github" href="//www.github.com/{{ team_member.github }}">{{ team_member.github }}</a>
+                    {% endif %}
+                    {% if team_member.twitter %}
+                      <a class="fa fa-twitter" href="//www.twitter.com/{{ team_member.twitter }}">@{{ team_member.twitter }}</a>
+                    {% endif %}
+                    </div>
+
+                </div> <!-- end .team-member -->
+
+            {% cycle 'close contributor rows': nil, nil, '</div>' %}
+
+        {% endfor %}
+
+        {% cycle 'close contributor rows': nil, '</div>', '</div>' %}
 
 </div>

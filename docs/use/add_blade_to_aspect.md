@@ -8,11 +8,11 @@ Once you've [created a Blade](/docs/use/create_blade) and developed it in isolat
 in a [Workbench](/docs/concepts/workbenches) you will want to add it to an
 [Aspect](/docs/concepts/aspects).
 
-In the aspect folder (by default you'll have a `default-aspect`) you'll find an
+In the aspect folder (by default your app directory) you'll find an
 `App.js` file in the following location:
 
 ```bash
-default-aspect/src/app-name/App.js
+src/app-name/App.js
 ```
 
 In order to add the Blade to the Aspect you need to do the following:

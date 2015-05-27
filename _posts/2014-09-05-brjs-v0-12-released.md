@@ -29,7 +29,7 @@ When you create a new BRJS application the structure now looks as follows:
 * `test-acceptance` - application acceptance tests to exercise the app as a whole
 * `test-unit` - unit tests to execute against code defined in `src`
 * `themes` - theming and skinning; CSS, images etc.
-* `unbundled-resources` - for assets that shouldn't be processed by the BRJS [bundlers](bladerunnerjs.org/docs/concepts/bundlers/)
+* `unbundled-resources` - for assets that shouldn't be processed by the BRJS [bundlers](/docs/concepts/bundlers/)
 
 We hope that the majority of this is now actually quite self explanitory and that it will help others get started much faster.
 

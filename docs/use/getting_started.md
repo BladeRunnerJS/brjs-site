@@ -43,13 +43,12 @@ In order to run BRJS you'll need Java 7 or above installed. If you haven't alrea
 
 <strong><a href="https://github.com/BladeRunnerJS/brjs/releases/" class="brjs-latest-download">Download the latest BRJS release</a></strong> and unzip it somewhere. We'll now refer to that unzipped location as `BRJS_HOME`. The BRJS CLI executable is `BRJS_HOME/sdk/brjs`.
 
+*Note:* in order to use the `brjs` commands from any location on your machine, add `BRJS_HOME/sdk` to your `Path` in `Environment Variables`.
 
-<div class="alert alert-info">
-	<p>
-		We're working towards a <a href="https://github.com/BladeRunnerJS/brjs/issues/1">global install</a>. For the moment you'll need to execute the <code>brjs</code> command via <code>BRJS_HOME/sdk/brjs</code>.
-	</p>
-</div>
+*Note:* Upon running your first `brjs` command, you will be asked whether you would like to provide anonymous tracking of your use of BRJS. This means that information such as commands run, bundle times or operating system used, will be recorded for research purposes. We would like to encourage you to participate, as this will help us improve our products by gaining insight into common use cases and system specifications. Should you change your mind later on, you can always do so by either:
 
+- running any `brjs` command with the `--stats` flag (tracking enabled) or `--no-stats` flag (tracking disabled) **or**;
+- editing the value of the property `allowAnonymousStats` in your `BRJS_HOME/conf/brjs.conf` to `true` (tracking enabled) or `false` (tracking disabled).  
 
 ## Create an Application
 
@@ -75,7 +74,7 @@ Let's create a new blade called `input` within our `brjstodo` application:
 
 ### View the Code
 
-Within `apps/brjstodo/blades/input/src/` you'll find an `InputViewModel.js` file. Open this file to see the following:
+Within `brjs-apps/brjstodo/blades/input/src/` you'll find an `InputViewModel.js` file. Open this file to see the following:
 
 ```js
 'use strict';
@@ -269,13 +268,13 @@ Then in the web browser (or browsers) you wish to execute the tests in navigate 
 You can now run the tests by opening up another terminal/console tab/window and executing `BRJS_HOME/sdk/brjs test path_to_directory_to_scan_for_tests [test-type]` where `test-type` optional parameter identifies whether the unit tests or acceptance tests should be ran. In our case we just want to run the `input` unit tests tests by running:
 
 ```bash
-$ BRJS_HOME/sdk/brjs test ../apps/brjstodo/blades/input/ UTs
+$ BRJS_HOME/sdk/brjs test ../brjs-apps/brjstodo/blades/input/ UTs
 ```
 
 If all goes well you should see output similar to the following:
 
 ```bash
-› ./brjs test ../apps/brjstodo/blades/input/ UTs
+› ./brjs test ../brjs-apps/brjstodo/blades/input/ UTs
 Server already running, not bothering to start a new instance...
 
 Testing test-unit (UTs):
@@ -290,7 +289,7 @@ Tests Passed.
 
 If you wanted to run all tests of all types for the application you would execute:
 
-		$ BRJS_HOME/sdk/brjs test ../apps/brjstodo
+		$ BRJS_HOME/sdk/brjs test ../brjs-apps/brjstodo
 
 We've now created our first blade, seen it running in a workbench, updated the blade and seen the change in the workbench, and written a simple test to check the View Model initialized state. It's time to create our second blade.
 
@@ -325,7 +324,7 @@ The class has a member variable called `todos` that is an [`observableArray'](ht
 
 Next we need to update the View HTML template to loop over the `todos` Array and display each one in an unordered list. First remove the default content, then we can use the [`foreach`](http://knockoutjs.com/documentation/foreach-binding.html) binding.
 
-Update the `items` view, `BRJS_HOME/apps/brjstodo/blades/items/resources/html/view.html`, to have the following HTML:
+Update the `items` view, `BRJS_HOME/brjs-apps/brjstodo/blades/items/resources/html/view.html`, to have the following HTML:
 
 ```html
 <div id="brjstodo.items.view-template">
@@ -366,7 +365,7 @@ function InputViewModel() {
 	this.todoText = ko.observable( '' );
 
 	/*** new code ***/
-	this._eventHub = require 'service!br.event-hub' );
+	this._eventHub = require( 'service!br.event-hub' );
 	/*** end of new code ***/
 }
 
@@ -519,12 +518,12 @@ The test initializes the `input` View Model, sets a Todo text value we expect to
 
 Now that the test is written ensure the test server is running (`BRJS_HOME/sdk/brjs test-server --no-browser`), that you have a browser connected to the test server (`http://localhost:4224/capture?strict`) and execute the `input` acceptance tests:
 
-		$ BRJS_HOME/sdk/brjs test ../apps/brjstodo/blades/input/ ATs
+		$ BRJS_HOME/sdk/brjs test ../brjs-apps/brjstodo/blades/input/ ATs
 
 You should see confirmation that the tests pass:
 
 ```
-› ./brjs test ../apps/brjstodo/blades/input/ ATs
+› ./brjs test ../brjs-apps/brjstodo/blades/input/ ATs
 Server already running, not bothering to start a new instance...
 
 Testing test-acceptance (ATs):
@@ -663,10 +662,10 @@ This code ensures that any interaction with the `br.event-hub` service is captur
 } );
 ```
 
-Now you can execute the acceptance tests, using `BRJS_HOME/sdk/brjs test ../apps/brjstodo/blades/items/ ATs`, ensuring that the test server is running (`BRJS_HOME/sdk/brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
+Now you can execute the acceptance tests, using `BRJS_HOME/sdk/brjs test ../brjs-apps/brjstodo/blades/items/ ATs`, ensuring that the test server is running (`BRJS_HOME/sdk/brjs test-server`) and at least one browser is connected (`http://localhost:4224/capture?strict`):
 
 ```bash
-› ./brjs test ../apps/brjstodo/blades/items/ ATs
+› ./brjs test ../brjs-apps/brjstodo/blades/items/ ATs
 Server already running, not bothering to start a new instance...
 
 Testing test-acceptance (ATs):
@@ -708,7 +707,6 @@ To add the blades to the app open up `brjstodo/index.html` remove the div elemen
 <!DOCTYPE html>
 <html>
 	<head>
-		<@base.tag@/>
 		<meta charset="UTF-8">
 
 		<title>My Application</title>
@@ -756,11 +754,11 @@ var App = function() {
 	/*** new code ***/
 	var inputViewModel = new InputViewModel();
 	var inputComponent =
-		new KnockoutComponent( 'brjstodo.todo.view-template', inputViewModel );
+		new KnockoutComponent( 'brjstodo.input.view-template', inputViewModel );
 
 	var itemsViewModel = new ItemsViewModel();
 	var itemsComponent =
-		new KnockoutComponent( 'brjstodo.todo.view-template', itemsViewModel );
+		new KnockoutComponent( 'brjstodo.items.view-template', itemsViewModel );
 	/*** end of new code ***/
 };
 
@@ -804,7 +802,7 @@ If we refresh the application we'll now see the Input and the Todo List appended
 
 Finally, we *really* need to apply some styling to the application.
 
-Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two following files from the Todo MVC Knockout example and place them in `brjstodo/default-aspect/themes/common/`:
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two following files from the Todo MVC Knockout example and place them in `brjstodo/themes/common/`:
 
 * [base.css](https://raw.github.com/tastejs/todomvc/gh-pages/architecture-examples/knockoutjs/bower_components/todomvc-common/base.css)
 * [bg.png](https://raw.github.com/tastejs/todomvc/gh-pages/architecture-examples/knockoutjs/bower_components/todomvc-common/bg.png)

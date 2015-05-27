@@ -36,11 +36,13 @@ authors:
     twitter: "andyberry88"
     github: andyberry88
     avatar: https://avatars3.githubusercontent.com/u/726896?s=460
-    role: Senior Software Engineer &amp; Iteration Lead
+    role: Senior Software Engineer &amp; Tech Lead
   domc:
     display_name: Dom Chambers
     avatar: https://avatars0.githubusercontent.com/u/283294?s=460
-    role: Senior Software Engineer &amp; Tech Lead
+    role: Senior Software Engineer
+    github: dchambers
+    url: "https://github.com/dchambers"
   sospirited:
     display_name: Pre Vyas
     url: "https://github.com/sospirited"
@@ -51,8 +53,32 @@ authors:
     display_name: James Turner
     avatar: https://avatars2.githubusercontent.com/u/5113519?s=460
     role: Caplin System Architect and BRJS Product "Owner"
+    github: james-shaw-turner
+    url: "https://github.com/james-shaw-turner"
   kybernetikos:
-    display_name: kybernetikos
+    display_name: Adam Iley
+    avatar: https://avatars0.githubusercontent.com/u/430980?v=3&s=460
+    role: Senior Software Engineer
+    github: kybernetikos
     url: "https://github.com/kybernetikos"
-
-team: [ andyberry88, domc, jamest, leggetter, sospirited ]
+  ioanalianabalas:
+    display_name: Ioana Balas
+    avatar: https://avatars1.githubusercontent.com/u/8642595?v=3&s=460
+    url: "https://github.com/ioanalianabalas"
+    github: ioanalianabalas
+    role: Junior Software Engineer
+  thanhc:
+    display_name: Thanh Cam
+    avatar: https://avatars0.githubusercontent.com/u/5188693?v=3&s=460
+    url: "https://github.com/thanhc"
+    github: thanh
+    role: QA Engineer
+  thecapdan:
+    display_name: Daniel Owen
+    avatar: https://avatars0.githubusercontent.com/u/6085260?v=3&s=460
+    url: "https://github.com/thecapdan"
+    github: thecapdan
+    role: QA Engineer
+    
+team: [ andyberry88, domc, ioanalianabalas, thanhc ]
+other_contributors: [ leggetter, sospirited, thecapdan, jamest, kybernetikos ]

@@ -64,7 +64,7 @@ You will now see the name of the new blades displayed underneath the bladeset na
 
 ##Results
 
-This creates a `input` directory within `BRJS_HOME/apps/brjstodo/todo-bladeset/blades/` containing the following sub-directories:
+This creates a `input` directory within `BRJS_HOME/brjs-apps/brjstodo/todo-bladeset/blades/` containing the following sub-directories:
 
 - `src` - for the JavaScript for the Blade
 - `tests` - for the blade tests

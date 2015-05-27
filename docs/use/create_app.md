@@ -24,13 +24,13 @@ $ ./brjs create-app <app-name> [<require-prefix>]
 ```
 
 * `app-name` is the name of the application you want to create. A directory will
-be created in `BRJS_HOME/apps` with this name.
+be created in `BRJS_HOME/brjs-apps` with this name.
 * `require-prefix` is an *optional* parameter for the prefix to be used in `require`
 statements when referencing JavaScript [modules](/docs/concepts/modules/).
 
 ### Example
 
-Executing the following will create a new application called `brjstodo` within the `BRJS_HOME/apps` directory.
+Executing the following will create a new application called `brjstodo` within the `BRJS_HOME/brjs-apps` directory.
 
 ```bash
 ./brjs create-app brjstodo
@@ -74,11 +74,11 @@ You can click on this icon to open it. However, as there are no bladesets yet cr
 
 <div class="alert alert-info">
   <p>
-    BRJS apps presently have to reside within an <code>apps</code> folder in the unzip directory. Future releases will allow for <a href="https://github.com/BladeRunnerJS/brjs/issues/1">apps to be located anywhere on disk</a>.
+    BRJS apps presently have to reside within an <code>brjs-apps</code> which may be located anywhere on disk.</a>.
   </p>
 </div>
 
-Whichever method you use to create your new app, you will see that your new app automatically contains multiple directories including libraries and a `default-aspect` directory. In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
+Whichever method you use to create your new app, you will see that your new app automatically contains multiple directories including libraries. In the aspect directory you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else.
 
 You can view this aspect by starting the BRJS development server (if you haven't done so already) and navigating to `http://localhost:7070/brjstodo`.
 

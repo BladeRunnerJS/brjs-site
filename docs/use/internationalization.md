@@ -37,36 +37,24 @@ Run the [workbench](/docs/concepts/workbenches) for the blade and it should look
 
 ![](/docs/use/img/locale-start.png)
 
-## Understanding how locale URLs are handled in BRJS
-
-Before we continue we need to first understand how the URLs used in an app change depending on the locale currently in use.
-
-When a request is made to `/myapp/` a 'locale forwarding' page is returned to the browser. Using the browsers' `Accept-Language` header; the value of the locale cookie and the locales the app supports this page forwards the browser to a localized app page, for example `/myapp/en/`. This localized app page then contains the neccessary CSS, JS, XML and HTML requests for the app.
-
-In order to change the currently selected locale the browser must re-request the `/myapp/` URL so the locale forwarder can recalculate the locale and send the browser to the correct page.
-
-<div class="alert alert-info">
-<p>
-This mechanism currently prevents users of your app refreshing the page in order to change their locale. We hope to add a <a href="https://github.com/BladeRunnerJS/brjs/issues/804">mechanism</a> where apps can optionally push users back to the locale forwarder if they are using the incorrect locale.
-</p>
-</div>
 
 ## Set up Supported Locales
 
-Have a look in `app.conf` within the application root directory. It defines the locales that your app will support
+Have a look in `app.conf` within the application root directory. It defines the locales that your app will support.
 
 ```
 requirePrefix: <namespace>
 locales: en, de, es
 ```
 
+If you ensure that there is more than one locale at this point, then refresh the browser, you will see that the locale now appears within the URL. The [Understanding how locale switching is handled in BRJS](#understanding-how-locale-switching-is-handled-in-brjs) section explains the subtleties of how this works.
+
 ## Include the Internationalization Bundler
 
-Include the Internationalization Bundler in your app's `default-aspect/index.html` and workbench (`myblade/workbench/index.html`), by adding the `i18n.bundle` line into your `index.html` file.
+Include the Internationalization Bundler in your app's `index.html` and workbench (`myblade/workbench/index.html`), by adding the `i18n.bundle` line into your `index.html` file.
 
 ```html
 <head>
-    <@base.tag@/>
 	<meta charset="UTF-8">
 
     <title>Workbench</title>
@@ -82,7 +70,7 @@ Include the Internationalization Bundler in your app's `default-aspect/index.htm
 
 ## Internationalizing via HTML
 
-Let's update the `<h1>` element inside our HTML, which will be automatically internationalized. Internationalization markup in BRJS takes the form of: `@{<token>}`. It's best to namespace your token so that other blades don't overwrite each other's tokens
+Let's update the `<h1>` element inside our HTML, which will be automatically internationalized. Internationalization markup in BRJS takes the form of: `@{<token>}`. It's best to namespace your token so that other blades don't overwrite each other's tokens.
 
 ```html
 <div class="locale-demo-blade" id="demo.blades.myblade.view-template">
@@ -91,19 +79,17 @@ Let's update the `<h1>` element inside our HTML, which will be automatically int
 </div>
 ```
 
-Then define the token translation inside the file: `myblade/resources/i18n/en/en.properties`
+Then define the token translation inside the file `myblade/resources/i18n/en/en.properties`.
 
 ```
 demo.blades.myblade.title=Internationalization Demo
 ```
 
-Refresh the workbench, and it should look like this.
+Refresh the workbench, and it should look like this:
 
 ![](/docs/use/img/locale-html-token.png)
 
 The token replacement works by replacing all i18n tokens in all HTML as it is streamed through the HTML Bundler.
-
-Note: We were able to simply refresh the page here rather than requesting the 'locale forwarder' since we weren't changing the locale we were using.
 
 ## Internationalizing via JavaScript
 
@@ -198,13 +184,13 @@ And the German:
 
 If we want to see dates with times down to the second we need to change the date format. In order to change the date format you need to update the locale settings for the aspect, and those settings are inherited by the blade. This is because date formats should almost always be the same throughout the application rather than differing from blade to blade, so the date formats are defined up at the aspect level.
 
-Update the English properties file, found in `default-aspect/resources/i18n/en/en.properties` to define a `br.i18n.date.format`:
+Update the English properties file, found in `resources/i18n/en/en.properties` to define a `br.i18n.date.format`:
 
 ```
 br.i18n.date.format=DD, MMMM YYYY hh:mm:ss
 ```
 
-And do the same for the German properties file, found in `default-aspect/resources/i18n/de/de.properties`:
+And do the same for the German properties file, found in `resources/i18n/de/de.properties`:
 
 ```
 br.i18n.date.format=DD, MMMM YYYY hh:mm:ss
@@ -406,3 +392,85 @@ You can internationalize at different levels of your application, by locating pr
 * Aspect: `/app/aspect/resources/i18n`
 * BladeSet: `/app/bladeset/resources/i18n`
 * Blade: `/app/bladeset/blade/resources/i18n`
+
+## Understanding how locale switching is handled in BRJS
+
+Before we continue we first need to understand how locale switching is handled depending on the type of app in use. For the purposes of internationalization, there are three types of app:
+
+  1. Single-Locale Apps
+  1. Multi-Locale Apps (forwarding style)
+  1. Multi-Locale Apps (non-forwarding style)
+
+### Single-Locale Apps
+
+Single-Locale apps define only a single locale within their `app.conf` configuration file. For such apps, the served index page for apps and workbenches is the very same source index page that you will edit yourself, but with any logical tags replaced with their proper contents.
+
+Accordingly, single-locale apps never display the locale within the URL.
+
+
+### Multi-Locale Apps
+
+Multi-Locale apps return a switching-page instead of the source index page you normally edit. Instead, one copy of the source index page is created for each of the locales you define within `app.conf`.
+
+For example, if you define `locales: en, de` within your `app.conf`, then the following pages will be created:
+
+  * `index.html` (contains the switching-page)
+  * `en.html` (contains an English version of the source index page)
+  * `de.html` (contains a German version of the source index page)
+
+The switching page defers to the `br.locale-provider` service to determine the _active-locale_, and the `br.locale-switcher` service to switch to the active locale, allowing some flexibility in how locales are dealt with.
+
+BRJS comes pre-loaded with two implementations of the `br.locale-switcher` service:
+
+  * `BRLocaleForwardingSwitcher` for forwarding style apps (_the default_).
+  * `BRLocaleLoadingSwitcher` for non-forwarding style apps.
+
+
+#### Forwarding Multi-Locale Apps
+
+Forwarding style multi-locale apps cause the browser to load the active locale at a new URL. Although this causes the locale to appear within the URL, this is the default option as it has a number of advantages:
+
+  * The browser's _view-source_ feature continues to work.
+  * The browser's debugging tools tend to work better.
+  * The page can be introspected, and understood by developers familiar with HTML.
+
+
+#### Non-Forwarding Multi-Locale Apps
+
+Non-forwarding style apps have the following advantages:
+
+  * The locale doesn't appear within the URL.
+  * Bookmarks continue to work even if the locale changes.
+
+and can be enabled within your app by replacing this:
+
+```xml
+<alias name="br.locale-switcher"
+ defaultClass="br.services.locale.BRLocaleForwardingSwitcher"/>
+```
+
+in your `aliasDefinitions.xml` file, with this:
+
+```xml
+<alias name="br.locale-switcher"
+ defaultClass="br.services.locale.BRLocaleLoadingSwitcher"/>
+```
+
+
+## Understanding how the active locale is determined in BRJS
+
+When a request is made to `/myapp/` a locale-switching page is returned to the browser which uses the `br.locale-provider` service to determine the active locale. A single implementation of this service is provided with BladeRunnerJS, which works as follows:
+
+  1. If the `localestorage` contains a `locale` key, then this is used.
+  1. Otherwise, the browser's `Accept-Language` header is matched against the locales actually provided by the app, and the first match is used, assuming there is a match.
+  1. If there were no matches, then the first locale defined within `app.conf` is used.
+
+The determined active locale is then stored within `localstorage` ready for the next time the app is loaded.
+
+Given that the implementation of `br.locale-provider` may be changed in the future, overriding the active locale should be performed using the public API, and not by updating `localstorage` directly. This can be performed within code as follows:
+
+```js
+require('br-locale/switcher').switchLocale(myLocale);
+```
+
+You are also free to provide your own implementation of the `br.locale-provider` service. For example, if you'd prefer the user's locale to be stored along with the user's settings on the server, so that they automatically get their preferred locale even when they login using a new computer or device.

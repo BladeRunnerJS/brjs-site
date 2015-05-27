@@ -9,7 +9,7 @@ the `BRJS_HOME/apps` directory.
   </p>
 </div>
 
-In the main directory, which represents your main view or aspect, you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this by starting the BRJS development server:
+In the app directory, which represents your main view or aspect, you'll find an `index.html` entry point a `src` directory for your JavaScript, a `themes` directory for your CSS and images, and a `resources` directory for everything else. You can view this by starting the BRJS development server:
 
     $ ./brjs serve
 

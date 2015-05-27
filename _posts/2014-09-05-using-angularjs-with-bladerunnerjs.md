@@ -73,7 +73,7 @@ Use the `create-app` command to scaffold a BRJS application.
 $ ./brjs create-app brjstodo
 ```
 
-For now, applications need to reside within a `brjs-apps` folder within the `BladeRunnerJS` directory. The above command will create an application called `brjstodo` within the `brjs-apps` directory (`BladeRunnerJS/brjs-apps/brjstodo/`). That directory will have the following contents:
+The above command will create an application called `brjstodo` within the `brjs-apps` directory (`BladeRunnerJS/brjs-apps/brjstodo/`). That directory will have the following contents:
 
 ```
 brjs-apps/brjstodo

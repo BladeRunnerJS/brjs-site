@@ -68,16 +68,17 @@ authors:
     github: ioanalianabalas
     role: Junior Software Engineer
   thanhc:
-    display_name: Thanh Cam  
+    display_name: Thanh Cam
     avatar: https://avatars0.githubusercontent.com/u/5188693?v=3&s=460
     url: "https://github.com/thanhc"
     github: thanh
     role: QA Engineer
   thecapdan:
-    display_name: Daniel Owen  
+    display_name: Daniel Owen
     avatar: https://avatars0.githubusercontent.com/u/6085260?v=3&s=460
     url: "https://github.com/thecapdan"
     github: thecapdan
-    role: QA Engineer  
-team: [ andyberry88, domc, jamest, ioanalianabalas, thanhc ]
-other_contributors: [ leggetter, sospirited, thecapdan, kybernetikos ]
+    role: QA Engineer
+    
+team: [ andyberry88, domc, ioanalianabalas, thanhc ]
+other_contributors: [ leggetter, sospirited, thecapdan, jamest, kybernetikos ]

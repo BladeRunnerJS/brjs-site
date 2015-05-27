@@ -65,8 +65,8 @@ You can also use the `brjs` CLI to check your application dependencies.
 $ ./brjs app-deps awesome
 Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128M; support was removed in 8.0
 Aspect 'default' dependencies found:
-  +- 'default-aspect/index.html' (seed file)
-  |  \- 'default-aspect/src/awesome/App.js'
+  +- 'index.html' (seed file)
+  |  \- 'src/awesome/App.js'
   |  |  \- 'amazing-bladeset/blades/wow/src/awesome/amazing/wow/WowViewModel.js'
   |  |  |  \- 'amazing-bladeset/blades/amazing/src/awesome/amazing/mega/WowDomainModel.js'  
   |  |  |  \- 'amazing-bladeset/blades/amazing/src/awesome/amazing/mega/WowFormatter.js'

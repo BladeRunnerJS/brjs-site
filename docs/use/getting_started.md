@@ -803,7 +803,7 @@ If we refresh the application we'll now see the Input and the Todo List appended
 
 Finally, we *really* need to apply some styling to the application.
 
-Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two following files from the Todo MVC Knockout example and place them in `brjstodo/default-aspect/themes/common/`:
+Styling can be applied at a number of levels; from Blade through to Aspect. In our case we'll apply the styling at the Aspect level. Since we've already covered the key points in developing a BRJS application we're going to miss out the styling part. Download the two following files from the Todo MVC Knockout example and place them in `brjstodo/themes/common/`:
 
 * [base.css](https://raw.github.com/tastejs/todomvc/gh-pages/architecture-examples/knockoutjs/bower_components/todomvc-common/base.css)
 * [bg.png](https://raw.github.com/tastejs/todomvc/gh-pages/architecture-examples/knockoutjs/bower_components/todomvc-common/bg.png)

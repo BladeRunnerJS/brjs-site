@@ -40,6 +40,8 @@ $ ./brjs create-aspect example-app login
   <p>Note: This is only done through the command line at the moment. We will be adding this on the the dashboard at a later date. [Details are on GitHUb](https://github.com/BladeRunnerJS/brjs/issues/748)</p>
 </div>
 
+Your main app folder will be considered your 'default' aspect. You may choose to name an aspect created by you as `default`, in this scenario you will be prompted to pick one or the other when you load the app, as BRJS will determine there is a conflict between the two locations. Either deleted your newly created `default-aspect` folder, or move the files partaining to the initial default aspect from the main app folder to your newly created one. These would be `resources`, `src`, `tests`, `themes, `unbundled-resources` and `index.html`.
+
 ## Where Next?
 
 For further information, see How to [Create an Aspect](/docs/concepts/aspects/)

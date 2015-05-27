@@ -33,7 +33,7 @@ We could tell that the name of the app it belongs to is `myapp`, the bladeset is
 
 ## Assets - CSS Stylesheets
 
-An application may support a set of themes.  All the CSS associated with a particular theme is found within the themes directory of the aspect, bladeset or blade to which it belongs, in a folder dedicated to that theme.   For example: CSS that applies to the steampunk theme of an application’s default aspect would be located in: `default-aspect/themes/steampunk/`
+An application may support a set of themes.  All the CSS associated with a particular theme is found within the themes directory of the aspect, bladeset or blade to which it belongs, in a folder dedicated to that theme.   For example: CSS that applies to the steampunk theme of an application’s default aspect would be located in: `themes/steampunk/`
 
 BRJS determines the theme and locale to be [bundled](/docs/concepts/bundlers). The CSS bundle will therefore only contain CSS files from the appropriate theme directory.
 

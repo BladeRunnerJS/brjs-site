@@ -51,7 +51,7 @@ If you ensure that there is more than one locale at this point, then refresh the
 
 ## Include the Internationalization Bundler
 
-Include the Internationalization Bundler in your app's `default-aspect/index.html` and workbench (`myblade/workbench/index.html`), by adding the `i18n.bundle` line into your `index.html` file.
+Include the Internationalization Bundler in your app's `index.html` and workbench (`myblade/workbench/index.html`), by adding the `i18n.bundle` line into your `index.html` file.
 
 ```html
 <head>
@@ -185,13 +185,13 @@ And the German:
 
 If we want to see dates with times down to the second we need to change the date format. In order to change the date format you need to update the locale settings for the aspect, and those settings are inherited by the blade. This is because date formats should almost always be the same throughout the application rather than differing from blade to blade, so the date formats are defined up at the aspect level.
 
-Update the English properties file, found in `default-aspect/resources/i18n/en/en.properties` to define a `br.i18n.date.format`:
+Update the English properties file, found in `resources/i18n/en/en.properties` to define a `br.i18n.date.format`:
 
 ```
 br.i18n.date.format=DD, MMMM YYYY hh:mm:ss
 ```
 
-And do the same for the German properties file, found in `default-aspect/resources/i18n/de/de.properties`:
+And do the same for the German properties file, found in `resources/i18n/de/de.properties`:
 
 ```
 br.i18n.date.format=DD, MMMM YYYY hh:mm:ss

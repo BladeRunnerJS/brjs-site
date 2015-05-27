@@ -754,11 +754,11 @@ var App = function() {
 	/*** new code ***/
 	var inputViewModel = new InputViewModel();
 	var inputComponent =
-		new KnockoutComponent( 'brjstodo.todo.view-template', inputViewModel );
+		new KnockoutComponent( 'brjstodo.input.view-template', inputViewModel );
 
 	var itemsViewModel = new ItemsViewModel();
 	var itemsComponent =
-		new KnockoutComponent( 'brjstodo.todo.view-template', itemsViewModel );
+		new KnockoutComponent( 'brjstodo.items.view-template', itemsViewModel );
 	/*** end of new code ***/
 };
 

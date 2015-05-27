@@ -20,3 +20,7 @@ please use StackOverflow:
 ## To Stay In the Loop
 
 The best way to keep up to date with BladeRunnerJS developments are by following [@BladeRunnerJS](https://twitter.com/BladeRunnerJS) on Twitter or by registering for [our mailing list](http://caplin.us7.list-manage.com/subscribe/?u=b11bf2689d15a7cdd68a0904a&amp;id=4649bf0c91).
+
+## Can I pay for Support?
+
+Certainly! [Email us](mailto:bladerunnerjs@caplin.com) and we'll discuss options.

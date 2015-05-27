@@ -55,7 +55,6 @@ Include the Internationalization Bundler in your app's `index.html` and workbenc
 
 ```html
 <head>
-    <@base.tag@/>
 	<meta charset="UTF-8">
 
     <title>Workbench</title>

@@ -73,10 +73,10 @@ Use the `create-app` command to scaffold a BRJS application.
 $ ./brjs create-app brjstodo
 ```
 
-For now, applications need to reside within an `apps` folder within the `BladeRunnerJS` directory. The above command will create an application called `brjstodo` within the `apps` directory (`BladeRunnerJS/apps/brjstodo/`). That directory will have the following contents:
+For now, applications need to reside within a `brjs-apps` folder within the `BladeRunnerJS` directory. The above command will create an application called `brjstodo` within the `brjs-apps` directory (`BladeRunnerJS/brjs-apps/brjstodo/`). That directory will have the following contents:
 
 ```
-apps/brjstodo
+brjs-apps/brjstodo
 ├── app.conf    				# Application configuration
 ├── index.html  				# Application entry point
 ├── libs        				# Other app libraries
@@ -92,7 +92,7 @@ apps/brjstodo
 
 We know we're going to be using Angular so before we do anything else let's add the `angular.js` library to the applications. Third-party [Libraries](http://bladerunnerjs.org/docs/concepts/libraries/) are easily added to a BRJS application.
 
-Within `apps/brjstodo/libs` create an `angular` directory. Within that directory add the [`angular.js` JavaScript library](http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js). Finally, create a `thirdparty-lib.manifest` with the following contents:
+Within `brjs-apps/brjstodo/libs` create an `angular` directory. Within that directory add the [`angular.js` JavaScript library](http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js). Finally, create a `thirdparty-lib.manifest` with the following contents:
 
 ```
 exports: window.angular
@@ -120,7 +120,7 @@ $ ./brjs create-blade brjstodo default input
 
 *Note: `default` is presently required but we'll [remove the need for it](https://github.com/BladeRunnerJS/brjs/issues/885) in the future.**
 
-This will create all the basic assets required for the blade within the default blades location: `apps/brjstodo/blades/input`. The contents will be as follows:
+This will create all the basic assets required for the blade within the default blades location: `brjs-apps/brjstodo/blades/input`. The contents will be as follows:
 
 ```
 blades/input
@@ -229,7 +229,7 @@ The `<todo-input></todo-input>` directive is now in the workbench. We can view t
 
 Styles can be defined either within the blade or within the application entry point (the [aspect](http://bladerunnerjs.org/docs/concepts/aspects)). When the CSS concatenation ([bundling](http://bladerunnerjs.org/docs/concepts/bundlers/)) takes place the blade CSS will first be included and then the entry point CSS. The purpose of including the CSS in this order is so that an application can override blade CSS and thus it can more easily be reused and a different "skin" applied.
 
-Anyway, to make things simple and focused let's just download two assets and put them in the `apps/brjstodo/themes/common/` directory:
+Anyway, to make things simple and focused let's just download two assets and put them in the `brjs-apps/brjstodo/themes/common/` directory:
 
 * [styles.css](https://raw.githubusercontent.com/BladeRunnerJS/brjs-todomvc-angular/master/themes/common/style.css)
 * [bg.png](https://raw.githubusercontent.com/BladeRunnerJS/brjs-todomvc-angular/master/themes/common/bg.png)
@@ -250,10 +250,10 @@ Let's create the `TodoService` within a library. [Libraries](/docs/concepts/libr
 $ ./brjs create-library brjstodo todomvc
 ```
 
-This creates a directory called `todomvc` within `apps/brjstodo/libs/` with the following structure:
+This creates a directory called `todomvc` within `brjs-apps/brjstodo/libs/` with the following structure:
 
 ```
-apps/brjstodo/libs/todomvc
+brjs-apps/brjstodo/libs/todomvc
 ├── br-lib.conf
 ├── src
 └── test-unit
@@ -665,13 +665,12 @@ Resulting in something like the following via `http://localhost:7070/brjstodo/de
 
 ## Bringing It All Together
 
-**But how do you bring each of the blade directives into the app?** We've actually seen how you include and use the directives already when adding them to the workbench. We now just do that in the application entry point - the `apps/brjstodo/index.html` file at the root of the app. Replace the current contents with the following:
+**But how do you bring each of the blade directives into the app?** We've actually seen how you include and use the directives already when adding them to the workbench. We now just do that in the application entry point - the `brjs-apps/brjstodo/index.html` file at the root of the app. Replace the current contents with the following:
 
 ```html
 <!DOCTYPE html>
 <html>
 	<head>
-		<@base.tag@/>
 		<meta charset="UTF-8">
 
 		<title>BRJS Angular Todo MVC</title>
@@ -724,7 +723,7 @@ Resulting in something like the following via `http://localhost:7070/brjstodo/de
 
 The main parts of the code are highlighted above. The HTML is added to declare the three directives, the directives are `require`d and defined. It's nice, simple and clean.
 
-Finally, we also need to set up the `ServiceRegistry`. Update `apps/brjstodo/resources/aliases.xml`:
+Finally, we also need to set up the `ServiceRegistry`. Update `brjs-apps/brjstodo/resources/aliases.xml`:
 
 ```xml
 <aliases xmlns="http://schema.caplin.com/CaplinTrader/aliases" useScenario="dev">

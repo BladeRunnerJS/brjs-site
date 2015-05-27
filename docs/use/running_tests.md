@@ -27,13 +27,13 @@ Now you can execute tests by running the `brjs test` command and supplying a pat
 Run all tests for the `brjs-todo` application:
 
 ```bash
-$ ./brjs test ../apps/brjs-todo
+$ ./brjs test ../brjs-apps/brjs-todo
 ```
 
 Run the tests for just the `todo-input` Blade:
 
 ```bash
-$ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+$ ./brjs test ../brjs-apps/brjs-todo/todo-bladeset/blades/todo-input
 ```
 
 ## Running tests with specific browsers
@@ -49,7 +49,7 @@ Above, `browsers` is a comma separated list of labels used for each browser in t
 
 An example of running tests for the `brjs-todo` app using Firefox and Chrome would be:
 ```bash
-$ ./brjs test ../apps/brjs-todo -b firefox,chrome
+$ ./brjs test ../brjs-apps/brjs-todo -b firefox,chrome
 ```
 <div class="alert alert-info">
 <p>Note: firefox and chrome would need to be commented out in `test-runner.conf`
@@ -66,11 +66,11 @@ This will start the test server listening on the port identified by the `portNum
 Run all tests for the `brjs-todo` application:
 
 ```bash
-$ ./brjs test ../apps/brjs-todo
+$ ./brjs test ../brjs-apps/brjs-todo
 ```
 Run the tests for just the `todo-input` Blade:
 ```bash
-$ ./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input
+$ ./brjs test ../brjs-apps/brjs-todo/todo-bladeset/blades/todo-input
 ```
 ## Debugging Tests
 
@@ -79,7 +79,7 @@ Once you have your tests written and running, you are likely to get to a point w
 The steps for debugging tests are as simple as:
 
 1. Add `debugger` statement to the area of code you wish to debug
-2. Execute the test e.g. `./brjs test ../apps/brjs-todo/todo-bladeset/blades/todo-input`. *Note: The smallest group of tests you can execute at the moment are to a blade level.*
+2. Execute the test e.g. `./brjs test ../brjs-apps/brjs-todo/todo-bladeset/blades/todo-input`. *Note: The smallest group of tests you can execute at the moment are to a blade level.*
 3. Debug the test using browser developer tools
 
 Some browsers may require the developer tools to be open in order to react to the break point.

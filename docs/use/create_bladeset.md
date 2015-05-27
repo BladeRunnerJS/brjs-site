@@ -73,7 +73,7 @@ If you hover over the bladeset box, you will see that you have two options ‘ad
 
 ##Results
 
-Whichever method you have used to create your new bladeset, you will see that BladeRunnerJS has created a new folder called “todo-bladeset” within apps/brjstodo. Within the bladeset directory you'll find the following:
+Whichever method you have used to create your new bladeset, you will see that BladeRunnerJS has created a new folder called “todo-bladeset” within brjs-apps/brjstodo. Within the bladeset directory you'll find the following:
 
 * `resources` - for everything else
 * `src` - for the JavaScript for the bladeset

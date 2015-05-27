@@ -172,9 +172,9 @@ For example, to see the bundle dependencies for the unit tests within a blade 'i
 within the blade-set 'todo', within the app 'brjstodo', you would need to run:
 
 ```
-› ./brjs bundle-deps ../apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver/
+› ./brjs bundle-deps ../brjs-apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver/
 
-Bundle 'apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver' dependencies found:
+Bundle 'brjs-apps/brjstodo/todo-bladeset/blades/input/tests/test-unit/js-test-driver' dependencies found:
     +--- 'todo-bladeset/blades/input/tests/test-unit/js-test-driver/tests/InputViewModelTest.js' (seed file)
     |    \--- 'todo-bladeset/blades/input/src/brjstodo/todo/input/InputViewModel.js'
     |    |    \--- '../../libs/javascript/thirdparty/ko'

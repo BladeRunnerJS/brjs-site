@@ -10,7 +10,6 @@ One of the main benefits of BladeRunnerJS is that it analyses your application a
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <@base.tag@/>
 	<meta charset="UTF-8">
     
     <title>My Awesome BRJS App</title>

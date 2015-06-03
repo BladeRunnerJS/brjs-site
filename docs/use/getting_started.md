@@ -766,7 +766,15 @@ var App = function() {
 module.exports = App;
 ```
 
-At this point we haven't added any content to our page and it will just a blank page.
+At this point we haven't added any content to our page and it will just be a blank page.
+
+<div class="alert alert-info">
+	<p>
+		To make blade components re-usable in different apps, we have each blade implement the <code>Component</code>
+		interface, and house each blade component within a <code>Frame</code>. You don't have to do the same thing, but
+		that's how we do it.
+	</p>
+</div>
 
 In order for the Blade components to appear in the aspect we have to append the DOM elements that the `KnockoutComponent` instances create, to the Aspect (the main view into the Todo List web app). We do this by creating a `SimpleFrame` object for the component, then calling `frame.getElement()` on it and appending the returned element to the `todoapp` element in the DOM:
 

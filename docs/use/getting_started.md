@@ -798,11 +798,11 @@ var App = function() {
 
 	/*** new code ***/
 	var todoAppEl = document.getElementById( 'todoapp' );
-	var inputFrame = new SimpleFrame(inputComponent, null, null);
+	var inputFrame = new SimpleFrame(inputComponent);
  	todoAppEl.appendChild( inputFrame.getElement() );
  	inputFrame.trigger('attach');
 
-	var itemsFrame = new SimpleFrame(itemsComponent, null, null);
+	var itemsFrame = new SimpleFrame(itemsComponent);
  	todoAppEl.appendChild( itemsFrame.getElement() );
  	itemsFrame.trigger('attach');
 

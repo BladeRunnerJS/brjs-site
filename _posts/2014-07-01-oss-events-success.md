@@ -179,7 +179,7 @@ We've still a lot more coming up over the next few months.
 
 ### SPA Conference 2014
 
-<a href="www.spaconference.org/spa2014/"><img src="/blog/img/spa-2014.png" style="max-height: 125px; max-width: 256px; float: right; margin-left: 20px;" /></a>
+<a href="http://www.spaconference.org/spa2014/"><img src="/blog/img/spa-2014.png" style="max-height: 125px; max-width: 256px; float: right; margin-left: 20px;" /></a>
 
 * London, UK
 * June 29 - July 2

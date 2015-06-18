@@ -45,3 +45,7 @@ BRJS supports building [WAR files](war-files) so you can deploy your BRJS app as
 
 - running any `brjs` command with the `--stats` flag (tracking enabled) or `--no-stats` flag (tracking disabled) **or**;
 - editing the value of the property `allowAnonymousStats` in your `BRJS_HOME/conf/brjs.conf` to `true` (tracking enabled) or `false` (tracking disabled).  
+
+<div class="alert alert-info github">
+	BRJS scans up the directory tree looking for one of 2 identifiers in order to locate where apps' live. If a file named app.conf is found, which identifies a single app folder, the directory above the app will be used as the apps location. Failing this if an apps folder is found inside one of the parent directories this will be used as the apps location. If neither of these conditions is met the current working directory will be used as the apps location.
+</div>

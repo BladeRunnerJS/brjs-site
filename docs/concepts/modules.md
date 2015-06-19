@@ -4,7 +4,7 @@ title: Modules
 permalink: /docs/concepts/modules/
 ---
 
-The default JavaScript [bundler](/docs/concepts/bundler/) in BladeRunnerJS (BRJS)
+The default JavaScript [bundler](/docs/concepts/bundlers/) in BladeRunnerJS (BRJS)
 lets you reference code using Node.js-style `require`, `module.exports` and `exports`
 syntax within your application's JavaScript. The generated JavaScript is then supported within the browser using a library called [browser-modules](https://github.com/BladeRunnerJS/browser-modules).
 

@@ -66,4 +66,4 @@ In this example, the properties file must reside in a blade for which the app na
 
 ## Where Next?
 
-Find out more about the [bundling process](/docs/concepts/bundling/) and how bundles are determined via [Dependency Analysis](/docs/concepts/dependency_analysis/).
+Find out more about the [bundling process](/docs/concepts/bundlers/) and how bundles are determined via [Dependency Analysis](/docs/concepts/dependency_analysis/).

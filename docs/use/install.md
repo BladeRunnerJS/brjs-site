@@ -31,9 +31,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.5-b02, mixed mode)
 
 To host built apps you'll need a web server that can serve static files, for example [PHP's built in web server](http://www.php.net/manual/en/features.commandline.webserver.php), [Python's SimpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html), or [Apache Tomcat 6.x](http://tomcat.apache.org/).
 
-BRJS supports building [WAR files](war-files) so you can deploy your BRJS app as a WAR on any supporting web server e.g JBOSS or Apache Tomcat.
-
-[war-files]:http://en.wikipedia.org/wiki/WAR_(file_format)
+BRJS supports building apps as a set of static files or as a [WAR file](http://en.wikipedia.org/wiki/WAR_(file_format)) so you can deploy your BRJS app as a WAR on any supporting web server e.g JBOSS or Apache Tomcat. [More information on deploying BRJS apps](http://localhost:4000/docs/use/build_deploy/).
 
 ## Download & Install BRJS
 

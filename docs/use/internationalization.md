@@ -9,7 +9,7 @@ the details required to add internationalization support to your BRJS applicatio
 
 ## Basic App Setup
 
-For this example we'll assume you've [created an application](/docs/use/create-app) called `demo`, [created a bladeset](/docs/use/create-bladeset) called `blades` and  [created a blade](/docs/use/create-blade/) called `myblade`. Within that blade, open up the `resources/html/view.html` template and update it to look as follows:
+For this example we'll assume you've [created an application](/docs/use/create_app) called `demo`, [created a bladeset](/docs/use/create_bladeset) called `blades` and  [created a blade](/docs/use/create_blade/) called `myblade`. Within that blade, open up the `resources/html/view.html` template and update it to look as follows:
 
 ```html
 <div class="locale-demo-blade" id="demo.blades.myblade.view-template">

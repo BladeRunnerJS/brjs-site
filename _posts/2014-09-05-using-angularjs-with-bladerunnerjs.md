@@ -321,7 +321,7 @@ module.exports = TodoService;
 
 This is the full definition of a chat service that store and retrieves items to [localStorage](https://developer.mozilla.org/en/docs/Web/Guide/API/DOM/Storage#localStorage). Since this service is a simple object that doesn't have anything to do with Angular we'll ignore the details. For now we're only going to use the `addTodo` function from the input blade.
 
-Before we can access the new service we need to register it with the [ServiceRegistry](http://bladerunnerjs.org/docs/concepts/service_registry/) - a place where service can be centrally registered and accessed. Within `blades/input/workbench/resources` you'll find an `aliases.xml` file. Add the following in order to ensure the new `TodoService` is registered and can be accessed from the `ServiceRegistry` using the unique ID of `todomvc.storage`:
+Before we can access the new service we need to register it with the [ServiceRegistry](http://bladerunnerjs.org/docs/use/service_registry/) - a place where service can be centrally registered and accessed. Within `blades/input/workbench/resources` you'll find an `aliases.xml` file. Add the following in order to ensure the new `TodoService` is registered and can be accessed from the `ServiceRegistry` using the unique ID of `todomvc.storage`:
 
 ```xml
 <aliases xmlns="http://schema.caplin.com/CaplinTrader/aliases" useScenario="dev">
@@ -373,9 +373,9 @@ Use the input blade in the workbench and every time you add a new item you'll se
 We've done much more than just build our first feature. We've:
 
 * Scaffolded our app
-* Introduced core BRJS ideas including [blades](http://bladerunnerjs.org/docs/concepts/blades/), [services](http://bladerunnerjs.org/docs/concetps/services/)
-* Created a [library](http://bladerunnerjs.org/docs/concetps/libraries/) defining the TodoService that can be used by any application feature/blade/directive
-* Registered the TodoService with the [ServiceRegistry](http://bladerunnerjs.org/docs/concetps/service_registry/)
+* Introduced core BRJS ideas including [blades](http://bladerunnerjs.org/docs/concepts/blades/), [services](http://bladerunnerjs.org/docs/concepts/services/)
+* Created a [library](http://bladerunnerjs.org/docs/concepts/libraries/) defining the TodoService that can be used by any application feature/blade/directive
+* Registered the TodoService with the [ServiceRegistry](http://bladerunnerjs.org/docs/use/service_registry/)
 * Built our first blade
 * Styled our first blade
 

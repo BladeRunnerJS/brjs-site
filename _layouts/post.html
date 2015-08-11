@@ -25,17 +25,19 @@ template: post
       </div>
 
       <div class="copy">
-        {% for post in site.posts %}
-          {% if page.latest %}
-
-          {% elsif post.latest %}
-          <div class="alert alert-success">
+            {% assign is_latest_post = false %}
+            {% for listedPost in site.posts limit:1 %}
+              {% if listedPost.title == page.title and listedPost.date == page.date %}
+                {% assign is_latest_post = true %}
+          		{% endif %}
+          	{% endfor %}
+          	{% unless is_latest_post %}
+          		<div class="alert alert-success">
             <p>
-              <strong>Read our latest: <a href="{{ post.url }}">{{ post.title }}</a></strong>.
+              <strong>Read our latest: <a href="{{ site.posts.first.url }}">{{ site.posts.first.title }}</a></strong>.
             </p>
           </div>
-          {% endif %}
-        {% endfor %}
+          	{% endunless %}
 
     	  {{ content }}
       </div>

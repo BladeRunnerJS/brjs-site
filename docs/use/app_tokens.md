@@ -20,7 +20,7 @@ MY.TOKEN=my token replacement
 
 For example `brjs build-app myapp -e production` will first read properties from ``<appDir>/app-properties/default.properties` and then an optional overridding property from `<appDir>/app-properties/production.properties`.
 
-Static file apps must provide a replacement for all properties used within an app. If a replacement is not provided an exception will be thrown. 'J2EE' apps, those that have a `WEB-INF` directory, can opt to provide some tokens via JNDI (see below).
+Tokens can be included in any text based files served via BRJS, for example JavaScript; HTMl and XML files. Static file apps must provide a replacement for all properties used within an app. If a replacement is not provided an exception will be thrown. 'J2EE' apps, those that have a `WEB-INF` directory, can opt to provide some tokens via JNDI (see below).
 
 Note: To use different tokens for different environment a static app must be built several times using a different environment setting each time.
 
@@ -52,6 +52,24 @@ To use JNDI tokens in development, configure `<appDir>/WEB-INF/jetty-env.xml` to
 
 In production, how JNDI is configured will depend on the JNDI service you are using.
 
+The J2EE filter responsible for the JNDI token replacement only filters requests with set file extensions, by default the regular expression used is `js|xml|json|html|htm|jsp`. To add or remove extensions set the `extensionRegex` init parameter for the filter. To do this change the `web.xml` so the filter definition looks something like:
+
+```
+<filter>
+	<filter-name>BRJSServletFilter</filter-name> 
+	<filter-class>org.bladerunnerjs.appserver.BRJSServletFilter</filter-class>
+	<init-param>
+    	<param-name>extensionRegex</param-name>
+    	<param-value>xml|html|htm|jsp|txt</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+	<filter-name>BRJSServletFilter</filter-name> 
+	<url-pattern>/*</url-pattern> 
+	<dispatcher>REQUEST</dispatcher>
+	<dispatcher>FORWARD</dispatcher>
+</filter-mapping>
+```
 
 ## BRJS System Tokens
 

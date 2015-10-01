@@ -84,11 +84,11 @@ Tokens beginning `BRJS.` are system tokens and cannot be overridden within `.pro
 ## Token Format Ambiguity
 
 <div class="alert alert-warning">
-	<p>The token format `@[A-Z\.]+@` is occasionally used by other libraries for things, such as date placeholders, and can lead to ambiguity as to whether or not it's a token that should be replaced by BRJS. In order to prevent apps from being built and deployed with unreplaced tokens BRJS will throw an exception if a token replacement can be found, but this behaviour results in exceptions for libraries where the intention is to use the literal characters rather than a token.</p>
-	<p>This can be resolved by adding a token replacement in `app-properties/default.properties` which changes the token to a format not used by BRJS, for example the lowercase version of the characters. For example the library `amCharts` uses the token `@AAAA@` to respresent a date replacement. Adding the replacement `@AAAA@ = @aaaa@` to `app-properties/default.properties` fixes the exception without requiring a change to the library's source code.</p> 
+	<p>The token format `@[A-Z\.]+@` is occasionally used by other libraries for things such as date placeholders, and can lead to ambiguity as to whether or not it's a token that should be replaced by BRJS. In order to prevent apps from being built and deployed with un-replaced tokens, BRJS will throw an exception if a token replacement can't be found, but this behaviour results in exceptions for libraries where the intention is to use the literal characters rather than a token.</p>
+	<p>This can be resolved by adding a token replacement in `app-properties/default.properties` which changes the token to a format not used by BRJS &mdash; for example, the lowercase version of the characters. Consider the `amCharts` library that uses the token `@AAAA@` to represent a date replacement. Here, adding the replacement `@AAAA@ = @aaaa@` within `app-properties/default.properties` fixes the exception without requiring a change to the library's source code.</p> 
 </div>
 
-The neccessary token replacement config for libraries known to have ambiguous tokens is below. To add more known libraries please <a target="_default" href="https://github.com/BladeRunnerJS/brjs-site/compare">raise a pull request</a>.
+The necessary token replacement configuration for libraries known to be problematic is provided below. Please [raise a pull request](https://github.com/BladeRunnerJS/brjs-site/compare) to add additional libraries.
 
 ### amCharts
 

@@ -80,3 +80,38 @@ Tokens beginning `BRJS.` are system tokens and cannot be overridden within `.pro
 - `BRJS.APP.VERSION`: The app version &mdash; either automatically generated or specified by using the `-v` flag.
 - `BRJS.APP.LOCALE`: If used in an index page will be replaced with the page's locale, otherwise replaced with the app's default locale.
 - `BRJS.BUNDLE.PATH`: A relative path to the directory containing the app's bundles &mdash; this should be used by library code needing to reference bundles since the relative URL will change depending on the versioning mechanism in use by the app.
+
+## Token Format Ambiguity
+
+<div class="alert alert-warning">
+	<p>The token format `@[A-Z\.]+@` is occasionally used by other libraries for things such as date placeholders, and can lead to ambiguity as to whether or not it's a token that should be replaced by BRJS. In order to prevent apps from being built and deployed with un-replaced tokens, BRJS will throw an exception if a token replacement can't be found, but this behaviour results in exceptions for libraries where the intention is to use the literal characters rather than a token.</p>
+	<p>This can be resolved by adding a token replacement in `app-properties/default.properties` which changes the token to a format not used by BRJS &mdash; for example, the lowercase version of the characters. Consider the `amCharts` library that uses the token `@AAAA@` to represent a date replacement. Here, adding the replacement `@AAAA@ = @aaaa@` within `app-properties/default.properties` fixes the exception without requiring a change to the library's source code.</p> 
+</div>
+
+The necessary token replacement configuration for libraries known to be problematic is provided below. Please [raise a pull request](https://github.com/BladeRunnerJS/brjs-site/compare) to add additional libraries.
+
+### amCharts
+
+```
+# amcharts date tokens
+IIII=@iiii@
+III=@iii@
+II=@ii@
+I=@i@
+PPPP=@pppp@
+PPP=@ppp@
+PP=@pp@
+P=@p@
+RRRR=@rrrr@
+RRR=@rrr@
+RR=@rr@
+R=@r@
+XXXX=@xxxx@
+XXX=@xxx@
+XX=@xx@
+X=@x@
+YYYY=@yyyy@
+YYY=@yyy@
+YY=@yy@
+Y=@y@
+```
